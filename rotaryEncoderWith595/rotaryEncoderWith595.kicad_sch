@@ -2354,6 +2354,108 @@
 				)
 			)
 		)
+		(symbol "Mechanical:MountingHole_Pad"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole_Pad"
+				(at 0 4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole with connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*Pad*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_Pad_0_1"
+				(circle
+					(center 0 1.27)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MountingHole_Pad_1_1"
+				(pin input line
+					(at 0 -2.54 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Switch:SW_SPST"
 			(pin_names
 				(offset 0) hide)
@@ -3029,8 +3131,16 @@
 		(uuid "ff454df4-e8f5-4d9c-b8d0-edf484515c88")
 	)
 	(no_connect
+		(at 274.32 162.56)
+		(uuid "0d0e570a-01a9-40cd-8a91-23b297be7c3e")
+	)
+	(no_connect
 		(at 57.15 54.61)
 		(uuid "0d7f5be1-12de-498b-99a8-733c9a3cf725")
+	)
+	(no_connect
+		(at 274.32 147.32)
+		(uuid "14b968fb-ceb0-4da8-898b-db7e007fabbe")
 	)
 	(no_connect
 		(at 128.27 165.1)
@@ -3039,6 +3149,14 @@
 	(no_connect
 		(at 142.24 57.15)
 		(uuid "4e412ccd-ca3f-4868-b172-8a079e87b128")
+	)
+	(no_connect
+		(at 274.32 157.48)
+		(uuid "9848b586-eac5-4285-a75f-fecefa1f5485")
+	)
+	(no_connect
+		(at 274.32 152.4)
+		(uuid "9fb1c59b-8c68-4d55-9617-f824a691f446")
 	)
 	(no_connect
 		(at 82.55 57.15)
@@ -3146,16 +3264,6 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 52.07) (xy 251.46 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "09e0b6c4-6008-4bbf-baa2-f9a7ee30e646")
-	)
-	(wire
-		(pts
 			(xy 62.23 149.86) (xy 68.58 149.86)
 		)
 		(stroke
@@ -3213,6 +3321,16 @@
 			(type default)
 		)
 		(uuid "10ff860a-7f3f-4ed1-9f2a-f3d87469d2bb")
+	)
+	(wire
+		(pts
+			(xy 240.03 41.91) (xy 251.46 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "122aee89-0f7d-4d74-812c-f2df9159eea7")
 	)
 	(wire
 		(pts
@@ -3666,16 +3784,6 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 36.83) (xy 251.46 36.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "39ce1b0f-8e4a-47eb-b34e-33ad13410a3e")
-	)
-	(wire
-		(pts
 			(xy 100.33 50.8) (xy 100.33 67.31)
 		)
 		(stroke
@@ -3826,6 +3934,16 @@
 	)
 	(wire
 		(pts
+			(xy 240.03 34.29) (xy 251.46 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "502887eb-01aa-488d-8802-aec451e2e957")
+	)
+	(wire
+		(pts
 			(xy 26.67 57.15) (xy 50.8 57.15)
 		)
 		(stroke
@@ -3883,16 +4001,6 @@
 			(type default)
 		)
 		(uuid "55594394-aa5b-42a5-ad74-e8981cfd52b8")
-	)
-	(wire
-		(pts
-			(xy 240.03 34.29) (xy 251.46 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "565f0e89-28b2-43cd-9809-ffcc10bf292d")
 	)
 	(wire
 		(pts
@@ -4143,6 +4251,16 @@
 			(type default)
 		)
 		(uuid "79246c9b-aacf-450a-b60a-3b9bc8f19189")
+	)
+	(wire
+		(pts
+			(xy 240.03 39.37) (xy 251.46 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "79d2589b-0d6f-44be-a2d3-2387f84ef517")
 	)
 	(wire
 		(pts
@@ -4496,6 +4614,16 @@
 	)
 	(wire
 		(pts
+			(xy 240.03 49.53) (xy 251.46 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90e089d2-4d35-4c36-8671-c718419e57c6")
+	)
+	(wire
+		(pts
 			(xy 86.36 72.39) (xy 95.25 72.39)
 		)
 		(stroke
@@ -4766,16 +4894,6 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 41.91) (xy 251.46 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ac1d6fde-c482-4f47-a695-9b78eb96e3cd")
-	)
-	(wire
-		(pts
 			(xy 165.1 41.91) (xy 176.53 41.91)
 		)
 		(stroke
@@ -4893,16 +5011,6 @@
 			(type default)
 		)
 		(uuid "be1115b8-1679-432f-891f-e604d1a350ce")
-	)
-	(wire
-		(pts
-			(xy 240.03 39.37) (xy 251.46 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "be1bbf4c-607f-47e5-8dd9-7573e2444ff2")
 	)
 	(wire
 		(pts
@@ -5136,6 +5244,16 @@
 	)
 	(wire
 		(pts
+			(xy 240.03 36.83) (xy 251.46 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d895348b-fd32-4237-898a-5bad6cbc6e14")
+	)
+	(wire
+		(pts
 			(xy 142.24 157.48) (xy 147.32 157.48)
 		)
 		(stroke
@@ -5336,6 +5454,16 @@
 	)
 	(wire
 		(pts
+			(xy 240.03 52.07) (xy 251.46 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef0ea391-9272-49bb-8911-461698bc55f7")
+	)
+	(wire
+		(pts
 			(xy 33.02 50.8) (xy 33.02 74.93)
 		)
 		(stroke
@@ -5466,16 +5594,6 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 49.53) (xy 251.46 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fb14ff96-762e-43aa-9859-f5857870834d")
-	)
-	(wire
-		(pts
 			(xy 86.36 64.77) (xy 102.87 64.77)
 		)
 		(stroke
@@ -5514,6 +5632,17 @@
 			(justify left bottom)
 		)
 		(uuid "0213438a-9db0-4983-bfbd-c1614bc74f81")
+	)
+	(label "CLK165"
+		(at 240.03 39.37 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "04a06627-3fc2-4256-9fb8-8c6915c204a1")
 	)
 	(label "D17"
 		(at 26.67 74.93 0)
@@ -5602,17 +5731,6 @@
 			(justify left bottom)
 		)
 		(uuid "4432c9a9-e471-48a4-b454-e5caa9062c86")
-	)
-	(label "SER595"
-		(at 240.03 49.53 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4c6626c0-512e-48ee-93ae-cb793e0f7d99")
 	)
 	(label "OUT165"
 		(at 149.86 54.61 180)
@@ -5867,17 +5985,6 @@
 		)
 		(uuid "bbddc70a-cbcf-4ea2-ac99-dea682573f42")
 	)
-	(label "CLK165"
-		(at 240.03 34.29 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c9a231d5-6509-488c-8c2e-2bde6495db59")
-	)
 	(label "D14"
 		(at 26.67 67.31 0)
 		(fields_autoplaced yes)
@@ -5933,6 +6040,17 @@
 		)
 		(uuid "dc849862-5a11-4d0c-9918-61cd7dada9d1")
 	)
+	(label "SER595"
+		(at 240.03 52.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dd69c67d-5cec-4073-b82a-ca909e03dd69")
+	)
 	(label "RCLK595"
 		(at 96.52 154.94 0)
 		(fields_autoplaced yes)
@@ -5978,7 +6096,7 @@
 		(uuid "f127823f-10a1-495a-8a4e-2f5c6ce7a4aa")
 	)
 	(label "LD165"
-		(at 240.03 36.83 0)
+		(at 240.03 41.91 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5986,7 +6104,18 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f1de653b-ce9c-440b-a5cb-7b0b6250c7ab")
+		(uuid "f178b71b-b6fb-4a0c-af25-d4a252833e2e")
+	)
+	(label "OUT165"
+		(at 240.03 49.53 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f1f21278-bdf3-4030-8420-18d440e98b4f")
 	)
 	(label "D25"
 		(at 170.18 143.51 0)
@@ -5998,17 +6127,6 @@
 			(justify left bottom)
 		)
 		(uuid "f24fe3f4-8e03-480f-b1cc-feca85065374")
-	)
-	(label "OUT165"
-		(at 240.03 52.07 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f330a54f-f2d7-4a2a-b5a6-164bacf938b4")
 	)
 	(label "D16"
 		(at 26.67 72.39 0)
@@ -6850,6 +6968,75 @@
 			(project "rotaryEncoderWith595"
 				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
 					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 276.86 162.56 270)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1f032600-cfec-49a1-96c7-3a352beb32cd")
+		(property "Reference" "H4"
+			(at 280.67 162.5599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 280.67 163.8299 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm_Pad"
+			(at 276.86 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 276.86 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 276.86 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "df23fd76-d2c8-4234-91a3-b1c5247ffcab")
+		)
+		(instances
+			(project "rotaryEncoderWith595"
+				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -8217,74 +8404,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 240.03 41.91 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4ab067e0-2989-4fe4-867f-ee26e173e6d7")
-		(property "Reference" "#PWR033"
-			(at 243.84 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 236.22 41.9101 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 240.03 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 240.03 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 240.03 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8527469d-f343-4e10-9afb-dc9d97c3f6f9")
-		)
-		(instances
-			(project "rotaryEncoderWith595"
-				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
-					(reference "#PWR033")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_US")
 		(at 182.88 87.63 90)
 		(unit 1)
@@ -8413,74 +8532,6 @@
 			(project "rotaryEncoderWith595"
 				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
 					(reference "#PWR011")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 240.03 39.37 270)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "542fa3c3-e8b2-4cf2-8a02-f7e760614517")
-		(property "Reference" "#PWR034"
-			(at 233.68 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 234.95 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 240.03 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 240.03 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 240.03 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "79cd0588-54a5-4a61-be48-bd459bbb98d9")
-		)
-		(instances
-			(project "rotaryEncoderWith595"
-				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
-					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -9689,6 +9740,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 276.86 152.4 270)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7406c662-5f92-462c-9694-18b61b5ab423")
+		(property "Reference" "H2"
+			(at 280.67 152.3999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 280.67 153.6699 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm_Pad"
+			(at 276.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 276.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 276.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bcdc3f88-64f7-40bb-b7d9-161b8d96b86d")
+		)
+		(instances
+			(project "rotaryEncoderWith595"
+				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
+					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 138.43 160.02 90)
 		(mirror x)
@@ -10412,6 +10532,74 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 240.03 34.29 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8b92d6c2-5037-4398-8fb4-3a39befec238")
+		(property "Reference" "#PWR033"
+			(at 233.68 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 234.95 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 240.03 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 240.03 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 240.03 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "61ad80d7-055b-4a7a-8d66-899d966100ba")
+		)
+		(instances
+			(project "rotaryEncoderWith595"
+				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
+					(reference "#PWR033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 69.85 97.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10683,6 +10871,144 @@
 			(project "rotaryEncoderWith595"
 				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
 					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 276.86 147.32 270)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ad04aa7f-9f35-4d53-a6d4-328e5e31327f")
+		(property "Reference" "H1"
+			(at 280.67 147.3199 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 280.67 148.5899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm_Pad"
+			(at 276.86 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 276.86 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 276.86 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bd6801eb-e226-4aa1-bd0b-815a8e1f342c")
+		)
+		(instances
+			(project "rotaryEncoderWith595"
+				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 276.86 157.48 270)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "add5f807-96a2-47d8-b42c-3c07246a15cc")
+		(property "Reference" "H3"
+			(at 280.67 157.4799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 280.67 158.7499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm_Pad"
+			(at 276.86 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 276.86 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 276.86 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8cef6df9-af24-475d-8986-2f28018c1414")
+		)
+		(instances
+			(project "rotaryEncoderWith595"
+				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
+					(reference "H3")
 					(unit 1)
 				)
 			)
@@ -12172,6 +12498,74 @@
 			(project "rotaryEncoderWith595"
 				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
 					(reference "C11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 240.03 36.83 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "daba3a7e-1057-4118-b118-ced7daffbf9d")
+		(property "Reference" "#PWR034"
+			(at 243.84 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 236.22 36.8301 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 240.03 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 240.03 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 240.03 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d8da200b-4a26-4587-8a86-3ce8096efd89")
+		)
+		(instances
+			(project "rotaryEncoderWith595"
+				(path "/78119a4e-69eb-470b-b1c9-2b30fc67cc7b"
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
