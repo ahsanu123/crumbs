@@ -2,7 +2,7 @@
 ## Crumbs 🍪 - Rotary Encoder With 74HC595 And 74HC165
 
 Simple Breakout Board to Learn Shift Register with Tactile Switch And Rotary Encoder 
-
+![schematic](./docs/rotaryEncoderWith595.svg)
 ![render](./docs/rotaryEncoderWith595.png)
 
 ### 🍑 Features
