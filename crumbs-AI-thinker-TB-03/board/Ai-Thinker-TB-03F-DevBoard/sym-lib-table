@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "AI Thinker TB-03")(type "KiCad")(uri "${KIPRJMOD}/library/Ai-Thinker_TB-03/2024-12-08_22-58-57.kicad_sym")(options "")(descr ""))
+)
