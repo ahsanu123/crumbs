@@ -14,12 +14,16 @@
 </p>
 
 <p align="center">
-  <img src="./board/Ai-Thinker-TB-03F-DevBoard/output/Ai-Thinker-TB-03F-DevBoard.svg" style="width:600px;" /> <br/>  
+  <h1> AI Thinker TB-03F Development Board</h1>
+  <img src="./documentation/AI-Thinker-TB-03.gif" style="width:600px;" /> <br/>  
 </p>
 
 # 🤖 Introduction 
 
 Development Board Based On AI Thinker TB-03F.
 
+![image](./board/Ai-Thinker-TB-03F-DevBoard/output/Ai-Thinker-TB-03F-DevBoard.svg)
+
 ## 🌴 Log
-- 12 Desember 2024, First Schematic, Need Recheck 
+- 09 Desember 2024, First Schematic, Need Recheck
+- 10 Desember 2024, Finish Component Layout

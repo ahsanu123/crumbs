@@ -3011,6 +3011,88 @@
 				)
 			)
 		)
+		(symbol "Mechanical:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+		)
 		(symbol "Regulator_Linear:AMS1117-3.3"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -5147,6 +5229,7 @@
 	)
 	(label "PD2"
 		(at 85.09 109.22 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5234,6 +5317,7 @@
 	)
 	(label "PB6"
 		(at 30.48 109.22 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5255,6 +5339,7 @@
 	)
 	(label "DTR"
 		(at 106.68 49.53 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5309,6 +5394,7 @@
 	)
 	(label "PB4"
 		(at 85.09 119.38 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5352,6 +5438,7 @@
 	)
 	(label "PD4"
 		(at 85.09 104.14 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5362,6 +5449,7 @@
 	)
 	(label "RST"
 		(at 30.48 93.98 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5383,6 +5471,7 @@
 	)
 	(label "PA1"
 		(at 30.48 116.84 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5393,6 +5482,7 @@
 	)
 	(label "PC4"
 		(at 30.48 96.52 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5436,6 +5526,7 @@
 	)
 	(label "PB5"
 		(at 85.09 116.84 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5446,6 +5537,7 @@
 	)
 	(label "GND"
 		(at 85.09 111.76 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5478,6 +5570,7 @@
 	)
 	(label "PD3"
 		(at 85.09 106.68 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5499,6 +5592,7 @@
 	)
 	(label "3V3"
 		(at 30.48 111.76 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5520,6 +5614,7 @@
 	)
 	(label "PD7"
 		(at 30.48 104.14 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5530,6 +5625,7 @@
 	)
 	(label "RTS"
 		(at 90.17 52.07 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5551,6 +5647,7 @@
 	)
 	(label "SWS"
 		(at 30.48 99.06 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5572,6 +5669,7 @@
 	)
 	(label "PC0"
 		(at 85.09 99.06 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5582,6 +5680,7 @@
 	)
 	(label "PC3"
 		(at 30.48 101.6 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5603,6 +5702,7 @@
 	)
 	(label "PB7"
 		(at 30.48 106.68 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5624,6 +5724,7 @@
 	)
 	(label "PC2"
 		(at 30.48 119.38 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5645,6 +5746,7 @@
 	)
 	(label "PC1"
 		(at 85.09 101.6 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5690,7 +5792,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 124.206 67.564 90)
 			(effects
 				(font
@@ -5997,7 +6099,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 137.16 90.17 0)
 			(effects
 				(font
@@ -6247,7 +6349,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Button_Switch_SMD:SW_SPST_EVQPE1"
+		(property "Footprint" "Button_Switch_SMD:SW_Push_SPST_NO_Alps_SKRK"
 			(at 100.33 87.63 0)
 			(effects
 				(font
@@ -6516,7 +6618,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 103.124 75.184 90)
 			(effects
 				(font
@@ -6652,7 +6754,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 167.9448 86.36 0)
 			(effects
 				(font
@@ -6762,6 +6864,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 77.47 76.2 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4d425a5e-18a0-4383-8119-3d22433c5d7d")
+		(property "Reference" "H3"
+			(at 80.01 76.1999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 80.01 77.4699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm"
+			(at 77.47 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 77.47 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 77.47 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "Ai-Thinker-TB-03F-DevBoard"
+				(path "/18d993f7-3fb6-48dc-9aa6-5938949c8a8e"
+					(reference "H3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Switch:SW_Push")
 		(at 104.14 87.63 270)
 		(mirror x)
@@ -6789,7 +6957,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Button_Switch_SMD:SW_SPST_EVQPE1"
+		(property "Footprint" "Button_Switch_SMD:SW_Push_SPST_NO_Alps_SKRK"
 			(at 109.22 87.63 0)
 			(effects
 				(font
@@ -7130,6 +7298,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 72.39 76.2 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6031023e-332c-47d9-9ec8-60f22e6cadba")
+		(property "Reference" "H2"
+			(at 74.93 76.1999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 74.93 77.4699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm"
+			(at 72.39 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 72.39 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 72.39 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "Ai-Thinker-TB-03F-DevBoard"
+				(path "/18d993f7-3fb6-48dc-9aa6-5938949c8a8e"
+					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 124.46 73.66 270)
 		(mirror x)
@@ -7155,7 +7389,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 124.206 72.644 90)
 			(effects
 				(font
@@ -7222,7 +7456,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 49.276 30.226 90)
 			(effects
 				(font
@@ -7355,7 +7589,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 94.234 75.184 90)
 			(effects
 				(font
@@ -7422,7 +7656,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 137.16 96.52 0)
 			(effects
 				(font
@@ -7703,7 +7937,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 124.206 95.504 90)
 			(effects
 				(font
@@ -7746,6 +7980,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 82.55 76.2 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8459adf1-41b9-45a3-acd6-07a11a076b51")
+		(property "Reference" "H4"
+			(at 85.09 76.1999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 85.09 77.4699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm"
+			(at 82.55 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 82.55 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 82.55 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "Ai-Thinker-TB-03F-DevBoard"
+				(path "/18d993f7-3fb6-48dc-9aa6-5938949c8a8e"
+					(reference "H4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 186.69 82.55 0)
 		(unit 1)
@@ -7772,7 +8072,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 187.6552 86.36 0)
 			(effects
 				(font
@@ -8039,7 +8339,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 24.4348 121.92 0)
 			(effects
 				(font
@@ -8106,7 +8406,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 49.276 35.306 90)
 			(effects
 				(font
@@ -8308,7 +8608,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 18.0848 121.92 0)
 			(effects
 				(font
@@ -8443,7 +8743,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 124.206 77.724 90)
 			(effects
 				(font
@@ -8511,7 +8811,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 96.266 51.054 90)
 			(effects
 				(font
@@ -8709,7 +9009,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 94.996 32.766 90)
 			(effects
 				(font
@@ -8972,7 +9272,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 124.206 89.154 90)
 			(effects
 				(font
@@ -9009,6 +9309,72 @@
 			(project "Ai-Thinker-TB-03F-DevBoard"
 				(path "/18d993f7-3fb6-48dc-9aa6-5938949c8a8e"
 					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 67.31 76.2 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fb16467e-6096-4003-9de3-5a7c96d74c9b")
+		(property "Reference" "H1"
+			(at 69.85 76.1999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 69.85 77.4699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm"
+			(at 67.31 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 67.31 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 67.31 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "Ai-Thinker-TB-03F-DevBoard"
+				(path "/18d993f7-3fb6-48dc-9aa6-5938949c8a8e"
+					(reference "H1")
 					(unit 1)
 				)
 			)
