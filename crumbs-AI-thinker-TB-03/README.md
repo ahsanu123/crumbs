@@ -14,8 +14,7 @@
 </p>
 
 <p align="center">
-  <h1> AI Thinker TB-03F Development Board</h1>
-  <img src="./documentation/AI-Thinker-TB-03.gif" style="width:600px;" /> <br/>  
+  <img src="./documentation/AI-Thinker-TB-03_2.png" style="width:600px;" /> <br/>  
 </p>
 
 # 🤖 Introduction 
