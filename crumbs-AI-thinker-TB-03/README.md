@@ -21,6 +21,13 @@
 
 Development Board Based On AI Thinker TB-03F.
 
+- 🔌 ultra-low power (ULP)
+- 🚋 flexible GPIO interfaces
+- 📘 Bluetooth LE
+- 🥑 14bit ADC
+- 6️⃣ 6-channel PWM
+- 💬 32-bit MCU running up to 48MHz
+
 ![image](./board/Ai-Thinker-TB-03F-DevBoard/output/Ai-Thinker-TB-03F-DevBoard.svg)
 
 ## 🌴 Log
