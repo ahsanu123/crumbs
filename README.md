@@ -6,3 +6,5 @@
 - **(30 Juni 2024)** MCP23017 16 Channel Input Output With I2C Breakout Board [README](./crumbs23017/README.md)
 - **(09 Desember 2024)** AI Thinker TB-03 Dev Boards
 
+
+<sub>a long project with the hope of completion. created with ♥️ by ah...</sub>
