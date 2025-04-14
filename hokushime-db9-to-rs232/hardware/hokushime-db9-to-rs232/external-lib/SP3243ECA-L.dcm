@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SP3243ECA-L
+D EXAR SP3243ECA-L, Line Transceiver 3-TX 5-RX 3-TRX, 3.3 V, 5 V, 28-Pin SSOP
+K
+F https://www.maxlinear.com/ds/sp3243e.pdf
+$ENDCMP
+#
+#End Doc Library
