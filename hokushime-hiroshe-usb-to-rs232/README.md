@@ -1,5 +1,3 @@
-
-
 # 🏯 Hokushime 
 
 Hokushime is project to clone Hiroshe db9 to RS232 converter
@@ -7,7 +5,7 @@ Hokushime is project to clone Hiroshe db9 to RS232 converter
 **Used Component**
 - SIPEX SP3243ECA (will use SP3243EB)
 - FT232BL (will use FT232BL)
-- ATMLH916 (will use AT24CXX series, i2c based eeprom memory chip)
+- ATMLH916 (will use AT93C66, Microwire EEPROM ic)
 
 ## Notes 
 
@@ -42,3 +40,17 @@ Misc Features	Basic UART	Full USB-UART	Lower cost	Advanced, MPSSE
 | Driver Support         | VCP, D2XX        | VCP, D2XX        | VCP, D2XX        | VCP, D2XX        | VCP, D2XX, MPSSE      |
 | MPSSE (for SPI/I2C/JTAG) | ❌ No          | ❌ No             | ❌ No             | ❌ No             | ✅ Yes                |
 | Target Application     | Basic USB-UART   | USB-UART         | USB-UART         | USB-UART         | USB Hi-Speed Serial / MPSSE |
+
+
+- recomended minimum SP3243E Capacitor,
+`The external capacitors can be as low as 0.1µF with a 16V breakdown voltage rating.`
+```shell
+Table 7: Minimum Recommended Charge Pump
+Capacitor Value
+Input Voltage VCC Charge Pump Capacitor Value
+3.0V to 3.6V C1 - C4 = 0.1µF
+4.5V to 5.5V C1 = 0.047µF, C2 - C4 = 0.33µF
+3.0V to 5.5V C1 - C4 = 0.22µF
+```
+
+- There are two varieties of these EEPROM’s from many sources such as Microchip, STMicro, ISSI etc. – one is configured as being 16 bits wide, the other is configured as being 8 bits wide. The **FT232B requires EEPROMs with a 16-bit wide** configuration such as the Microchip 93LC46B device.
