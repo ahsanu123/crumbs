@@ -1,11 +1,13 @@
 # 🏯 Hokushime 
 
-Hokushime is project to clone Hiroshe db9 to RS232 converter
+Hokushime is project to clone Hirose USB to RS232 converter
 
 **Used Component**
-- SIPEX SP3243ECA (will use SP3243EB)
-- FT232BL (will use FT232BL)
-- ATMLH916 (will use AT93C66, Microwire EEPROM ic)
+- SIPEX SP3243ECA (will use SP3243EB, 3 driver / 5 receiver RS-232 transceiver)
+- FT232BL (will use FT232BL, FT232B is a USB to serial UART)
+- ATMLH916 (will use AT93C66, Microwire EEPROM IC)
+
+![schematic](./docs/hokushime-db9-to-rs232.svg)
 
 ## Notes 
 
