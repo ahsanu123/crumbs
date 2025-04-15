@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "external-lib")(type "KiCad")(uri "${KIPRJMOD}/external-lib")(options "")(descr ""))
+)
