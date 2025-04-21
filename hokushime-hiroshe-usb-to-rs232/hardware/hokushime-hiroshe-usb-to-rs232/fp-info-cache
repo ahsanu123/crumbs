@@ -1,4 +1,4 @@
-23904278177530663
+23909490883351787
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -97642,3 +97642,24 @@ Varistor VF
 0
 2
 2
+external-lib
+Crumbs-Logo_Footprint
+
+
+0
+0
+0
+external-lib
+Crumbs-Logo_Footprint_13x13
+
+
+0
+0
+0
+external-lib
+SOP65P780X200-28N
+28-pin SSOP *\
+Integrated Circuit
+0
+28
+28
