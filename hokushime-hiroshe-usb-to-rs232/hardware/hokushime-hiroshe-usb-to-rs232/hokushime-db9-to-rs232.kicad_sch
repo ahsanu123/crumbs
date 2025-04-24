@@ -3129,6 +3129,88 @@
 				)
 			)
 		)
+		(symbol "Mechanical:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+		)
 		(symbol "Memory_EEPROM:93CxxC"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -4487,12 +4569,20 @@
 		(uuid "f60cc5ab-e06e-46a7-836c-69db69686da2")
 	)
 	(no_connect
+		(at 170.18 68.58)
+		(uuid "2db3426e-6e32-43a8-ae20-ec37cc5d4de2")
+	)
+	(no_connect
 		(at 223.52 124.46)
 		(uuid "308ac8fc-e91d-4c81-869c-e94ea9628adf")
 	)
 	(no_connect
 		(at 87.63 96.52)
 		(uuid "648c2c27-bfca-4b76-90ae-94df3a4fd259")
+	)
+	(no_connect
+		(at 170.18 71.12)
+		(uuid "b731d612-e128-4653-a008-4ad2ff69c9e5")
 	)
 	(wire
 		(pts
@@ -4586,13 +4676,13 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 129.54) (xy 53.34 129.54)
+			(xy 36.83 132.08) (xy 53.34 132.08)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "0f3fe4e2-cc8e-447b-abe5-f0ace7b927f0")
+		(uuid "0e27e4e4-edc6-4de9-b954-e9789ccc89f4")
 	)
 	(polyline
 		(pts
@@ -4603,6 +4693,16 @@
 			(type default)
 		)
 		(uuid "0fbfc0e7-18bd-481b-8bb7-1a2e93f7958a")
+	)
+	(wire
+		(pts
+			(xy 53.34 127) (xy 36.83 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1041d495-2477-4a9b-a433-a08bef84ef43")
 	)
 	(wire
 		(pts
@@ -4696,13 +4796,13 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 132.08) (xy 59.69 132.08)
+			(xy 68.58 142.24) (xy 67.31 142.24)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1a6669a6-b7c6-4af1-a273-29b14feb35f6")
+		(uuid "1afca7d0-3121-47be-a17e-b63526c26511")
 	)
 	(wire
 		(pts
@@ -4723,6 +4823,16 @@
 			(type default)
 		)
 		(uuid "21e8a75b-0691-47f6-acbe-1e5612d7cc73")
+	)
+	(wire
+		(pts
+			(xy 36.83 144.78) (xy 53.34 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "28640f30-d50a-4e56-8a77-99a9a4173048")
 	)
 	(wire
 		(pts
@@ -4853,16 +4963,6 @@
 			(type default)
 		)
 		(uuid "3ccf7f73-6953-45a0-b0d9-ac9f05307f4d")
-	)
-	(wire
-		(pts
-			(xy 36.83 142.24) (xy 53.34 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3e8a279b-46bd-4a35-8e8a-30bf87f31dcb")
 	)
 	(wire
 		(pts
@@ -5066,6 +5166,16 @@
 	)
 	(wire
 		(pts
+			(xy 36.83 124.46) (xy 53.34 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58a19aa2-f963-4b83-97fb-052a141816e5")
+	)
+	(wire
+		(pts
 			(xy 198.12 36.83) (xy 203.2 36.83)
 		)
 		(stroke
@@ -5216,16 +5326,6 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 144.78) (xy 53.34 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7aa5f854-eb3a-4583-8aac-c1ac9b236fd8")
-	)
-	(wire
-		(pts
 			(xy 247.65 81.28) (xy 247.65 73.66)
 		)
 		(stroke
@@ -5273,16 +5373,6 @@
 			(type default)
 		)
 		(uuid "7e20d980-d6a9-4a34-ba41-8c4e560024f1")
-	)
-	(wire
-		(pts
-			(xy 36.83 139.7) (xy 53.34 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7e21f9a1-88d2-4a9f-9a9b-7d25982ccc98")
 	)
 	(wire
 		(pts
@@ -5386,6 +5476,16 @@
 	)
 	(wire
 		(pts
+			(xy 36.83 129.54) (xy 53.34 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e0f64f6-7c32-47b8-877d-ccc3f2099260")
+	)
+	(wire
+		(pts
 			(xy 193.04 107.95) (xy 198.12 107.95)
 		)
 		(stroke
@@ -5393,6 +5493,26 @@
 			(type default)
 		)
 		(uuid "8e46dd9d-3226-4b92-9b73-e564558f28e1")
+	)
+	(wire
+		(pts
+			(xy 36.83 142.24) (xy 59.69 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "906c8733-aa85-448e-96b8-8f80e00e567e")
+	)
+	(wire
+		(pts
+			(xy 36.83 134.62) (xy 53.34 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90ac0d7c-a4ae-4cbc-84f8-b0a926a567c8")
 	)
 	(wire
 		(pts
@@ -5856,13 +5976,13 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 137.16) (xy 53.34 137.16)
+			(xy 36.83 139.7) (xy 53.34 139.7)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c4d00f71-61a2-445b-807c-aea3389069df")
+		(uuid "c341c56b-c1e7-489c-93b4-3c4fe8693974")
 	)
 	(wire
 		(pts
@@ -5873,16 +5993,6 @@
 			(type default)
 		)
 		(uuid "c5d92930-960e-4f77-be57-4feec5ba330e")
-	)
-	(wire
-		(pts
-			(xy 53.34 124.46) (xy 36.83 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c6713ebd-d8e4-46c3-b6cc-75bd4d6ae756")
 	)
 	(wire
 		(pts
@@ -5923,6 +6033,16 @@
 			(type default)
 		)
 		(uuid "cadad383-9d57-4b50-952e-dd22e4f39b52")
+	)
+	(wire
+		(pts
+			(xy 36.83 137.16) (xy 53.34 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc23732c-ce6b-48e3-87f3-fe520b347e1b")
 	)
 	(wire
 		(pts
@@ -6026,16 +6146,6 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 127) (xy 53.34 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "db958d58-1330-4a53-9f10-46c304f96d92")
-	)
-	(wire
-		(pts
 			(xy 168.91 82.55) (xy 170.18 81.28)
 		)
 		(stroke
@@ -6126,16 +6236,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 132.08) (xy 67.31 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e4a1c889-200f-4327-911e-a96cddebe49e")
-	)
-	(wire
-		(pts
 			(xy 193.04 25.4) (xy 193.04 35.56)
 		)
 		(stroke
@@ -6193,16 +6293,6 @@
 			(type default)
 		)
 		(uuid "f8f8dff5-8919-4c14-a7c3-53e5926dc71e")
-	)
-	(wire
-		(pts
-			(xy 36.83 134.62) (xy 53.34 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fb3562b5-3fe5-4294-862d-0cc3334331ca")
 	)
 	(wire
 		(pts
@@ -19101,7 +19191,7 @@
 			"9/8LNBdopL0RSlqq+VEPk9L/F8K8SX+c55+cAAAAAElFTkSuQmCC"
 		)
 	)
-	(text "Black	DTR\nBrown	TXD\nRed		RXD\nOrange	DSR\nYellow	GND\nGreen 	DCD\nBlue	CTS\nGray	RTS\nWhite	RI\nBraid	Shield\n\nLook For Green "
+	(text "TODO: Recheck \nthis annotation\n-----------\nBlack	DTR\nBrown	TXD\nRed		RXD\nOrange	DSR\nYellow	GND\nGreen 	DCD\nBlue	CTS\nGray	RTS\nWhite	RI\nBraid	Shield\n\nLook For Green "
 		(exclude_from_sim no)
 		(at 29.464 121.92 0)
 		(effects
@@ -19259,17 +19349,6 @@
 		)
 		(uuid "00fedcf8-0758-4629-8b2f-09ce79fc4a87")
 	)
-	(label "CONN2_RXD"
-		(at 53.34 127 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "055f08e0-cce3-439a-ac3e-7295023f1cca")
-	)
 	(label "USBD+"
 		(at 205.74 116.84 0)
 		(fields_autoplaced yes)
@@ -19302,17 +19381,6 @@
 			(justify right bottom)
 		)
 		(uuid "14f97775-ed94-4a12-a784-4b3378567edb")
-	)
-	(label "CONN2_GND"
-		(at 53.34 132.08 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "21570315-a47b-43bf-9a47-28b3661c4cc4")
 	)
 	(label "93C66_DI"
 		(at 99.06 41.91 180)
@@ -19369,6 +19437,17 @@
 		)
 		(uuid "3590dff2-ffca-40ff-b6c1-dd85bad9f11e")
 	)
+	(label "CONN2_DCD"
+		(at 53.34 132.08 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4061af5b-091e-42c5-aa20-dc0e6b97f619")
+	)
 	(label "USBD-"
 		(at 254 54.61 180)
 		(fields_autoplaced yes)
@@ -19413,6 +19492,17 @@
 		)
 		(uuid "50b9a83d-09a3-4b35-9abf-3586a65757ad")
 	)
+	(label "CONN2_DSR"
+		(at 53.34 134.62 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "539616fc-3d79-4cc7-acea-51a2c90d9f72")
+	)
 	(label "CONN2_RI"
 		(at 35.56 93.98 0)
 		(fields_autoplaced yes)
@@ -19424,17 +19514,6 @@
 		)
 		(uuid "5db92bff-1729-4d2d-95f3-707aca981ae0")
 	)
-	(label "CONN2_TXD"
-		(at 53.34 124.46 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "6b5aa1f7-fce5-451e-ac10-9b02216cc1e2")
-	)
 	(label "93C66_CS"
 		(at 232.41 86.36 180)
 		(fields_autoplaced yes)
@@ -19445,6 +19524,17 @@
 			(justify right bottom)
 		)
 		(uuid "6b8f07b2-741e-4410-9a30-6b5fab75f556")
+	)
+	(label "CONN2_RXD"
+		(at 53.34 139.7 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6e3d441f-3b78-4f91-a589-5490c345ed83")
 	)
 	(label "~{SLEEP}"
 		(at 107.95 91.44 180)
@@ -19467,6 +19557,17 @@
 			(justify right bottom)
 		)
 		(uuid "78b3b94c-9d8c-43b0-a39a-c0bf1f6f9a79")
+	)
+	(label "CONN2_RTS"
+		(at 53.34 124.46 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "84c11f09-1733-4a85-a624-e163812993fe")
 	)
 	(label "~{DTR}"
 		(at 161.29 55.88 0)
@@ -19534,6 +19635,17 @@
 		)
 		(uuid "8f03c658-b337-4e83-92f3-ad5611d54b06")
 	)
+	(label "CONN2_RI"
+		(at 53.34 129.54 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "97abd7d2-a43e-4f2f-a50a-f3d25923db70")
+	)
 	(label "CONN2_RTS"
 		(at 35.56 99.06 0)
 		(fields_autoplaced yes)
@@ -19555,17 +19667,6 @@
 			(justify left bottom)
 		)
 		(uuid "9ed1af3e-2f56-4436-8d71-18b2114c886c")
-	)
-	(label "CONN2_RTS"
-		(at 53.34 139.7 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "9ed6ea14-c565-4407-a2f9-d214cbb1990c")
 	)
 	(label "TXD"
 		(at 161.29 45.72 0)
@@ -19589,17 +19690,6 @@
 		)
 		(uuid "a3f16439-003f-4f26-8354-06ea8c8cc1f4")
 	)
-	(label "CONN2_CTS"
-		(at 53.34 137.16 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "a4f3e7c7-3bb7-46dd-8520-f5f6a817cbc6")
-	)
 	(label "CONN2_RXD"
 		(at 35.56 83.82 0)
 		(fields_autoplaced yes)
@@ -19611,8 +19701,8 @@
 		)
 		(uuid "ad4a1673-00c2-47f2-b302-5b1244423fc2")
 	)
-	(label "CONN2_RI"
-		(at 53.34 142.24 180)
+	(label "CONN2_CTS"
+		(at 53.34 137.16 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19620,7 +19710,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "b53511d2-3b41-4798-b96a-47f1ca7804b4")
+		(uuid "b75c33e9-b75a-45c6-91e5-7184250b7616")
 	)
 	(label "USBD-"
 		(at 205.74 119.38 0)
@@ -19644,17 +19734,6 @@
 		)
 		(uuid "b9c1d156-10c8-4a37-8448-c2891bb0f9ee")
 	)
-	(label "CONN2_DCD"
-		(at 53.34 134.62 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "bc7e874e-0905-43f8-890e-a93d1c9b8aa4")
-	)
 	(label "~{DCD}"
 		(at 161.29 60.96 0)
 		(fields_autoplaced yes)
@@ -19665,6 +19744,17 @@
 			(justify left bottom)
 		)
 		(uuid "c0e6d6f6-c548-43e4-84e0-5c5e92fe4c26")
+	)
+	(label "CONN2_GND"
+		(at 53.34 142.24 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c444d1ee-3d0a-4833-9762-cf0c8b4c5684")
 	)
 	(label "93C66_CS"
 		(at 43.18 39.37 0)
@@ -19688,6 +19778,17 @@
 		)
 		(uuid "dc75317c-b812-435a-96a0-563d35f60099")
 	)
+	(label "CONN2_SHIELD"
+		(at 53.34 144.78 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "dfcd7f27-1b1f-4b27-ae37-fa61dfe4a17e")
+	)
 	(label "USBD+"
 		(at 254 52.07 180)
 		(fields_autoplaced yes)
@@ -19698,17 +19799,6 @@
 			(justify right bottom)
 		)
 		(uuid "dff03486-3226-4551-b357-ff029a8a59d5")
-	)
-	(label "CONN2_DSR"
-		(at 53.34 129.54 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e302c742-4a0f-4db6-aaad-43ff4732093b")
 	)
 	(label "CONN2_DTR"
 		(at 35.56 101.6 0)
@@ -19721,6 +19811,17 @@
 		)
 		(uuid "e69d099f-c6aa-40c0-8d12-be53b24df440")
 	)
+	(label "CONN2_TXD"
+		(at 53.34 127 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ec8fcf41-0435-455d-869e-4b64de9542bb")
+	)
 	(label "~{CTS}"
 		(at 161.29 53.34 0)
 		(fields_autoplaced yes)
@@ -19731,17 +19832,6 @@
 			(justify left bottom)
 		)
 		(uuid "ef550859-aa91-4b54-bc1a-0e73a6524662")
-	)
-	(label "CONN2_SHIELD"
-		(at 53.34 144.78 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "f0d1d140-14b0-4737-94ab-954959646042")
 	)
 	(label "~{DSR}"
 		(at 161.29 58.42 0)
@@ -20728,73 +20818,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 68.58 132.08 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "27522131-91a8-4e8d-9152-aafd2d10504d")
-		(property "Reference" "#PWR01"
-			(at 74.93 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 73.66 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5d43efbf-a818-4de1-ae55-0f6946f56b2f")
-		)
-		(instances
-			(project "hokushime-db9-to-rs232"
-				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
-					(reference "#PWR01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Memory_EEPROM:93CxxC")
 		(at 69.85 41.91 0)
 		(unit 1)
@@ -20883,74 +20906,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 63.5 132.08 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2df95e3f-5acc-44f8-9f5b-227fef4f0332")
-		(property "Reference" "JP2"
-			(at 63.5 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "CONN2_TO_GND"
-			(at 63.5 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
-			(at 63.5 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 63.5 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 63.5 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "99859b04-2490-4e3b-90e1-90b9c5056717")
-		)
-		(pin "1"
-			(uuid "451885c9-1e98-4bb4-aeef-8f075b7f042f")
-		)
-		(instances
-			(project "hokushime-db9-to-rs232"
-				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
-					(reference "JP2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector_Generic:Conn_01x07")
 		(at 228.6 124.46 0)
 		(unit 1)
@@ -21027,6 +20982,72 @@
 			(project "hokushime-db9-to-rs232"
 				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
 					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 271.78 179.07 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "392f42e3-06a1-4f0f-82fb-aa09f4ff86fa")
+		(property "Reference" "H4"
+			(at 274.32 179.0699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 274.32 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm"
+			(at 271.78 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 271.78 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 271.78 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "hokushime-db9-to-rs232"
+				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -21297,6 +21318,72 @@
 			(project "hokushime-db9-to-rs232"
 				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
 					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 281.94 179.07 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "429ed29a-70bf-4a90-95ef-02cba95cf9da")
+		(property "Reference" "H1"
+			(at 284.48 179.0699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 284.48 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm"
+			(at 281.94 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 281.94 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 281.94 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "hokushime-db9-to-rs232"
+				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
+					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -21592,6 +21679,72 @@
 			(project "hokushime-db9-to-rs232"
 				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
 					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 276.86 179.07 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "60db5e0b-cf0f-40d8-bca2-01acc401253a")
+		(property "Reference" "H2"
+			(at 279.4 179.0699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 279.4 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm"
+			(at 276.86 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 276.86 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 276.86 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "hokushime-db9-to-rs232"
+				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
+					(reference "H2")
 					(unit 1)
 				)
 			)
@@ -22198,6 +22351,73 @@
 			(project "hokushime-db9-to-rs232"
 				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
 					(reference "#PWR06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 68.58 142.24 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "86ff3ebd-74df-4ee3-a3d5-06fd65e89206")
+		(property "Reference" "#PWR01"
+			(at 74.93 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 73.66 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 68.58 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5c31f36e-125f-404f-a839-6bc1f1209d48")
+		)
+		(instances
+			(project "hokushime-db9-to-rs232"
+				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -22893,6 +23113,74 @@
 			(project "hokushime-db9-to-rs232"
 				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
 					(reference "C6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 63.5 142.24 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b0c99948-c531-4fa2-ae4e-957292ece857")
+		(property "Reference" "JP2"
+			(at 63.5 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CONN2_TO_GND"
+			(at 63.5 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
+			(at 63.5 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 63.5 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 63.5 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "7f73106e-4c2f-4316-86e5-8c41818f2368")
+		)
+		(pin "1"
+			(uuid "95bcc394-b571-4eda-a976-a932383b312f")
+		)
+		(instances
+			(project "hokushime-db9-to-rs232"
+				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
+					(reference "JP2")
 					(unit 1)
 				)
 			)
