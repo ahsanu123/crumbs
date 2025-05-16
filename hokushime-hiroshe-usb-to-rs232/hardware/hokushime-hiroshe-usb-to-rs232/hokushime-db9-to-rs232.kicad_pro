@@ -58,7 +58,17 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "courtyards_overlap|136475001|76825002|1c9f70e3-4a57-4421-9358-4095dbf64ef2|b007ce64-03be-4bf1-beb9-e38d4149b8fb",
+        "courtyards_overlap|148374998|78752561|1c9f70e3-4a57-4421-9358-4095dbf64ef2|1dbbb529-ca50-416b-a92f-d88cbb057663",
+        "courtyards_overlap|153433272|76950001|1dbbb529-ca50-416b-a92f-d88cbb057663|1ede0391-a233-4437-b650-187e435c42c5",
+        "hole_clearance|150191722|77875000|1e55fce7-1964-45b5-98c3-31e514dc95e1|0d0ef6c5-898c-459c-8e91-8fce3af0e2f3",
+        "hole_clearance|150191722|77875000|c70e0396-7d9d-480e-994b-e37877c3804f|0d0ef6c5-898c-459c-8e91-8fce3af0e2f3",
+        "solder_mask_bridge|132875000|77875000|1677508a-0acc-438f-882a-1f49d0fff64c|5511d522-a96b-4067-8b10-ab9654a039e6",
+        "solder_mask_bridge|134325000|78625000|2fa99cba-4c45-434e-b516-dc920253768d|c70e0396-7d9d-480e-994b-e37877c3804f",
+        "solder_mask_bridge|134775000|77125000|2fa99cba-4c45-434e-b516-dc920253768d|c70e0396-7d9d-480e-994b-e37877c3804f",
+        "starved_thermal|132750000|93380001|bbb71a98-3952-4e0d-b101-3b98526ba411|e793a451-7439-4482-863d-8cfc8a03dbd6|F.Cu"
+      ],
       "meta": {
         "version": 2
       },
@@ -221,6 +231,10 @@
         {
           "diameter": 1.0,
           "drill": 0.5
+        },
+        {
+          "diameter": 1.3,
+          "drill": 0.8
         }
       ],
       "zones_allow_external_fillets": false
