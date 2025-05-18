@@ -19193,7 +19193,7 @@
 	)
 	(text "TODO: Recheck \nthis annotation\n-----------\nBlack	DTR\nBrown	TXD\nRed		RXD\nOrange	DSR\nYellow	GND\nGreen 	DCD\nBlue	CTS\nGray	RTS\nWhite	RI\nBraid	Shield\n\nLook For Green "
 		(exclude_from_sim no)
-		(at 29.464 121.92 0)
+		(at 27.94 121.412 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -20906,88 +20906,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x07")
-		(at 228.6 124.46 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "38f43b69-123e-4600-ab8c-ec055427c93e")
-		(property "Reference" "J1"
-			(at 228.6 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Conn1"
-			(at 228.6 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Horizontal"
-			(at 228.6 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 228.6 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 228.6 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "9ca0f01f-9bf3-4ccf-b4de-2318a550db9a")
-		)
-		(pin "1"
-			(uuid "94665cd6-42c3-49ce-b972-28d14edfbdbe")
-		)
-		(pin "5"
-			(uuid "a9bb8875-c61d-4b5c-9116-9da45d67b4bf")
-		)
-		(pin "6"
-			(uuid "c0879de5-67a5-48d3-829e-e4e3abd67c44")
-		)
-		(pin "3"
-			(uuid "637fea45-a968-47c8-bca5-c9cff34ba8c6")
-		)
-		(pin "7"
-			(uuid "38da2f13-7365-4c1a-a729-19f3c805d965")
-		)
-		(pin "2"
-			(uuid "76b6b8dc-21fb-4cd2-a0b7-7d1bf06caafc")
-		)
-		(instances
-			(project "hokushime-db9-to-rs232"
-				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
-					(reference "J1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Mechanical:MountingHole")
 		(at 271.78 179.07 0)
 		(unit 1)
@@ -21585,100 +21503,6 @@
 			(project "hokushime-db9-to-rs232"
 				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
 					(reference "C11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x10")
-		(at 31.75 132.08 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4f83a16b-1b89-43e6-940b-26b3babb3a9e")
-		(property "Reference" "J3"
-			(at 33.274 116.586 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Conn2"
-			(at 33.274 119.126 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Horizontal"
-			(at 31.75 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 31.75 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 31.75 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "1b284fdd-349d-4010-921c-1ac45b4437c0")
-		)
-		(pin "8"
-			(uuid "4e34c1a2-97d9-4c7c-b942-db15b1a95840")
-		)
-		(pin "3"
-			(uuid "624899fc-0758-4550-bcc9-2fad077ff344")
-		)
-		(pin "6"
-			(uuid "751e7d63-28e6-4ca6-a554-f6be6561a383")
-		)
-		(pin "9"
-			(uuid "227799e0-e2af-488d-80a7-4bde0ef4fbec")
-		)
-		(pin "1"
-			(uuid "5222b934-7f8e-407d-a204-6c4f116e7956")
-		)
-		(pin "4"
-			(uuid "08f902a4-17ed-44a1-bfd0-0ce1f2145dce")
-		)
-		(pin "10"
-			(uuid "7329a405-e6d3-4e9c-9d3d-42cdb90283a2")
-		)
-		(pin "5"
-			(uuid "8d386d0e-9c90-4cf9-a07f-b321925138bc")
-		)
-		(pin "7"
-			(uuid "6d2d579a-e225-4785-8e0b-d48a9b3f7274")
-		)
-		(instances
-			(project "hokushime-db9-to-rs232"
-				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
-					(reference "J3")
 					(unit 1)
 				)
 			)
@@ -22845,6 +22669,99 @@
 			(project "hokushime-db9-to-rs232"
 				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
 					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x10")
+		(at 31.75 134.62 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9bc282a4-acb3-405f-859a-b95e0a8d46c9")
+		(property "Reference" "J3"
+			(at 36.576 118.872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Conn2"
+			(at 36.576 116.332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Horizontal"
+			(at 31.75 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 31.75 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 31.75 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "aa7f3358-05ae-4d9f-b746-195accc6c4ff")
+		)
+		(pin "8"
+			(uuid "999dc1a6-c74e-4a1f-a522-81baeb29f64e")
+		)
+		(pin "3"
+			(uuid "3e48a447-eba6-489e-aa48-3db8213bd0b2")
+		)
+		(pin "6"
+			(uuid "dc90154b-8f84-48b5-a22b-32077e6d4871")
+		)
+		(pin "9"
+			(uuid "21d0d0f6-10ca-4a29-b243-2af321aa4fcc")
+		)
+		(pin "1"
+			(uuid "e52b41bc-7bc2-41c6-b838-c8edc6129030")
+		)
+		(pin "4"
+			(uuid "48d527c2-e6f1-48f4-93a9-7246febfa129")
+		)
+		(pin "10"
+			(uuid "016fcf1e-ca41-4a25-8af8-0d5f99aaef21")
+		)
+		(pin "5"
+			(uuid "c911a56b-80e6-4b59-b704-4d299f69074d")
+		)
+		(pin "7"
+			(uuid "87c9444a-4d28-490b-b872-7d8fb27da63b")
+		)
+		(instances
+			(project "hokushime-db9-to-rs232"
+				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
+					(reference "J3")
 					(unit 1)
 				)
 			)
@@ -24273,6 +24190,89 @@
 			(project "hokushime-db9-to-rs232"
 				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
 					(reference "#PWR019")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x07")
+		(at 228.6 124.46 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fc149740-1cda-4c7d-8ab5-51aea3d018df")
+		(property "Reference" "J1"
+			(at 228.6 113.792 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn1"
+			(at 228.6 111.252 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Horizontal"
+			(at 228.6 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 228.6 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 228.6 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "cd342dd1-167e-42e7-9d33-57d1792ede94")
+		)
+		(pin "1"
+			(uuid "2f9da425-c555-4f5d-8044-d2d581dc8e90")
+		)
+		(pin "5"
+			(uuid "aab0ed4e-daea-4950-846a-9b7c2de04366")
+		)
+		(pin "6"
+			(uuid "6cd1ef6e-cf75-4669-92a2-88c5d5062bb5")
+		)
+		(pin "3"
+			(uuid "960aea65-e08b-40c4-a2e6-e9cc5842a18d")
+		)
+		(pin "7"
+			(uuid "eb7f9e71-dc75-49f5-a112-e36cbec2ab70")
+		)
+		(pin "2"
+			(uuid "27c6bea1-9480-4940-9bb2-ff0d7226a62d")
+		)
+		(instances
+			(project "hokushime-db9-to-rs232"
+				(path "/7534cebe-c86f-414b-a564-4eccbebe3bbc"
+					(reference "J1")
 					(unit 1)
 				)
 			)
