@@ -1,0 +1,22 @@
+C1,C3	27pF	~	Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder	2	ok
+C2,C6,C7,C8,C9	0.22uF/16V	~	Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder	5	ok
+C4,C10,C12	0.1uF	~	Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder	3	ok
+C5	33nF	~	Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder	1	ok
+C11	10uF	~	Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder	1	ok
+D1	TX	~	LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder	1	led
+D2	RX	~	LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder	1	led
+FB1	40 Ohms @100 MHz 	~	Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder	1	ok
+IC1	SP3243EC/EB	https://www.maxlinear.com/ds/sp3243e.pdf	Package_SO:TSSOP-28_4.4x9.7mm_P0.65mm	1	ok
+J1	Conn1	~	Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Horizontal	1	
+J2	USB_B	 ~	Connector_USB:USB_B_Lumberg_2411_02_Horizontal	1	
+J3	Conn2	~	Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Horizontal	1	
+R1	10K	~	Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder	1	
+R2	2K2	~	Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder	1	
+R3,R4	27	~	Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder	2	
+R5	470	~	Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder	1	
+R6	1K5	~	Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder	1	
+R7,R8	220	~	Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder	2	
+TP1	Status	~	TestPoint:TestPoint_Pad_D1.0mm	1	-
+U1	FT232BM/BL 	https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT232BM.pdf	Package_QFP:LQFP-48_7x7mm_P0.5mm	1	ok
+U3	93CxxC	http://ww1.microchip.com/downloads/en/DeviceDoc/20001749K.pdf	Package_SO:SOIC-8_3.9x4.9mm_P1.27mm	1	ok
+Y1	6Mhz	~	Crystal:Crystal_HC49-U_Vertical	1	ok
