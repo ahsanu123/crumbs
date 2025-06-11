@@ -9,6 +9,11 @@ Hokushime is project to clone Hirose USB to RS232 converter
 
 ![schematic](./docs/hokushime-db9-to-rs232.svg)
 
+## Logs 
+
+- 11 June 2025, Component arrived, 
+- 12 June 2025, Drill and cut pcb 
+
 ## Notes 
 
 - FT232 Family
