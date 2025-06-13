@@ -20285,7 +20285,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:TSSOP-28_4.4x9.7mm_P0.65mm"
+		(property "Footprint" "Package_SO:SSOP-28_5.3x10.2mm_P0.65mm"
 			(at 83.82 73.66 0)
 			(effects
 				(font
@@ -22342,7 +22342,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_QFP:LQFP-48_7x7mm_P0.5mm"
+		(property "Footprint" "Package_QFP:LQFP-32_7x7mm_P0.8mm"
 			(at 218.44 101.6 0)
 			(effects
 				(font
