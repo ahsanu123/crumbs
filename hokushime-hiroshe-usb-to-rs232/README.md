@@ -1,5 +1,5 @@
 # 🏯 Hokushime 
-![schematic](./docs/hokushime-img-1.jpg)
+![image](https://github.com/user-attachments/assets/d6fc8b44-8355-4cd2-b997-61871cd3f932)
 Hokushime is project to clone Hirose USB to RS232 converter
 
 **Used Component**
