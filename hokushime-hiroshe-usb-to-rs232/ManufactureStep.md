@@ -2,7 +2,7 @@
 
 ## FlatCam
 
-- export kicad project to gerber, also generate drill as gerber 
+- export kicad project to gerber, also generate drill as gerber (dont check `tent vias`
 - open flatcam, import F_Cu (front copper), and PTH drill 
 - use substract tool to substract F_Cu with PTH drill, change name to `Copper`
 - next, import F_Paste (front paste), and PTH drill
