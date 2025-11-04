@@ -2,7 +2,7 @@
   "board": {
     "active_layer": 0,
     "active_layer_preset": "",
-    "auto_track_width": false,
+    "auto_track_width": true,
     "hidden_netclasses": [],
     "hidden_nets": [],
     "high_contrast_mode": 0,
@@ -16,7 +16,7 @@
     },
     "selection_filter": {
       "dimensions": true,
-      "footprints": false,
+      "footprints": true,
       "graphics": true,
       "keepouts": true,
       "lockedItems": false,
@@ -64,7 +64,7 @@
       39,
       40
     ],
-    "visible_layers": "0000000_00000001",
+    "visible_layers": "ffcffff_ffffffff",
     "zone_display_mode": 0
   },
   "git": {
@@ -74,7 +74,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "rp2350a-tempel.kicad_prl",
+    "filename": "panelized.kicad_prl",
     "version": 3
   },
   "project": {
