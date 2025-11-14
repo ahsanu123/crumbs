@@ -498,7 +498,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "../rp2350-dev-board/lib/rp2350a-tempel.step",
       "svg": "",
       "vrml": ""
     },

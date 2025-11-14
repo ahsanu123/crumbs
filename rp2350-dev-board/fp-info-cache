@@ -1,4 +1,4 @@
-23906040230045883
+23927189519508070
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -67444,6 +67444,41 @@ DIL DIP PDIP 2.54mm 7.62mm 300mil
 0
 4
 4
+PCM_kikit
+Board
+Mark board for extraction
+
+0
+0
+0
+PCM_kikit
+Error
+Mark board for extraction
+
+0
+0
+0
+PCM_kikit
+Fiducial
+Circular Fiducial
+fiducial
+0
+1
+0
+PCM_kikit
+NPTH
+
+
+0
+0
+0
+PCM_kikit
+Tab
+A symbol representing annotation for tab placement
+
+0
+0
+0
 PCM_marbastlib-choc
 LED_choc_1206R
 Add-on for regular choc-footprints with MHT151RGBCT 1206 reverse mount LED
@@ -97642,6 +97677,41 @@ Varistor VF
 0
 2
 2
+kikit
+Board
+Mark board for extraction
+
+0
+0
+0
+kikit
+Error
+Mark board for extraction
+
+0
+0
+0
+kikit
+Fiducial
+Circular Fiducial
+fiducial
+0
+1
+0
+kikit
+NPTH
+
+
+0
+0
+0
+kikit
+Tab
+A symbol representing annotation for tab placement
+
+0
+0
+0
 lib
 RP2350-QFN-60-1EP_7x7_P0.4mm_EP3.4x3.4mm_ThermalVias
 Raspberry Pi RP2350 QFN-60
@@ -97649,3 +97719,17 @@ QFN DFN_QFN
 0
 74
 61
+rp2350-tempel-lib
+RP2350_Tempel_Footprint
+
+
+0
+0
+0
+rp2350-tempel-lib
+TMC2209_MKS_V2
+
+
+0
+16
+16
