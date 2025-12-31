@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "esp32-s3-tempel-lib")(type "KiCad")(uri "${KIPRJMOD}/esp32-s3-tempel-lib.pretty")(options "")(descr ""))
+)

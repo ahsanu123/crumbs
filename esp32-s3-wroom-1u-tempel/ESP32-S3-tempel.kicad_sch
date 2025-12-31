@@ -6170,7 +6170,7 @@
 			"iGElIiJSiGElIiJSiGElIiJSiGElIiJS6DdB5CiVP1ej6wAAAABJRU5ErkJggg=="
 		)
 	)
-	(text "ESP32-S3"
+	(text "ESP32-S3-WROOM-1U"
 		(exclude_from_sim no)
 		(at 98.044 15.748 0)
 		(effects
@@ -9782,7 +9782,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "ESP32-S3-WROOM-1"
+		(property "Value" "ESP32-S3-WROOM-1U"
 			(at 86.36 34.798 0)
 			(effects
 				(font
