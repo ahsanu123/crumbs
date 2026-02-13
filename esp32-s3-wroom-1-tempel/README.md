@@ -1,3 +1,7 @@
+# Logs 
+
+- 16 Februari 2026, make a prototype board, but not sure why its not able detected in pc. need to recheck schematic and re make the prototype board.
+
 # ESP32 S3 Tempel 
 
 ![schematic](./output/ESP32-S3-tempel.svg)
