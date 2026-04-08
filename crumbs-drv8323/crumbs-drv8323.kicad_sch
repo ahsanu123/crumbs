@@ -10,148 +10,6 @@
 		(rev "0.0.1")
 	)
 	(lib_symbols
-		(symbol "Connector_Generic:Conn_01x02"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_01x02"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_1x??_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Conn_01x02_1_1"
-				(rectangle
-					(start -1.27 1.27)
-					(end 1.27 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -1.27 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Connector_Generic:Conn_01x03"
 			(pin_names
 				(offset 1.016)
@@ -2075,296 +1933,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:Q_NMOS"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Q"
-				(at 5.08 1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Q_NMOS"
-				(at 5.08 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "N-MOSFET transistor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "NMOS N-MOS"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Q_NMOS_0_1"
-				(polyline
-					(pts
-						(xy 0.254 1.905) (xy 0.254 -1.905)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 2.286) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 0.508) (xy 0.762 -0.508)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.27) (xy 0.762 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 1.651 0)
-					(radius 2.794)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 2.54 -1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.921 0.381) (xy 3.683 0.381)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Q_NMOS_1_1"
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "G"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "G"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:R_US"
 			(pin_numbers
 				(hide yes)
@@ -2688,6 +2256,279 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "easyeda2kicad:IRFB3077PBF"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 0 10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "IRFB3077PBF"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "easyeda2kicad:TO-220-3_L10.0-W4.5-P2.54-L"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/MOSFET_IR_IRFB3077PBF_IRFB3077PBF_C2641.html"
+				(at 0 -15.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "IRFB3077PBF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" "Infineon(英飞凌)"
+				(at 0 -17.78 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "IRFB3077PBF"
+				(at 0 -20.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C2641"
+				(at 0 -22.86 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "MOSFETs"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "IRFB3077PBF_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -0.51 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.51 2.29) (xy -0.51 -2.29)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.29) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.78) (xy 2.54 1.78) (xy 2.54 2.54) (xy 5.08 2.54) (xy 5.08 0.51)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 1.52 -0.51) (xy 1.52 0.51) (xy 0 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 2.54 0) (xy 2.54 -2.54) (xy 5.08 -2.54) (xy 5.08 -0.76)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -0.51) (xy 0 0.51)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.29) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -1.78) (xy 0 -1.78)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0.51) (xy 4.32 -0.76) (xy 5.84 -0.76) (xy 5.08 0.51)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.1 0.51) (xy 5.59 0.51) (xy 4.57 0.51) (xy 4.06 0.51)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "easyeda2kicad:LMR16010PDDAR"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2949,6 +2790,386 @@
 						)
 					)
 					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "easyeda2kicad:MR60PW-M.G.B"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MR60PW-M.G.B"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "easyeda2kicad:CONN-TH_MR60PW"
+				(at 0 -15.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C19268044.pdf"
+				(at 0 -17.78 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" "AMASS(艾迈斯)"
+				(at 0 -20.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "MR60PW-M.G.B"
+				(at 0 -22.86 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C19268044"
+				(at 0 -25.4 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "plug"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MR60PW-M.G.B_0_1"
+				(rectangle
+					(start -1.27 5.08)
+					(end 3.81 -5.08)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(circle
+					(center 0 3.81)
+					(radius 0.38)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 2.54 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 -2.54 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 2.54 7.62 270)
+					(length 2.54)
+					(name "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 2.54 -7.62 90)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "easyeda2kicad:XT60PW-M"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "CN"
+				(at 0 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "XT60PW-M"
+				(at 0 -11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "easyeda2kicad:CONN-TH_XT60PW-M"
+				(at 0 -13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/C98732.pdf"
+				(at 0 -16.51 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" "AMASS(艾迈斯)"
+				(at 0 -19.05 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "XT60PW-M"
+				(at 0 -21.59 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C98732"
+				(at 0 -24.13 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Power Connectors"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "XT60PW-M_0_1"
+				(rectangle
+					(start -2.54 3.81)
+					(end 5.08 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(circle
+					(center -1.27 2.54)
+					(radius 0.38)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 1.27 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 -1.27 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 3.81 6.35 270)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 3.81 -6.35 90)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3754,12 +3975,6 @@
 		(uuid "007e45c6-5133-4a71-89e7-6520b9e75b14")
 	)
 	(junction
-		(at 346.71 48.26)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "035c1f92-a874-4b8a-b822-87eec8b3bd7d")
-	)
-	(junction
 		(at 160.02 245.11)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3928,6 +4143,12 @@
 		(uuid "b870c1b1-28c3-4dd2-8c05-d605c5fe50cd")
 	)
 	(junction
+		(at 346.71 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bb34547f-5501-482c-a3ff-ad836dfa9b3c")
+	)
+	(junction
 		(at 234.95 82.55)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3950,6 +4171,22 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f64d37d3-38f4-45ca-bbc2-ae4a78ee23d8")
+	)
+	(no_connect
+		(at 374.65 69.85)
+		(uuid "155d9ecf-19d4-4676-b1ad-33acdd976b0f")
+	)
+	(no_connect
+		(at 374.65 54.61)
+		(uuid "1f7cf3bc-7e4e-4627-8509-f21e0833a409")
+	)
+	(no_connect
+		(at 321.31 209.55)
+		(uuid "ae43f457-1ebb-4323-9428-ef29af3c103f")
+	)
+	(no_connect
+		(at 321.31 222.25)
+		(uuid "d33517db-4ebd-4f92-86c7-fad1ffb10112")
 	)
 	(wire
 		(pts
@@ -5043,16 +5280,6 @@
 	)
 	(wire
 		(pts
-			(xy 312.42 218.44) (xy 312.42 220.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "93d4db2e-063b-4e59-86b0-5e2d53ed6ec0")
-	)
-	(wire
-		(pts
 			(xy 125.73 228.6) (xy 129.54 228.6)
 		)
 		(stroke
@@ -5311,6 +5538,16 @@
 		)
 		(uuid "bea41d52-1163-440d-862e-a15af8d6d1c6")
 	)
+	(wire
+		(pts
+			(xy 312.42 212.09) (xy 312.42 214.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c089ca04-2aba-4e59-94b4-e5a331c6f4ae")
+	)
 	(polyline
 		(pts
 			(xy 13.97 201.93) (xy 226.06 201.93)
@@ -5340,6 +5577,16 @@
 			(type default)
 		)
 		(uuid "c357431b-3e87-4cd6-8649-b6b83a6e24ce")
+	)
+	(wire
+		(pts
+			(xy 312.42 219.71) (xy 312.42 217.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c688b672-99bf-4d90-8af2-f7e14faa213b")
 	)
 	(wire
 		(pts
@@ -5650,16 +5897,6 @@
 			(type solid)
 		)
 		(uuid "f4be4daf-9997-42af-ba22-dea33f600b8b")
-	)
-	(wire
-		(pts
-			(xy 312.42 226.06) (xy 312.42 223.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f5c55a49-b4c3-439a-8230-07410ccbcf03")
 	)
 	(wire
 		(pts
@@ -13827,7 +14064,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "2m"
+		(property "Value" "2m / 2W"
 			(at 336.296 131.064 0)
 			(effects
 				(font
@@ -13836,7 +14073,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 332.994 129.794 90)
 			(effects
 				(font
@@ -14183,7 +14420,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_THT:C_Disc_D7.5mm_W5.0mm_P5.00mm"
 			(at 192.0748 227.33 0)
 			(effects
 				(font
@@ -14432,7 +14669,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_1812_4532Metric"
 			(at 184.15 226.06 0)
 			(effects
 				(font
@@ -14469,6 +14706,105 @@
 			(project ""
 				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
 					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "easyeda2kicad:IRFB3077PBF")
+		(at 344.17 66.04 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "27b24c48-e16f-4d30-ace2-e4bcbd33052b")
+		(property "Reference" "Q1"
+			(at 351.79 64.7699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRFB3077PBF"
+			(at 346.71 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:TO-220-3_L10.0-W4.5-P2.54-L"
+			(at 344.17 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/MOSFET_IR_IRFB3077PBF_IRFB3077PBF_C2641.html"
+			(at 344.17 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IRFB3077PBF"
+			(at 344.17 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Infineon(英飞凌)"
+			(at 344.17 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRFB3077PBF"
+			(at 344.17 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C2641"
+			(at 344.17 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "0bfe0cf4-e477-4f0b-8d94-d03e54237960")
+		)
+		(pin "2"
+			(uuid "79cb03df-0c07-4585-8ff2-623acb3ce683")
+		)
+		(pin "1"
+			(uuid "d97359ff-68ad-4ef4-9e4d-1277ba931c55")
+		)
+		(instances
+			(project "crumbs-drv8323"
+				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
+					(reference "Q1")
 					(unit 1)
 				)
 			)
@@ -15106,17 +15442,17 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NMOS")
-		(at 331.47 71.12 0)
+		(lib_id "easyeda2kicad:XT60PW-M")
+		(at 317.5 215.9 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "4c266786-ce4a-42c2-9929-b045f427a305")
-		(property "Reference" "Q3"
-			(at 337.82 69.8499 0)
+		(uuid "4dc4286b-80cd-4b83-b345-c752de118341")
+		(property "Reference" "CN1"
+			(at 323.85 214.6299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15124,8 +15460,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_NMOS"
-			(at 337.82 72.3899 0)
+		(property "Value" "XT60PW-M"
+			(at 323.85 217.1699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15133,8 +15469,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 336.55 68.58 0)
+		(property "Footprint" "easyeda2kicad:CONN-TH_XT60PW-M"
+			(at 317.5 229.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15142,8 +15478,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 331.47 71.12 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C98732.pdf"
+			(at 317.5 232.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15151,8 +15487,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "N-MOSFET transistor"
-			(at 331.47 71.12 0)
+		(property "Description" ""
+			(at 317.5 215.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15160,19 +15496,49 @@
 				(hide yes)
 			)
 		)
-		(pin "D"
-			(uuid "736cf469-92c9-41d1-8905-587087941d2f")
+		(property "Manufacturer" "AMASS(艾迈斯)"
+			(at 317.5 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
 		)
-		(pin "G"
-			(uuid "8125adc9-11e0-4d51-abc2-3fcfe4f81f9c")
+		(property "MPN" "XT60PW-M"
+			(at 317.5 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
 		)
-		(pin "S"
-			(uuid "935d02c1-bdad-45c2-bc54-d014e9e9dce4")
+		(property "LCSC Part" "C98732"
+			(at 317.5 240.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "a42304c6-51ea-4e58-81cd-999fdcb4afa0")
+		)
+		(pin "4"
+			(uuid "7299c165-47de-434a-a980-9ea4366aeb24")
+		)
+		(pin "2"
+			(uuid "630ab109-ae96-4566-98cb-5f5e48ea7355")
+		)
+		(pin "1"
+			(uuid "3a38a3e8-270b-4bb5-85bf-d8e498fcf60c")
 		)
 		(instances
-			(project "crumbs-drv8323"
+			(project ""
 				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
-					(reference "Q3")
+					(reference "CN1")
 					(unit 1)
 				)
 			)
@@ -15248,6 +15614,112 @@
 		)
 	)
 	(symbol
+		(lib_id "easyeda2kicad:MR60PW-M.G.B")
+		(at 372.11 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5270581e-9990-4781-b753-9cfe8e2dc5d0")
+		(property "Reference" "U3"
+			(at 377.19 60.9599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MR60PW-M.G.B"
+			(at 377.19 63.4999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:CONN-TH_MR60PW"
+			(at 372.11 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C19268044.pdf"
+			(at 372.11 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 372.11 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "AMASS(艾迈斯)"
+			(at 372.11 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MR60PW-M.G.B"
+			(at 372.11 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C19268044"
+			(at 372.11 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d1db2ec2-3c04-442e-b828-f4045d05dd41")
+		)
+		(pin "4"
+			(uuid "6f9816ba-013a-4376-9390-16b659509df1")
+		)
+		(pin "1"
+			(uuid "7bed8325-41ad-48ec-b268-2dfdbfc5ceb3")
+		)
+		(pin "5"
+			(uuid "32ce6196-1134-447d-80ad-4f8993dc5404")
+		)
+		(pin "3"
+			(uuid "15fb346e-9df0-4314-a26a-fd67f015244b")
+		)
+		(instances
+			(project ""
+				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 346.71 121.92 0)
 		(mirror y)
@@ -15266,7 +15738,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "2m"
+		(property "Value" "2m / 2W"
 			(at 348.742 123.19 0)
 			(effects
 				(font
@@ -15275,7 +15747,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 345.694 122.174 90)
 			(effects
 				(font
@@ -15783,6 +16255,204 @@
 		)
 	)
 	(symbol
+		(lib_id "easyeda2kicad:IRFB3077PBF")
+		(at 331.47 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "72718049-3c16-4f5f-9e71-58e833ae4cbe")
+		(property "Reference" "Q2"
+			(at 339.09 69.8499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRFB3077PBF"
+			(at 334.01 74.676 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:TO-220-3_L10.0-W4.5-P2.54-L"
+			(at 331.47 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/MOSFET_IR_IRFB3077PBF_IRFB3077PBF_C2641.html"
+			(at 331.47 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IRFB3077PBF"
+			(at 331.47 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Infineon(英飞凌)"
+			(at 331.47 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRFB3077PBF"
+			(at 331.47 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C2641"
+			(at 331.47 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "10e8e822-f3c6-4d09-85fb-d709937258d3")
+		)
+		(pin "2"
+			(uuid "40c85b84-7dbd-4ce1-aeca-4550e14be6fe")
+		)
+		(pin "1"
+			(uuid "44e2f348-b11a-46c8-ad4c-4127e408f125")
+		)
+		(instances
+			(project "crumbs-drv8323"
+				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
+					(reference "Q2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "easyeda2kicad:IRFB3077PBF")
+		(at 318.77 93.98 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "727e00ba-630c-46bc-b689-964c9bec4742")
+		(property "Reference" "Q4"
+			(at 326.39 92.7099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRFB3077PBF"
+			(at 321.31 98.044 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:TO-220-3_L10.0-W4.5-P2.54-L"
+			(at 318.77 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/MOSFET_IR_IRFB3077PBF_IRFB3077PBF_C2641.html"
+			(at 318.77 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IRFB3077PBF"
+			(at 318.77 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Infineon(英飞凌)"
+			(at 318.77 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRFB3077PBF"
+			(at 318.77 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C2641"
+			(at 318.77 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "2cb903c8-6870-4166-8bf3-c20e2ffd2d59")
+		)
+		(pin "2"
+			(uuid "0bac5f23-0f57-4b2c-af84-733007191990")
+		)
+		(pin "1"
+			(uuid "820cd228-6367-4c95-8299-21ec23572470")
+		)
+		(instances
+			(project "crumbs-drv8323"
+				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
+					(reference "Q4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 198.12 229.87 0)
 		(unit 1)
@@ -15852,149 +16522,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
-		(at 317.5 220.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7c62c626-173d-478d-8aa7-db1e3ec12562")
-		(property "Reference" "J4"
-			(at 320.04 220.9799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Conn_01x02"
-			(at 320.04 223.5199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 317.5 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 317.5 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 317.5 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a8f4d86c-3388-427b-9213-4570ce1d22cf")
-		)
-		(pin "2"
-			(uuid "9109bd7e-0668-48eb-b8b7-2ff251d2cb42")
-		)
-		(instances
-			(project ""
-				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
-					(reference "J4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x03")
-		(at 373.38 62.23 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7d77bc0b-6471-4723-874d-9ca68c77fe2b")
-		(property "Reference" "J1"
-			(at 375.92 60.9599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MotorConn"
-			(at 375.92 63.4999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 373.38 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 373.38 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 373.38 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8adf40c4-74c2-4c17-8157-4282d7cd068f")
-		)
-		(pin "3"
-			(uuid "b9328311-3216-4659-a3c9-30f8716d8e5d")
-		)
-		(pin "2"
-			(uuid "a63dc8cf-a915-4608-8c40-630fe32d2d84")
-		)
-		(instances
-			(project ""
-				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
-					(reference "J1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 234.95 66.04 0)
 		(unit 1)
@@ -16021,7 +16548,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_THT:C_Disc_D7.5mm_W5.0mm_P5.00mm"
 			(at 235.9152 69.85 0)
 			(effects
 				(font
@@ -16226,7 +16753,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_THT:C_Disc_D7.5mm_W5.0mm_P5.00mm"
 			(at 246.0752 69.85 0)
 			(effects
 				(font
@@ -16334,152 +16861,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NMOS")
-		(at 344.17 53.34 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8580fe94-4159-4429-8f70-91c6384cd0e8")
-		(property "Reference" "Q1"
-			(at 350.52 52.0699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Q_NMOS"
-			(at 350.52 54.6099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 349.25 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 344.17 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "N-MOSFET transistor"
-			(at 344.17 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "D"
-			(uuid "dcb34d8a-9d9c-4d11-b116-f03265ab82e0")
-		)
-		(pin "G"
-			(uuid "8cd5f46c-51c3-437b-a929-e148c435a1f5")
-		)
-		(pin "S"
-			(uuid "513297e8-fb11-4d81-b54e-e411f56b4ea1")
-		)
-		(instances
-			(project "crumbs-drv8323"
-				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
-					(reference "Q1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Q_NMOS")
-		(at 344.17 66.04 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "889db6ec-d658-492b-9550-94369af4bbd7")
-		(property "Reference" "Q2"
-			(at 350.52 64.7699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Q_NMOS"
-			(at 350.52 67.3099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 349.25 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 344.17 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "N-MOSFET transistor"
-			(at 344.17 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "D"
-			(uuid "2ed083a9-58a2-4f81-b264-8138b28f9a11")
-		)
-		(pin "G"
-			(uuid "b10dd866-789a-43f5-9cd9-b024f699847d")
-		)
-		(pin "S"
-			(uuid "7cd8c4ce-4d17-4b13-a855-cc9f927b83df")
-		)
-		(instances
-			(project "crumbs-drv8323"
-				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
-					(reference "Q2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C_Polarized")
 		(at 118.11 233.68 0)
 		(mirror y)
@@ -16507,7 +16888,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P2.50mm"
 			(at 117.1448 237.49 0)
 			(effects
 				(font
@@ -16643,7 +17024,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_THT:C_Disc_D7.5mm_W5.0mm_P5.00mm"
 			(at 254.9652 80.01 0)
 			(effects
 				(font
@@ -16687,7 +17068,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 312.42 226.06 0)
+		(at 312.42 219.71 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16696,7 +17077,7 @@
 		(fields_autoplaced yes)
 		(uuid "9ff39ae7-31fc-4a3b-8354-bf387885d464")
 		(property "Reference" "#PWR018"
-			(at 312.42 232.41 0)
+			(at 312.42 226.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16705,7 +17086,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 312.42 231.14 0)
+			(at 312.42 224.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16714,7 +17095,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 312.42 226.06 0)
+			(at 312.42 219.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16723,7 +17104,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 312.42 226.06 0)
+			(at 312.42 219.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16732,7 +17113,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 312.42 226.06 0)
+			(at 312.42 219.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16844,6 +17225,105 @@
 		)
 	)
 	(symbol
+		(lib_id "easyeda2kicad:IRFB3077PBF")
+		(at 318.77 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b0279c11-c814-494e-942d-6cbf111252b9")
+		(property "Reference" "Q5"
+			(at 326.39 105.4099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRFB3077PBF"
+			(at 321.31 110.744 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:TO-220-3_L10.0-W4.5-P2.54-L"
+			(at 318.77 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/MOSFET_IR_IRFB3077PBF_IRFB3077PBF_C2641.html"
+			(at 318.77 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IRFB3077PBF"
+			(at 318.77 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Infineon(英飞凌)"
+			(at 318.77 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRFB3077PBF"
+			(at 318.77 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C2641"
+			(at 318.77 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "c692d5d9-405e-4713-9716-dee4715a64e3")
+		)
+		(pin "2"
+			(uuid "95d6311f-c799-430d-b98f-e480257c2568")
+		)
+		(pin "1"
+			(uuid "398f43c1-2c8a-48c5-9e8a-078f3da81705")
+		)
+		(instances
+			(project "crumbs-drv8323"
+				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
+					(reference "Q5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:VD")
 		(at 234.95 62.23 0)
 		(unit 1)
@@ -16910,7 +17390,7 @@
 	)
 	(symbol
 		(lib_id "power:VD")
-		(at 312.42 218.44 0)
+		(at 312.42 212.09 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16918,7 +17398,7 @@
 		(dnp no)
 		(uuid "b9f85fc1-1946-49bc-bc01-8ac5f78dce23")
 		(property "Reference" "#PWR016"
-			(at 312.42 222.25 0)
+			(at 312.42 215.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16927,7 +17407,7 @@
 			)
 		)
 		(property "Value" "VM"
-			(at 312.42 214.63 0)
+			(at 312.42 208.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16935,7 +17415,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 312.42 218.44 0)
+			(at 312.42 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16944,7 +17424,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 312.42 218.44 0)
+			(at 312.42 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16953,7 +17433,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VD\""
-			(at 312.42 218.44 0)
+			(at 312.42 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17180,17 +17660,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NMOS")
-		(at 331.47 83.82 0)
+		(lib_id "easyeda2kicad:IRFB3077PBF")
+		(at 344.17 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c692c348-d0e1-4ca1-85b1-13efe6827e0a")
-		(property "Reference" "Q4"
-			(at 337.82 82.5499 0)
+		(uuid "c645d143-6b57-4b60-95f7-e9f9de181a0a")
+		(property "Reference" "Q7"
+			(at 351.79 52.0699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17198,8 +17677,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_NMOS"
-			(at 337.82 85.0899 0)
+		(property "Value" "IRFB3077PBF"
+			(at 346.71 57.404 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17207,8 +17686,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 336.55 81.28 0)
+		(property "Footprint" "easyeda2kicad:TO-220-3_L10.0-W4.5-P2.54-L"
+			(at 344.17 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17216,8 +17695,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 331.47 83.82 0)
+		(property "Datasheet" "https://lcsc.com/product-detail/MOSFET_IR_IRFB3077PBF_IRFB3077PBF_C2641.html"
+			(at 344.17 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17225,8 +17704,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "N-MOSFET transistor"
-			(at 331.47 83.82 0)
+		(property "Description" "IRFB3077PBF"
+			(at 344.17 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17234,19 +17713,46 @@
 				(hide yes)
 			)
 		)
-		(pin "D"
-			(uuid "05375fe7-df93-4071-8f35-950b8fe8d555")
+		(property "Manufacturer" "Infineon(英飞凌)"
+			(at 344.17 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
 		)
-		(pin "G"
-			(uuid "c28717f7-612e-46a1-9caa-61f3b626551e")
+		(property "MPN" "IRFB3077PBF"
+			(at 344.17 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
 		)
-		(pin "S"
-			(uuid "5aa24f14-9389-4929-a883-1d6dd8b8e3de")
+		(property "LCSC Part" "C2641"
+			(at 344.17 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "a6d8f930-522a-44db-9c5d-f09a1986964f")
+		)
+		(pin "2"
+			(uuid "73499f24-deb8-45e7-9413-1d7c2e7f7039")
+		)
+		(pin "1"
+			(uuid "5ca4278c-9669-4f33-9911-4f2314e5a947")
 		)
 		(instances
 			(project "crumbs-drv8323"
 				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
-					(reference "Q4")
+					(reference "Q7")
 					(unit 1)
 				)
 			)
@@ -17271,7 +17777,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2m"
+		(property "Value" "2m / 2W"
 			(at 323.088 138.43 0)
 			(effects
 				(font
@@ -17280,7 +17786,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 320.294 137.414 90)
 			(effects
 				(font
@@ -17323,17 +17829,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x03")
-		(at 317.5 236.22 0)
+		(lib_id "easyeda2kicad:IRFB3077PBF")
+		(at 331.47 83.82 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cf65760c-0b62-4f30-ae71-86548e5d14fa")
-		(property "Reference" "J6"
-			(at 320.04 234.9499 0)
+		(uuid "cd5d779a-60fe-4848-bc2e-f515c24c7a22")
+		(property "Reference" "Q3"
+			(at 339.09 82.5499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17341,8 +17846,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Conn_01x03"
-			(at 320.04 237.4899 0)
+		(property "Value" "IRFB3077PBF"
+			(at 334.01 87.884 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17350,8 +17855,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
-			(at 317.5 236.22 0)
+		(property "Footprint" "easyeda2kicad:TO-220-3_L10.0-W4.5-P2.54-L"
+			(at 331.47 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17359,8 +17864,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 317.5 236.22 0)
+		(property "Datasheet" "https://lcsc.com/product-detail/MOSFET_IR_IRFB3077PBF_IRFB3077PBF_C2641.html"
+			(at 331.47 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17368,8 +17873,35 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 317.5 236.22 0)
+		(property "Description" "IRFB3077PBF"
+			(at 331.47 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Infineon(英飞凌)"
+			(at 331.47 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRFB3077PBF"
+			(at 331.47 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C2641"
+			(at 331.47 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17378,18 +17910,18 @@
 			)
 		)
 		(pin "3"
-			(uuid "fe1806d5-6d32-43fc-8325-88998c01681c")
+			(uuid "343c3591-c636-4cef-9ff7-f57c742968ae")
 		)
 		(pin "2"
-			(uuid "64af8ab6-41ad-4eef-8509-9e44507b5c75")
+			(uuid "f4690f56-1a19-4240-952a-21de549f1628")
 		)
 		(pin "1"
-			(uuid "a8cb60d2-a5de-4fbc-81eb-9a07e47e2843")
+			(uuid "bf984572-c0b9-48e9-a79a-734fe774a31b")
 		)
 		(instances
-			(project ""
+			(project "crumbs-drv8323"
 				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
-					(reference "J6")
+					(reference "Q3")
 					(unit 1)
 				)
 			)
@@ -17586,152 +18118,6 @@
 			(project "crumbs-drv8323"
 				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
 					(reference "#PWR013")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Q_NMOS")
-		(at 318.77 93.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d8bfb74a-d9c0-45eb-a579-e81663a0960b")
-		(property "Reference" "Q5"
-			(at 325.12 92.7099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Q_NMOS"
-			(at 325.12 95.2499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 323.85 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 318.77 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "N-MOSFET transistor"
-			(at 318.77 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "D"
-			(uuid "55d16fd2-7716-455f-9aca-781ef7827f41")
-		)
-		(pin "G"
-			(uuid "9f63cc13-c826-4cd0-a46b-b91454a1c4d9")
-		)
-		(pin "S"
-			(uuid "55a45b4e-fa43-404e-9660-ebbbf508a15d")
-		)
-		(instances
-			(project ""
-				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
-					(reference "Q5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Q_NMOS")
-		(at 318.77 106.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e36ab548-f1f7-4d20-a24b-36c38bf6b63f")
-		(property "Reference" "Q6"
-			(at 325.12 105.4099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Q_NMOS"
-			(at 325.12 107.9499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 323.85 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 318.77 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "N-MOSFET transistor"
-			(at 318.77 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "D"
-			(uuid "d786875e-9449-482a-b473-9ac4f0db0bed")
-		)
-		(pin "G"
-			(uuid "ff4265f5-3859-44b8-a3a7-390bab319a8e")
-		)
-		(pin "S"
-			(uuid "d7249942-dbb8-4391-873d-92347185435e")
-		)
-		(instances
-			(project "crumbs-drv8323"
-				(path "/f7e314e2-f9a1-42fe-acea-c644606873e4"
-					(reference "Q6")
 					(unit 1)
 				)
 			)
