@@ -51,7 +51,13 @@
           "min_clearance": 0.5
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "version": 2
@@ -141,7 +147,7 @@
           "td_onpthpad": true,
           "td_onroundshapesonly": false,
           "td_onsmdpad": true,
-          "td_ontrackend": false,
+          "td_ontrackend": true,
           "td_onvia": true
         }
       ],
@@ -180,7 +186,20 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [],
+      "track_widths": [
+        0.0,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.8,
+        1.0,
+        2.0,
+        5.0
+      ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
           "corner_radius_percentage": 80,
@@ -207,7 +226,20 @@
           "spacing": 0.6
         }
       },
-      "via_dimensions": [],
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        },
+        {
+          "diameter": 1.0,
+          "drill": 0.5
+        },
+        {
+          "diameter": 2.0,
+          "drill": 0.8
+        }
+      ],
       "zones_allow_external_fillets": false
     },
     "ipc2581": {
@@ -473,6 +505,14 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "line_style": 0,
+        "name": "high_current",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgb(174, 32, 54)",
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -480,14 +520,67 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "high_current",
+        "pattern": "VM"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/gha"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/sha"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/gla"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/ghb"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/shb"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/glb"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/ghc"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/shc"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/glc"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/spc"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/spb"
+      },
+      {
+        "netclass": "high_current",
+        "pattern": "/spa"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "docs/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
