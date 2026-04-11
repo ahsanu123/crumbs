@@ -1,0 +1,5 @@
+bble binName:
+  cargo build --bin {{binName}} --features ble
+
+bins:
+  cargo build --bin
