@@ -4,10 +4,11 @@ use crate::platforms::esp32s3_async::backend::Esp32AsyncBackend;
 use crate::stores::HandleOnKeyEventTrait as _;
 use crate::{
     BLE_OPTION_STORE, DISPLAY_HEIGHT, DISPLAY_WIDTH, GLOBAL_STORE, HOME_STORE, INPUT_PUBSUB,
-    SETTING_STORE, TMD_APP_WEAK,
+    MAX31865_SIGNAL, SETTING_STORE, TMD_APP_WEAK,
 };
 use alloc::boxed::Box;
 use defmt::info;
+use embassy_futures::select::{Either, select};
 use embassy_sync::pubsub::WaitResult;
 use embassy_time::Timer;
 use esp_hal::gpio::Output;
@@ -46,14 +47,6 @@ pub async fn ui_task(mut draw_buffer: DrawBufferType, mut lcd_blk: Output<'stati
     loop {
         slint::platform::update_timers_and_animations();
 
-        // NOTE: Loop Idea
-        // Wait For PB input,
-        // then mutate store, store will change slint store,
-        // then finally update window based on new slint store value,
-        // so without new input event, no new ui update.
-
-        let wait_result = sub.next_message().await;
-
         let global_store = GLOBAL_STORE.get().await.lock().await;
 
         let selected_tab = global_store
@@ -62,23 +55,34 @@ pub async fn ui_task(mut draw_buffer: DrawBufferType, mut lcd_blk: Output<'stati
             .await
             .expect("fail to get GLOBAL_STORE internal value");
 
-        match wait_result {
-            WaitResult::Lagged(amount) => info!("lag {} message", amount),
+        let pub_sub_result = sub.next_message();
+        let max31865_signal = MAX31865_SIGNAL.wait();
 
-            WaitResult::Message(key) => match selected_tab {
-                Tabs::Home => {
-                    let mut home_store = HOME_STORE.get().await.lock().await;
-                    home_store.on_key_event(key);
-                }
-                Tabs::Bluetooth => {
-                    let mut ble_option_store = BLE_OPTION_STORE.get().await.lock().await;
-                    ble_option_store.on_key_event(key);
-                }
-                Tabs::Unit => {
-                    let mut setting_store = SETTING_STORE.get().await.lock().await;
-                    setting_store.on_key_event(key);
-                }
+        let returned_first = select(pub_sub_result, max31865_signal).await;
+
+        match returned_first {
+            Either::First(wait_result) => match wait_result {
+                WaitResult::Lagged(amount) => info!("lag {} message", amount),
+
+                WaitResult::Message(key) => match selected_tab {
+                    Tabs::Home => {
+                        let mut home_store = HOME_STORE.get().await.lock().await;
+                        home_store.on_key_event(key).await;
+                    }
+                    Tabs::Bluetooth => {
+                        let mut ble_option_store = BLE_OPTION_STORE.get().await.lock().await;
+                        ble_option_store.on_key_event(key).await;
+                    }
+                    Tabs::Unit => {
+                        let mut setting_store = SETTING_STORE.get().await.lock().await;
+                        setting_store.on_key_event(key).await;
+                    }
+                },
             },
+
+            Either::Second(_max31865_signal_result) => {
+                info!("max31865_signal, got signal updating window...");
+            }
         };
 
         window.draw_if_needed(|renderer| {

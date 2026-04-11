@@ -3,10 +3,11 @@
 use crate::{
     models::key_event::KeyEvent,
     stores::{BleOptionStore, GlobalStore, HomeStore, SettingStore},
+    tasks::Max31865Signal,
 };
-use embassy_sync::once_lock::OnceLock;
 use embassy_sync::pubsub::PubSubChannel;
 use embassy_sync::{blocking_mutex::raw::CriticalSectionRawMutex, mutex::Mutex};
+use embassy_sync::{once_lock::OnceLock, signal::Signal};
 use slint::{EventLoopError, Weak};
 use static_cell::StaticCell;
 use tmd_ui::TmdApp;
@@ -32,7 +33,9 @@ pub static HOME_STORE: OnceLock<Mutex<CriticalSectionRawMutex, HomeStore>> = Onc
 
 pub static SETTING_STORE: OnceLock<Mutex<CriticalSectionRawMutex, SettingStore>> = OnceLock::new();
 
-pub static INTERFACE_BUFFER: StaticCell<[u8; 312]> = StaticCell::new();
+pub static MAX31865_SIGNAL: Signal<CriticalSectionRawMutex, Max31865Signal> = Signal::new();
+
+pub static LCD_DEV_INTERFACE_BUFFER: StaticCell<[u8; 312]> = StaticCell::new();
 
 pub static DISPLAY_HEIGHT: usize = 172;
 pub static DISPLAY_WIDTH: usize = 320;

@@ -1,6 +1,9 @@
-use alloc::boxed::Box;
-use defmt::info;
-use embedded_hal_bus::spi::ExclusiveDevice;
+use crate::display_models::st7789_modified::ST7789;
+use crate::platforms::esp32s3_async::draw_buffer::DrawBuffer;
+use crate::{DISPLAY_HEIGHT, DISPLAY_WIDTH, LCD_DEV_INTERFACE_BUFFER};
+use core::cell::RefCell;
+use critical_section::Mutex;
+use embedded_hal_bus::spi::CriticalSectionDevice;
 use esp_hal::delay::Delay;
 use esp_hal::dma::{DmaRxBuf, DmaTxBuf};
 use esp_hal::gpio::{Input, InputConfig, Level, Output, OutputConfig, Pull};
@@ -11,24 +14,20 @@ use esp_hal::spi::master::{Config, SpiDmaBus};
 use esp_hal::time::Rate;
 use esp_hal::timer::timg::TimerGroup;
 use esp_hal::{Blocking, dma_buffers};
+use max31865::Max31865;
 use mipidsi::Display;
 use mipidsi::interface::SpiInterface;
 use mipidsi::options::{ColorOrder, Orientation, Rotation};
-use slint::ComponentHandle as _;
-use slint::platform::software_renderer::{MinimalSoftwareWindow, RepaintBufferType};
 use static_cell::StaticCell;
-use tmd_ui::TmdApp;
 
-use crate::display_models::st7789_modified::ST7789;
-use crate::platforms::esp32s3_async::backend::Esp32AsyncBackend;
-use crate::platforms::esp32s3_async::draw_buffer::DrawBuffer;
-use crate::{DISPLAY_HEIGHT, DISPLAY_WIDTH, INTERFACE_BUFFER};
+pub static MUTEX_SPI_BUS: StaticCell<Mutex<RefCell<SpiDmaBus<'static, Blocking>>>> =
+    StaticCell::new();
 
 pub type DrawBufferType = DrawBuffer<
     Display<
         SpiInterface<
             'static,
-            ExclusiveDevice<SpiDmaBus<'static, Blocking>, Output<'static>, Delay>,
+            CriticalSectionDevice<'static, SpiDmaBus<'static, Blocking>, Output<'static>, Delay>,
             Output<'static>,
         >,
         ST7789,
@@ -36,7 +35,12 @@ pub type DrawBufferType = DrawBuffer<
     >,
 >;
 
-pub fn init_display(
+pub type Max31865Type = Max31865<
+    CriticalSectionDevice<'static, SpiDmaBus<'static, Blocking>, Output<'static>, Delay>,
+    Delay,
+>;
+
+pub fn init_devices(
     peripherals: Peripherals,
 ) -> (
     Input<'static>,
@@ -45,6 +49,7 @@ pub fn init_display(
     Input<'static>,
     DrawBufferType,
     Output<'static>,
+    Max31865Type,
 ) {
     let timg0 = TimerGroup::new(peripherals.TIMG0);
     esp_rtos::start(timg0.timer0);
@@ -63,6 +68,9 @@ pub fn init_display(
     let scl_sck = peripherals.GPIO12;
     let scl_miso = peripherals.GPIO13;
 
+    let max31865_cs = peripherals.GPIO9;
+    let max31865_drdy = peripherals.GPIO8;
+
     let dma_channel = peripherals.DMA_CH0;
 
     let input1 = Input::new(input1, InputConfig::default().with_pull(Pull::Up));
@@ -79,6 +87,9 @@ pub fn init_display(
     let dma_rx_buf = DmaRxBuf::new(rx_descriptors, rx_buffer).unwrap();
     let dma_tx_buf = DmaTxBuf::new(tx_descriptors, tx_buffer).unwrap();
 
+    let max31865_cs = Output::new(max31865_cs, Level::Low, OutputConfig::default());
+    let _max31865_drdy = Input::new(max31865_drdy, InputConfig::default().with_pull(Pull::Up));
+
     let spi_bus = Spi::new(
         peripherals.SPI2,
         Config::default()
@@ -92,12 +103,15 @@ pub fn init_display(
     .with_dma(dma_channel)
     .with_buffers(dma_rx_buf, dma_tx_buf);
 
-    let interface_buffer = INTERFACE_BUFFER.init([0u8; 312]);
+    let lcd_dev_interface_buffer = LCD_DEV_INTERFACE_BUFFER.init([0u8; 312]);
 
     let mut delay = Delay::new();
-    let spi_device = ExclusiveDevice::new(spi_bus, lcd_cs, delay).unwrap();
+    let mutex_refcell_bus = MUTEX_SPI_BUS.init(Mutex::new(RefCell::new(spi_bus)));
 
-    let di = mipidsi::interface::SpiInterface::new(spi_device, lcd_dc, interface_buffer);
+    let lcd_spi_device = CriticalSectionDevice::new(mutex_refcell_bus, lcd_cs, delay).unwrap();
+
+    let di =
+        mipidsi::interface::SpiInterface::new(lcd_spi_device, lcd_dc, lcd_dev_interface_buffer);
 
     let st7789 = mipidsi::Builder::new(crate::display_models::st7789_modified::ST7789, di)
         .display_size(DISPLAY_WIDTH as u16, DISPLAY_HEIGHT as u16)
@@ -111,5 +125,18 @@ pub fn init_display(
 
     let draw_buffer = DrawBuffer::new(st7789);
 
-    (input1, input2, input3, input4, draw_buffer, lcd_blk)
+    let max31865_spi_device =
+        CriticalSectionDevice::new(mutex_refcell_bus, max31865_cs, delay).unwrap();
+
+    let max31865 = Max31865::new(max31865_spi_device, delay, 3, 400.0, 400.0);
+
+    (
+        input1,
+        input2,
+        input3,
+        input4,
+        draw_buffer,
+        lcd_blk,
+        max31865,
+    )
 }

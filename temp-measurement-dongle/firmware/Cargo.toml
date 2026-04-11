@@ -20,6 +20,7 @@ ble = [
 [dependencies]
 
 tmd_ui = { path ="./tmd_ui" }
+max31865= { path ="../../rdc/max31865" }
 
 embassy-executor = "0.9.1"
 embassy-sync = "0.7.2"

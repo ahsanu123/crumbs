@@ -8,8 +8,8 @@
 #![deny(clippy::large_stack_frames)]
 
 use embassy_executor::Spawner;
-use tmd::initializers::{init_display, init_peripheral, init_stores};
-use tmd::tasks::{input_task, ui_task};
+use tmd::initializers::{init_devices, init_peripheral, init_stores};
+use tmd::tasks::{input_task, max31865_task, ui_task};
 
 use {esp_backtrace as _, esp_println as _};
 
@@ -30,10 +30,15 @@ async fn main(spawner: Spawner) {
     init_stores();
 
     let peripherals = init_peripheral();
-    let (input1, input2, input3, input4, draw_buffer, lcd_blk) = init_display(peripherals);
+    let (input1, input2, input3, input4, draw_buffer, lcd_blk, max31865_device) =
+        init_devices(peripherals);
 
     spawner
         .spawn(input_task(input1, input2, input3, input4))
+        .expect("fail to start input_task");
+
+    spawner
+        .spawn(max31865_task(max31865_device))
         .expect("fail to start input_task");
 
     ui_task(draw_buffer, lcd_blk).await;

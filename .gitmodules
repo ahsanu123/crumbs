@@ -1,3 +1,6 @@
 [submodule "material-ui-slint"]
 	path = material-ui-slint
 	url = https://github.com/ahsanu123/material-ui-slint.git
+[submodule "rdc"]
+	path = rdc
+	url = https://github.com/ahsanu123/RDC.git

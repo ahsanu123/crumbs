@@ -2,9 +2,7 @@ use crate::{INPUT_PUBSUB, models::key_event::KeyEvent};
 use embassy_futures::select::{Either4, select4};
 use esp_hal::gpio::Input;
 
-const INPUT_TASK_POOL_SIZE: usize = 2;
-
-#[embassy_executor::task(pool_size = INPUT_TASK_POOL_SIZE)]
+#[embassy_executor::task]
 pub async fn input_task(
     mut in1: Input<'static>,
     mut in2: Input<'static>,
