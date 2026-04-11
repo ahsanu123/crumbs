@@ -1,0 +1,65 @@
+import { MainContent } from "./main_content.slint";
+import { HomeSlintStore } from "../stores/home_slint_store.slint";
+import { BleOptionSlintStore } from "../stores/ble_option_store.slint";
+import { Icons } from "../../../../../material-ui-slint/ui/icons/icons.slint";
+import {
+    MaterialText,
+    Icon,
+} from "../../../../../material-ui-slint/material.slint";
+
+import {
+    MaterialTypography,
+    HorizontalDivider,
+    FilledButton,
+    IconButton,
+} from  "../../../../../material-ui-slint/material.slint";
+import { SettingStoreSlint } from "../stores/setting_store.slint";
+import { Units } from "../models/enum_unit.slint";
+
+export component BleOption inherits MainContent {
+    VerticalLayout {
+        width: 200px;
+        alignment: center;
+
+        HorizontalLayout {
+            alignment: center;
+            padding-bottom: 20px;
+            MaterialText {
+                text: "Bluetooth State";
+                style: MaterialTypography.title_large_bold;
+            }
+        }
+
+        HorizontalLayout {
+            VerticalLayout {
+                IconButton {
+                    icon: Icons.arrow_left;
+                }
+
+                HorizontalLayout {
+                    alignment: center;
+                    MaterialText {
+                        text: "Off";
+                    }
+                }
+            }
+
+            FilledButton {
+                text: BleOptionSlintStore.isBleOn ? "Ble Is On" : "Ble Is Off";
+            }
+
+            VerticalLayout {
+                IconButton {
+                    icon: Icons.arrow_right;
+                }
+
+                HorizontalLayout {
+                    alignment: center;
+                    MaterialText {
+                        text: "On";
+                    }
+                }
+            }
+        }
+    }
+}

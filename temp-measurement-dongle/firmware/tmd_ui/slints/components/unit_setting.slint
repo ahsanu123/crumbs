@@ -1,0 +1,100 @@
+import { MainContent } from "./main_content.slint";
+import { HomeSlintStore } from "../stores/home_slint_store.slint";
+import { BleOptionSlintStore } from "../stores/ble_option_store.slint";
+import { SettingStoreSlint } from "../stores/setting_store.slint";
+import { Icons } from "../../../../../material-ui-slint/ui/icons/icons.slint";
+import {
+    MaterialText,
+    Icon,
+} from "../../../../../material-ui-slint/material.slint";
+
+import {
+    MaterialTypography,
+    HorizontalDivider,
+    FilledButton,
+    IconButton,
+} from  "../../../../../material-ui-slint/material.slint";
+import { SettingStoreSlint } from "../stores/setting_store.slint";
+import { Units } from "../models/enum_unit.slint";
+import {
+    Badge,
+} from "../../../../../material-ui-slint/ui/components/badge.slint";
+
+export component UnitSetting inherits MainContent {
+
+    function getUnit() -> string {
+        if SettingStoreSlint.selectedUnit == Units.Celcius {
+            return "Celcius";
+        } else if SettingStoreSlint.selectedUnit == Units.Reamur {
+            return "Reamur";
+        } else {
+            return "Fahrenheit";
+        }
+    }
+
+    function getNextUnit() -> string {
+        if SettingStoreSlint.selectedUnit == Units.Celcius {
+            return "Reamur";
+        } else if SettingStoreSlint.selectedUnit == Units.Reamur {
+            return "Fahrenheit";
+        } else {
+            return "Celcius";
+        }
+    }
+
+    function getPrevUnit() -> string {
+        if SettingStoreSlint.selectedUnit == Units.Celcius {
+            return "Fahrenheit";
+        } else if SettingStoreSlint.selectedUnit == Units.Reamur {
+            return "Celcius";
+        } else {
+            return "Reamur";
+        }
+    }
+
+    VerticalLayout {
+        width: 200px;
+        alignment: center;
+
+        HorizontalLayout {
+            alignment: center;
+            padding-bottom: 20px;
+            MaterialText {
+                text: "Selected Unit";
+                style: MaterialTypography.title_large_bold;
+            }
+        }
+
+        HorizontalLayout {
+            VerticalLayout {
+                IconButton {
+                    icon: Icons.arrow_left;
+                }
+
+                HorizontalLayout {
+                    alignment: center;
+                    Badge {
+                        text: getPrevUnit();
+                    }
+                }
+            }
+
+            FilledButton {
+                text: getUnit();
+            }
+
+            VerticalLayout {
+                IconButton {
+                    icon: Icons.arrow_right;
+                }
+
+                HorizontalLayout {
+                    alignment: center;
+                    Badge {
+                        text: getNextUnit();
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,3 @@
+[submodule "material-ui-slint"]
+	path = material-ui-slint
+	url = https://github.com/ahsanu123/material-ui-slint.git

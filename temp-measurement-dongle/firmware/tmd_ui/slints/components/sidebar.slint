@@ -1,0 +1,40 @@
+import {
+    MaterialText,
+    NavigationRail,
+} from "../../../../../material-ui-slint/material.slint";
+
+import {
+    VerticalDivider,
+} from "../../../../../material-ui-slint/ui/components/divider.slint";
+
+import { Icons } from "../../../../../material-ui-slint/ui/icons/icons.slint";
+import { GlobalStore } from "../stores/global_store.slint";
+import { Tabs } from "../models/enum_tabs.slint";
+
+export component Sidebar inherits VerticalLayout {
+    padding-top: -35px;
+
+    function getIndex() -> int {
+        if GlobalStore.activeTab == Tabs.Home {
+            return 0;
+        } else if GlobalStore.activeTab == Tabs.Ble {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    HorizontalLayout {
+        NavigationRail {
+            current_index: getIndex();
+            alignment: start;
+            items: [
+                { icon: Icons.home, text: "Home" },
+                { icon: Icons.bluetooth, text: "BLE" },
+                { icon: Icons.scale, text: "Unit" }
+            ];
+        }
+
+        VerticalDivider { }
+    }
+}

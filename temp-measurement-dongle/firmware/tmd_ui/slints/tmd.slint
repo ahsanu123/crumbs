@@ -1,0 +1,35 @@
+import { Sidebar } from "components/sidebar.slint";
+import { GlobalStore } from "./stores/global_store.slint";
+import { Tabs } from "./models/enum_tabs.slint";
+import { Home } from "components/home.slint";
+import { UnitSetting } from "components/unit_setting.slint";
+import { BleOption } from "components/ble_option.slint";
+
+import { BleOptionSlintStore } from "stores/ble_option_store.slint";
+import { GlobalStore } from "stores/global_store.slint";
+import { HomeSlintStore } from "stores/home_slint_store.slint";
+import { SettingStoreSlint } from "stores/setting_store.slint";
+
+export { 
+  BleOptionSlintStore,
+  GlobalStore,
+  HomeSlintStore,
+  SettingStoreSlint
+}
+
+export component TmdApp inherits Window {
+    width: 320px;
+    height: 180px;
+
+    HorizontalLayout {
+        alignment: start;
+
+        Sidebar { }
+
+        if GlobalStore.activeTab == Tabs.Home: Home { }
+
+        if GlobalStore.activeTab == Tabs.Ble: BleOption { }
+
+        if GlobalStore.activeTab == Tabs.Unit: UnitSetting { }
+    }
+}

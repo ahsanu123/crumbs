@@ -1,0 +1,54 @@
+import { MainContent } from "./main_content.slint";
+import { HomeSlintStore } from "../stores/home_slint_store.slint";
+import { Icons } from "../../../../../material-ui-slint/ui/icons/icons.slint";
+import {
+    MaterialText,
+    Icon,
+} from "../../../../../material-ui-slint/material.slint";
+
+import {
+    MaterialTypography,
+    HorizontalDivider,
+} from  "../../../../../material-ui-slint/material.slint";
+import { SettingStoreSlint } from "../stores/setting_store.slint";
+import { Units } from "../models/enum_unit.slint";
+
+export component Home inherits MainContent {
+
+    function getUnit() -> string {
+        if SettingStoreSlint.selectedUnit == Units.Celcius {
+            return " C";
+        } else if SettingStoreSlint.selectedUnit == Units.Reamur {
+            return " R";
+        } else {
+            return " F";
+        }
+    }
+
+    HorizontalLayout {
+        padding-bottom: 10px;
+        alignment: end;
+        MaterialText {
+            text: HomeSlintStore.isCharging ? "Charging..." : "Not Charging";
+        }
+
+        Icon {
+            source: HomeSlintStore.isCharging ? Icons.battery_charging : Icons.battery;
+        }
+    }
+
+    HorizontalDivider { }
+
+    VerticalLayout {
+        alignment: center;
+        width: 220px;
+
+        HorizontalLayout {
+            alignment: center;
+            MaterialText {
+                text: HomeSlintStore.temperature + getUnit();
+                style: MaterialTypography.title_2xl_bold;
+            }
+        }
+    }
+}
