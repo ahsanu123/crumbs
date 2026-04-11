@@ -7,11 +7,10 @@
 )]
 #![deny(clippy::large_stack_frames)]
 
-use defmt::info;
-use esp_hal::clock::CpuClock;
-use esp_hal::gpio::{Level, Output, OutputConfig};
-use esp_hal::main;
-use esp_hal::time::{Duration, Instant};
+use embassy_executor::Spawner;
+use tmd::initializers::{init_display, init_peripheral, init_stores};
+use tmd::tasks::{input_task, ui_task};
+
 use {esp_backtrace as _, esp_println as _};
 
 extern crate alloc;
@@ -24,25 +23,18 @@ esp_bootloader_esp_idf::esp_app_desc!();
     clippy::large_stack_frames,
     reason = "it's not unusual to allocate larger buffers etc. in main"
 )]
-#[main]
-fn main() -> ! {
-    // generator version: 1.2.0
-
-    let config = esp_hal::Config::default().with_cpu_clock(CpuClock::max());
-    let peripherals = esp_hal::init(config);
-
-    let mut led = Output::new(peripherals.GPIO4, Level::Low, OutputConfig::default());
-
+#[esp_rtos::main]
+async fn main(spawner: Spawner) {
     esp_alloc::heap_allocator!(#[esp_hal::ram(reclaimed)] size: 73744);
-    let mut counter = 0;
 
-    loop {
-        info!("Hello world! x{}", counter);
-        let delay_start = Instant::now();
-        led.toggle();
-        while delay_start.elapsed() < Duration::from_millis(500) {}
-        counter += 1;
-    }
+    init_stores();
 
-    // for inspiration have a look at the examples at https://github.com/esp-rs/esp-hal/tree/esp-hal-v1.0.0/examples
+    let peripherals = init_peripheral();
+    let (input1, input2, input3, input4, draw_buffer, lcd_blk) = init_display(peripherals);
+
+    spawner
+        .spawn(input_task(input1, input2, input3, input4))
+        .expect("fail to start input_task");
+
+    ui_task(draw_buffer, lcd_blk).await;
 }

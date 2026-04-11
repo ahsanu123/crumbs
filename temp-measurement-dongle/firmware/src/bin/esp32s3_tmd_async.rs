@@ -8,9 +8,6 @@
 #![deny(clippy::large_stack_frames)]
 
 use alloc::boxed::Box;
-use tmd::platforms::esp32s3_async::backend::Esp32AsyncBackend;
-use tmd::platforms::esp32s3_async::draw_buffer::DrawBuffer;
-use tmd_ui::TmdApp;
 use defmt::info;
 use defmt::println;
 use embassy_executor::Spawner;
@@ -36,6 +33,9 @@ use slint::platform::Key;
 use slint::platform::WindowEvent;
 use slint::platform::software_renderer::{MinimalSoftwareWindow, RepaintBufferType};
 use static_cell::StaticCell;
+use tmd::platforms::esp32s3_async::backend::Esp32AsyncBackend;
+use tmd::platforms::esp32s3_async::draw_buffer::DrawBuffer;
+use tmd_ui::TmdApp;
 use {esp_backtrace as _, esp_println as _};
 
 extern crate alloc;
