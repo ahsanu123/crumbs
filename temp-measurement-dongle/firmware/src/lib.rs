@@ -58,8 +58,8 @@ where
 {
     let weak = app_weak.clone();
     slint::invoke_from_event_loop(move || {
-        if let Some(main_window) = weak.upgrade() {
-            setter_fn(main_window)
+        if let Some(application) = weak.upgrade() {
+            setter_fn(application)
         }
     })
 }

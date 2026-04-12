@@ -14,7 +14,7 @@ use esp_hal::spi::master::{Config, SpiDmaBus};
 use esp_hal::time::Rate;
 use esp_hal::timer::timg::TimerGroup;
 use esp_hal::{Blocking, dma_buffers};
-use max31865::Max31865;
+use max31865::{Max31865, Numwires};
 use mipidsi::Display;
 use mipidsi::interface::SpiInterface;
 use mipidsi::options::{ColorOrder, Orientation, Rotation};
@@ -93,8 +93,8 @@ pub fn init_devices(
     let spi_bus = Spi::new(
         peripherals.SPI2,
         Config::default()
-            .with_frequency(Rate::from_mhz(60))
-            .with_mode(Mode::_0),
+            .with_frequency(Rate::from_mhz(5))
+            .with_mode(Mode::_1),
     )
     .unwrap()
     .with_sck(scl_sck)
@@ -128,7 +128,13 @@ pub fn init_devices(
     let max31865_spi_device =
         CriticalSectionDevice::new(mutex_refcell_bus, max31865_cs, delay).unwrap();
 
-    let max31865 = Max31865::new(max31865_spi_device, delay, 3, 400.0, 400.0);
+    let max31865 = Max31865::new(
+        max31865_spi_device,
+        delay,
+        Numwires::MAX31865_3_WIRE,
+        100.0,
+        430.0,
+    );
 
     (
         input1,
