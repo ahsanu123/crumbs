@@ -8,7 +8,7 @@ use tmd_ui::{GlobalStore, TmdApp};
 pub struct SelectedTabHandler;
 
 impl StoreHandlerTrait<Tabs> for SelectedTabHandler {
-    async fn on_set(window_weak: &Weak<TmdApp>, value: Tabs) -> Result<(), StoreHandlerErr> {
+    fn on_set(window_weak: &Weak<TmdApp>, value: Tabs) -> Result<(), StoreHandlerErr> {
         set_ui_state(window_weak, move |tmd_app| {
             let global_store = tmd_app.global::<GlobalStore>();
 
@@ -19,7 +19,7 @@ impl StoreHandlerTrait<Tabs> for SelectedTabHandler {
         Ok(())
     }
 
-    async fn on_get(window_weak: &Weak<TmdApp>) -> Result<Tabs, StoreHandlerErr> {
+    fn on_get(window_weak: &Weak<TmdApp>) -> Result<Tabs, StoreHandlerErr> {
         let result = get_ui_state(window_weak, |app| {
             let global_store = app.global::<GlobalStore>();
             global_store.get_activeTab()

@@ -1,40 +1,55 @@
 use crate::{
     models::{effect::Effect, key_event::KeyEvent},
-    stores::{HandleOnKeyEventTrait, handle_on_global_key_down, handle_on_global_key_up},
+    stores::HandleOnKeyEventTrait,
 };
 
 mod is_ble_on_handler;
 
 use defmt::info;
 use is_ble_on_handler::IsBleOnHandler;
+use slint::Weak;
+use tmd_ui::TmdApp;
 
 #[derive(Default)]
 pub struct BleOptionStore {
-    pub is_ble_on: Effect<bool, IsBleOnHandler>,
+    is_ble_on: Effect<bool, IsBleOnHandler>,
+
+    app_weak: Weak<TmdApp>,
 }
 
 impl BleOptionStore {
-    pub async fn handle_turn_on_ble(&mut self) {
-        info!("handle_turn_on_ble");
-        todo!()
+    pub fn new(app_weak: Weak<TmdApp>) -> Self {
+        Self {
+            is_ble_on: Default::default(),
+            app_weak,
+        }
     }
 
-    pub async fn handle_turn_off_ble(&mut self) {
+    pub fn handle_turn_on_ble(&mut self) {
+        info!("handle_turn_on_ble");
+    }
+
+    pub fn handle_turn_off_ble(&mut self) {
         info!("handle_turn_off_ble");
-        todo!()
+    }
+
+    pub fn set_ble_is_on(&mut self, is_ble_on: bool) {
+        self.is_ble_on
+            .set(&self.app_weak, is_ble_on)
+            .expect("BleOptionStore, fail to set ble_is_on");
     }
 }
 
 impl HandleOnKeyEventTrait for BleOptionStore {
-    async fn on_key_event(&mut self, key: KeyEvent) {
+    fn on_key_event(&mut self, key: KeyEvent) {
         match key {
-            KeyEvent::Up => handle_on_global_key_up().await,
+            KeyEvent::Up => info!("BleOptionStore, got up event, nothing todo"),
 
-            KeyEvent::Down => handle_on_global_key_down().await,
+            KeyEvent::Down => info!("BleOptionStore, got up event, nothing todo"),
 
-            KeyEvent::Right => self.handle_turn_on_ble().await,
+            KeyEvent::Right => self.handle_turn_on_ble(),
 
-            KeyEvent::Left => self.handle_turn_off_ble().await,
+            KeyEvent::Left => self.handle_turn_off_ble(),
         }
     }
 }

@@ -1,14 +1,16 @@
 use crate::initializers::DrawBufferType;
 use crate::models::enums::Tabs;
+use crate::models::key_event::{KeyEvent, MediatorEvent};
 use crate::platforms::esp32s3_async::backend::Esp32AsyncBackend;
-use crate::stores::HandleOnKeyEventTrait as _;
+use crate::stores::{
+    BleOptionStore, GlobalStore, HandleOnKeyEventTrait as _, HomeStore, SettingStore,
+};
 use crate::{
-    BLE_OPTION_STORE, DISPLAY_HEIGHT, DISPLAY_WIDTH, GLOBAL_STORE, HOME_STORE, INPUT_PUBSUB,
-    MAX31865_SIGNAL, SETTING_STORE, TMD_APP_WEAK,
+    BLE_OPTION_STORE, DISPLAY_HEIGHT, DISPLAY_WIDTH, GLOBAL_STORE, HOME_STORE, MEDIATOR_PUBSUB,
+    SETTING_STORE,
 };
 use alloc::boxed::Box;
 use defmt::info;
-use embassy_futures::select::{Either, select};
 use embassy_sync::pubsub::WaitResult;
 use embassy_time::Timer;
 use esp_hal::gpio::Output;
@@ -35,56 +37,57 @@ pub async fn ui_task(mut draw_buffer: DrawBufferType, mut lcd_blk: Output<'stati
 
     let weak_tmd_app = tmd_app.as_weak();
 
-    TMD_APP_WEAK
-        .init(weak_tmd_app)
-        .map_err(|_| "")
-        .expect("fail to init TMD_APP_WEAK");
+    let global_store = GLOBAL_STORE.init(GlobalStore::new(weak_tmd_app.clone()));
+    let ble_option_store = BLE_OPTION_STORE.init(BleOptionStore::new(weak_tmd_app.clone()));
+    let home_store = HOME_STORE.init(HomeStore::new(weak_tmd_app.clone()));
+    let setting_store = SETTING_STORE.init(SettingStore::new(weak_tmd_app.clone()));
 
-    let mut input_subscription = INPUT_PUBSUB
+    let mut mediator_sub = MEDIATOR_PUBSUB
         .subscriber()
         .expect("fail to make subscribtion");
 
     loop {
         slint::platform::update_timers_and_animations();
 
-        {
-            let global_store = GLOBAL_STORE.get().await.lock().await;
+        let selected_tab = global_store
+            .selected_tab
+            .get_internal_val()
+            .expect("global_store, fail to get selected_tab");
 
-            let selected_tab = global_store
-                .selected_tab
-                .get_internal_val()
-                .await
-                .expect("fail to get GLOBAL_STORE internal value");
+        let mediator_msg = mediator_sub.next_message().await;
 
-            let input_sub_result = input_subscription.next_message();
-            let max31865_updated_signal = MAX31865_SIGNAL.wait();
+        match mediator_msg {
+            WaitResult::Lagged(amount) => info!("lag {} message", amount),
 
-            let first_event = select(input_sub_result, max31865_updated_signal).await;
+            WaitResult::Message(message) => match message {
+                MediatorEvent::IsCharging(is_charging) => home_store.set_is_charging(is_charging),
 
-            match first_event {
-                Either::First(wait_result) => match wait_result {
-                    WaitResult::Lagged(amount) => info!("lag {} message", amount),
+                MediatorEvent::Max31865(temperature) => home_store.set_temperature(temperature),
 
-                    WaitResult::Message(key) => match selected_tab {
-                        Tabs::Home => {
-                            let mut home_store = HOME_STORE.get().await.lock().await;
-                            home_store.on_key_event(key).await;
-                        }
-                        Tabs::Bluetooth => {
-                            let mut ble_option_store = BLE_OPTION_STORE.get().await.lock().await;
-                            ble_option_store.on_key_event(key).await;
-                        }
-                        Tabs::Unit => {
-                            let mut setting_store = SETTING_STORE.get().await.lock().await;
-                            setting_store.on_key_event(key).await;
-                        }
+                MediatorEvent::BleOption(is_ble_on) => ble_option_store.set_ble_is_on(is_ble_on),
+
+                MediatorEvent::Key(key_event) => match key_event {
+                    KeyEvent::Up => global_store.on_global_key_up(),
+
+                    KeyEvent::Down => global_store.on_global_key_down(),
+
+                    // FIXME: think better approach
+                    KeyEvent::Right => match selected_tab {
+                        Tabs::Home => home_store.on_key_event(key_event),
+
+                        Tabs::Bluetooth => ble_option_store.on_key_event(key_event),
+
+                        Tabs::Unit => setting_store.on_key_event(key_event),
+                    },
+                    KeyEvent::Left => match selected_tab {
+                        Tabs::Home => home_store.on_key_event(key_event),
+
+                        Tabs::Bluetooth => ble_option_store.on_key_event(key_event),
+
+                        Tabs::Unit => setting_store.on_key_event(key_event),
                     },
                 },
-
-                Either::Second(_max31865_signal_result) => {
-                    info!("max31865_signal, got signal updating window...");
-                }
-            };
+            },
         }
 
         window.draw_if_needed(|renderer| {

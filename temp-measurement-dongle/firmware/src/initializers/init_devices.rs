@@ -47,6 +47,7 @@ pub fn init_devices(
     Input<'static>,
     Input<'static>,
     Input<'static>,
+    Input<'static>,
     DrawBufferType,
     Output<'static>,
     Max31865Type,
@@ -58,6 +59,8 @@ pub fn init_devices(
     let input_right = peripherals.GPIO20;
     let input_bottom = peripherals.GPIO19;
     let input_left = peripherals.GPIO18;
+
+    let input_is_charging = peripherals.GPIO38;
 
     let lcd_dc = peripherals.GPIO15;
     let lcd_cs = peripherals.GPIO10;
@@ -78,6 +81,11 @@ pub fn init_devices(
     let key_down = Input::new(input_bottom, InputConfig::default().with_pull(Pull::Up));
     let key_left = Input::new(input_left, InputConfig::default().with_pull(Pull::Up));
 
+    let input_is_charging = Input::new(
+        input_is_charging,
+        InputConfig::default().with_pull(Pull::Up),
+    );
+
     let lcd_cs = Output::new(lcd_cs, Level::Low, OutputConfig::default());
     let lcd_dc = Output::new(lcd_dc, Level::Low, OutputConfig::default());
     let lcd_rst = Output::new(lcd_rst, Level::Low, OutputConfig::default());
@@ -93,8 +101,9 @@ pub fn init_devices(
     let spi_bus = Spi::new(
         peripherals.SPI2,
         Config::default()
-            .with_frequency(Rate::from_mhz(5))
-            .with_mode(Mode::_1),
+            .with_frequency(Rate::from_mhz(60))
+            .with_mode(Mode::_0),
+        // .with_mode(Mode::_1),
     )
     .unwrap()
     .with_sck(scl_sck)
@@ -141,6 +150,7 @@ pub fn init_devices(
         key_left,
         key_down,
         key_right,
+        input_is_charging,
         draw_buffer,
         lcd_blk,
         max31865,

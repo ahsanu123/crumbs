@@ -8,7 +8,7 @@
 #![deny(clippy::large_stack_frames)]
 
 use embassy_executor::Spawner;
-use tmd::initializers::{init_devices, init_peripheral, init_stores};
+use tmd::initializers::{init_devices, init_peripheral};
 use tmd::tasks::{input_task, max31865_task, ui_task};
 
 use {esp_backtrace as _, esp_println as _};
@@ -27,14 +27,26 @@ esp_bootloader_esp_idf::esp_app_desc!();
 async fn main(spawner: Spawner) {
     esp_alloc::heap_allocator!(#[esp_hal::ram(reclaimed)] size: 73744);
 
-    init_stores();
-
     let peripherals = init_peripheral();
-    let (key_up, key_left, key_down, key_right, draw_buffer, lcd_blk, max31865_device) =
-        init_devices(peripherals);
+    let (
+        key_up,
+        key_left,
+        key_down,
+        key_right,
+        input_is_charging,
+        draw_buffer,
+        lcd_blk,
+        max31865_device,
+    ) = init_devices(peripherals);
 
     spawner
-        .spawn(input_task(key_up, key_right, key_down, key_left))
+        .spawn(input_task(
+            key_up,
+            key_right,
+            key_down,
+            key_left,
+            input_is_charging,
+        ))
         .expect("fail to start input_task");
 
     spawner

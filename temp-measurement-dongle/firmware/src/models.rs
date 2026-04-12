@@ -1,3 +1,4 @@
+pub mod ble_operation_event;
 pub mod effect;
 pub mod get_id_trait;
 pub mod key_event;

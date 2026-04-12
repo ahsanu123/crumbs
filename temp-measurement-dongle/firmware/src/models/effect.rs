@@ -1,6 +1,7 @@
-use crate::{TMD_APP_WEAK, models::get_id_trait::GetIdTrait};
+use crate::models::get_id_trait::GetIdTrait;
 use alloc::vec::Vec;
 use core::marker::PhantomData;
+use slint::Weak;
 use tmd_ui::TmdApp;
 
 #[derive(Debug)]
@@ -10,14 +11,9 @@ pub enum StoreHandlerErr {
 }
 
 pub trait StoreHandlerTrait<T> {
-    fn on_set(
-        window_weak: &slint::Weak<TmdApp>,
-        value: T,
-    ) -> impl Future<Output = Result<(), StoreHandlerErr>>;
+    fn on_set(window_weak: &slint::Weak<TmdApp>, value: T) -> Result<(), StoreHandlerErr>;
 
-    fn on_get(
-        window_weak: &slint::Weak<TmdApp>,
-    ) -> impl Future<Output = Result<T, StoreHandlerErr>>;
+    fn on_get(window_weak: &slint::Weak<TmdApp>) -> Result<T, StoreHandlerErr>;
 }
 
 #[derive(Default)]
@@ -36,23 +32,21 @@ where
     T: Clone,
     H: StoreHandlerTrait<T>,
 {
-    pub async fn set(&mut self, value: T) -> Result<(), StoreHandlerErr> {
+    pub fn set(&mut self, window_weak: &Weak<TmdApp>, value: T) -> Result<(), StoreHandlerErr> {
         self.value = value.clone();
-
-        let window_weak = TMD_APP_WEAK.get().await;
-        H::on_set(window_weak, value).await?;
+        H::on_set(window_weak, value)?;
 
         Ok(())
     }
 
-    pub async fn get(&mut self) -> Result<T, StoreHandlerErr> {
-        let window_weak = TMD_APP_WEAK.get().await;
-        let value = H::on_get(window_weak).await?;
-
+    pub fn get(&mut self, window_weak: &Weak<TmdApp>) -> Result<T, StoreHandlerErr> {
+        let value = H::on_get(window_weak)?;
         Ok(value)
+
+        // Ok(self.value.clone())
     }
 
-    pub async fn get_internal_val(&self) -> Result<T, StoreHandlerErr> {
+    pub fn get_internal_val(&self) -> Result<T, StoreHandlerErr> {
         Ok(self.value.clone())
     }
 }
@@ -62,7 +56,7 @@ where
     T: Clone + GetIdTrait,
     H: StoreHandlerTrait<Vec<T>>,
 {
-    pub async fn insert(&mut self, value: T) -> Result<(), StoreHandlerErr> {
+    pub fn insert(&mut self, window_weak: &Weak<TmdApp>, value: T) -> Result<(), StoreHandlerErr> {
         let target_id = value.get_id();
 
         if let Some(existing_value) = self.value.iter_mut().find(|v| v.get_id() == target_id) {
@@ -71,8 +65,7 @@ where
             self.value.push(value);
         }
 
-        let window_weak = TMD_APP_WEAK.get().await;
-        H::on_set(window_weak, self.value.clone()).await?;
+        H::on_set(window_weak, self.value.clone())?;
 
         Ok(())
     }

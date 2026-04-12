@@ -10,7 +10,7 @@ use tmd_ui::{BleOptionSlintStore, TmdApp};
 pub struct IsBleOnHandler;
 
 impl StoreHandlerTrait<bool> for IsBleOnHandler {
-    async fn on_set(window_weak: &Weak<TmdApp>, value: bool) -> Result<(), StoreHandlerErr> {
+    fn on_set(window_weak: &Weak<TmdApp>, value: bool) -> Result<(), StoreHandlerErr> {
         set_ui_state(window_weak, move |tmd_app| {
             let bleoption_store = tmd_app.global::<BleOptionSlintStore>();
 
@@ -21,7 +21,7 @@ impl StoreHandlerTrait<bool> for IsBleOnHandler {
         Ok(())
     }
 
-    async fn on_get(window_weak: &Weak<TmdApp>) -> Result<bool, StoreHandlerErr> {
+    fn on_get(window_weak: &Weak<TmdApp>) -> Result<bool, StoreHandlerErr> {
         get_ui_state(window_weak, |app| {
             let bleslint_store = app.global::<BleOptionSlintStore>();
             bleslint_store.get_isBleOn()

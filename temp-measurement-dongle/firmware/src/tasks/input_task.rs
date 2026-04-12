@@ -1,5 +1,8 @@
-use crate::{INPUT_PUBSUB, models::key_event::KeyEvent};
-use embassy_futures::select::{Either4, select4};
+use crate::{
+    MEDIATOR_PUBSUB,
+    models::key_event::{KeyEvent, MediatorEvent},
+};
+use embassy_futures::select::{Either5, select5};
 use esp_hal::gpio::Input;
 
 #[embassy_executor::task]
@@ -8,23 +11,47 @@ pub async fn input_task(
     mut key_right: Input<'static>,
     mut key_down: Input<'static>,
     mut key_left: Input<'static>,
+    mut input_is_charging: Input<'static>,
 ) {
-    let publisher = INPUT_PUBSUB.publisher().expect("fail to create publisher");
+    let mediator_pub = MEDIATOR_PUBSUB
+        .publisher()
+        .expect("fail to create publisher");
 
     loop {
-        let event = select4(
+        let event = select5(
             key_up.wait_for_falling_edge(),
             key_right.wait_for_falling_edge(),
             key_down.wait_for_falling_edge(),
             key_left.wait_for_falling_edge(),
+            input_is_charging.wait_for_any_edge(),
         )
         .await;
 
         match event {
-            Either4::First(_) => publisher.publish(KeyEvent::Up).await,
-            Either4::Second(_) => publisher.publish(KeyEvent::Right).await,
-            Either4::Third(_) => publisher.publish(KeyEvent::Down).await,
-            Either4::Fourth(_) => publisher.publish(KeyEvent::Left).await,
+            Either5::First(_) => mediator_pub.publish(MediatorEvent::Key(KeyEvent::Up)).await,
+            Either5::Second(_) => {
+                mediator_pub
+                    .publish(MediatorEvent::Key(KeyEvent::Right))
+                    .await
+            }
+            Either5::Third(_) => {
+                mediator_pub
+                    .publish(MediatorEvent::Key(KeyEvent::Down))
+                    .await
+            }
+            Either5::Fourth(_) => {
+                mediator_pub
+                    .publish(MediatorEvent::Key(KeyEvent::Left))
+                    .await
+            }
+
+            Either5::Fifth(_) => {
+                let is_charging = input_is_charging.is_low();
+
+                mediator_pub
+                    .publish(MediatorEvent::IsCharging(is_charging))
+                    .await;
+            }
         };
     }
 }

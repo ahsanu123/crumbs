@@ -1,48 +1,58 @@
 use crate::{
     models::{effect::Effect, enums::Units, key_event::KeyEvent},
-    stores::{HandleOnKeyEventTrait, handle_on_global_key_down, handle_on_global_key_up},
+    stores::HandleOnKeyEventTrait,
 };
 
 mod unit_temperature_handler;
 
+use defmt::info;
+use slint::Weak;
+use tmd_ui::TmdApp;
 use unit_temperature_handler::UnitTemperatureHandler;
 
 #[derive(Default)]
 pub struct SettingStore {
-    pub temperature_unit: Effect<Units, UnitTemperatureHandler>,
+    temperature_unit: Effect<Units, UnitTemperatureHandler>,
+
+    app_weak: Weak<TmdApp>,
+}
+
+impl SettingStore {
+    pub fn new(app_weak: Weak<TmdApp>) -> Self {
+        Self {
+            temperature_unit: Default::default(),
+            app_weak,
+        }
+    }
 }
 
 impl HandleOnKeyEventTrait for SettingStore {
-    async fn on_key_event(&mut self, key: KeyEvent) {
+    fn on_key_event(&mut self, key: KeyEvent) {
         match key {
-            KeyEvent::Up => handle_on_global_key_up().await,
+            KeyEvent::Up => info!("SettingStore, got up key already handle by global_store"),
 
-            KeyEvent::Down => handle_on_global_key_down().await,
+            KeyEvent::Down => info!("SettingStore, got down key already handle by global_store"),
 
             KeyEvent::Right => {
                 let selected_unit = self
                     .temperature_unit
                     .get_internal_val()
-                    .await
                     .expect("setting_store fail to get internal val");
 
                 match selected_unit {
                     Units::Celcius => self
                         .temperature_unit
-                        .set(Units::Reamur)
-                        .await
+                        .set(&self.app_weak, Units::Reamur)
                         .expect("setting_store, fail to get unit"),
 
                     Units::Reamur => self
                         .temperature_unit
-                        .set(Units::Fahrenheit)
-                        .await
+                        .set(&self.app_weak, Units::Fahrenheit)
                         .expect("setting_store, fail to get unit"),
 
                     Units::Fahrenheit => self
                         .temperature_unit
-                        .set(Units::Celcius)
-                        .await
+                        .set(&self.app_weak, Units::Celcius)
                         .expect("setting_store, fail to get unit"),
                 };
             }
@@ -51,26 +61,22 @@ impl HandleOnKeyEventTrait for SettingStore {
                 let selected_unit = self
                     .temperature_unit
                     .get_internal_val()
-                    .await
                     .expect("setting_store fail to get internal val");
 
                 match selected_unit {
                     Units::Celcius => self
                         .temperature_unit
-                        .set(Units::Fahrenheit)
-                        .await
+                        .set(&self.app_weak, Units::Fahrenheit)
                         .expect("setting_store, fail to get unit"),
 
                     Units::Reamur => self
                         .temperature_unit
-                        .set(Units::Celcius)
-                        .await
+                        .set(&self.app_weak, Units::Celcius)
                         .expect("setting_store, fail to get unit"),
 
                     Units::Fahrenheit => self
                         .temperature_unit
-                        .set(Units::Reamur)
-                        .await
+                        .set(&self.app_weak, Units::Reamur)
                         .expect("setting_store, fail to get unit"),
                 };
             }

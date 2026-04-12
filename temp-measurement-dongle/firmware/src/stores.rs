@@ -11,5 +11,5 @@ pub use setting_store::*;
 use crate::models::key_event::KeyEvent;
 
 pub trait HandleOnKeyEventTrait {
-    fn on_key_event(&mut self, key: KeyEvent) -> impl Future<Output = ()>;
+    fn on_key_event(&mut self, key: KeyEvent);
 }
