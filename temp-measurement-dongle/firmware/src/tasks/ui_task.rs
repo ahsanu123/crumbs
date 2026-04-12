@@ -40,7 +40,7 @@ pub async fn ui_task(mut draw_buffer: DrawBufferType, mut lcd_blk: Output<'stati
         .map_err(|_| "")
         .expect("fail to init TMD_APP_WEAK");
 
-    let mut sub = INPUT_PUBSUB
+    let mut input_subscription = INPUT_PUBSUB
         .subscriber()
         .expect("fail to make subscribtion");
 
@@ -56,12 +56,12 @@ pub async fn ui_task(mut draw_buffer: DrawBufferType, mut lcd_blk: Output<'stati
                 .await
                 .expect("fail to get GLOBAL_STORE internal value");
 
-            let pub_sub_result = sub.next_message();
-            let max31865_signal = MAX31865_SIGNAL.wait();
+            let input_sub_result = input_subscription.next_message();
+            let max31865_updated_signal = MAX31865_SIGNAL.wait();
 
-            let returned_first = select(pub_sub_result, max31865_signal).await;
+            let first_event = select(input_sub_result, max31865_updated_signal).await;
 
-            match returned_first {
+            match first_event {
                 Either::First(wait_result) => match wait_result {
                     WaitResult::Lagged(amount) => info!("lag {} message", amount),
 

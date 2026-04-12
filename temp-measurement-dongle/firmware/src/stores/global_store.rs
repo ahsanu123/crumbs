@@ -22,13 +22,25 @@ pub async fn handle_on_global_key_up() {
 
     match selected_tab {
         Tabs::Home => {
-            global_store.selected_tab.set(Tabs::Unit).await;
+            global_store
+                .selected_tab
+                .set(Tabs::Unit)
+                .await
+                .expect("global_store, fail to get selected_tab");
         }
         Tabs::Bluetooth => {
-            global_store.selected_tab.set(Tabs::Home).await;
+            global_store
+                .selected_tab
+                .set(Tabs::Home)
+                .await
+                .expect("global_store, fail to get selected_tab");
         }
         Tabs::Unit => {
-            global_store.selected_tab.set(Tabs::Bluetooth).await;
+            global_store
+                .selected_tab
+                .set(Tabs::Bluetooth)
+                .await
+                .expect("global_store, fail to get selected_tab");
         }
     }
 }
@@ -44,13 +56,25 @@ pub async fn handle_on_global_key_down() {
 
     match selected_tab {
         Tabs::Home => {
-            global_store.selected_tab.set(Tabs::Bluetooth).await;
+            global_store
+                .selected_tab
+                .set(Tabs::Bluetooth)
+                .await
+                .expect("global_store, fail to get selected_tab");
         }
         Tabs::Bluetooth => {
-            global_store.selected_tab.set(Tabs::Unit).await;
+            global_store
+                .selected_tab
+                .set(Tabs::Unit)
+                .await
+                .expect("global_store, fail to get selected_tab");
         }
         Tabs::Unit => {
-            global_store.selected_tab.set(Tabs::Home).await;
+            global_store
+                .selected_tab
+                .set(Tabs::Home)
+                .await
+                .expect("global_store, fail to get selected_tab");
         }
     }
 }

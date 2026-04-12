@@ -27,11 +27,23 @@ impl HandleOnKeyEventTrait for SettingStore {
                     .expect("setting_store fail to get internal val");
 
                 match selected_unit {
-                    Units::Celcius => self.temperature_unit.set(Units::Reamur).await,
+                    Units::Celcius => self
+                        .temperature_unit
+                        .set(Units::Reamur)
+                        .await
+                        .expect("setting_store, fail to get unit"),
 
-                    Units::Reamur => self.temperature_unit.set(Units::Fahrenheit).await,
+                    Units::Reamur => self
+                        .temperature_unit
+                        .set(Units::Fahrenheit)
+                        .await
+                        .expect("setting_store, fail to get unit"),
 
-                    Units::Fahrenheit => self.temperature_unit.set(Units::Celcius).await,
+                    Units::Fahrenheit => self
+                        .temperature_unit
+                        .set(Units::Celcius)
+                        .await
+                        .expect("setting_store, fail to get unit"),
                 };
             }
 
@@ -43,11 +55,23 @@ impl HandleOnKeyEventTrait for SettingStore {
                     .expect("setting_store fail to get internal val");
 
                 match selected_unit {
-                    Units::Celcius => self.temperature_unit.set(Units::Fahrenheit).await,
+                    Units::Celcius => self
+                        .temperature_unit
+                        .set(Units::Fahrenheit)
+                        .await
+                        .expect("setting_store, fail to get unit"),
 
-                    Units::Reamur => self.temperature_unit.set(Units::Celcius).await,
+                    Units::Reamur => self
+                        .temperature_unit
+                        .set(Units::Celcius)
+                        .await
+                        .expect("setting_store, fail to get unit"),
 
-                    Units::Fahrenheit => self.temperature_unit.set(Units::Reamur).await,
+                    Units::Fahrenheit => self
+                        .temperature_unit
+                        .set(Units::Reamur)
+                        .await
+                        .expect("setting_store, fail to get unit"),
                 };
             }
         }

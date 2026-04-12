@@ -1,19 +1,31 @@
-use crate::models::effect::StoreHandlerTrait;
+use crate::{
+    get_ui_state,
+    models::effect::{StoreHandlerErr, StoreHandlerTrait},
+    set_ui_state,
+};
+use slint::{ComponentHandle as _, Weak};
+use tmd_ui::{HomeSlintStore, TmdApp};
 
 #[derive(Default)]
 pub struct TemperatureHandler;
 
 impl StoreHandlerTrait<f32> for TemperatureHandler {
-    async fn on_set(
-        window_weak: &slint::Weak<tmd_ui::TmdApp>,
-        value: f32,
-    ) -> Result<(), crate::models::effect::StoreHandlerErr> {
-        todo!()
+    async fn on_set(window_weak: &Weak<TmdApp>, value: f32) -> Result<(), StoreHandlerErr> {
+        set_ui_state(window_weak, move |tmd_app| {
+            let home_store = tmd_app.global::<HomeSlintStore>();
+
+            home_store.set_temperature(value);
+        })
+        .map_err(|_| StoreHandlerErr::FailToSet)?;
+
+        Ok(())
     }
 
-    async fn on_get(
-        window_weak: &slint::Weak<tmd_ui::TmdApp>,
-    ) -> Result<f32, crate::models::effect::StoreHandlerErr> {
-        todo!()
+    async fn on_get(window_weak: &Weak<TmdApp>) -> Result<f32, StoreHandlerErr> {
+        get_ui_state(window_weak, |tmd_app| {
+            let home_store = tmd_app.global::<HomeSlintStore>();
+            home_store.get_temperature()
+        })
+        .map_err(|_| StoreHandlerErr::FailToGet)
     }
 }

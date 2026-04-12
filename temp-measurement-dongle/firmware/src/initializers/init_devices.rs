@@ -54,10 +54,10 @@ pub fn init_devices(
     let timg0 = TimerGroup::new(peripherals.TIMG0);
     esp_rtos::start(timg0.timer0);
 
-    let input1 = peripherals.GPIO17;
-    let input2 = peripherals.GPIO18;
-    let input3 = peripherals.GPIO19;
-    let input4 = peripherals.GPIO20;
+    let input_up = peripherals.GPIO17;
+    let input_right = peripherals.GPIO20;
+    let input_bottom = peripherals.GPIO19;
+    let input_left = peripherals.GPIO18;
 
     let lcd_dc = peripherals.GPIO15;
     let lcd_cs = peripherals.GPIO10;
@@ -73,10 +73,10 @@ pub fn init_devices(
 
     let dma_channel = peripherals.DMA_CH0;
 
-    let input1 = Input::new(input1, InputConfig::default().with_pull(Pull::Up));
-    let input2 = Input::new(input2, InputConfig::default().with_pull(Pull::Up));
-    let input3 = Input::new(input3, InputConfig::default().with_pull(Pull::Up));
-    let input4 = Input::new(input4, InputConfig::default().with_pull(Pull::Up));
+    let key_up = Input::new(input_up, InputConfig::default().with_pull(Pull::Up));
+    let key_right = Input::new(input_right, InputConfig::default().with_pull(Pull::Up));
+    let key_down = Input::new(input_bottom, InputConfig::default().with_pull(Pull::Up));
+    let key_left = Input::new(input_left, InputConfig::default().with_pull(Pull::Up));
 
     let lcd_cs = Output::new(lcd_cs, Level::Low, OutputConfig::default());
     let lcd_dc = Output::new(lcd_dc, Level::Low, OutputConfig::default());
@@ -137,10 +137,10 @@ pub fn init_devices(
     );
 
     (
-        input1,
-        input2,
-        input3,
-        input4,
+        key_up,
+        key_left,
+        key_down,
+        key_right,
         draw_buffer,
         lcd_blk,
         max31865,

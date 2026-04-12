@@ -30,11 +30,11 @@ async fn main(spawner: Spawner) {
     init_stores();
 
     let peripherals = init_peripheral();
-    let (input1, input2, input3, input4, draw_buffer, lcd_blk, max31865_device) =
+    let (key_up, key_left, key_down, key_right, draw_buffer, lcd_blk, max31865_device) =
         init_devices(peripherals);
 
     spawner
-        .spawn(input_task(input1, input2, input3, input4))
+        .spawn(input_task(key_up, key_right, key_down, key_left))
         .expect("fail to start input_task");
 
     spawner

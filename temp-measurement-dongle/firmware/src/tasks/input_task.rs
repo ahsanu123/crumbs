@@ -4,19 +4,19 @@ use esp_hal::gpio::Input;
 
 #[embassy_executor::task]
 pub async fn input_task(
-    mut in1: Input<'static>,
-    mut in2: Input<'static>,
-    mut in3: Input<'static>,
-    mut in4: Input<'static>,
+    mut key_up: Input<'static>,
+    mut key_right: Input<'static>,
+    mut key_down: Input<'static>,
+    mut key_left: Input<'static>,
 ) {
     let publisher = INPUT_PUBSUB.publisher().expect("fail to create publisher");
 
     loop {
         let event = select4(
-            in1.wait_for_falling_edge(),
-            in2.wait_for_falling_edge(),
-            in3.wait_for_falling_edge(),
-            in4.wait_for_falling_edge(),
+            key_up.wait_for_falling_edge(),
+            key_right.wait_for_falling_edge(),
+            key_down.wait_for_falling_edge(),
+            key_left.wait_for_falling_edge(),
         )
         .await;
 

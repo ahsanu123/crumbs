@@ -63,3 +63,18 @@ where
         }
     })
 }
+
+pub fn get_ui_state<F, T>(app_weak: &Weak<TmdApp>, getter_fn: F) -> Result<T, EventLoopError>
+where
+    F: FnOnce(TmdApp) -> T + Send + 'static,
+{
+    let weak = app_weak.clone();
+
+    if let Some(app) = weak.upgrade() {
+        let result = getter_fn(app);
+
+        return Ok(result);
+    }
+
+    Err(EventLoopError::NoEventLoopProvider)
+}
