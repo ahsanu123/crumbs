@@ -70,7 +70,7 @@ async fn main(_spawner: Spawner) {
     let mut _max31865_drdy = Input::new(max31865_drdy, InputConfig::default().with_pull(Pull::Up));
 
     let spi_bus = Spi::new(
-        peripherals.SPI2,
+        peripherals.SPI3,
         Config::default()
             .with_frequency(Rate::from_mhz(5))
             .with_mode(Mode::_1),
