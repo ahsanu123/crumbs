@@ -10,7 +10,7 @@ use tmd_ui::{HomeSlintStore, TmdApp};
 pub struct TemperatureHandler;
 
 impl StoreHandlerTrait<f32> for TemperatureHandler {
-    fn on_set(window_weak: &Weak<TmdApp>, value: f32) -> Result<(), StoreHandlerErr> {
+    fn on_set(window_weak: Weak<TmdApp>, value: f32) -> Result<(), StoreHandlerErr> {
         set_ui_state(window_weak, move |tmd_app| {
             let home_store = tmd_app.global::<HomeSlintStore>();
 
@@ -21,7 +21,7 @@ impl StoreHandlerTrait<f32> for TemperatureHandler {
         Ok(())
     }
 
-    fn on_get(window_weak: &Weak<TmdApp>) -> Result<f32, StoreHandlerErr> {
+    fn on_get(window_weak: Weak<TmdApp>) -> Result<f32, StoreHandlerErr> {
         get_ui_state(window_weak, |tmd_app| {
             let home_store = tmd_app.global::<HomeSlintStore>();
             home_store.get_temperature()

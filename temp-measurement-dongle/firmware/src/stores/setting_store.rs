@@ -13,15 +13,12 @@ use unit_temperature_handler::UnitTemperatureHandler;
 #[derive(Default)]
 pub struct SettingStore {
     temperature_unit: Effect<Units, UnitTemperatureHandler>,
-
-    app_weak: Weak<TmdApp>,
 }
 
 impl SettingStore {
     pub fn new(app_weak: Weak<TmdApp>) -> Self {
         Self {
-            temperature_unit: Default::default(),
-            app_weak,
+            temperature_unit: Effect::new(app_weak),
         }
     }
 }
@@ -42,17 +39,17 @@ impl HandleOnKeyEventTrait for SettingStore {
                 match selected_unit {
                     Units::Celcius => self
                         .temperature_unit
-                        .set(&self.app_weak, Units::Reamur)
+                        .set(Units::Reamur)
                         .expect("setting_store, fail to get unit"),
 
                     Units::Reamur => self
                         .temperature_unit
-                        .set(&self.app_weak, Units::Fahrenheit)
+                        .set(Units::Fahrenheit)
                         .expect("setting_store, fail to get unit"),
 
                     Units::Fahrenheit => self
                         .temperature_unit
-                        .set(&self.app_weak, Units::Celcius)
+                        .set(Units::Celcius)
                         .expect("setting_store, fail to get unit"),
                 };
             }
@@ -66,17 +63,17 @@ impl HandleOnKeyEventTrait for SettingStore {
                 match selected_unit {
                     Units::Celcius => self
                         .temperature_unit
-                        .set(&self.app_weak, Units::Fahrenheit)
+                        .set(Units::Fahrenheit)
                         .expect("setting_store, fail to get unit"),
 
                     Units::Reamur => self
                         .temperature_unit
-                        .set(&self.app_weak, Units::Celcius)
+                        .set(Units::Celcius)
                         .expect("setting_store, fail to get unit"),
 
                     Units::Fahrenheit => self
                         .temperature_unit
-                        .set(&self.app_weak, Units::Reamur)
+                        .set(Units::Reamur)
                         .expect("setting_store, fail to get unit"),
                 };
             }

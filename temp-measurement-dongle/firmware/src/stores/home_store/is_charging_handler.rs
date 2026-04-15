@@ -10,7 +10,7 @@ use tmd_ui::{HomeSlintStore, TmdApp};
 pub struct IsChargingHandler;
 
 impl StoreHandlerTrait<bool> for IsChargingHandler {
-    fn on_set(window_weak: &Weak<TmdApp>, value: bool) -> Result<(), StoreHandlerErr> {
+    fn on_set(window_weak: Weak<TmdApp>, value: bool) -> Result<(), StoreHandlerErr> {
         set_ui_state(window_weak, move |tmd_app| {
             let home_store = tmd_app.global::<HomeSlintStore>();
             home_store.set_isCharging(value);
@@ -20,7 +20,7 @@ impl StoreHandlerTrait<bool> for IsChargingHandler {
         Ok(())
     }
 
-    fn on_get(window_weak: &Weak<TmdApp>) -> Result<bool, StoreHandlerErr> {
+    fn on_get(window_weak: Weak<TmdApp>) -> Result<bool, StoreHandlerErr> {
         get_ui_state(window_weak, |tmd_app| {
             let home_store = tmd_app.global::<HomeSlintStore>();
             home_store.get_isCharging()

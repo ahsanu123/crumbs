@@ -13,15 +13,12 @@ use tmd_ui::TmdApp;
 #[derive(Default)]
 pub struct BleOptionStore {
     is_ble_on: Effect<bool, IsBleOnHandler>,
-
-    app_weak: Weak<TmdApp>,
 }
 
 impl BleOptionStore {
     pub fn new(app_weak: Weak<TmdApp>) -> Self {
         Self {
-            is_ble_on: Default::default(),
-            app_weak,
+            is_ble_on: Effect::new(app_weak),
         }
     }
 
@@ -35,7 +32,7 @@ impl BleOptionStore {
 
     pub fn set_ble_is_on(&mut self, is_ble_on: bool) {
         self.is_ble_on
-            .set(&self.app_weak, is_ble_on)
+            .set(is_ble_on)
             .expect("BleOptionStore, fail to set ble_is_on");
     }
 }

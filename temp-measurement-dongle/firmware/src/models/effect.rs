@@ -11,9 +11,9 @@ pub enum StoreHandlerErr {
 }
 
 pub trait StoreHandlerTrait<T> {
-    fn on_set(window_weak: &slint::Weak<TmdApp>, value: T) -> Result<(), StoreHandlerErr>;
+    fn on_set(window_weak: Weak<TmdApp>, value: T) -> Result<(), StoreHandlerErr>;
 
-    fn on_get(window_weak: &slint::Weak<TmdApp>) -> Result<T, StoreHandlerErr>;
+    fn on_get(window_weak: Weak<TmdApp>) -> Result<T, StoreHandlerErr>;
 }
 
 #[derive(Default)]
@@ -23,27 +23,35 @@ where
     H: StoreHandlerTrait<T>,
 {
     value: T,
+    app_weak: Weak<TmdApp>,
 
     _handler: PhantomData<H>,
 }
 
 impl<T, H> Effect<T, H>
 where
-    T: Clone,
+    T: Clone + Default,
     H: StoreHandlerTrait<T>,
 {
-    pub fn set(&mut self, window_weak: &Weak<TmdApp>, value: T) -> Result<(), StoreHandlerErr> {
+    pub fn new(app_weak: Weak<TmdApp>) -> Self {
+        Self {
+            app_weak,
+            value: Default::default(),
+
+            _handler: PhantomData,
+        }
+    }
+
+    pub fn set(&mut self, value: T) -> Result<(), StoreHandlerErr> {
         self.value = value.clone();
-        H::on_set(window_weak, value)?;
+        H::on_set(self.app_weak.clone(), value)?;
 
         Ok(())
     }
 
     pub fn get(&mut self, window_weak: &Weak<TmdApp>) -> Result<T, StoreHandlerErr> {
-        let value = H::on_get(window_weak)?;
+        let value = H::on_get(window_weak.clone())?;
         Ok(value)
-
-        // Ok(self.value.clone())
     }
 
     pub fn get_internal_val(&self) -> Result<T, StoreHandlerErr> {
@@ -56,7 +64,7 @@ where
     T: Clone + GetIdTrait,
     H: StoreHandlerTrait<Vec<T>>,
 {
-    pub fn insert(&mut self, window_weak: &Weak<TmdApp>, value: T) -> Result<(), StoreHandlerErr> {
+    pub fn insert(&mut self, value: T) -> Result<(), StoreHandlerErr> {
         let target_id = value.get_id();
 
         if let Some(existing_value) = self.value.iter_mut().find(|v| v.get_id() == target_id) {
@@ -65,7 +73,7 @@ where
             self.value.push(value);
         }
 
-        H::on_set(window_weak, self.value.clone())?;
+        H::on_set(self.app_weak.clone(), self.value.clone())?;
 
         Ok(())
     }

@@ -9,15 +9,12 @@ use tmd_ui::TmdApp;
 #[derive(Default)]
 pub struct GlobalStore {
     pub selected_tab: Effect<Tabs, SelectedTabHandler>,
-
-    app_weak: Weak<TmdApp>,
 }
 
 impl GlobalStore {
     pub fn new(app_weak: Weak<TmdApp>) -> Self {
         Self {
-            app_weak,
-            selected_tab: Default::default(),
+            selected_tab: Effect::new(app_weak),
         }
     }
 
@@ -30,17 +27,17 @@ impl GlobalStore {
         match selected_tab {
             Tabs::Home => {
                 self.selected_tab
-                    .set(&self.app_weak, Tabs::Unit)
+                    .set(Tabs::Unit)
                     .expect("global_store, fail to get selected_tab");
             }
             Tabs::Bluetooth => {
                 self.selected_tab
-                    .set(&self.app_weak, Tabs::Home)
+                    .set(Tabs::Home)
                     .expect("global_store, fail to get selected_tab");
             }
             Tabs::Unit => {
                 self.selected_tab
-                    .set(&self.app_weak, Tabs::Bluetooth)
+                    .set(Tabs::Bluetooth)
                     .expect("global_store, fail to get selected_tab");
             }
         }
@@ -54,17 +51,17 @@ impl GlobalStore {
         match selected_tab {
             Tabs::Home => {
                 self.selected_tab
-                    .set(&self.app_weak, Tabs::Bluetooth)
+                    .set(Tabs::Bluetooth)
                     .expect("global_store, fail to get selected_tab");
             }
             Tabs::Bluetooth => {
                 self.selected_tab
-                    .set(&self.app_weak, Tabs::Unit)
+                    .set(Tabs::Unit)
                     .expect("global_store, fail to get selected_tab");
             }
             Tabs::Unit => {
                 self.selected_tab
-                    .set(&self.app_weak, Tabs::Home)
+                    .set(Tabs::Home)
                     .expect("global_store, fail to get selected_tab");
             }
         }
@@ -83,19 +80,19 @@ pub async fn handle_on_global_key_up(global_store: &mut GlobalStore) {
         Tabs::Home => {
             global_store
                 .selected_tab
-                .set(&global_store.app_weak, Tabs::Unit)
+                .set(Tabs::Unit)
                 .expect("global_store, fail to get selected_tab");
         }
         Tabs::Bluetooth => {
             global_store
                 .selected_tab
-                .set(&global_store.app_weak, Tabs::Home)
+                .set(Tabs::Home)
                 .expect("global_store, fail to get selected_tab");
         }
         Tabs::Unit => {
             global_store
                 .selected_tab
-                .set(&global_store.app_weak, Tabs::Bluetooth)
+                .set(Tabs::Bluetooth)
                 .expect("global_store, fail to get selected_tab");
         }
     }
@@ -113,19 +110,19 @@ pub fn handle_on_global_key_down(global_store: &mut GlobalStore) {
         Tabs::Home => {
             global_store
                 .selected_tab
-                .set(&global_store.app_weak, Tabs::Bluetooth)
+                .set(Tabs::Bluetooth)
                 .expect("global_store, fail to get selected_tab");
         }
         Tabs::Bluetooth => {
             global_store
                 .selected_tab
-                .set(&global_store.app_weak, Tabs::Unit)
+                .set(Tabs::Unit)
                 .expect("global_store, fail to get selected_tab");
         }
         Tabs::Unit => {
             global_store
                 .selected_tab
-                .set(&global_store.app_weak, Tabs::Home)
+                .set(Tabs::Home)
                 .expect("global_store, fail to get selected_tab");
         }
     }

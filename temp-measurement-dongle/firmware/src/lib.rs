@@ -57,7 +57,7 @@ pub static BLE_OPERATION_PUBSUB: PubSubChannel<
     BLE_OP_PUBSUB_PUBLISHER_CAPACITY,
 > = PubSubChannel::new();
 
-pub fn set_ui_state<F>(app_weak: &Weak<TmdApp>, setter_fn: F) -> Result<(), EventLoopError>
+pub fn set_ui_state<F>(app_weak: Weak<TmdApp>, setter_fn: F) -> Result<(), EventLoopError>
 where
     F: FnOnce(TmdApp) + Send + 'static,
 {
@@ -69,7 +69,7 @@ where
     }
 }
 
-pub fn get_ui_state<F, T>(app_weak: &Weak<TmdApp>, getter_fn: F) -> Result<T, EventLoopError>
+pub fn get_ui_state<F, T>(app_weak: Weak<TmdApp>, getter_fn: F) -> Result<T, EventLoopError>
 where
     F: FnOnce(TmdApp) -> T + Send + 'static,
 {
