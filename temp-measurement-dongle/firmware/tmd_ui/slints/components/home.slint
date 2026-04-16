@@ -26,6 +26,8 @@ export component Home inherits MainContent {
     }
 
     HorizontalLayout {
+        transform-scale: 50%;
+        transform-origin: { x:110px, y:10px };
         padding-bottom: 10px;
         alignment: end;
         MaterialText {
@@ -41,13 +43,13 @@ export component Home inherits MainContent {
 
     VerticalLayout {
         alignment: center;
-        width: 220px;
+        width: 120px;
 
         HorizontalLayout {
-            alignment: start;
+            alignment: center;
             MaterialText {
                 text: HomeSlintStore.temperature + getUnit();
-                style: MaterialTypography.title_2xl_bold;
+                style: MaterialTypography.title_large;
             }
         }
     }

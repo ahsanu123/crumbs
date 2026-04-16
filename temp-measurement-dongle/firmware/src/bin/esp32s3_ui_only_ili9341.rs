@@ -27,6 +27,7 @@ use esp_hal::spi::master::Config;
 use esp_hal::spi::master::Spi;
 use esp_hal::time::Rate;
 use esp_hal::timer::timg::TimerGroup;
+use mipidsi::models::ILI9341Rgb565;
 use mipidsi::options::{ColorOrder, Orientation, Rotation};
 use slint::ComponentHandle;
 use slint::platform::Key;
@@ -48,8 +49,8 @@ const MY_TASK_POOL_SIZE: usize = 2;
 
 static INTERFACE_BUFFER: StaticCell<[u8; 312]> = StaticCell::new();
 
-static DISPLAY_HEIGHT: usize = 128;
-static DISPLAY_WIDTH: usize = 160;
+static DISPLAY_HEIGHT: usize = 320;
+static DISPLAY_WIDTH: usize = 240;
 
 #[derive(Clone)]
 pub enum KeyEvent {
@@ -109,8 +110,10 @@ async fn main(spawner: Spawner) {
     let spi_bus = Spi::new(
         peripherals.SPI2,
         Config::default()
+            // sadly rotation and flip_vertical is not working with mode 3
+            // only work with mode 0
             .with_frequency(Rate::from_mhz(60))
-            .with_mode(Mode::_1),
+            .with_mode(Mode::_0),
     )
     .unwrap()
     .with_sck(scl_sck)
@@ -126,16 +129,15 @@ async fn main(spawner: Spawner) {
 
     let di = mipidsi::interface::SpiInterface::new(spi_device, lcd_dc, interface_buffer);
 
-    let st7735 = mipidsi::Builder::new(tmd::display_models::st7735s_modified::ST7735s, di)
+    let ili9341 = mipidsi::Builder::new(ILI9341Rgb565, di)
         .display_size(DISPLAY_WIDTH as u16, DISPLAY_HEIGHT as u16)
-        .orientation(Orientation::new().rotate(Rotation::Deg270))
-        .color_order(ColorOrder::Rgb)
-        .display_offset(0, 120)
+        .orientation(Orientation::new().rotate(Rotation::Deg270).flip_vertical())
+        .color_order(ColorOrder::Bgr)
         .reset_pin(lcd_rst)
         .init(&mut delay)
-        .expect("fail to build display st7735s");
+        .expect("fail to build display ili9341");
 
-    let mut draw_buffer = DrawBuffer::new(st7735);
+    let mut draw_buffer = DrawBuffer::new(ili9341);
 
     let window = MinimalSoftwareWindow::new(RepaintBufferType::ReusedBuffer);
     window.set_size(slint::PhysicalSize::new(

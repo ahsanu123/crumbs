@@ -14,6 +14,6 @@ pub async fn max31865_task(mut max31865_dev: Max31865Type) {
             .publish(MediatorEvent::Max31865(temperature))
             .await;
 
-        Timer::after_secs(1).await;
+        Timer::after_millis(100).await;
     }
 }

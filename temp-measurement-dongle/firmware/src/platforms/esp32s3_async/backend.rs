@@ -10,9 +10,6 @@ use slint::{
     },
 };
 
-pub const DISPLAY_WIDTH: usize = 320;
-pub const DISPLAY_HEIGHT: usize = 172;
-
 pub type TargetPixelType = software_renderer::Rgb565Pixel;
 
 pub struct Esp32AsyncBackend {

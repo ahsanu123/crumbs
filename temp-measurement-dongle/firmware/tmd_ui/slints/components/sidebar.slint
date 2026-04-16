@@ -25,6 +25,8 @@ export component Sidebar inherits VerticalLayout {
     }
 
     HorizontalLayout {
+        transform-scale: 50%;
+        transform-origin: { x: 0px, y:60px };
         NavigationRail {
             current_index: getIndex();
             alignment: start;
