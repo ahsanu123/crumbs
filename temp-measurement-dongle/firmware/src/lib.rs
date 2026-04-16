@@ -30,8 +30,8 @@ pub static SETTING_STORE: StaticCell<SettingStore> = StaticCell::new();
 
 pub static LCD_DEV_INTERFACE_BUFFER: StaticCell<[u8; 312]> = StaticCell::new();
 
-pub static DISPLAY_HEIGHT: usize = 172;
-pub static DISPLAY_WIDTH: usize = 320;
+pub static DISPLAY_HEIGHT: usize = 128;
+pub static DISPLAY_WIDTH: usize = 160;
 
 const MEDIATOR_PUBSUB_BUFFER_CAPACITY: usize = 4;
 const MEDIATOR_PUBSUB_SUBSCRIBER_CAPACITY: usize = 2;

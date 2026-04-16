@@ -1,4 +1,4 @@
-use crate::display_models::st7789_modified::ST7789;
+use crate::display_models::st7735s_modified::ST7735s;
 use crate::platforms::esp32s3_async::draw_buffer::DrawBuffer;
 use crate::{DISPLAY_HEIGHT, DISPLAY_WIDTH, LCD_DEV_INTERFACE_BUFFER};
 use core::cell::RefCell;
@@ -30,7 +30,7 @@ pub type DrawBufferType = DrawBuffer<
             CriticalSectionDevice<'static, SpiDmaBus<'static, Blocking>, Output<'static>, Delay>,
             Output<'static>,
         >,
-        ST7789,
+        ST7735s,
         Output<'static>,
     >,
 >;
@@ -101,9 +101,8 @@ pub fn init_devices(
     let spi_bus = Spi::new(
         peripherals.SPI2,
         Config::default()
-            .with_frequency(Rate::from_mhz(60))
-            .with_mode(Mode::_0),
-        // .with_mode(Mode::_1),
+            .with_frequency(Rate::from_mhz(5))
+            .with_mode(Mode::_1),
     )
     .unwrap()
     .with_sck(scl_sck)
@@ -122,17 +121,16 @@ pub fn init_devices(
     let di =
         mipidsi::interface::SpiInterface::new(lcd_spi_device, lcd_dc, lcd_dev_interface_buffer);
 
-    let st7789 = mipidsi::Builder::new(crate::display_models::st7789_modified::ST7789, di)
+    let st7735 = mipidsi::Builder::new(crate::display_models::st7735s_modified::ST7735s, di)
         .display_size(DISPLAY_WIDTH as u16, DISPLAY_HEIGHT as u16)
         .orientation(Orientation::new().rotate(Rotation::Deg270))
         .color_order(ColorOrder::Rgb)
-        .display_offset(34, 340)
-        .invert_colors(mipidsi::options::ColorInversion::Inverted)
+        .display_offset(0, 120)
         .reset_pin(lcd_rst)
         .init(&mut delay)
-        .expect("fail to build display st7789");
+        .expect("fail to build display st7735s");
 
-    let draw_buffer = DrawBuffer::new(st7789);
+    let draw_buffer = DrawBuffer::new(st7735);
 
     let max31865_spi_device =
         CriticalSectionDevice::new(mutex_refcell_bus, max31865_cs, delay).unwrap();
