@@ -27,15 +27,23 @@ export component Home inherits MainContent {
         }
     }
 
-    HorizontalLayout {
-        padding-bottom: 10px;
-        alignment: end;
-        MaterialText {
-            text: HomeSlintStore.isCharging ? "Charging..." : "Not Charging";
-        }
+    Rectangle {
+        background: @linear-gradient(90deg, #1E4A59 0%, #135D6E 60%, #127FA3 100%);
+        HorizontalLayout {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 5px;
+            alignment: start;
+            Icon {
+                source: HomeSlintStore.isCharging ? Icons.battery_charging : Icons.battery;
+                colorize: white;
+            }
 
-        Icon {
-            source: HomeSlintStore.isCharging ? Icons.battery_charging : Icons.battery;
+            MaterialText {
+                font-weight: 1000;
+                text: HomeSlintStore.isCharging ? "Charging..." : "Not Charging";
+                color: white;
+            }
         }
     }
 
@@ -51,14 +59,6 @@ export component Home inherits MainContent {
                 text: HomeSlintStore.temperature + getUnit();
                 font-size: 30px;
             }
-        }
-    }
-
-    HorizontalLayout {
-        alignment: end;
-        BadgeWithColor {
-            text: "Home";
-            bgColor: blue;
         }
     }
 }

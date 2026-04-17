@@ -53,20 +53,41 @@ export component UnitSetting inherits MainContent {
         }
     }
 
+    function getBgColor() -> brush {
+        if SettingStoreSlint.selectedUnit == Units.Celcius {
+            return @linear-gradient(90deg, #591E35 0%, #6E1342 60%, #A3127F 100%);
+        } else if SettingStoreSlint.selectedUnit == Units.Reamur {
+            return @linear-gradient(90deg, #59361E 0%, #6E4B13 60%, #BAAC0B 100%);
+        } else {
+            return @linear-gradient(90deg, #1E5920 0%, #136E21 60%, #25BA0B 100%);
+        }
+    }
+
+    Rectangle {
+        background: @linear-gradient(90deg, #1E4A59 0%, #135D6E 60%, #127FA3 100%);
+        HorizontalLayout {
+            padding-bottom: 10px;
+            padding-left: 5px;
+            padding-top: 10px;
+            alignment: start;
+
+            Icon {
+                source: Icons.scale;
+                colorize: white;
+            }
+
+            MaterialText {
+                text: " Selected Unit";
+                color: white;
+            }
+        }
+    }
+
+    HorizontalDivider { }
+
     VerticalLayout {
         width: 160px;
         alignment: center;
-
-        HorizontalLayout {
-            padding-top: -10px;
-            alignment: center;
-            MaterialText {
-                text: "Selected Unit";
-                style: MaterialTypography.title_medium;
-            }
-        }
-
-        HorizontalDivider { }
 
         VerticalLayout {
             padding-top: 10px;
@@ -86,16 +107,18 @@ export component UnitSetting inherits MainContent {
                 }
             }
 
-            VerticalLayout {
-                alignment: center;
-
-                HorizontalLayout {
+            Rectangle {
+                background: getBgColor();
+                VerticalLayout {
                     alignment: center;
-                    padding-top: 10px;
-                    padding-bottom: 10px;
-                    MaterialText {
-                        text: getUnit();
-                        style: MaterialTypography.title_large_bold;
+
+                    HorizontalLayout {
+                        alignment: center;
+                        MaterialText {
+                            text: getUnit();
+                            style: MaterialTypography.title_large_bold;
+                            color: white;
+                        }
                     }
                 }
             }

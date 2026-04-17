@@ -17,19 +17,31 @@ import { SettingStoreSlint } from "../stores/setting_store.slint";
 import { Units } from "../models/enum_unit.slint";
 
 export component BleOption inherits MainContent {
+    Rectangle {
+        background: @linear-gradient(90deg, #1E4A59 0%, #135D6E 60%, #127FA3 100%);
+        HorizontalLayout {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 5px;
+            alignment: start;
+
+            Icon {
+                source: Icons.bluetooth;
+                colorize: white;
+            }
+
+            MaterialText {
+                text: "BLE Setting";
+                color: white;
+            }
+        }
+    }
+
+    HorizontalDivider { }
 
     VerticalLayout {
         width: 160px;
         alignment: center;
-
-        HorizontalLayout {
-            alignment: center;
-            padding-bottom: 20px;
-            MaterialText {
-                text: "BLE Setting";
-                style: MaterialTypography.title_medium;
-            }
-        }
 
         HorizontalLayout {
             VerticalLayout {
@@ -52,7 +64,7 @@ export component BleOption inherits MainContent {
                 HorizontalLayout {
                     alignment: center;
                     MaterialText {
-                        text: BleOptionSlintStore.isBleOn ? "Ble Is On" : "Ble Is Off";
+                        text: BleOptionSlintStore.isBleOn ? "BLE Is On" : "BLE Is Off";
                     }
                 }
             }
