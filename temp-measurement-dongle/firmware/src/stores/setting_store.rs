@@ -21,6 +21,12 @@ impl SettingStore {
             temperature_unit: Effect::new(app_weak),
         }
     }
+
+    pub fn get_unit(&self) -> Units {
+        self.temperature_unit
+            .get_internal_val()
+            .expect("setting_store, fail to get temperature_unit internal value")
+    }
 }
 
 impl HandleOnKeyEventTrait for SettingStore {
@@ -30,7 +36,7 @@ impl HandleOnKeyEventTrait for SettingStore {
 
             KeyEvent::Down => info!("SettingStore, got down key already handle by global_store"),
 
-            KeyEvent::Left => {
+            KeyEvent::Right => {
                 let selected_unit = self
                     .temperature_unit
                     .get_internal_val()
@@ -54,7 +60,7 @@ impl HandleOnKeyEventTrait for SettingStore {
                 };
             }
 
-            KeyEvent::Right => {
+            KeyEvent::Left => {
                 let selected_unit = self
                     .temperature_unit
                     .get_internal_val()

@@ -20,11 +20,8 @@ import { Units } from "../models/enum_unit.slint";
 import {
     Badge,
 } from "../../../../../material-ui-slint/ui/components/badge.slint";
-import { GlobalStore } from "../stores/global_store.slint";
-import { Tabs } from "../models/enum_tabs.slint";
 
 export component UnitSetting inherits MainContent {
-    visible: GlobalStore.activeTab == Tabs.Unit;
 
     function getUnit() -> string {
         if SettingStoreSlint.selectedUnit == Units.Celcius {

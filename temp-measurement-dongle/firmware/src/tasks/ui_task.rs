@@ -62,7 +62,9 @@ pub async fn ui_task(mut draw_buffer: DrawBufferType, mut lcd_blk: Output<'stati
             WaitResult::Message(message) => match message {
                 MediatorEvent::IsCharging(is_charging) => home_store.set_is_charging(is_charging),
 
-                MediatorEvent::Max31865(temperature) => home_store.set_temperature(temperature),
+                MediatorEvent::Max31865(temperature) => {
+                    home_store.set_temperature(temperature, setting_store.get_unit())
+                }
 
                 MediatorEvent::BleOption(is_ble_on) => ble_option_store.set_ble_is_on(is_ble_on),
 
@@ -71,20 +73,12 @@ pub async fn ui_task(mut draw_buffer: DrawBufferType, mut lcd_blk: Output<'stati
 
                     KeyEvent::Down => global_store.on_global_key_down(),
 
-                    // FIXME: think better approach
-                    KeyEvent::Right => match selected_tab {
-                        Tabs::Home => home_store.on_key_event(key_event),
+                    left_or_right => match selected_tab {
+                        Tabs::Home => home_store.on_key_event(left_or_right),
 
-                        Tabs::Bluetooth => ble_option_store.on_key_event(key_event),
+                        Tabs::Bluetooth => ble_option_store.on_key_event(left_or_right),
 
-                        Tabs::Unit => setting_store.on_key_event(key_event),
-                    },
-                    KeyEvent::Left => match selected_tab {
-                        Tabs::Home => home_store.on_key_event(key_event),
-
-                        Tabs::Bluetooth => ble_option_store.on_key_event(key_event),
-
-                        Tabs::Unit => setting_store.on_key_event(key_event),
+                        Tabs::Unit => setting_store.on_key_event(left_or_right),
                     },
                 },
             },

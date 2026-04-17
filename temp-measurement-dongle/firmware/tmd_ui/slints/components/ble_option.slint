@@ -15,11 +15,8 @@ import {
 } from  "../../../../../material-ui-slint/material.slint";
 import { SettingStoreSlint } from "../stores/setting_store.slint";
 import { Units } from "../models/enum_unit.slint";
-import { GlobalStore } from "../stores/global_store.slint";
-import { Tabs } from "../models/enum_tabs.slint";
 
 export component BleOption inherits MainContent {
-    visible: GlobalStore.activeTab == Tabs.Ble;
 
     VerticalLayout {
         width: 160px;

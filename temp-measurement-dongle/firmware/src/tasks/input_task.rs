@@ -19,30 +19,40 @@ pub async fn input_task(
 
     loop {
         let event = select5(
-            key_up.wait_for_falling_edge(),
-            key_right.wait_for_falling_edge(),
-            key_down.wait_for_falling_edge(),
-            key_left.wait_for_falling_edge(),
+            key_up.wait_for_any_edge(),
+            key_right.wait_for_any_edge(),
+            key_down.wait_for_any_edge(),
+            key_left.wait_for_any_edge(),
             input_is_charging.wait_for_any_edge(),
         )
         .await;
 
         match event {
-            Either5::First(_) => mediator_pub.publish(MediatorEvent::Key(KeyEvent::Up)).await,
+            Either5::First(_) => {
+                if key_up.is_low() {
+                    mediator_pub.publish(MediatorEvent::Key(KeyEvent::Up)).await;
+                }
+            }
             Either5::Second(_) => {
-                mediator_pub
-                    .publish(MediatorEvent::Key(KeyEvent::Right))
-                    .await
+                if key_right.is_low() {
+                    mediator_pub
+                        .publish(MediatorEvent::Key(KeyEvent::Right))
+                        .await
+                }
             }
             Either5::Third(_) => {
-                mediator_pub
-                    .publish(MediatorEvent::Key(KeyEvent::Down))
-                    .await
+                if key_down.is_low() {
+                    mediator_pub
+                        .publish(MediatorEvent::Key(KeyEvent::Down))
+                        .await
+                }
             }
             Either5::Fourth(_) => {
-                mediator_pub
-                    .publish(MediatorEvent::Key(KeyEvent::Left))
-                    .await
+                if key_left.is_low() {
+                    mediator_pub
+                        .publish(MediatorEvent::Key(KeyEvent::Left))
+                        .await
+                }
             }
 
             Either5::Fifth(_) => {

@@ -1,5 +1,5 @@
 use crate::{
-    models::{effect::Effect, key_event::KeyEvent},
+    models::{effect::Effect, enums::Units, key_event::KeyEvent},
     stores::HandleOnKeyEventTrait,
 };
 mod is_charging_handler;
@@ -25,7 +25,13 @@ impl HomeStore {
         }
     }
 
-    pub fn set_temperature(&mut self, temp: f32) {
+    pub fn set_temperature(&mut self, temp: f32, unit: Units) {
+        let temp = match unit {
+            Units::Celcius => temp,
+            Units::Reamur => temp * (4.0 / 5.0),
+            Units::Fahrenheit => (temp * (9.0 / 5.0)) + 32.0,
+        };
+
         self.temperature
             .set(temp)
             .expect("HomeStore, fail to set temperature");
@@ -39,15 +45,7 @@ impl HomeStore {
 }
 
 impl HandleOnKeyEventTrait for HomeStore {
-    fn on_key_event(&mut self, key: KeyEvent) {
-        match key {
-            KeyEvent::Up => info!("HomeStore, got up event, nothing todo"),
-
-            KeyEvent::Down => info!("HomeStore, got down event, nothing todo"),
-
-            KeyEvent::Right => info!("HomeStore, got right event, nothing todo"),
-
-            KeyEvent::Left => info!("HomeStore, got left event, nothing todo"),
-        }
+    fn on_key_event(&mut self, _key: KeyEvent) {
+        info!("HomeStore, got key event, nothing todo");
     }
 }
