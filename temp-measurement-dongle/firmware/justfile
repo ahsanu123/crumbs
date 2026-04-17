@@ -1,5 +1,8 @@
 bble binName:
   cargo build --bin {{binName}} --features ble
 
+rrel:
+  DEFMT_LOG=warn cargo run --bin tmd --release
+
 bins:
   cargo build --bin

@@ -18,7 +18,7 @@ impl GlobalStore {
         }
     }
 
-    pub fn on_global_key_up(&mut self) {
+    pub fn on_global_key_down(&mut self) {
         let selected_tab = self
             .selected_tab
             .get_internal_val()
@@ -42,7 +42,7 @@ impl GlobalStore {
             }
         }
     }
-    pub fn on_global_key_down(&mut self) {
+    pub fn on_global_key_up(&mut self) {
         let selected_tab = self
             .selected_tab
             .get_internal_val()

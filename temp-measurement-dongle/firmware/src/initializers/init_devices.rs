@@ -123,9 +123,9 @@ pub fn init_devices(
 
     let st7735 = mipidsi::Builder::new(crate::display_models::st7735s_modified::ST7735s, di)
         .display_size(DISPLAY_WIDTH as u16, DISPLAY_HEIGHT as u16)
-        .orientation(Orientation::new().rotate(Rotation::Deg270))
+        .orientation(Orientation::new().rotate(Rotation::Deg90))
         .color_order(ColorOrder::Rgb)
-        .display_offset(0, 120)
+        .display_offset(84, 0)
         .reset_pin(lcd_rst)
         .init(&mut delay)
         .expect("fail to build display st7735s");

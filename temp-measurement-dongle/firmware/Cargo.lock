@@ -5988,6 +5988,7 @@ dependencies = [
  "heapless 0.9.2",
  "max31865",
  "mipidsi",
+ "num-traits",
  "rand_core 0.6.4",
  "sequential-storage",
  "serde",

@@ -30,7 +30,7 @@ impl HandleOnKeyEventTrait for SettingStore {
 
             KeyEvent::Down => info!("SettingStore, got down key already handle by global_store"),
 
-            KeyEvent::Right => {
+            KeyEvent::Left => {
                 let selected_unit = self
                     .temperature_unit
                     .get_internal_val()
@@ -54,7 +54,7 @@ impl HandleOnKeyEventTrait for SettingStore {
                 };
             }
 
-            KeyEvent::Left => {
+            KeyEvent::Right => {
                 let selected_unit = self
                     .temperature_unit
                     .get_internal_val()

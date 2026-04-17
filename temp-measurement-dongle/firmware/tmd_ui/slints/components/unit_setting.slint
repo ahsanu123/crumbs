@@ -13,14 +13,18 @@ import {
     HorizontalDivider,
     FilledButton,
     IconButton,
+    BadgeWithColor,
 } from  "../../../../../material-ui-slint/material.slint";
 import { SettingStoreSlint } from "../stores/setting_store.slint";
 import { Units } from "../models/enum_unit.slint";
 import {
     Badge,
 } from "../../../../../material-ui-slint/ui/components/badge.slint";
+import { GlobalStore } from "../stores/global_store.slint";
+import { Tabs } from "../models/enum_tabs.slint";
 
 export component UnitSetting inherits MainContent {
+    visible: GlobalStore.activeTab == Tabs.Unit;
 
     function getUnit() -> string {
         if SettingStoreSlint.selectedUnit == Units.Celcius {
@@ -53,46 +57,64 @@ export component UnitSetting inherits MainContent {
     }
 
     VerticalLayout {
-        width: 200px;
+        width: 160px;
         alignment: center;
 
         HorizontalLayout {
+            padding-top: -10px;
             alignment: center;
-            padding-bottom: 20px;
             MaterialText {
                 text: "Selected Unit";
-                style: MaterialTypography.title_large_bold;
+                style: MaterialTypography.title_medium;
             }
         }
 
-        HorizontalLayout {
-            VerticalLayout {
+        HorizontalDivider { }
+
+        VerticalLayout {
+            padding-top: 10px;
+
+            HorizontalLayout {
                 IconButton {
+                    inline: true;
                     icon: Icons.arrow_left;
                 }
 
                 HorizontalLayout {
                     alignment: center;
-                    Badge {
+                    MaterialText {
                         text: getPrevUnit();
+                        style: MaterialTypography.label_small;
                     }
                 }
-            }
-
-            FilledButton {
-                text: getUnit();
             }
 
             VerticalLayout {
-                IconButton {
-                    icon: Icons.arrow_right;
-                }
+                alignment: center;
 
                 HorizontalLayout {
                     alignment: center;
-                    Badge {
-                        text: getNextUnit();
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    MaterialText {
+                        text: getUnit();
+                        style: MaterialTypography.title_large_bold;
                     }
+                }
+            }
+
+            HorizontalLayout {
+                HorizontalLayout {
+                    alignment: center;
+                    MaterialText {
+                        text: getNextUnit();
+                        style: MaterialTypography.label_small;
+                    }
+                }
+
+                IconButton {
+                    inline: true;
+                    icon: Icons.arrow_right;
                 }
             }
         }

@@ -9,11 +9,17 @@ import {
 import {
     MaterialTypography,
     HorizontalDivider,
+    Badge,
+    BadgeWithColor,
 } from  "../../../../../material-ui-slint/material.slint";
 import { SettingStoreSlint } from "../stores/setting_store.slint";
 import { Units } from "../models/enum_unit.slint";
+import { GlobalStore } from "../stores/global_store.slint";
+import { Tabs } from "../models/enum_tabs.slint";
 
 export component Home inherits MainContent {
+
+    visible: GlobalStore.activeTab == Tabs.Home;
 
     function getUnit() -> string {
         if SettingStoreSlint.selectedUnit == Units.Celcius {
@@ -26,8 +32,6 @@ export component Home inherits MainContent {
     }
 
     HorizontalLayout {
-        transform-scale: 50%;
-        transform-origin: { x:110px, y:10px };
         padding-bottom: 10px;
         alignment: end;
         MaterialText {
@@ -43,14 +47,22 @@ export component Home inherits MainContent {
 
     VerticalLayout {
         alignment: center;
-        width: 120px;
+        width: 160px;
 
         HorizontalLayout {
             alignment: center;
             MaterialText {
                 text: HomeSlintStore.temperature + getUnit();
-                style: MaterialTypography.title_large;
+                font-size: 30px;
             }
+        }
+    }
+
+    HorizontalLayout {
+        alignment: end;
+        BadgeWithColor {
+            text: "Home";
+            bgColor: blue;
         }
     }
 }

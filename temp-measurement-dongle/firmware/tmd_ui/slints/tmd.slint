@@ -1,5 +1,4 @@
 import { Sidebar } from "components/sidebar.slint";
-import { GlobalStore } from "./stores/global_store.slint";
 import { Tabs } from "./models/enum_tabs.slint";
 import { Home } from "components/home.slint";
 import { UnitSetting } from "components/unit_setting.slint";
@@ -23,8 +22,6 @@ export component TmdApp inherits Window {
 
     HorizontalLayout {
         alignment: start;
-
-        Sidebar { }
 
         if GlobalStore.activeTab == Tabs.Home: Home { }
 

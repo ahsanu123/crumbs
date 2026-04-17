@@ -15,18 +15,22 @@ import {
 } from  "../../../../../material-ui-slint/material.slint";
 import { SettingStoreSlint } from "../stores/setting_store.slint";
 import { Units } from "../models/enum_unit.slint";
+import { GlobalStore } from "../stores/global_store.slint";
+import { Tabs } from "../models/enum_tabs.slint";
 
 export component BleOption inherits MainContent {
+    visible: GlobalStore.activeTab == Tabs.Ble;
+
     VerticalLayout {
-        width: 200px;
+        width: 160px;
         alignment: center;
 
         HorizontalLayout {
             alignment: center;
             padding-bottom: 20px;
             MaterialText {
-                text: "Bluetooth State";
-                style: MaterialTypography.title_large_bold;
+                text: "BLE Setting";
+                style: MaterialTypography.title_medium;
             }
         }
 
@@ -34,6 +38,7 @@ export component BleOption inherits MainContent {
             VerticalLayout {
                 IconButton {
                     icon: Icons.arrow_left;
+                    inline: true;
                 }
 
                 HorizontalLayout {
@@ -44,12 +49,20 @@ export component BleOption inherits MainContent {
                 }
             }
 
-            FilledButton {
-                text: BleOptionSlintStore.isBleOn ? "Ble Is On" : "Ble Is Off";
+            VerticalLayout {
+                alignment: center;
+
+                HorizontalLayout {
+                    alignment: center;
+                    MaterialText {
+                        text: BleOptionSlintStore.isBleOn ? "Ble Is On" : "Ble Is Off";
+                    }
+                }
             }
 
             VerticalLayout {
                 IconButton {
+                    inline: true;
                     icon: Icons.arrow_right;
                 }
 
