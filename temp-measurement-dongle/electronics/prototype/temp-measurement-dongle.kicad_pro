@@ -256,7 +256,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "0.0.1"
+      "sch_revision": "0.0.2"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -483,7 +483,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -530,20 +530,14 @@
         "wire_width": 6
       },
       {
-        "clearance": 0.05,
-        "diff_pair_gap": 0.25,
-        "diff_pair_width": 0.2,
+        "bus_width": 12,
         "line_style": 0,
-        "microvia_diameter": 0.3,
-        "microvia_drill": 0.1,
         "name": "bga",
-        "pcb_color": "rgb(123, 102, 255)",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
-        "schematic_color": "rgb(243, 105, 255)",
-        "track_width": 0.1,
+        "schematic_color": "rgb(239, 94, 255)",
         "tuning_profile": "",
-        "via_diameter": 0.6,
-        "via_drill": 0.3
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -553,15 +547,15 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "bga",
+        "netclass": "Default",
         "pattern": "/bqvdd"
       },
       {
-        "netclass": "bga",
+        "netclass": "Default",
         "pattern": "GND"
       },
       {
-        "netclass": "bga",
+        "netclass": "Default",
         "pattern": "/bqbypassed"
       }
     ]
@@ -706,7 +700,7 @@
         "uuid": "3aba722e-486f-4add-9a36-31452b9909aa"
       }
     ],
-    "used_designators": "C21,#PWR43,U6-7",
+    "used_designators": "U7,Q4-5,C21,C24,D1,#PWR11,#PWR43-44,#PWR48-49,#PWR52-53,R8,R22-28",
     "variants": []
   },
   "sheets": [
