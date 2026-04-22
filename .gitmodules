@@ -4,3 +4,6 @@
 [submodule "rdc"]
 	path = rdc
 	url = https://github.com/ahsanu123/RDC.git
+[submodule "libraries"]
+	path = libraries
+	url = https://github.com/ahsanu123/mkl.git
