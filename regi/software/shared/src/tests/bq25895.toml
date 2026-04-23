@@ -1,0 +1,84 @@
+name = "Motor Controller"
+version = 1
+description = "Schema for controlling industrial motor registers"
+
+[[registers]]
+register_id = 1
+name = "STATUS_REG"
+description = "Device status register"
+address = 1
+
+[[registers.bits]]
+bit_id = 1
+bit_ordinal = 0
+bit_type = "ReadOnly"
+reset_val = 0
+description = "Power Ready"
+
+[[registers.bits]]
+bit_id = 2
+bit_ordinal = 1
+bit_type = "ReadOnly"
+reset_val = 0
+description = "Fault Active"
+
+[[registers.bits]]
+bit_id = 3
+bit_ordinal = 2
+bit_type = "ReadWrite"
+reset_val = 1
+description = "Run Command"
+
+[[registers]]
+register_id = 2
+name = "CONTROL_REG"
+description = "Device control register"
+address = 2
+
+[[registers.bits]]
+bit_id = 4
+bit_ordinal = 0
+bit_type = "WriteOnly"
+reset_val = 0
+description = "Reset Fault"
+
+[[registers.bits]]
+bit_id = 5
+bit_ordinal = 1
+bit_type = "ReadWrite"
+reset_val = 0
+description = "Enable Output"
+
+[[interpreters]]
+interpreter_id = 1
+name = "Status Decoder"
+description = "Interpret STATUS_REG values"
+register_ids = [1]
+translator_id = 1
+
+[[interpreters]]
+interpreter_id = 2
+name = "Control Formula"
+description = "Compute control state"
+register_ids = [
+    1,
+    2,
+]
+translator_id = 2
+
+[[translator]]
+translator_id = 1
+translator_type = "Pair"
+
+[translator.formula.KeyPair.0]
+description = "Disabled"
+
+[translator.formula.KeyPair.1]
+description = "Enabled"
+
+[[translator]]
+translator_id = 2
+translator_type = "Formula"
+
+[translator.formula]
+Str = "(STATUS_REG & 0x01) == 1 && (CONTROL_REG & 0x02) == 0"
