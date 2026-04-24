@@ -1,6 +1,6 @@
 import { HTMLFieldProps, useField } from "uniforms";
 import { z } from 'zod';
-import { bitTypes, RegisterSchema } from "../schema";
+import { bitTypes, RegisterSchema, RegisterSchemaBase } from "../schema";
 import { Button, MenuItem, Stack, TextField } from "@mui/material";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,140 +8,57 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { produce } from "immer";
+import { useEffect } from "react";
+import { useImmer } from "use-immer";
 
-type RegisterType = z.infer<typeof RegisterSchema>;
+type RegisterType = z.infer<typeof RegisterSchemaBase>;
 type RegisterBitsType = RegisterType['bits']
-type RegisterFieldProps = HTMLFieldProps<RegisterType[], HTMLDivElement>;
+type RegisterFieldProps = HTMLFieldProps<RegisterType, HTMLDivElement>;
 
-
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-) {
-  return { name, calories, fat, carbs, protein };
-}
 
 export default function RegisterField(props: RegisterFieldProps) {
   const [fieldProps, context] = useField(props.name, props);
 
+  const [value, setValue] = useImmer<RegisterType | undefined>(undefined)
+
   const { onChange: onRegisterChange, value: registerValues } = fieldProps;
 
-  const handleOnAddNewRegister = () => {
+  useEffect(() => {
+    if (registerValues !== undefined)
+      setValue(registerValues)
+  }, [])
 
-    const eightEmptyBits: RegisterBitsType = [
-      {
-        bit_id: 0,
-        bit_type: "WriteOnly",
-        description: "",
-        reset_val: 0,
-        bit_ordinal: 0,
-      },
-      {
-        bit_id: 1,
-        bit_type: "ReadOnly",
-        description: "",
-        reset_val: 0,
-        bit_ordinal: 0,
-      },
-      {
-        bit_id: 2,
-        bit_type: "ReadOnly",
-        description: "",
-        reset_val: 0,
-        bit_ordinal: 0,
-      },
-      {
-        bit_id: 3,
-        bit_type: "ReadOnly",
-        description: "",
-        reset_val: 0,
-        bit_ordinal: 0,
-      },
-      {
-        bit_id: 4,
-        bit_type: "ReadOnly",
-        description: "",
-        reset_val: 0,
-        bit_ordinal: 0,
-      },
-      {
-        bit_id: 5,
-        bit_type: "ReadOnly",
-        description: "",
-        reset_val: 0,
-        bit_ordinal: 0,
-      },
-      {
-        bit_id: 6,
-        bit_type: "ReadOnly",
-        description: "",
-        reset_val: 0,
-        bit_ordinal: 0,
-      },
-      {
-        bit_id: 7,
-        bit_type: "WriteOnly",
-        description: "",
-        reset_val: 0,
-        bit_ordinal: 0,
-      },
-    ]
-
-    const emptyRegister: RegisterType = {
-      register_id: registerValues?.length ? registerValues.length + 1 : 0,
-      name: "",
-      address: 0,
-      bits: eightEmptyBits,
-      description: ""
-    }
-
-    if (registerValues === undefined) {
-      onRegisterChange([emptyRegister])
-    }
-    else {
-      onRegisterChange([
-        ...registerValues,
-        emptyRegister
-      ])
-    }
-  }
-
-  const handleOnRegisterNameChange = (regId: number, name: string) => {
-
-    const updatedValue = produce(registerValues ?? [], (draft) => {
-      const register = draft.find(reg => reg.register_id === regId);
-
-      if (!register) return;
-      register.name = name;
+  const handleOnRegisterNameChange = (name: string) => {
+    setValue((draft) => {
+      if (draft === undefined) return;
+      draft.name = name;
     })
-
-    onRegisterChange(updatedValue)
   }
 
-  const handleOnRegisterDescriptionChange = (regId: number, description: string) => {
-
-    const updatedValue = produce(registerValues ?? [], (draft) => {
-      const register = draft.find(reg => reg.register_id === regId);
-
-      if (!register) return;
-      register.description = description;
+  const handleOnRegisterDescriptionChange = (description: string) => {
+    setValue((draft) => {
+      if (draft === undefined) return;
+      draft.description = description;
     })
-
-    onRegisterChange(updatedValue)
   }
 
-  const registerTable = (register: RegisterType) => (
+  const handleOnSaveRegister = () => {
+    onRegisterChange(value)
+  }
+
+  const renderRegisterTable = (register: RegisterType) => (
     <TableContainer>
       <Table>
         <TableHead>
           <TableRow>
             <TableCell>Reg Num</TableCell>
             {Array.from({ length: 8 }).map((_, index) => index).reverse().map((num) => (
-              <TableCell align="center">{num}</TableCell>
+              <TableCell
+                align="center"
+                key={num}
+              >
+                {num}
+              </TableCell>
             ))}
           </TableRow>
         </TableHead>
@@ -151,7 +68,7 @@ export default function RegisterField(props: RegisterFieldProps) {
             {register.bits.slice()
               .sort((a, b) => a.bit_ordinal - b.bit_ordinal)
               .map((bit, index) => (
-                <TableCell>
+                <TableCell key={index}>
                   <TextField
                     select
                     id={`bits-select-${index}`}
@@ -177,7 +94,7 @@ export default function RegisterField(props: RegisterFieldProps) {
             {register.bits.slice()
               .sort((a, b) => a.bit_ordinal - b.bit_ordinal)
               .map((bit, index) => (
-                <TableCell>
+                <TableCell key={index}>
                   <TextField
                     fullWidth
                     id={`bits-resval-${index}`}
@@ -193,46 +110,42 @@ export default function RegisterField(props: RegisterFieldProps) {
     </TableContainer>
   )
 
+  if (value === undefined) return null
+
   return (
     <Stack>
 
-      {registerValues?.map((register) => (
-        <>
-          <TextField
-            id="register-name"
-            label="Register Name"
-            size="medium"
-            variant="standard"
-            sx={{ marginTop: 10 }}
-            fullWidth
-            value={register.name}
-            onChange={(ev) => handleOnRegisterNameChange(register.register_id, ev.target.value)}
-          />
-
-          <TextField
-            id="register-description"
-            label="Register Description"
-            placeholder="Enter Register Description"
-            rows={4}
-            sx={{ marginTop: 5 }}
-            multiline
-            fullWidth
-            value={register.description}
-            onChange={(ev) => handleOnRegisterDescriptionChange(register.register_id, ev.target.value)}
-          />
-
-          {registerTable(register)}
-
-        </>
-      ))}
-
-
       <Button
         variant="contained"
-        onClick={() => handleOnAddNewRegister()}
+        onClick={() => handleOnSaveRegister()}
       >
-        Add New Register
+        Save
       </Button>
+
+      <TextField
+        id="register-name"
+        label="Register Name"
+        size="medium"
+        variant="standard"
+        sx={{ marginTop: 10 }}
+        fullWidth
+        value={value.name}
+        onChange={(ev) => handleOnRegisterNameChange(ev.target.value)}
+      />
+
+      <TextField
+        id="register-description"
+        label="Register Description"
+        placeholder="Enter Register Description"
+        rows={4}
+        sx={{ marginTop: 5 }}
+        multiline
+        fullWidth
+        value={value.description}
+        onChange={(ev) => handleOnRegisterDescriptionChange(ev.target.value)}
+      />
+
+      {renderRegisterTable(value)}
 
     </Stack>
   )

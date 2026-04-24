@@ -39,15 +39,7 @@ export default function RegiForm() {
 
       <AutoForm
         schema={schema}
-        onChangeModel={(models: SchemaType) => {
-          const registers = models.registers as (RegisterType[] | undefined);
-          if (!registers) return;
-
-          const registerNames = registers.map((reg) => reg.value?.name).filter((name) => name !== undefined)
-
-          setRegisterList(registerNames)
-
-        }}
+        onChangeModel={(model) => console.log("modelchanged: ", model)}
         onSubmit={(model: any) => window.alert(JSON.stringify(model))}
       >
 

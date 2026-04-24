@@ -46,7 +46,7 @@ const FormulaSchema = z.object({
   keypair: z.array(KeyPairRowSchema).optional(),
 });
 export const TranslatorSchema = z.object({
-  translator_id: z.number().int(),
+  translator_id: z.string(),
   translator_type: TranslatorTypeSchema,
   formula: FormulaSchema,
 });
