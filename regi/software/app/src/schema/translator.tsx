@@ -19,34 +19,23 @@ export const TranslatorTypeSchema = z.enum([
   "Pair16",
   "Formula",
 ]);
-export const BitPairDataSchema = z.object({
-  description: z.string(),
-});
-const FormulaStringSchema = z.object({
-  type: z.literal("Str"),
-  value: z.string(),
-});
 
-// Formula::KeyPair(HashMap<i32, BitPairData>)
-const FormulaKeyPairSchema = z.object({
-  type: z.literal("KeyPair"),
-  value: z.record(
-    z.string(), // TOML/JSON object keys become string
-    BitPairDataSchema
-  ),
-});
-const KeyPairRowSchema = z.object({
-  key: z.string(),
+const BitAndDescription = z.object({
+  bit_id: z.string(),
   description: z.string(),
 });
 
 const FormulaSchema = z.object({
   type: z.enum(["Str", "KeyPair"]),
   value: z.string().optional(),
-  keypair: z.array(KeyPairRowSchema).optional(),
+  keypair: z.array(BitAndDescription).optional(),
 });
+
 export const TranslatorSchema = z.object({
   translator_id: z.string(),
   translator_type: TranslatorTypeSchema,
-  formula: FormulaSchema,
+  formula: z.nullable(FormulaSchema),
+  keyPairs: z.nullable(z.array(BitAndDescription)),
 });
+
+export type TranslatorType = z.infer<typeof TranslatorSchema>

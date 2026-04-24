@@ -8,3 +8,5 @@ export const InterpreterSchema = z.object({
   translator_id: z.number().int(),
 });
 
+
+export type InterpreterType = z.infer<typeof InterpreterSchema>

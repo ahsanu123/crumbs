@@ -1,45 +1,57 @@
-import { AutoField, AutoFieldProps, AutoForm, ErrorsField, SubmitField } from "uniforms-mui";
-import { RegisterSchema, SchemaSchema } from "../schema";
+import { AutoForm, ErrorsField, SubmitField } from "uniforms-mui";
 import { ZodBridge } from 'uniforms-bridge-zod';
-import { z } from "zod";
-import { Divider, Stack, Typography } from "@mui/material";
+import { Button, Divider, Drawer, Link, ListItemIcon, ListItemText, MenuList, Stack, Typography } from "@mui/material";
 import { useState } from "react";
-import { HTMLFieldProps } from "uniforms";
+import { Schema, SchemaTypeBase } from "../schema";
+import { TypedAutoField } from "./TypeAutofield";
 
-type SchemaType = z.infer<typeof SchemaSchema>;
-type SchemaKeys = keyof SchemaType;
-type RegisterTypeT = z.infer<typeof RegisterSchema>;
-
-type RegisterType =
-  HTMLFieldProps<RegisterTypeT, HTMLDivElement>;
-
-const TypedAutoField = (props: AutoFieldProps & { name: SchemaKeys }) => (
-  <AutoField {...props} />
-)
-
-// onChangeModel={(model, details) => console.log("model changed", model, details)}
 export default function RegiForm() {
-  const schema = new ZodBridge({ schema: SchemaSchema });
+  const schema = new ZodBridge({ schema: Schema });
   const [registerList, setRegisterList] = useState<string[]>([])
+  const [isRegisterDrawerOpen, setIsRegisterDrawerOpen] = useState<boolean>(false)
 
   return (
     <Stack direction={'row'}>
-      <Stack>
+      <Drawer
+        open={isRegisterDrawerOpen}
+        onClose={() => setIsRegisterDrawerOpen(false)}
+      >
         <h1>
           Register List
         </h1>
+        <MenuList>
 
-        {registerList.map((reg) => (
-          <Typography>
-            {reg}
-          </Typography>
-        ))}
+          {registerList.map((reg) => (
 
-      </Stack>
+            <Link
+              href={`#register-${reg.replace(' ', '-')}`}
+            >
+              <Stack direction='row'>
+                <ListItemIcon>
+                  o
+                </ListItemIcon>
+
+                <ListItemText>
+                  <Typography>
+                    {reg}
+                  </Typography>
+                </ListItemText>
+              </Stack>
+
+            </Link>
+
+          ))}
+        </MenuList>
+      </Drawer>
+
 
       <AutoForm
         schema={schema}
-        onChangeModel={(model) => console.log("modelchanged: ", model)}
+        onChangeModel={(model: SchemaTypeBase) => {
+          if (model.registers === undefined) return;
+          const filledRegisterName = model.registers.map((reg) => reg.name).filter((name) => name !== "")
+          setRegisterList(filledRegisterName)
+        }}
         onSubmit={(model: any) => window.alert(JSON.stringify(model))}
       >
 
@@ -54,6 +66,20 @@ export default function RegiForm() {
         <Divider />
         <SubmitField />
       </AutoForm>
+
+      <Button
+        onClick={() => setIsRegisterDrawerOpen(true)}
+        color="secondary"
+        variant="contained"
+        aria-label="add"
+        sx={{
+          position: 'fixed',
+          bottom: 20,
+          left: 20
+        }}
+      >
+        Registers
+      </Button>
 
     </Stack>
   );
