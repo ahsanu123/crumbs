@@ -4,8 +4,9 @@ import RegisterField from "../form-components/RegisterComponent";
 import { HTMLFieldProps } from "uniforms";
 
 export const RegisterSchemaBase = z.object({
-  register_id: z.string(),
-  name: z.string(),
+  register_id: z.number().int(),
+  ordinal: z.number().int(),
+  name: z.string().nullable(),
   description: z.string(),
   address: z.number().int().nonnegative(),
   bits: z.array(BitSchema),

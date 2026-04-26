@@ -21,7 +21,7 @@ export const TranslatorTypeSchema = z.enum([
 ]);
 
 const BitAndDescription = z.object({
-  bit_id: z.string(),
+  bit_id: z.number().int(),
   description: z.string(),
 });
 
@@ -32,7 +32,7 @@ const FormulaSchema = z.object({
 });
 
 export const TranslatorSchema = z.object({
-  translator_id: z.string(),
+  translator_id: z.number().int(),
   translator_type: TranslatorTypeSchema,
   formula: z.nullable(FormulaSchema),
   keyPairs: z.nullable(z.array(BitAndDescription)),

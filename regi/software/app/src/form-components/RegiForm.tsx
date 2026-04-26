@@ -4,6 +4,7 @@ import { Button, Divider, Drawer, Link, ListItemIcon, ListItemText, MenuList, St
 import { useState } from "react";
 import { Schema, SchemaTypeBase } from "../schema";
 import { TypedAutoField } from "./TypeAutofield";
+import { Searchbar } from "./Searchbar";
 
 export default function RegiForm() {
   const schema = new ZodBridge({ schema: Schema });
@@ -44,42 +45,50 @@ export default function RegiForm() {
         </MenuList>
       </Drawer>
 
-
-      <AutoForm
-        schema={schema}
-        onChangeModel={(model: SchemaTypeBase) => {
-          if (model.registers === undefined) return;
-          const filledRegisterName = model.registers.map((reg) => reg.name).filter((name) => name !== "")
-          setRegisterList(filledRegisterName)
-        }}
-        onSubmit={(model: any) => window.alert(JSON.stringify(model))}
-      >
-
-        <TypedAutoField name="name" />
-        <TypedAutoField name="description" />
-        <TypedAutoField name="version" />
-
-        <TypedAutoField name="registers" />
-
-        <ErrorsField />
-
-        <Divider />
-        <SubmitField />
-      </AutoForm>
-
-      <Button
-        onClick={() => setIsRegisterDrawerOpen(true)}
-        color="secondary"
-        variant="contained"
-        aria-label="add"
+      <Stack
         sx={{
-          position: 'fixed',
-          bottom: 20,
-          left: 20
+          width: "100%"
         }}
       >
-        Registers
-      </Button>
+        <Searchbar />
+
+        <AutoForm
+          schema={schema}
+          onChangeModel={(model: SchemaTypeBase) => {
+            if (model.registers === undefined) return;
+            const filledRegisterName = model.registers.map((reg) => reg.name).filter((name): name is string => (!!name && name !== ""))
+            setRegisterList(filledRegisterName)
+          }}
+          onSubmit={(model: any) => window.alert(JSON.stringify(model))}
+        >
+
+          <TypedAutoField name="name" />
+          <TypedAutoField name="description" />
+          <TypedAutoField name="version" />
+
+          <TypedAutoField name="registers" />
+
+          <ErrorsField />
+
+          <Divider />
+          <SubmitField />
+        </AutoForm>
+
+        <Button
+          onClick={() => setIsRegisterDrawerOpen(true)}
+          color="secondary"
+          variant="contained"
+          aria-label="add"
+          sx={{
+            position: 'fixed',
+            bottom: 20,
+            left: 20
+          }}
+        >
+          Registers
+        </Button>
+
+      </Stack>
 
     </Stack>
   );

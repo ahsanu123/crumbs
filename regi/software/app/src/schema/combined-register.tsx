@@ -1,12 +1,12 @@
 import z from "zod";
 
 export const CombinedRegisterId = z.object({
-  register_id: z.string(),
+  register_id: z.number().int(),
   ordinal: z.number().int()
 })
 
 export const CombinedRegisterData = z.object({
-  combined_id: z.string(),
+  combined_id: z.number().int(),
   registers: z.array(CombinedRegisterId)
 });
 

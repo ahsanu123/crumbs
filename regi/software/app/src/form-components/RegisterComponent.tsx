@@ -9,14 +9,13 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useEffect, useRef, useState } from "react";
-import { useImmer } from "use-immer";
+import { useMemo, useRef, useState } from "react";
 import { MenuButtonBold, MenuButtonItalic, MenuControlsContainer, MenuDivider, MenuSelectHeading, RichTextEditor, RichTextEditorRef } from "mui-tiptap";
-import { produce } from "immer";
 import { IResetValue, resetValCaster, ResetValueType } from "../validators/hex-validator";
 import { RegisterSchemaBase } from "../schema/register";
 import { BitType, bitTypes } from "../schema/bits";
 import { MockType } from "../schema/mock";
+import { useRegisterStore } from "../stores/register-store";
 
 type RegisterType = z.infer<typeof RegisterSchemaBase>;
 type RegisterFieldProps = HTMLFieldProps<RegisterType, HTMLDivElement>;
@@ -29,59 +28,55 @@ export default function RegisterField(props: RegisterFieldProps) {
 
   const [fieldProps, context] = useField(props.name, props);
 
-  const [value, setValue] = useImmer<RegisterType | undefined>(undefined)
+  const vals = useRegisterStore(store => store.registers)
+
+  const setValue = useRegisterStore(store => store.updateRegister)
+  const setRegisterType = useRegisterStore(store => store.updateRegisterBitType)
+  const setRegisterValue = useRegisterStore(store => store.updateRegisterBitResValue)
+
   const [selectedTab, setSelectedTab] = useState<FormulaOrDescription>('description');
   const [equationError, setEquationError] = useState<string | undefined>(undefined);
 
-  const { onChange: onRegisterChange, value: registerValues } = fieldProps;
+  const { onChange: onRegisterChange, value: register } = fieldProps;
 
-  useEffect(() => {
-    if (registerValues !== undefined)
-      setValue(registerValues)
-  }, [])
+  const value = useMemo(() => {
+    return vals.find(reg => reg.register_id === register?.register_id)
+  }, [vals])
 
   const handleOnRegisterNameChange = (name: string) => {
-    setValue((draft) => {
-      if (draft === undefined) return;
-      draft.name = name;
-    })
+    if (!register) return;
+
+    setValue(register.register_id, 'name', name)
   }
 
   const handleOnSaveRegister = () => {
     const description = rteRef.current?.editor?.getHTML();
 
-    if (value === undefined) return;
+    if (!value || !register) return;
 
-    const updatedVal = produce(value, draft => {
-      draft.description = description ?? ""
-    })
+    const updatedVal = setValue(register.register_id, 'description', description ?? "")
+    if (!updatedVal) return
 
     onRegisterChange(updatedVal)
   }
 
-  const handleOnRegisterTypeChange = (bitId: string, bitType: BitType) => {
-    setValue(draft => {
-      const bit = draft?.bits.find((bit) => bit.bit_id === bitId)
-      if (!bit) return;
-
-      bit.bit_type = bitType
-    })
+  const handleOnRegisterTypeChange = (bitId: number, bitType: BitType) => {
+    if (!register) return;
+    setRegisterType(register.register_id, bitId, bitType)
   }
 
-  const handleOnRegisterResValChange = (bitId: string, resVal: string) => {
-    setValue(draft => {
-      const bit = draft?.bits.find((bit) => bit.bit_id === bitId)
-      if (!bit) return;
+  const handleOnRegisterResValChange = (bitId: number, resVal: string) => {
+    if (!register) return;
 
-      const value = resetValCaster.cast(resVal) as IResetValue | undefined
+    const value = resetValCaster.cast(resVal) as IResetValue | undefined
 
-      if (value?.isValid && value.valType === ResetValueType.Hex) {
-        const binaryVal = toBin(value.value)
-        const hexVal = toHex(value.value)
-        console.log("binary value:", binaryVal, " hex value: ", hexVal)
-      }
-      bit.reset_val = resVal
-    })
+    if (value?.isValid && value.valType === ResetValueType.Hex) {
+      const binaryVal = toBin(value.value)
+      const hexVal = toHex(value.value)
+      console.log("binary value:", binaryVal, " hex value: ", hexVal)
+    }
+
+    setRegisterValue(register.register_id, bitId, resVal)
   }
 
   const renderMockTableInput = (mock: MockType) => {
@@ -190,13 +185,14 @@ export default function RegisterField(props: RegisterFieldProps) {
 
   return (
     <Stack
-      id={`register-${value.name.replace(' ', '-')}`}
+      id={`register-${value.name?.replace(' ', '-')}`}
       sx={{
         marginTop: 5,
         marginLeft: 0,
         border: 'solid 1px gray',
         borderRadius: '10px',
-        padding: '25px'
+        padding: '25px',
+        width: "100%"
       }}
     >
 
