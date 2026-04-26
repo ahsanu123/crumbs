@@ -1,11 +1,10 @@
-import { Button, Typography } from "@mui/material";
-import { useField, useForm } from "uniforms";
+import { Button } from "@mui/material";
+import { useField } from "uniforms";
 import { ListItemField } from "uniforms-mui";
 import { RegisterFieldProps } from "../schema/register";
-import { SchemaType } from '../schema'
 import { useRegisterStore } from "../stores/register-store";
 import { useMemo } from "react";
-import { CombinedRegister } from "./CombinedRegisterComponent";
+import { CombinedRegisterComponent } from "./CombinedRegisterComponent";
 
 export default function AddRegisterComponent(props: RegisterFieldProps) {
   const [fieldProps, context] = useField(props.name, props);
@@ -18,9 +17,8 @@ export default function AddRegisterComponent(props: RegisterFieldProps) {
     return combinedRegisters.map((reg) => reg.registers.map((r) => r.register_id).flat()).flat()
   }, [combinedRegisters])
 
-  const formContext = useForm<SchemaType>()
-  console.log("formContext", formContext)
-
+  // const formContext = useForm<SchemaType>()
+  // console.log("formContext", formContext)
   // formContext.onChange(key, value)
 
   const { onChange, value } = fieldProps;
@@ -40,13 +38,14 @@ export default function AddRegisterComponent(props: RegisterFieldProps) {
       </Button>
 
       {combinedRegisters.map((combinedRegister) => (
-        <CombinedRegister combinedRegister={combinedRegister} />
+        <CombinedRegisterComponent
+          combinedRegister={combinedRegister}
+        />
       ))}
 
       {value?.
         map((reg, index) => {
-          if (allCombinedRegisterIds.includes(reg.register_id))
-            return <Typography>{reg.register_id}</Typography>
+          if (allCombinedRegisterIds.includes(reg.register_id)) return null
 
           return (
             <ListItemField

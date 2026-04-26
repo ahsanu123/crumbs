@@ -3,11 +3,12 @@ import { immer } from 'zustand/middleware/immer'
 import { RegisterType } from '../schema/register'
 import { CombinedRegistersType } from '../schema/combined-register'
 import { MockType } from '../schema/mock'
-import { InterpreterType } from '../schema/interpreter'
+import { InterpreterRegisterBitsType, InterpreterType } from '../schema/interpreter'
 import { TranslatorType } from '../schema/translator'
 import { eightEmptyBits } from '../empty-objects/register'
 import { BitType, bitTypes } from '../schema/bits'
 import { move } from '@dnd-kit/helpers'
+import { current } from 'immer'
 
 interface RegisterState {
   registers: RegisterType[]
@@ -22,6 +23,8 @@ interface RegisterStore extends RegisterState {
 
   addNewCombinedRegister: () => CombinedRegistersType[]
 
+  addNewTranslator: () => TranslatorType
+
   updateRegister: (registerId: number, key: 'name' | 'description', data: string) => RegisterType | undefined,
 
   updateRegisterBitType: (registerId: number, bitId: number, bitType: BitType) => void
@@ -31,6 +34,22 @@ interface RegisterStore extends RegisterState {
   updateRegisterBitResValue: (registerId: number, bitId: number, value: string) => void
 
   insertRegisterToCombinedRegister: (combinedRegId: number, registerId: number) => void
+
+  removeCombinedRegister: (combinedRegId: number, registerId: number) => void
+
+  reorderCombinedRegister: (combinedRegId: number) => void
+
+  updateCombinedRegister: (combinedId: number, type: 'name' | 'description', data: string) => void
+
+  addNewInterpreter: (registerId: number) => InterpreterType[]
+
+  updateInterpreterBits: (interpreterId: number, registerId: number, bitId: number) => void
+
+  removeInterpreter: (interpreterId: number) => void
+
+  updateInterpreterNameOrDescription: (interpreterId: number, type: 'name' | 'description', data: string) => void
+
+  getInterpreterRegisterBits: (interpreterId: number, registerId: number) => InterpreterRegisterBitsType | undefined
 
   getLatestRegisterId: () => number
 
@@ -87,7 +106,6 @@ export const useRegisterStore = create<RegisterStore>()(
         const combinedRegisters = state.combinedRegister.find(comb => comb.combined_id === combinedId)
         if (!combinedRegisters) return
         const moveResult = move(combinedRegisters.registers as any[], ev)
-        console.log("moved result", moveResult)
         combinedRegisters.registers = moveResult
       })
     },
@@ -139,7 +157,8 @@ export const useRegisterStore = create<RegisterStore>()(
 
       const newCombinedRegister: CombinedRegistersType = {
         combined_id: latestCombinedRegisterId + 1,
-        registers: []
+        registers: [],
+        name: `Combined Register ${latestCombinedRegisterId + 1}`
       }
 
       set((state) => {
@@ -155,12 +174,51 @@ export const useRegisterStore = create<RegisterStore>()(
         if (!combinedRegister) return;
 
         const currentRegistersIds = combinedRegister.registers.map((reg) => reg.register_id)
+        const latestCombinedRegisterOrdinal = Math.max(...combinedRegister.registers.map(reg => reg.ordinal))
         if (!currentRegistersIds.includes(registerId)) {
           combinedRegister.registers.push({
             register_id: registerId,
-            ordinal: 0
+            ordinal: latestCombinedRegisterOrdinal + 1
           })
         }
+      })
+
+      get().reorderCombinedRegister(registerId)
+    },
+
+    removeCombinedRegister: (combinedRegId: number, registerId: number) => {
+      set((state) => {
+        const combinedRegister = state.combinedRegister.find(comb => comb.combined_id === combinedRegId)
+        if (!combinedRegister) return;
+
+        const currentRegistersIds = combinedRegister.registers.map((reg) => reg.register_id)
+        if (currentRegistersIds.includes(registerId)) {
+          combinedRegister.registers = combinedRegister.registers.filter(reg => reg.register_id !== registerId)
+        }
+      })
+    },
+
+    updateCombinedRegister: (combinedRegId: number, type: 'name' | 'description', data: string) => {
+      set((state) => {
+        const combinedRegister = state.combinedRegister.find(comb => comb.combined_id === combinedRegId)
+        if (!combinedRegister) return;
+        if (type === 'name')
+          combinedRegister.name = data
+      })
+    },
+
+    reorderCombinedRegister: (combinedRegId: number) => {
+      set((state) => {
+        const combinedRegister = state.combinedRegister.find(comb => comb.combined_id === combinedRegId)
+        if (!combinedRegister) return;
+
+        combinedRegister.registers = combinedRegister.registers
+          .slice()
+          .sort((a, b) => a.ordinal - b.ordinal)
+          .map((reg, index) => ({
+            ...reg,
+            ordinal: index
+          }))
 
       })
     },
@@ -237,6 +295,96 @@ export const useRegisterStore = create<RegisterStore>()(
       if (combinedRegister.registers.length <= 0) return 0
       const latestCombinedRegisterOrdinal = Math.max(...combinedRegister.registers.map(reg => reg.ordinal))
       return latestCombinedRegisterOrdinal
+    },
+
+    addNewInterpreter: (registerId: number): InterpreterType[] => {
+      const interpreters = get().interpreters;
+
+      const interpreterId = interpreters.length <= 0 ? 0 : Math.max(...interpreters.map(int => int.interpreter_id))
+
+      const newTranslator = get().addNewTranslator()
+
+      const newInterpreter: InterpreterType = {
+        name: `register ${registerId} interpreter ${interpreterId + 1}`,
+        description: '',
+        registers: [{
+          register_id: registerId,
+          bit_ids: []
+        }],
+        interpreter_id: interpreterId + 1,
+        translator_id: newTranslator.translator_id
+      }
+
+      set((state) => {
+        state.interpreters.push(newInterpreter)
+      })
+
+      return get().interpreters
+    },
+
+    addNewTranslator: (): TranslatorType => {
+      const translators = get().translators
+
+      const latestTranslatorId = translators.length <= 0 ? 0 :
+        Math.max(...translators.map(tr => tr.translator_id))
+
+      const newTranslator: TranslatorType = {
+        translator_id: latestTranslatorId + 1,
+        translator_type: 'Pair',
+        formula: null,
+        keyPairs: null
+      }
+
+      set((state) => {
+        state.translators.push(newTranslator)
+      })
+
+      return newTranslator
+    },
+
+    removeInterpreter: (interpreterId: number) => {
+      set((state) => {
+        state.interpreters = state.interpreters.filter(int => int.interpreter_id !== interpreterId)
+      })
+    },
+
+    updateInterpreterBits: (interpreterId: number, registerId: number, bitId: number): void => {
+      set((state) => {
+        const interpreter = state.interpreters.find(int => int.interpreter_id === interpreterId)
+        if (!interpreter) return;
+
+        const register = interpreter.registers.find(reg => reg.register_id === registerId)
+        if (!register) return;
+
+        const allInterpreterBitsIds = register.bit_ids
+
+        if (!allInterpreterBitsIds.includes(bitId)) {
+          register.bit_ids.push(bitId)
+        }
+        else {
+          register.bit_ids = register.bit_ids.filter(bit => bit !== bitId)
+        }
+        console.log("pushing bitid: ", current(register))
+      })
+    },
+
+
+    getInterpreterRegisterBits: (interpreterId: number, registerId: number): InterpreterRegisterBitsType | undefined => {
+      const interpreter = get().interpreters.find(int => int.interpreter_id === interpreterId)
+      if (!interpreter) return undefined
+
+      const register = interpreter.registers.find(reg => reg.register_id === registerId)
+      return register
+    },
+
+    updateInterpreterNameOrDescription: (interpreterId: number, type: 'name' | 'description', data: string) => {
+      set((state) => {
+        const interpreter = state.interpreters.find(int => int.interpreter_id === interpreterId)
+        if (!interpreter) return
+
+        if (type === 'name') interpreter.name = data
+        if (type === 'description') interpreter.description = data
+      })
     }
 
   }))

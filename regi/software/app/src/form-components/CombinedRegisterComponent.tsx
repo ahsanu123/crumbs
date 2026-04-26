@@ -1,81 +1,14 @@
-import React, { useMemo } from "react"
+import { useMemo } from "react"
 import { CombinedRegistersType } from "../schema/combined-register"
 import { useRegisterStore } from "../stores/register-store"
-import { Button, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from "@mui/material"
-import { useSortable, } from '@dnd-kit/react/sortable'
-import { DragDropProvider } from '@dnd-kit/react'
-import { RegisterType } from "../schema/register";
-import { move } from '@dnd-kit/helpers'
+import { FormControl, InputLabel, MenuItem, Select, Stack } from "@mui/material"
+import { CombinedRegisterList } from "./combined-register-component/CombinedRegisterList"
 
-interface RegisterSortableProps {
-  register: RegisterType,
-  index: number
-}
-const RegisterSortable = (props: RegisterSortableProps) => {
-  const {
-    register,
-    index
-  } = props
-
-  const { ref } = useSortable({ id: register.register_id, index });
-
-  return (
-    <Button
-      variant="contained"
-      ref={ref}
-      sx={{
-        margin: "5px 15px"
-      }}
-    >
-      {register.name}
-    </Button>
-  );
-}
-
-interface CombinedRegisterListProps {
-  combinedId: number,
-  registers: RegisterType[]
-}
-
-function CombinedRegisterList(props: CombinedRegisterListProps) {
-  const {
-    combinedId,
-    registers
-  } = props
-
-  const moveCombinedRegister = useRegisterStore(store => store.moveCombinedRegister)
-
-  return (
-    <DragDropProvider
-      onDragEnd={(ev) => {
-        console.log("after onDragEnd")
-        moveCombinedRegister(combinedId, ev)
-      }}
-    >
-      <Stack
-        direction={'row'}
-        sx={{
-          borderRadius: "20px",
-          border: "1px solid gray"
-        }}
-      >
-        {registers.map((reg, index) =>
-          <RegisterSortable
-            key={reg.register_id}
-            register={reg}
-            index={index}
-          />
-        )}
-      </Stack>
-    </DragDropProvider>
-  );
-}
-
-interface CombinedRegisterProps {
+interface CombinedRegisterComponentProps {
   combinedRegister: CombinedRegistersType
 }
 
-export function CombinedRegister(props: CombinedRegisterProps) {
+export function CombinedRegisterComponent(props: CombinedRegisterComponentProps) {
   const {
     combinedRegister
   } = props
@@ -101,18 +34,19 @@ export function CombinedRegister(props: CombinedRegisterProps) {
   }
 
   return (
-    <>
-      <CombinedRegisterList
-        combinedId={combinedRegister.combined_id}
-        registers={includedRegister}
-      />
+    <Stack
+      sx={{
+        marginTop: "30px"
+      }}
+    >
 
       <FormControl fullWidth>
         <InputLabel id="register-select">Register</InputLabel>
         <Select
           labelId="register-select"
           id="register-select"
-          label="Register"
+          label="Register To Add"
+          disabled={notIncludedRegister.length === 0}
           onChange={(ev) => handleOnAddRegisterToCombinedRegister(parseInt(ev.target.value as string))}
         >
           {notIncludedRegister.map((reg) => (
@@ -120,6 +54,12 @@ export function CombinedRegister(props: CombinedRegisterProps) {
           ))}
         </Select>
       </FormControl>
-    </>
+
+      <CombinedRegisterList
+        combinedId={combinedRegister.combined_id}
+        name={combinedRegister.name}
+        registers={includedRegister}
+      />
+    </Stack>
   )
 }

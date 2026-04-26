@@ -7,6 +7,7 @@ export const CombinedRegisterId = z.object({
 
 export const CombinedRegisterData = z.object({
   combined_id: z.number().int(),
+  name: z.string(),
   registers: z.array(CombinedRegisterId)
 });
 

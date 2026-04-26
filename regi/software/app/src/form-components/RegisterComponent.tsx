@@ -16,6 +16,7 @@ import { RegisterSchemaBase } from "../schema/register";
 import { BitType, bitTypes } from "../schema/bits";
 import { MockType } from "../schema/mock";
 import { useRegisterStore } from "../stores/register-store";
+import { InterpreterComponent } from "./register-component/InterpretersComponent";
 
 type RegisterType = z.infer<typeof RegisterSchemaBase>;
 type RegisterFieldProps = HTMLFieldProps<RegisterType, HTMLDivElement>;
@@ -34,10 +35,18 @@ export default function RegisterField(props: RegisterFieldProps) {
   const setRegisterType = useRegisterStore(store => store.updateRegisterBitType)
   const setRegisterValue = useRegisterStore(store => store.updateRegisterBitResValue)
 
-  const [selectedTab, setSelectedTab] = useState<FormulaOrDescription>('description');
-  const [equationError, setEquationError] = useState<string | undefined>(undefined);
+  const interpreters = useRegisterStore(store => store.interpreters)
+  const addNewInterpreter = useRegisterStore(store => store.addNewInterpreter)
+  const removeInterpreter = useRegisterStore(store => store.removeInterpreter)
+  const updateInterpreterBits = useRegisterStore(store => store.updateInterpreterBits)
+  const updateInterpreterNameOrDescription = useRegisterStore(store => store.updateInterpreterNameOrDescription)
 
   const { onChange: onRegisterChange, value: register } = fieldProps;
+
+  const registerInterpreter = useMemo(() => {
+    if (!register) return undefined
+    return interpreters.filter(int => int.registers.map(reg => reg.register_id).includes(register.register_id))
+  }, [interpreters, register])
 
   const value = useMemo(() => {
     return vals.find(reg => reg.register_id === register?.register_id)
@@ -217,71 +226,84 @@ export default function RegisterField(props: RegisterFieldProps) {
 
       {renderRegisterTable(value)}
 
-      <Tabs
-        value={selectedTab}
-        onChange={(_, value) => setSelectedTab(value as FormulaOrDescription)}
-      >
-        <Tab
-          label="Description"
-          value={'description' as FormulaOrDescription}
+      {register && registerInterpreter && (
+        <InterpreterComponent
+          register={register}
+          interpreters={registerInterpreter}
+          onAddInterpreter={() => addNewInterpreter(register.register_id)}
+          onRemoveInterpreter={(interpreterId) => removeInterpreter(interpreterId)}
+          onUpdateInterpreterRegisterBit={(interpreterId, registerId, bitId) => updateInterpreterBits(interpreterId, registerId, bitId)}
+          onChangeInterpreterName={(interpreterId, name) => updateInterpreterNameOrDescription(interpreterId, 'name', name)}
+          onSaveInterpreterDescription={(interpreterId, description) => updateInterpreterNameOrDescription(interpreterId, 'description', description)}
         />
-        <Tab
-          label="Formula"
-          value={'formula' as FormulaOrDescription}
-        />
-      </Tabs>
-
-      {selectedTab === 'description' && (
-        <RichTextEditor
-          extensions={[StarterKit]}
-          content={value.description}
-          renderControls={() => (
-            <MenuControlsContainer>
-              <MenuSelectHeading />
-              <MenuDivider />
-              <MenuButtonBold />
-              <MenuButtonItalic />
-            </MenuControlsContainer>
-          )}
-        />
-      )}
-
-      {selectedTab === 'formula' && (
-        <>
-          <Typography>
-            Available variable: {' '}
-            <code>bit0</code>{', '}
-            <code>bit1</code>{', '}
-            <code>bit2</code>{', '}
-            <code>bit3</code>{', '}
-            <code>bit4</code>{', '}
-            <code>bit5</code>{', '}
-            <code>bit6</code>{', '}
-            <code>bit7</code>
-          </Typography>
-
-          <TextField
-            id="formula-input"
-            label="Formula"
-            size="medium"
-            variant="standard"
-            fullWidth
-            multiline
-            rows={4}
-            onBlur={(ev) => console.log(math.evaluate(ev.target.value, {
-              bit0: 1,
-              bit1: 1,
-              bit2: 1,
-              bit3: 1,
-              bit4: 1,
-              bit5: 1,
-              bit6: 1,
-              bit7: 1,
-            }))}
-          />
-        </>
       )}
 
     </Stack>
   )
 }
+
+
+//      <Tabs
+//        value={selectedTab}
+//        onChange={(_, value) => setSelectedTab(value as FormulaOrDescription)}
+//      >
+//        <Tab
+//          label="Description"
+//          value={'description' as FormulaOrDescription}
+//        />
+//        <Tab
+//          label="Formula"
+//          value={'formula' as FormulaOrDescription}
+//        />
+//      </Tabs>
+//
+//      {selectedTab === 'description' && (
+//        <RichTextEditor
+//          extensions={[StarterKit]}
+//          content={value.description}
+//          renderControls={() => (
+//            <MenuControlsContainer>
+//              <MenuSelectHeading />
+//              <MenuDivider />
+//              <MenuButtonBold />
+//              <MenuButtonItalic />
+//            </MenuControlsContainer>
+//          )}
+//        />
+//      )}
+//
+//      {selectedTab === 'formula' && (
+//        <>
+//          <Typography>
+//            Available variable: {' '}
+//            <code>bit0</code>{', '}
+//            <code>bit1</code>{', '}
+//            <code>bit2</code>{', '}
+//            <code>bit3</code>{', '}
+//            <code>bit4</code>{', '}
+//            <code>bit5</code>{', '}
+//            <code>bit6</code>{', '}
+//            <code>bit7</code>
+//          </Typography>
+//
+//          <TextField
+//            id="formula-input"
+//            label="Formula"
+//            size="medium"
+//            variant="standard"
+//            fullWidth
+//            multiline
+//            rows={4}
+//            onBlur={(ev) => console.log(math.evaluate(ev.target.value, {
+//              bit0: 1,
+//              bit1: 1,
+//              bit2: 1,
+//              bit3: 1,
+//              bit4: 1,
+//              bit5: 1,
+//              bit6: 1,
+//              bit7: 1,
+//            }))}
+//          />
+//        </>
+//      )}
