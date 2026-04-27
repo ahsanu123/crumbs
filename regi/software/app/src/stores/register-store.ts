@@ -3,19 +3,16 @@ import { immer } from 'zustand/middleware/immer'
 import { RegisterType } from '../schema/register'
 import { CombinedRegistersType } from '../schema/combined-register'
 import { MockType } from '../schema/mock'
-import { InterpreterRegisterBitsType, InterpreterType } from '../schema/interpreter'
-import { TranslatorType } from '../schema/translator'
+import { BitConditionType, InterpreterRegisterBitsType, InterpreterType, InterpreterTypeEnum } from '../schema/interpreter'
 import { eightEmptyBits } from '../empty-objects/register'
-import { BitType, bitTypes } from '../schema/bits'
+import { BitType } from '../schema/bits'
 import { move } from '@dnd-kit/helpers'
-import { current } from 'immer'
 
 interface RegisterState {
   registers: RegisterType[]
   combinedRegister: CombinedRegistersType[]
-  mocks: MockType[]
   interpreters: InterpreterType[]
-  translators: TranslatorType[]
+  mocks: MockType[]
 }
 
 interface RegisterStore extends RegisterState {
@@ -23,9 +20,7 @@ interface RegisterStore extends RegisterState {
 
   addNewCombinedRegister: () => CombinedRegistersType[]
 
-  addNewTranslator: () => TranslatorType
-
-  updateRegister: (registerId: number, key: 'name' | 'description', data: string) => RegisterType | undefined,
+  updateRegister: (registerId: number, key: 'name' | 'address' | 'description', data: string) => RegisterType | undefined,
 
   updateRegisterBitType: (registerId: number, bitId: number, bitType: BitType) => void
 
@@ -49,13 +44,21 @@ interface RegisterStore extends RegisterState {
 
   updateInterpreterNameOrDescription: (interpreterId: number, type: 'name' | 'description', data: string) => void
 
+  updateInterpreterType: (interpreterId: number, type: InterpreterTypeEnum) => void
+
+  updateInterpreterFormula: (interpreterId: number, formula: string) => void
+
+  updateInterpreterBitconditions: (interpreterId: number, bitConditions: BitConditionType[]) => void
+
+  updateInterpreterMock: (interpreterId: number, registerId: number, mock: MockType) => void
+
+  updateMockBitValue: (mockId: number, bitId: number, value: string) => void
+
   getInterpreterRegisterBits: (interpreterId: number, registerId: number) => InterpreterRegisterBitsType | undefined
 
   getLatestRegisterId: () => number
 
   getLatestMockId: () => number
-
-  getLatestTranslatorId: () => number
 
   getLatestInterpreterId: () => number
 
@@ -73,7 +76,6 @@ const initialState: RegisterState = {
   combinedRegister: [],
   mocks: [],
   interpreters: [],
-  translators: []
 }
 
 export const useRegisterStore = create<RegisterStore>()(
@@ -89,7 +91,7 @@ export const useRegisterStore = create<RegisterStore>()(
         ordinal: latestRegisterOrdinal + 1,
         name: '',
         description: '',
-        address: 0,
+        address: '',
         bits: [...eightEmptyBits],
         interpreterIds: []
       }
@@ -110,17 +112,19 @@ export const useRegisterStore = create<RegisterStore>()(
       })
     },
 
-    updateRegister: (registerId: number, key: 'name' | 'description', data: string) => {
+    updateRegister: (registerId: number, key: 'name' | 'address' | 'description', data: string) => {
       set((state) => {
         const register = state.registers.find(pr => pr.register_id === registerId)
         if (!register) return;
 
-        if (key === 'name') {
+        if (key === 'name')
           register.name = data
-        }
-        else if (key === 'description') {
+
+        else if (key === 'description')
           register.description = data
-        }
+
+        else if (key === 'address')
+          register.address = data
 
       })
       return get().registers.find(reg => reg.register_id === registerId)
@@ -250,15 +254,6 @@ export const useRegisterStore = create<RegisterStore>()(
       return latestMockId
     },
 
-    getLatestTranslatorId: (): number => {
-      const state = get()
-
-      if (state.translators.length <= 0) return 0
-      const latestTranslatorId = Math.max(...state.translators.map((tr) => tr.translator_id))
-
-      return latestTranslatorId
-    },
-
     getLatestInterpreterId: (): number => {
       const state = get()
 
@@ -298,48 +293,37 @@ export const useRegisterStore = create<RegisterStore>()(
     },
 
     addNewInterpreter: (registerId: number): InterpreterType[] => {
-      const interpreters = get().interpreters;
-
+      const state = get()
+      const interpreters = state.interpreters;
       const interpreterId = interpreters.length <= 0 ? 0 : Math.max(...interpreters.map(int => int.interpreter_id))
+      const newInterpreterId = interpreterId + 1
 
-      const newTranslator = get().addNewTranslator()
+      const latestMockId = state.getLatestMockId()
+
+      const newMock: MockType = {
+        register_id: registerId,
+        interpreter_id: newInterpreterId,
+        mock_id: latestMockId + 1,
+        datas: []
+      }
 
       const newInterpreter: InterpreterType = {
-        name: `register ${registerId} interpreter ${interpreterId + 1}`,
+        name: `register ${registerId} interpreter ${newInterpreterId}`,
         description: '',
         registers: [{
           register_id: registerId,
           bit_ids: []
         }],
-        interpreter_id: interpreterId + 1,
-        translator_id: newTranslator.translator_id
+        interpreter_id: newInterpreterId,
+        type: 'Formula'
       }
 
       set((state) => {
         state.interpreters.push(newInterpreter)
+        state.mocks.push(newMock)
       })
 
       return get().interpreters
-    },
-
-    addNewTranslator: (): TranslatorType => {
-      const translators = get().translators
-
-      const latestTranslatorId = translators.length <= 0 ? 0 :
-        Math.max(...translators.map(tr => tr.translator_id))
-
-      const newTranslator: TranslatorType = {
-        translator_id: latestTranslatorId + 1,
-        translator_type: 'Pair',
-        formula: null,
-        keyPairs: null
-      }
-
-      set((state) => {
-        state.translators.push(newTranslator)
-      })
-
-      return newTranslator
     },
 
     removeInterpreter: (interpreterId: number) => {
@@ -356,18 +340,65 @@ export const useRegisterStore = create<RegisterStore>()(
         const register = interpreter.registers.find(reg => reg.register_id === registerId)
         if (!register) return;
 
+        const mock = state.mocks.find(mock => mock.interpreter_id === interpreterId && mock.register_id === registerId)
+        if (!mock) return
+
         const allInterpreterBitsIds = register.bit_ids
 
         if (!allInterpreterBitsIds.includes(bitId)) {
           register.bit_ids.push(bitId)
+          mock.datas.push({
+            bit_id: bitId,
+            value: '0',
+          })
         }
         else {
           register.bit_ids = register.bit_ids.filter(bit => bit !== bitId)
+          mock.datas = mock.datas.filter(mock => mock.bit_id !== bitId)
         }
-        console.log("pushing bitid: ", current(register))
       })
     },
 
+
+    updateInterpreterType: (interpreterId: number, type: InterpreterTypeEnum) => {
+      set((state) => {
+        const interpreter = state.interpreters.find(int => int.interpreter_id === interpreterId)
+        if (!interpreter) return;
+
+        interpreter.type = type
+      })
+    },
+
+    updateInterpreterFormula: (interpreterId: number, formula: string) => {
+      set((state) => {
+        const interpreter = state.interpreters.find(int => int.interpreter_id === interpreterId)
+        if (!interpreter) return;
+        interpreter.formula = formula
+      })
+    },
+
+    updateInterpreterBitconditions: (interpreterId: number, bitConditions: BitConditionType[]) => {
+      set((state) => {
+        const interpreter = state.interpreters.find(int => int.interpreter_id === interpreterId)
+        if (!interpreter) return;
+
+        interpreter.bitConditions = bitConditions
+      })
+    },
+
+    updateInterpreterMock: (interpreterId: number, registerId: number, mock: MockType) => {
+      set((state) => {
+
+        let stateMockIndex = state.mocks.findIndex(mock => mock.interpreter_id === interpreterId && mock.register_id === registerId)
+
+        if (stateMockIndex === -1) {
+          state.mocks.push(mock)
+        }
+        else {
+          state.mocks[stateMockIndex] = mock
+        }
+      })
+    },
 
     getInterpreterRegisterBits: (interpreterId: number, registerId: number): InterpreterRegisterBitsType | undefined => {
       const interpreter = get().interpreters.find(int => int.interpreter_id === interpreterId)
@@ -384,6 +415,29 @@ export const useRegisterStore = create<RegisterStore>()(
 
         if (type === 'name') interpreter.name = data
         if (type === 'description') interpreter.description = data
+      })
+    },
+
+    updateMockBitValue: (mockId: number, bitId: number, value: string) => {
+      set((state) => {
+        const mock = state.mocks.find(mock => mock.mock_id === mockId)
+        const mockIndex = state.mocks.findIndex(mock => mock.mock_id === mockId)
+        if (mockIndex === -1 || !mock) return
+
+        const mockBitIndex = mock.datas.findIndex(bit => bit.bit_id === bitId)
+        const mockBit = mock.datas.find(bit => bit.bit_id === bitId)
+
+        if (mockBitIndex === -1 || !mockBit) {
+          mock.datas.push({
+            bit_id: bitId,
+            value,
+          })
+        }
+
+        mock.datas[mockBitIndex] = {
+          bit_id: bitId,
+          value
+        }
       })
     }
 

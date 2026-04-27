@@ -1,4 +1,4 @@
-import { create, all } from 'mathjs'
+import { create, all, MathScope } from 'mathjs'
 
 export const math = create(all)
 
@@ -16,9 +16,9 @@ export interface EquationResult {
   result?: any
 }
 
-export function evaluateEquation(equation: string): EquationResult {
+export function evaluateEquation(equation: string, scope: MathScope): EquationResult {
   try {
-    const result = math.evaluate(equation);
+    const result = math.evaluate(equation, scope);
 
     return {
       isCompiled: true,

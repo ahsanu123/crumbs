@@ -8,7 +8,7 @@ export const RegisterSchemaBase = z.object({
   ordinal: z.number().int(),
   name: z.string().nullable(),
   description: z.string(),
-  address: z.number().int().nonnegative(),
+  address: z.string(),
   bits: z.array(BitSchema),
   interpreterIds: z.array(z.number().int()),
 });

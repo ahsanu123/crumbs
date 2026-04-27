@@ -1,27 +1,22 @@
 import { HTMLFieldProps, useField } from "uniforms";
+import { IoSave } from "react-icons/io5";
 import { z } from 'zod';
-import { math, toBin, toHex } from '../utility/math'
-import StarterKit from "@tiptap/starter-kit";
-import { Button, MenuItem, Stack, Tab, Tabs, TextField, Typography } from "@mui/material";
+import { Button, MenuItem, Stack, TextField } from "@mui/material";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useMemo, useRef, useState } from "react";
-import { MenuButtonBold, MenuButtonItalic, MenuControlsContainer, MenuDivider, MenuSelectHeading, RichTextEditor, RichTextEditorRef } from "mui-tiptap";
-import { IResetValue, resetValCaster, ResetValueType } from "../validators/hex-validator";
+import { useMemo, useRef } from "react";
+import { RichTextEditorRef } from "mui-tiptap";
 import { RegisterSchemaBase } from "../schema/register";
 import { BitType, bitTypes } from "../schema/bits";
-import { MockType } from "../schema/mock";
 import { useRegisterStore } from "../stores/register-store";
 import { InterpreterComponent } from "./register-component/InterpretersComponent";
 
 type RegisterType = z.infer<typeof RegisterSchemaBase>;
 type RegisterFieldProps = HTMLFieldProps<RegisterType, HTMLDivElement>;
-
-type FormulaOrDescription = 'formula' | 'description'
 
 export default function RegisterField(props: RegisterFieldProps) {
 
@@ -40,6 +35,8 @@ export default function RegisterField(props: RegisterFieldProps) {
   const removeInterpreter = useRegisterStore(store => store.removeInterpreter)
   const updateInterpreterBits = useRegisterStore(store => store.updateInterpreterBits)
   const updateInterpreterNameOrDescription = useRegisterStore(store => store.updateInterpreterNameOrDescription)
+  const updateInterpreterType = useRegisterStore(store => store.updateInterpreterType)
+  const updateInterpreterFormula = useRegisterStore(store => store.updateInterpreterFormula)
 
   const { onChange: onRegisterChange, value: register } = fieldProps;
 
@@ -54,8 +51,12 @@ export default function RegisterField(props: RegisterFieldProps) {
 
   const handleOnRegisterNameChange = (name: string) => {
     if (!register) return;
-
     setValue(register.register_id, 'name', name)
+  }
+
+  const handleOnRegisterAddressChange = (address: string) => {
+    if (!register) return;
+    setValue(register.register_id, 'address', address)
   }
 
   const handleOnSaveRegister = () => {
@@ -77,46 +78,7 @@ export default function RegisterField(props: RegisterFieldProps) {
   const handleOnRegisterResValChange = (bitId: number, resVal: string) => {
     if (!register) return;
 
-    const value = resetValCaster.cast(resVal) as IResetValue | undefined
-
-    if (value?.isValid && value.valType === ResetValueType.Hex) {
-      const binaryVal = toBin(value.value)
-      const hexVal = toHex(value.value)
-      console.log("binary value:", binaryVal, " hex value: ", hexVal)
-    }
-
     setRegisterValue(register.register_id, bitId, resVal)
-  }
-
-  const renderMockTableInput = (mock: MockType) => {
-    return (
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <b>Mock Data {value?.name}</b>
-              </TableCell>
-
-              <TableCell>Reset Value</TableCell>
-              {mock.datas.slice()
-                .map((bit, index) => (
-                  <TableCell key={index}>
-                    <TextField
-                      fullWidth
-                      id={`bits-resval-${index}`}
-                      label="ResVal"
-                      type="text"
-                      value={bit.value}
-                      onChange={(e) => handleOnRegisterResValChange(bit.bit_id, e.target.value)}
-                    />
-                  </TableCell>
-                ))}
-            </TableRow>
-          </TableHead>
-        </Table>
-      </TableContainer>
-    )
   }
 
   const renderRegisterTable = (register: RegisterType) => (
@@ -177,9 +139,12 @@ export default function RegisterField(props: RegisterFieldProps) {
                     fullWidth
                     id={`bits-resval-${index}`}
                     label="ResVal"
-                    type="text"
+                    type="number"
                     value={bit.reset_val}
                     onChange={(e) => handleOnRegisterResValChange(bit.bit_id, e.target.value)}
+                    slotProps={{
+                      htmlInput: { min: 0, max: 1, step: 1 }
+                    }}
                   />
                 </TableCell>
               ))}
@@ -208,9 +173,14 @@ export default function RegisterField(props: RegisterFieldProps) {
       <Button
         variant="contained"
         onClick={() => handleOnSaveRegister()}
+        sx={{
+          maxWidth: "500px",
+        }}
+        startIcon={<IoSave />}
       >
-        Save {value.name}
+        Save
       </Button>
+
       <TextField
         id="register-name"
         label="Register Name"
@@ -221,6 +191,21 @@ export default function RegisterField(props: RegisterFieldProps) {
         onChange={(ev) => handleOnRegisterNameChange(ev.target.value)}
         sx={{
           marginTop: 5,
+          maxWidth: "50%"
+        }}
+      />
+
+      <TextField
+        id="register-address"
+        label="Register Address"
+        size="medium"
+        variant="standard"
+        fullWidth
+        value={value.address}
+        onChange={(ev) => handleOnRegisterAddressChange(ev.target.value)}
+        sx={{
+          marginTop: 5,
+          maxWidth: "50%"
         }}
       />
 
@@ -235,75 +220,11 @@ export default function RegisterField(props: RegisterFieldProps) {
           onUpdateInterpreterRegisterBit={(interpreterId, registerId, bitId) => updateInterpreterBits(interpreterId, registerId, bitId)}
           onChangeInterpreterName={(interpreterId, name) => updateInterpreterNameOrDescription(interpreterId, 'name', name)}
           onSaveInterpreterDescription={(interpreterId, description) => updateInterpreterNameOrDescription(interpreterId, 'description', description)}
+          onUpdateInterpreterType={(interpreterId, type) => updateInterpreterType(interpreterId, type)}
+          onUpdateInterpreterFormula={(interpreterId, formula) => updateInterpreterFormula(interpreterId, formula)}
         />
       )}
 
     </Stack>
   )
 }
-
-
-//      <Tabs
-//        value={selectedTab}
-//        onChange={(_, value) => setSelectedTab(value as FormulaOrDescription)}
-//      >
-//        <Tab
-//          label="Description"
-//          value={'description' as FormulaOrDescription}
-//        />
-//        <Tab
-//          label="Formula"
-//          value={'formula' as FormulaOrDescription}
-//        />
-//      </Tabs>
-//
-//      {selectedTab === 'description' && (
-//        <RichTextEditor
-//          extensions={[StarterKit]}
-//          content={value.description}
-//          renderControls={() => (
-//            <MenuControlsContainer>
-//              <MenuSelectHeading />
-//              <MenuDivider />
-//              <MenuButtonBold />
-//              <MenuButtonItalic />
-//            </MenuControlsContainer>
-//          )}
-//        />
-//      )}
-//
-//      {selectedTab === 'formula' && (
-//        <>
-//          <Typography>
-//            Available variable: {' '}
-//            <code>bit0</code>{', '}
-//            <code>bit1</code>{', '}
-//            <code>bit2</code>{', '}
-//            <code>bit3</code>{', '}
-//            <code>bit4</code>{', '}
-//            <code>bit5</code>{', '}
-//            <code>bit6</code>{', '}
-//            <code>bit7</code>
-//          </Typography>
-//
-//          <TextField
-//            id="formula-input"
-//            label="Formula"
-//            size="medium"
-//            variant="standard"
-//            fullWidth
-//            multiline
-//            rows={4}
-//            onBlur={(ev) => console.log(math.evaluate(ev.target.value, {
-//              bit0: 1,
-//              bit1: 1,
-//              bit2: 1,
-//              bit3: 1,
-//              bit4: 1,
-//              bit5: 1,
-//              bit6: 1,
-//              bit7: 1,
-//            }))}
-//          />
-//        </>
-//      )}
