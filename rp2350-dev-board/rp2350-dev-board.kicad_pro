@@ -254,7 +254,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "0.0.1"
+      "sch_revision": "0.0.2"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -556,7 +556,7 @@
       "method": 0,
       "sort_order": 0
     },
-    "bom_export_filename": "${PROJECTNAME}.csv",
+    "bom_export_filename": "${PROJECTNAME}_BOM.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -606,12 +606,48 @@
           "label": "DNP",
           "name": "${DNP}",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MFR",
+          "name": "MFR",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MFR#",
+          "name": "MFR#",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "mouser#",
+          "name": "mouser#",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": false,
-      "name": "Grouped By Value",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -663,7 +699,7 @@
         "uuid": "74086ba6-73a6-47fc-9e1a-4cd497b32029"
       }
     ],
-    "used_designators": "",
+    "used_designators": "SW6-8,L1,U6-9,RV1,R11-23,JP1-2,J2,J4-7,J9,J15-20,D1-2,C11-38,Y1,#PWR47-96",
     "variants": []
   },
   "sheets": [
