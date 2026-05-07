@@ -1,6 +1,6 @@
-![crumbs-logo](./Crumbs-Logo.svg)
+ <img src="./Crumbs-Logo.svg" style="height: 300px; " align="right"/>
 
-### NOTE 
+### CRUMBS
 - **Hardware Status** ✔️ Production Done
 - **Hardware Status** 🏁 Prototype Done
 - **Software Status** ☑️ Finished
