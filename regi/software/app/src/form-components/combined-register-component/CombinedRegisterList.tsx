@@ -1,5 +1,3 @@
-
-
 import { DragDropProvider } from '@dnd-kit/react'
 import { Stack, TextField, Typography } from '@mui/material';
 import { RegisterType } from '../../schema/register';
