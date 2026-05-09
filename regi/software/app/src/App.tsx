@@ -1,4 +1,4 @@
-import { Container, ToggleButton } from "@mui/material";
+import { Box, Container, ToggleButton } from "@mui/material";
 import { useState } from "react";
 import { EditorPage } from "./pages";
 
@@ -11,8 +11,8 @@ export default function App() {
   const [path, setPath] = useState(AppPath.Editor);
 
   return (
-    <Container>
+    <Box>
       <EditorPage />
-    </Container>
+    </Box>
   );
 }

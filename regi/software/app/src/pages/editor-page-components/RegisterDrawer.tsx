@@ -1,10 +1,11 @@
-import { Button, FormControl, InputLabel, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Select, Stack, TextField, Typography } from "@mui/material"
+import { Button, FormControl, IconButton, InputLabel, List, ListItem, ListItemIcon, MenuItem, Select, Stack, TextField, Tooltip } from "@mui/material"
 import { FaTrash } from "react-icons/fa6";
 import { BsMemory } from "react-icons/bs";
 import { FaDotCircle } from "react-icons/fa";
 import { FaLayerGroup } from "react-icons/fa";
 import { SelectedRegisterType, useEditorPageStore } from "../../stores";
 import { useMemo } from "react";
+import { PiLampPendantFill } from "react-icons/pi";
 
 export const RegisterDrawer = () => {
 
@@ -12,7 +13,7 @@ export const RegisterDrawer = () => {
   const addNewRegister = useEditorPageStore(store => store.addNewRegister)
   const updateCombinedRegister = useEditorPageStore(store => store.updateCombinedRegister)
   const updateRegister = useEditorPageStore(store => store.updateRegister)
-  const getCombinedRegisterMembers = useEditorPageStore(store => store.getCombinedRegisterMembers)
+  const getOrderedCombinedRegisterMembers = useEditorPageStore(store => store.getOrderedCombinedRegisterMember)
   const insertRegisterToCombinedRegister = useEditorPageStore(store => store.insertRegisterToCombinedRegister)
   const setSelectedRegister = useEditorPageStore(store => store.setSelectedRegister)
   const removeCombinedRegister = useEditorPageStore(store => store.removeCombinedRegister)
@@ -30,13 +31,15 @@ export const RegisterDrawer = () => {
     return registers.filter(reg => !allRegisterIds.includes(reg.register_id))
   }, [registers, combinedRegisters])
 
-  const handleOnAddRegisterToCombinedRegister = (combined_id: number, registerId: number) => {
-    insertRegisterToCombinedRegister(combined_id, registerId)
+  const isRegisterSelected = (registerId: number, type: SelectedRegisterType) => {
+    if (type === SelectedRegisterType.Register)
+      return registerId === selectedRegister?.id && selectedRegister.type === SelectedRegisterType.Register
+    else
+      return registerId === selectedRegister?.id && selectedRegister.type === SelectedRegisterType.CombinedRegister
   }
 
   return (
-    <Stack>
-
+    <Stack sx={{ margin: '10px 0' }}>
       <Stack
         sx={{
           overflow: 'auto',
@@ -47,30 +50,13 @@ export const RegisterDrawer = () => {
         {combinedRegisters.map((combRegister) => (
           <Stack
             sx={{
-              bgcolor: combRegister.combined_id === selectedRegister?.id
-                && selectedRegister.type === SelectedRegisterType.CombinedRegister
-                ? '#ebf4f6' : ''
+              bgcolor: isRegisterSelected(combRegister.combined_id, SelectedRegisterType.CombinedRegister) ? '#ebf4f6' : ''
             }}
           >
-            {combRegister.combined_id === selectedRegister?.id
-              && selectedRegister.type === SelectedRegisterType.CombinedRegister
-              && (
-                <Stack direction='row'>
-                  <FaDotCircle />
-                  <Typography>
-                    Active
-                  </Typography>
-                </Stack>
-              )}
             <Stack
               direction='row'
               sx={{ gap: 5 }}
             >
-              <Button
-                onClick={() => removeCombinedRegister(combRegister.combined_id)}
-                startIcon={<FaTrash />}
-              />
-
               <TextField
                 label="Combined Register"
                 name={`combined-register-${combRegister.combined_id}`}
@@ -86,22 +72,32 @@ export const RegisterDrawer = () => {
                   id="register-select"
                   label="Register To Add"
                   disabled={notIncludedRegister.length === 0}
-                  onChange={(ev) => handleOnAddRegisterToCombinedRegister(combRegister.combined_id, parseInt(ev.target.value as string))}
+                  onChange={(ev) => insertRegisterToCombinedRegister(combRegister.combined_id, parseInt(ev.target.value as string))}
                 >
                   {notIncludedRegister.map((reg) => (
                     <MenuItem value={reg.register_id}>{reg.name}</MenuItem>
                   ))}
                 </Select>
               </FormControl>
+
+              <Tooltip title="Activate">
+                <IconButton
+                  onClick={() => setSelectedRegister(combRegister.combined_id, SelectedRegisterType.CombinedRegister)}
+                >
+                  <PiLampPendantFill
+                    color={isRegisterSelected(combRegister.combined_id, SelectedRegisterType.CombinedRegister) ? '#78ba66' : ''}
+                  />
+                </IconButton>
+              </Tooltip>
+
               <Button
-                variant='contained'
-                onClick={() => setSelectedRegister(combRegister.combined_id, SelectedRegisterType.CombinedRegister)}
-              >
-                Select
-              </Button>
+                onClick={() => removeCombinedRegister(combRegister.combined_id)}
+                startIcon={<FaTrash />}
+              />
+
             </Stack>
             <List>
-              {getCombinedRegisterMembers(combRegister.combined_id).map(reg => (
+              {getOrderedCombinedRegisterMembers(combRegister.combined_id).map(reg => (
                 <ListItem
                   secondaryAction={
                     <Button
@@ -115,9 +111,15 @@ export const RegisterDrawer = () => {
                     <FaDotCircle />
                   </ListItemIcon>
 
-                  <ListItemText
-                    primary={reg.name}
+                  <TextField
+                    label="Register"
+                    name={`register-${reg.register_id}`}
+                    key={reg.register_id}
+                    onChange={event => updateRegister(reg.register_id, 'name', event.target.value)}
+                    value={reg.name}
+                    placeholder="register name"
                   />
+
                 </ListItem>
               ))}
             </List>
@@ -128,21 +130,9 @@ export const RegisterDrawer = () => {
           <Stack
             direction='row'
             sx={{
-              bgcolor: reg.register_id === selectedRegister?.id
-                && selectedRegister.type === SelectedRegisterType.Register
-                ? '#ebf4f6' : ''
+              bgcolor: isRegisterSelected(reg.register_id, SelectedRegisterType.Register) ? '#ebf4f6' : ''
             }}
           >
-            {reg.register_id === selectedRegister?.id
-              && selectedRegister.type === SelectedRegisterType.Register
-              && (
-                <Stack direction='row'>
-                  <FaDotCircle />
-                  <Typography>
-                    Active
-                  </Typography>
-                </Stack>
-              )}
             <TextField
               label="Register"
               name={`register-${reg.register_id}`}
@@ -152,12 +142,17 @@ export const RegisterDrawer = () => {
               placeholder="register name"
             />
 
-            <Button
-              onClick={() => setSelectedRegister(reg.register_id, SelectedRegisterType.Register)}
-              variant='contained'
-            >
-              Select
-            </Button>
+            <Tooltip title="Activate">
+              <IconButton
+                onClick={() => setSelectedRegister(reg.register_id, SelectedRegisterType.Register)}
+              >
+                <PiLampPendantFill
+                  color={isRegisterSelected(reg.register_id, SelectedRegisterType.Register) ? '#78ba66' : ''}
+                />
+              </IconButton>
+            </Tooltip>
+
+
             <Button
               startIcon={<FaTrash />}
               onClick={() => removeRegister(reg.register_id)}

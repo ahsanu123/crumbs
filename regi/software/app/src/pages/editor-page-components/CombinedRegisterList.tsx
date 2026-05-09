@@ -3,26 +3,26 @@ import { Stack, TextField, Typography } from '@mui/material';
 import { RegisterSortable } from './RegisterSortable';
 import { RegisterSchema } from '../../schema/register';
 import { useEditorPageStore } from '../../stores';
+import { CombinedRegisterSchema } from '../../schema/combined-register';
 
 interface CombinedRegisterListProps {
-  combinedId: number,
-  name: string,
+  combinedRegister: CombinedRegisterSchema
   registers: RegisterSchema[]
 }
 
 export const CombinedRegisterList = (props: CombinedRegisterListProps) => {
   const {
-    combinedId,
-    name,
+    combinedRegister,
     registers
   } = props
 
   const moveCombinedRegister = useEditorPageStore(store => store.moveCombinedRegister)
   const removeCombinedRegisterMember = useEditorPageStore(store => store.removeCombinedRegisterMember)
   const updateCombinedRegister = useEditorPageStore(store => store.updateCombinedRegister)
+  const orderedCombinedRegisterMember = useEditorPageStore(store => store.getOrderedCombinedRegisterMember)
 
   return (
-    <>
+    <Stack>
       <Stack
         sx={{
           margin: "30px 0 10px 0",
@@ -30,14 +30,14 @@ export const CombinedRegisterList = (props: CombinedRegisterListProps) => {
         }}
       >
         <TextField
-          value={name}
+          value={combinedRegister.name}
           label="combined register name"
           placeholder="create combined register name"
-          onChange={(ev) => updateCombinedRegister(combinedId, 'name', ev.target.value)}
+          onChange={(ev) => updateCombinedRegister(combinedRegister.combined_id, 'name', ev.target.value)}
         />
 
         <DragDropProvider
-          onDragEnd={(ev) => moveCombinedRegister(combinedId, ev)}
+          onDragEnd={(ev) => moveCombinedRegister(combinedRegister.combined_id, ev)}
         >
           <Stack
             direction={'row'}
@@ -64,7 +64,7 @@ export const CombinedRegisterList = (props: CombinedRegisterListProps) => {
                 key={reg.register_id}
                 register={reg}
                 index={index}
-                onRemoveRegister={(regId) => removeCombinedRegisterMember(combinedId, regId)}
+                onRemoveRegister={(regId) => removeCombinedRegisterMember(combinedRegister.combined_id, regId)}
               />
             )}
           </Stack>
@@ -90,6 +90,12 @@ export const CombinedRegisterList = (props: CombinedRegisterListProps) => {
           LSB
         </Typography>
       </Stack>
-    </>
+
+      {orderedCombinedRegisterMember(combinedRegister.combined_id).map((reg) => (
+        <Typography>
+          {reg.name} ordinal: {reg.ordinal}
+        </Typography>
+      ))}
+    </Stack>
   );
 }

@@ -4,9 +4,10 @@ import { eightEmptyBits } from '../empty-objects/register'
 import { BitType } from '../schema/bits'
 import { move } from '@dnd-kit/helpers'
 import { RegisterSchema } from '../schema/register'
-import { CombinedRegisterSchema } from '../schema/combined-register'
+import { CombinedRegisterId, CombinedRegisterSchema } from '../schema/combined-register'
 import { InterpreterRegisterBitSchema, InterpreterSchema } from '../schema/interpreter'
 import { MockSchema } from '../schema/mock'
+import { orderBy } from 'es-toolkit'
 
 export enum SelectedRegisterType {
   Register,
@@ -15,6 +16,7 @@ export enum SelectedRegisterType {
 
 interface SelectedRegister {
   type: SelectedRegisterType,
+  name: string,
   id: number
 }
 
@@ -79,7 +81,10 @@ interface IEditorPageStore extends IEditorPageState {
 
   getLatestBitId: (registerId: number) => number | undefined
 
-  getCombinedRegisterMembers: (combinedRegisterId: number) => RegisterSchema[]
+  getIncludedCombinedRegister: (combinedRegisterId: number) => RegisterSchema[]
+
+  getOrderedCombinedRegisterMember: (combinedRegisterId: number) => RegisterSchema[]
+
 }
 
 const initialState: IEditorPageState = {
@@ -119,9 +124,31 @@ export const useEditorPageStore = create<IEditorPageStore>()(
       set((state) => {
         const combinedRegisters = state.combinedRegister.find(comb => comb.combined_id === combinedId)
         if (!combinedRegisters) return
-        const moveResult = move(combinedRegisters.registers as any[], ev)
-        combinedRegisters.registers = moveResult
+        const moveResult: CombinedRegisterId[] = move(combinedRegisters.registers as any[], ev)
+        const updatedOrdinalResult = moveResult.map((regId, index) => ({
+          ...regId,
+          ordinal: index
+        }))
+        combinedRegisters.registers = updatedOrdinalResult
       })
+    },
+
+    getOrderedCombinedRegisterMember: (combinedRegisterId: number): RegisterSchema[] => {
+      const state = get()
+      const combinedRegister = state.combinedRegister.find(combReg => combReg.combined_id === combinedRegisterId)
+      if (!combinedRegister) return []
+
+      const registerIdOrdinalMap = new Map(
+        combinedRegister.registers.map(combReg => ([combReg.register_id, combReg.ordinal]))
+      )
+
+      const registers = state.registers.filter(reg => registerIdOrdinalMap.has(reg.register_id)).map<RegisterSchema>(reg => ({
+        ...reg,
+        ordinal: registerIdOrdinalMap.get(reg.register_id)!
+      }))
+
+      const orderedRegister = orderBy(registers, ['ordinal'], ['asc'])
+      return orderedRegister;
     },
 
     updateRegister: (registerId: number, key: 'name' | 'address' | 'description', data: string) => {
@@ -450,24 +477,31 @@ export const useEditorPageStore = create<IEditorPageStore>()(
       })
     },
 
-    getCombinedRegisterMembers: (combinedRegisterId: number): RegisterSchema[] => {
-      const state = get();
-
-      const combinedRegister = state.combinedRegister.find(comb => comb.combined_id === combinedRegisterId);
-      if (!combinedRegister) return []
-
-      const combinedRegisterIds = combinedRegister.registers.map(combReg => combReg.register_id);
-
-      const members = state.registers.filter(reg => combinedRegisterIds.includes(reg.register_id));
-
-      return members
-    },
-
     setSelectedRegister: (id: number, type: SelectedRegisterType) => {
       set((state) => {
-        state.selectedRegister = { id, type }
+        if (type === SelectedRegisterType.CombinedRegister) {
+          const selectedReg = state.combinedRegister.find(combReg => combReg.combined_id === id)
+          if (!selectedReg) return;
+          state.selectedRegister = { id, type, name: selectedReg.name }
+        }
+        else {
+          const selectedReg = state.registers.find(reg => reg.register_id === id)
+          if (!selectedReg) return;
+          state.selectedRegister = { id, type, name: selectedReg.name }
+        }
       })
+    },
+
+    getIncludedCombinedRegister: (combinedRegisterId: number): RegisterSchema[] => {
+      const state = get()
+      const combinedRegister = state.combinedRegister.find(combReg => combReg.combined_id === combinedRegisterId);
+      if (!combinedRegister) return [];
+
+      const registerIds = combinedRegister.registers.map(reg => reg.register_id)
+
+      return state.registers.filter(reg => registerIds.includes(reg.register_id))
     }
+
 
   }))
 )
