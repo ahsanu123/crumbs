@@ -7,5 +7,4 @@ export interface RegisterSchema {
   description: string,
   address: string,
   bits: BitSchema[],
-  interpreter_ids: number[]
 }

@@ -1,7 +1,7 @@
 export enum BitType {
-  ReadOnly,
-  WriteOnly,
-  ReadWrite
+  ReadOnly = "ReadOnly",
+  WriteOnly = "WriteOnly",
+  ReadWrite = "ReadWrite"
 }
 
 export const bitTypes = [

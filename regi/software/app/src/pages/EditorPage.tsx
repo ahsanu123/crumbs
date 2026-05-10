@@ -3,6 +3,8 @@ import { RegisterDrawer } from "./editor-page-components/RegisterDrawer"
 import { SelectedRegisterType, useEditorPageStore } from "../stores"
 import { CombinedRegisterList } from "./editor-page-components"
 import { useMemo } from "react"
+import { InterpreterList } from "./editor-page-components/InterpreterList"
+import { orderBy } from "es-toolkit"
 
 export const EditorPage = () => {
 
@@ -21,7 +23,7 @@ export const EditorPage = () => {
 
   const includedCombinedRegister = useMemo(() => {
     if (!selectedRegister || selectedRegister?.type === SelectedRegisterType.Register) return []
-    return getIncludedCombinedRegister(selectedRegister.id)
+    return orderBy(getIncludedCombinedRegister(selectedRegister.id), ['ordinal'], ['asc'])
   }, [selectedRegister, combinedRegisters, registers])
 
   return (
@@ -29,10 +31,15 @@ export const EditorPage = () => {
       <RegisterDrawer />
 
       {selectedCombinedRegister && (
-        <CombinedRegisterList
-          combinedRegister={selectedCombinedRegister}
-          registers={includedCombinedRegister}
-        />
+        <Stack direction={'row'}>
+          <CombinedRegisterList
+            combinedRegister={selectedCombinedRegister}
+            registers={includedCombinedRegister}
+          />
+          <InterpreterList
+            combinedRegister={selectedCombinedRegister}
+          />
+        </Stack>
       )}
     </Stack>
   )

@@ -5,7 +5,7 @@ import { BitType } from '../schema/bits'
 import { move } from '@dnd-kit/helpers'
 import { RegisterSchema } from '../schema/register'
 import { CombinedRegisterId, CombinedRegisterSchema } from '../schema/combined-register'
-import { InterpreterRegisterBitSchema, InterpreterSchema } from '../schema/interpreter'
+import { InterpreterRegisterBitSchema, InterpreterSchema, InterpreterType } from '../schema/interpreter'
 import { MockSchema } from '../schema/mock'
 import { orderBy } from 'es-toolkit'
 
@@ -23,6 +23,7 @@ interface SelectedRegister {
 interface IEditorPageState {
   registers: RegisterSchema[]
   selectedRegister: SelectedRegister | undefined,
+  selectedInterpreter: InterpreterSchema | undefined,
   combinedRegister: CombinedRegisterSchema[]
   interpreters: InterpreterSchema[]
   mocks: MockSchema[]
@@ -53,7 +54,7 @@ interface IEditorPageStore extends IEditorPageState {
 
   updateCombinedRegister: (combinedId: number, type: 'name' | 'description', data: string) => void
 
-  addNewInterpreter: (registerId: number) => InterpreterSchema[]
+  addNewCombinedRegisterInterpreter: (combinedId: number) => void
 
   updateInterpreterBits: (interpreterId: number, registerId: number, bitId: number) => void
 
@@ -63,9 +64,13 @@ interface IEditorPageStore extends IEditorPageState {
 
   setSelectedRegister: (id: number, type: SelectedRegisterType) => void
 
+  setSelectedInterpreter: (interpreterId: number) => void
+
   updateInterpreterFormula: (interpreterId: number, formula: string) => void
 
-  updateMockBitValue: (mockId: number, bitId: number, value: string) => void
+  updateMockBitValue: (interpreterId: number, bitId: number, value: string) => void
+
+  getMockValue: (interpreterId: number, bitId: number) => string
 
   getLatestRegisterId: () => number
 
@@ -85,11 +90,19 @@ interface IEditorPageStore extends IEditorPageState {
 
   getOrderedCombinedRegisterMember: (combinedRegisterId: number) => RegisterSchema[]
 
+  getCombinedInterpreters: (combinedRegisterId: number) => InterpreterSchema[]
+
+  getInterpreterRegisterBits: (interpreterId: number, registerId: number) => InterpreterRegisterBitSchema | undefined
+
+  getInterpreterBits: (interpreterId: number, registerId: number) => number[]
+
+  isInterpreterRegisterBitIncluded: (interpreterId: number, registerId: number, bitId: number) => boolean
 }
 
 const initialState: IEditorPageState = {
   registers: [],
   selectedRegister: undefined,
+  selectedInterpreter: undefined,
   combinedRegister: [],
   mocks: [],
   interpreters: [],
@@ -110,7 +123,6 @@ export const useEditorPageStore = create<IEditorPageStore>()(
         description: '',
         address: '',
         bits: [...eightEmptyBits],
-        interpreter_ids: []
       }
 
       set((state) => {
@@ -233,6 +245,15 @@ export const useEditorPageStore = create<IEditorPageStore>()(
             register_id: registerId,
             ordinal: latestCombinedRegisterOrdinal + 1
           })
+
+          const interpreter = state.interpreters.find(int => int.combined_id === combinedRegId && int.type === InterpreterType.CombinedRegister)
+          if (!interpreter) return;
+          const currentInterpreterRegIds = interpreter.registers.map(reg => reg.register_id)
+          if (!currentInterpreterRegIds.includes(registerId))
+            interpreter.registers.push({
+              register_id: registerId,
+              bit_ids: []
+            })
         }
       })
 
@@ -247,6 +268,12 @@ export const useEditorPageStore = create<IEditorPageStore>()(
         const currentRegistersIds = combinedRegister.registers.map((reg) => reg.register_id)
         if (currentRegistersIds.includes(registerId)) {
           combinedRegister.registers = combinedRegister.registers.filter(reg => reg.register_id !== registerId)
+
+          const interpreter = state.interpreters.find(int => int.combined_id === combinedRegId && int.type === InterpreterType.CombinedRegister)
+          if (!interpreter) return;
+          const currentInterpreterRegIds = interpreter.registers.map(reg => reg.register_id)
+          if (!currentInterpreterRegIds.includes(registerId))
+            interpreter.registers = interpreter.registers.filter(intReg => intReg.register_id !== registerId)
         }
       })
     },
@@ -254,6 +281,7 @@ export const useEditorPageStore = create<IEditorPageStore>()(
     removeCombinedRegister: (combinedRegId: number) => {
       set((state) => {
         state.combinedRegister = state.combinedRegister.filter(combReg => combReg.combined_id !== combinedRegId)
+        state.interpreters = state.interpreters.filter(int => int.combined_id !== combinedRegId)
       })
     },
 
@@ -347,38 +375,45 @@ export const useEditorPageStore = create<IEditorPageStore>()(
       return latestCombinedRegisterOrdinal
     },
 
-    addNewInterpreter: (registerId: number): InterpreterSchema[] => {
-      const state = get()
-      const interpreters = state.interpreters;
-      const interpreterId = interpreters.length <= 0 ? 0 : Math.max(...interpreters.map(int => int.interpreter_id))
-      const newInterpreterId = interpreterId + 1
-
-      const latestMockId = state.getLatestMockId()
-
-      const newMock: MockSchema = {
-        register_id: registerId,
-        interpreter_id: newInterpreterId,
-        mock_id: latestMockId + 1,
-        data: []
-      }
-
-      const newInterpreter: InterpreterSchema = {
-        name: `register ${registerId} interpreter ${newInterpreterId}`,
-        description: '',
-        registers: [{
-          register_id: registerId,
-          bit_ids: []
-        }],
-        interpreter_id: newInterpreterId,
-        formula: ''
-      }
-
+    addNewCombinedRegisterInterpreter: (combinedId: number) => {
       set((state) => {
-        state.interpreters.push(newInterpreter)
-        state.mocks.push(newMock)
-      })
+        const interpreters = state.interpreters;
+        const interpreterId = interpreters.length <= 0 ? 0 : Math.max(...interpreters.map(int => int.interpreter_id))
+        const newInterpreterId = interpreterId + 1
 
-      return get().interpreters
+        const latestMockId = state.getLatestMockId() + 1
+
+        const combinedRegister = state.combinedRegister.find(combReg => combReg.combined_id === combinedId)
+        if (!combinedRegister) return;
+
+        const interpreterRegister: InterpreterRegisterBitSchema[] = []
+        combinedRegister.registers.forEach((reg, index) => {
+          const newMock: MockSchema = {
+            register_id: reg.register_id,
+            interpreter_id: newInterpreterId,
+            mock_id: latestMockId + index,
+            data: []
+          }
+
+          interpreterRegister.push({
+            register_id: reg.register_id,
+            bit_ids: []
+          })
+
+          state.mocks.push(newMock)
+        })
+
+        const newInterpreter: InterpreterSchema = {
+          combined_id: combinedId,
+          interpreter_id: newInterpreterId,
+          name: `combined register ${combinedId} interpreter ${newInterpreterId}`,
+          type: InterpreterType.CombinedRegister,
+          description: '',
+          registers: interpreterRegister,
+          formula: ''
+        }
+        state.interpreters.push(newInterpreter)
+      })
     },
 
     removeInterpreter: (interpreterId: number) => {
@@ -444,6 +479,26 @@ export const useEditorPageStore = create<IEditorPageStore>()(
       return register
     },
 
+    getInterpreterBits: (interpreterId: number, registerId: number): number[] => {
+      const interpreter = get().interpreters.find(int => int.interpreter_id === interpreterId)
+      if (!interpreter) return []
+
+      const register = interpreter.registers.find(reg => reg.register_id === registerId)
+      if (!register) return []
+
+      return register.bit_ids
+    },
+
+    isInterpreterRegisterBitIncluded: (interpreterId: number, registerId: number, bitId: number): boolean => {
+      const interpreter = get().interpreters.find(int => int.interpreter_id === interpreterId)
+      if (!interpreter) return false
+
+      const register = interpreter.registers.find(reg => reg.register_id === registerId)
+      if (!register) return false
+
+      return register.bit_ids.includes(bitId)
+    },
+
     updateInterpreterNameOrDescription: (interpreterId: number, type: 'name' | 'description', data: string) => {
       set((state) => {
         const interpreter = state.interpreters.find(int => int.interpreter_id === interpreterId)
@@ -454,27 +509,41 @@ export const useEditorPageStore = create<IEditorPageStore>()(
       })
     },
 
-    updateMockBitValue: (mockId: number, bitId: number, value: string) => {
+    updateMockBitValue: (interpreterId: number, bitId: number, value: string) => {
       set((state) => {
-        const mock = state.mocks.find(mock => mock.mock_id === mockId)
-        const mockIndex = state.mocks.findIndex(mock => mock.mock_id === mockId)
+        const mock = state.mocks.find(mock => mock.interpreter_id === interpreterId)
+        const mockIndex = state.mocks.findIndex(mock => mock.interpreter_id === interpreterId)
         if (mockIndex === -1 || !mock) return
 
         const mockBitIndex = mock.data.findIndex(bit => bit.bit_id === bitId)
         const mockBit = mock.data.find(bit => bit.bit_id === bitId)
 
-        if (mockBitIndex === -1 || !mockBit) {
+        if (mockBitIndex < 0 || !mockBit) {
           mock.data.push({
             bit_id: bitId,
             value,
           })
         }
 
-        mock.data[mockBitIndex] = {
-          bit_id: bitId,
-          value
+        else {
+          mock.data[mockBitIndex] = {
+            bit_id: bitId,
+            value
+          }
         }
       })
+    },
+
+    getMockValue: (interpreterId: number, bitId: number): string => {
+      const state = get()
+
+      const mock = state.mocks.find(mock => mock.interpreter_id === interpreterId)
+      if (!mock) return "0"
+
+      const data = mock.data.find(data => data.bit_id === bitId)
+      if (!data) return "0"
+
+      return data.value
     },
 
     setSelectedRegister: (id: number, type: SelectedRegisterType) => {
@@ -492,6 +561,14 @@ export const useEditorPageStore = create<IEditorPageStore>()(
       })
     },
 
+    setSelectedInterpreter: (interpreterId: number) => {
+      set((state) => {
+        const interpreter = state.interpreters.find(int => int.interpreter_id === interpreterId)
+        if (!interpreter) return;
+        state.selectedInterpreter = interpreter
+      })
+    },
+
     getIncludedCombinedRegister: (combinedRegisterId: number): RegisterSchema[] => {
       const state = get()
       const combinedRegister = state.combinedRegister.find(combReg => combReg.combined_id === combinedRegisterId);
@@ -500,8 +577,16 @@ export const useEditorPageStore = create<IEditorPageStore>()(
       const registerIds = combinedRegister.registers.map(reg => reg.register_id)
 
       return state.registers.filter(reg => registerIds.includes(reg.register_id))
-    }
+    },
 
+    getCombinedInterpreters: (combinedRegisterId: number): InterpreterSchema[] => {
+      const state = get()
+      const combinedReg = state.combinedRegister.find(combReg => combReg.combined_id === combinedRegisterId)
+      if (!combinedReg) return []
+
+      const combinedInterpreters = state.interpreters.filter(int => int.combined_id === combinedRegisterId && int.type === InterpreterType.CombinedRegister)
+      return [...combinedInterpreters]
+    }
 
   }))
 )
