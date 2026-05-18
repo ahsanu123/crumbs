@@ -63,7 +63,8 @@ pub async fn ui_task(mut draw_buffer: DrawBufferType, mut lcd_blk: Output<'stati
                 MediatorEvent::IsCharging(is_charging) => home_store.set_is_charging(is_charging),
 
                 MediatorEvent::Max31865(temperature) => {
-                    home_store.set_temperature(temperature, setting_store.get_unit())
+                    home_store.set_max31865_error(None);
+                    home_store.set_temperature(temperature, setting_store.get_unit());
                 }
 
                 MediatorEvent::BleOption(is_ble_on) => ble_option_store.set_ble_is_on(is_ble_on),
@@ -81,6 +82,9 @@ pub async fn ui_task(mut draw_buffer: DrawBufferType, mut lcd_blk: Output<'stati
                         Tabs::Unit => setting_store.on_key_event(left_or_right),
                     },
                 },
+                MediatorEvent::Max31865Err(max31865_err) => {
+                    home_store.set_max31865_error(Some(max31865_err))
+                }
             },
         }
 

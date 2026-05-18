@@ -1,6 +1,7 @@
 import { MainContent } from "./main_content.slint";
 import { HomeSlintStore } from "../stores/home_slint_store.slint";
 import { Icons } from "../../../../../material-ui-slint/ui/icons/icons.slint";
+import { Max31865SlintErr } from "../models/enum_temperature_err.slint";
 import {
     MaterialText,
     Icon,
@@ -24,6 +25,32 @@ export component Home inherits MainContent {
             return " R";
         } else {
             return " F";
+        }
+    }
+
+    function getErrorMessage() -> string {
+        if (HomeSlintStore.max31865Err.value == Max31865SlintErr.SPI_FailToRead) {
+            return "Fail When Read Spi";
+        }
+        if (HomeSlintStore.max31865Err.value == Max31865SlintErr.SPI_FailToWrite) {
+            return "Fail When Write Spi";
+        }
+        if (HomeSlintStore.max31865Err.value == Max31865SlintErr.Hardware_OverOrUnderVoltage) {
+            return "Over Or Under Voltage";
+        }
+        if (HomeSlintStore.max31865Err.value == Max31865SlintErr.Hardware_RtdinForceMinusOpen) {
+            return "RTD in force minus open";
+        }
+        if (HomeSlintStore.max31865Err.value == Max31865SlintErr.Hardware_RefinForceMinusOpen) {
+            return "REFIN force minus open";
+        }
+        if (HomeSlintStore.max31865Err.value == Max31865SlintErr.Hardware_RefinGreatherThanPoint85TimeVBias) {
+            return "Refin Greather than 0.85 * VBias";
+        }
+        if (HomeSlintStore.max31865Err.value == Max31865SlintErr.Hardware-RtdLowThreshold) {
+            return "RTD Low Threshold";
+        } else {
+            return "RTD High Threshold";
         }
     }
 
@@ -55,7 +82,16 @@ export component Home inherits MainContent {
 
         HorizontalLayout {
             alignment: center;
-            MaterialText {
+
+            if HomeSlintStore.max31865Err.hasValue: 
+              MaterialText {
+                text: getErrorMessage();
+                font-size: 20px;
+                color: red;
+            }
+
+            if !HomeSlintStore.max31865Err.hasValue: 
+              MaterialText {
                 text: HomeSlintStore.temperature + getUnit();
                 font-size: 30px;
             }

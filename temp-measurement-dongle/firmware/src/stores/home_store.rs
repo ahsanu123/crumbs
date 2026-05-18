@@ -3,10 +3,13 @@ use crate::{
     stores::HandleOnKeyEventTrait,
 };
 mod is_charging_handler;
+mod max31865_err_handler;
 mod temperature_handler;
 
 use defmt::info;
 use is_charging_handler::IsChargingHandler;
+use max31865::error::Max31865Err;
+use max31865_err_handler::Max31865ErrHandler;
 use slint::Weak;
 use temperature_handler::TemperatureHandler;
 use tmd_ui::TmdApp;
@@ -15,6 +18,7 @@ use tmd_ui::TmdApp;
 pub struct HomeStore {
     temperature: Effect<f32, TemperatureHandler>,
     is_charging: Effect<bool, IsChargingHandler>,
+    max31865_err: Effect<Option<Max31865Err>, Max31865ErrHandler>,
 }
 
 impl HomeStore {
@@ -22,6 +26,7 @@ impl HomeStore {
         Self {
             temperature: Effect::new(app_weak.clone()),
             is_charging: Effect::new(app_weak.clone()),
+            max31865_err: Effect::new(app_weak.clone()),
         }
     }
 
@@ -41,6 +46,12 @@ impl HomeStore {
         self.is_charging
             .set(is_charging)
             .expect("HomeStore, fail to set is_charging");
+    }
+
+    pub fn set_max31865_error(&mut self, err: Option<Max31865Err>) {
+        self.max31865_err
+            .set(err)
+            .expect("HomeStore, fail to set max31865_err");
     }
 }
 

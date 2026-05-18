@@ -8,11 +8,16 @@ pub async fn max31865_task(mut max31865_dev: Max31865Type) {
         .expect("fail to create publisher");
 
     loop {
-        let temperature = max31865_dev.temperature();
+        let maybe_temp = max31865_dev.temperature();
 
-        mediator_pub
-            .publish(MediatorEvent::Max31865(temperature))
-            .await;
+        match maybe_temp {
+            Ok(temperature) => {
+                mediator_pub
+                    .publish(MediatorEvent::Max31865(temperature))
+                    .await
+            }
+            Err(err) => mediator_pub.publish(MediatorEvent::Max31865Err(err)).await,
+        }
 
         Timer::after_millis(100).await;
     }

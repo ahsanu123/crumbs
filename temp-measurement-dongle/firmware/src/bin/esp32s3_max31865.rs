@@ -97,7 +97,9 @@ async fn main(_spawner: Spawner) {
         430.0,
     );
 
-    let mut debug_value = max31865.get_debug_value();
+    let mut debug_value = max31865
+        .get_debug_value()
+        .expect("fail to read debug value");
     Timer::after_millis(65).await;
 
     loop {
@@ -106,7 +108,9 @@ async fn main(_spawner: Spawner) {
             debug_value.temperature, debug_value.resistance
         );
 
-        debug_value = max31865.get_debug_value();
+        debug_value = max31865
+            .get_debug_value()
+            .expect("fail to read debug value");
 
         Timer::after_secs(1).await;
     }

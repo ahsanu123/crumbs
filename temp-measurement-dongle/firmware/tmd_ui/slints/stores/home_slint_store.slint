@@ -1,6 +1,9 @@
+import { OptionMax31865Err } from "../models/option_val.slint";
+
 export global HomeSlintStore {
     in-out property <float> temperature;
     //: 421.15;
     in-out property <bool> isCharging;
     //: false;
+    in-out property <OptionMax31865Err> max31865Err;
 }
