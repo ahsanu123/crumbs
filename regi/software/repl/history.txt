@@ -10,3 +10,18 @@ get
 set --help
 set key1 123
 get key1
+help
+help spi 
+spi read8 1
+help
+help i2c 
+i2c read8 0x12
+cl
+clear 
+hello
+help 
+i2c read 0x12
+i2c read8 0x32
+spi read8 0b00001010
+spi write16 0x0a 0x01 0x21
+i2c write16 0x0a 0x01 0x21

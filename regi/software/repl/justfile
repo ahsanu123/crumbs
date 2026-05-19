@@ -1,0 +1,29 @@
+default: all-language
+
+fbs-file := "./fbs/repl_sch.fbs"
+
+all-language: 
+  just reset rust && flatc --rust --gen-object-api -o rust {{fbs-file}}
+  # just reset csharp && flatc --csharp --gen-object-api -o csharp {{fbs-file}}
+  # just reset cpp && flatc --cpp --gen-object-api -o cpp {{fbs-file}}
+  # just reset python && flatc --python --gen-object-api -o python {{fbs-file}}
+  # just reset go && flatc --go --gen-object-api -o go {{fbs-file}}
+  # just reset c && flatc -c --gen-object-api -o c {{fbs-file}}
+  # just reset kotlin && flatc --kotlin --gen-object-api -o kotlin {{fbs-file}}
+  # just reset typescript && flatc --ts --gen-object-api -o typescript {{fbs-file}}
+  # just reset java && flatc --java --gen-object-api -o java {{fbs-file}}
+  cp ./rust/repl_sch_generated.rs ./src/repl_sch_generated.rs
+
+reset folder: 
+  rm -rf {{folder}}
+  mkdir {{folder}}
+
+
+tr testName: 
+  cargo test {{testName}} -- --nocapture
+
+tl: 
+  cargo test -- --list
+
+tf testName: 
+  cargo test -- --list | rg -i {{testName}}

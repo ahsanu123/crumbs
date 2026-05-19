@@ -1,0 +1,57 @@
+namespace RegiRepl;
+
+table SpiRead8Args {
+  address: ubyte;
+}
+
+table SpiRead16Args {
+  address: ubyte;
+}
+
+table SpiWrite8Args {
+  address: ubyte;
+  value1: ubyte;
+}
+
+table SpiWrite16Args {
+  address: ubyte;
+  value1: ubyte;
+  value2: ubyte;
+}
+
+table I2cRead8Args {
+  address: ubyte;
+}
+
+table I2cRead16Args {
+  address: ubyte;
+}
+
+table I2cWrite8Args {
+  address: ubyte;
+  value1: ubyte;
+}
+
+table I2cWrite16Args {
+  address: ubyte;
+  value1: ubyte;
+  value2: ubyte;
+}
+
+union Operations {
+  SpiRead8Args,
+  SpiRead16Args,
+  SpiWrite8Args,
+  SpiWrite16Args,
+
+  I2cRead8Args,
+  I2cRead16Args,
+  I2cWrite8Args,
+  I2cWrite16Args
+}
+
+table Message {
+  operations: Operations;
+}
+
+root_type Message;
