@@ -256,7 +256,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "0.0.2"
+      "sch_revision": "0.0.1"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -505,7 +505,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "temp-measurement-dongle.kicad_pro",
+    "filename": "regi.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -695,8 +695,8 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "temp-measurement-dongle.kicad_sch",
-        "name": "temp-measurement-dongle",
+        "filename": "regi.kicad_sch",
+        "name": "regi",
         "uuid": "3aba722e-486f-4add-9a36-31452b9909aa"
       }
     ],
@@ -706,7 +706,7 @@
   "sheets": [
     [
       "3aba722e-486f-4add-9a36-31452b9909aa",
-      "temp-measurement-dongle"
+      "regi"
     ]
   ],
   "text_variables": {},
