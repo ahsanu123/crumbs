@@ -268,7 +268,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "0.0.0"
+      "sch_revision": "0.0.1"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -516,7 +516,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "miolari-esp32.kicad_pro",
+    "filename": "miolari-rp2350.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -671,18 +671,18 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "miolari-esp32.kicad_sch",
-        "name": "miolari-esp32",
+        "filename": "miolari-rp2350.kicad_sch",
+        "name": "miolari-rp2350",
         "uuid": "0b270349-c447-4a23-9513-3853791983fb"
       }
     ],
-    "used_designators": "",
+    "used_designators": "U5,U8-9,SW3-4,R11-13,R15-16,L2,J9-12,D5,C8,C12,C18-34,Y1,#PWR25-26,#PWR29,#PWR32-33,#PWR36,#PWR49-63",
     "variants": []
   },
   "sheets": [
     [
       "0b270349-c447-4a23-9513-3853791983fb",
-      "miolari-esp32"
+      "miolari-rp2350"
     ]
   ],
   "text_variables": {},
