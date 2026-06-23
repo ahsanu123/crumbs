@@ -11819,16 +11819,6 @@
 		)
 		(uuid "13065200-931d-4f9d-b0ca-b1ccb4af63dd")
 	)
-	(label "USB_DP"
-		(at 106.68 39.37 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "19f404ed-d6ed-4620-832f-e8d280c157cd")
-	)
 	(label "RESET"
 		(at 69.85 160.02 180)
 		(effects
@@ -12189,6 +12179,16 @@
 		)
 		(uuid "7eb563c5-8040-45f3-b889-e4a7155ec5b0")
 	)
+	(label "USB_DP"
+		(at 106.68 41.91 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "80f5cd5d-64bc-489b-8f2c-7b4f7cfc8946")
+	)
 	(label "RXD0"
 		(at 97.79 90.17 180)
 		(effects
@@ -12319,6 +12319,16 @@
 		)
 		(uuid "c46f751b-6e7f-425c-b599-52b78208f7ad")
 	)
+	(label "USB_DM"
+		(at 106.68 39.37 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c51bd019-17f3-4fa9-8736-8dd43c727a43")
+	)
 	(label "CS"
 		(at 184.15 73.66 0)
 		(effects
@@ -12388,16 +12398,6 @@
 			(justify left bottom)
 		)
 		(uuid "d59eef84-6869-4490-85dd-e5474f47e5a8")
-	)
-	(label "USB_DM"
-		(at 106.68 41.91 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "d98e569b-eb4d-4855-9a96-ca5cff10b656")
 	)
 	(label "DC"
 		(at 69.85 162.56 180)
