@@ -521,7 +521,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "tmc-2209.kicad_pro",
+    "filename": "miolari-tmc2209.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -688,18 +688,18 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "tmc-2209.kicad_sch",
-        "name": "tmc-2209",
+        "filename": "miolari-tmc2209.kicad_sch",
+        "name": "miolari-tmc2209",
         "uuid": "da3d7746-1d31-4971-b8b9-ae542a1cdb16"
       }
     ],
-    "used_designators": "",
+    "used_designators": "J8,J10,#PWR43-44,#PWR46-51",
     "variants": []
   },
   "sheets": [
     [
       "da3d7746-1d31-4971-b8b9-ae542a1cdb16",
-      "tmc-2209"
+      "miolari-tmc2209"
     ]
   ],
   "text_variables": {},

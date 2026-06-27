@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 2,
+    "active_layer": 0,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -52,7 +52,7 @@
       "shapes"
     ],
     "visible_layers": "ffffffff_ffffffff_fffffff5_ffff7fd5",
-    "zone_display_mode": 0
+    "zone_display_mode": 1
   },
   "git": {
     "integration_disabled": false,
@@ -61,7 +61,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "tmc-2209.kicad_prl",
+    "filename": "miolari-tmc2209.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {
