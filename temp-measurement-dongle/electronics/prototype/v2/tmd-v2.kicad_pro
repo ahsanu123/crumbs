@@ -272,7 +272,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "0.0.2"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -499,7 +499,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -521,7 +521,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "tmd.kicad_pro",
+    "filename": "tmd-v2.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -544,6 +544,16 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "bga",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgb(239, 94, 255)",
+        "tuning_profile": "",
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -551,7 +561,20 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "Default",
+        "pattern": "/bqvdd"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "GND"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/bqbypassed"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
@@ -561,7 +584,7 @@
       "plot": "output/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "step3d/tmd-v2.step",
       "svg": "",
       "vrml": ""
     },
@@ -688,18 +711,18 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "tmd.kicad_sch",
-        "name": "tmd",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "filename": "tmd-v2.kicad_sch",
+        "name": "tmd-v2",
+        "uuid": "3aba722e-486f-4add-9a36-31452b9909aa"
       }
     ],
-    "used_designators": "",
+    "used_designators": "SW8,R29,C25,#PWR54-55,J5-7",
     "variants": []
   },
   "sheets": [
     [
       "3aba722e-486f-4add-9a36-31452b9909aa",
-      "Root"
+      "tmd-v2"
     ]
   ],
   "text_variables": {},
