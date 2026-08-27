@@ -1,0 +1,302 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "b6893209-0b40-45c6-8abb-e1abdbbd3513")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 86.36 84.582)
+		(size 16.51 33.274)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "027932d9-b146-4839-8a98-7e6f44056073")
+		(property "Sheetname" "IRS2110"
+			(at 86.36 83.8704 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "irs2110.kicad_sch"
+			(at 86.36 118.4406 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "HIN" input
+			(at 86.36 90.17 180)
+			(uuid "8cbbcddb-3fb4-4634-a94e-d607022f0efe")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ISense" output
+			(at 102.87 90.17 0)
+			(uuid "bec71ae7-537b-4e89-9744-553a54ccbebb")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "LIN" input
+			(at 86.36 93.98 180)
+			(uuid "c4302337-f2ba-473d-9e0a-dcf0c70c7531")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "OutPhase" output
+			(at 102.87 93.98 0)
+			(uuid "05bb3112-e373-4f1b-9832-f4555ba0c8d2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "VSense" output
+			(at 102.87 97.79 0)
+			(uuid "dc5497ee-fd32-4ced-b287-7ea5a8016ce0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "3phase_drv_v1"
+				(path "/b6893209-0b40-45c6-8abb-e1abdbbd3513"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 86.36 127.762)
+		(size 16.51 33.274)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "4dd57bc6-a15e-4b67-9808-8e1a691e45c5")
+		(property "Sheetname" "IRS2112"
+			(at 86.36 127.0504 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "irs2110.kicad_sch"
+			(at 86.36 161.6206 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "HIN" input
+			(at 86.36 133.35 180)
+			(uuid "3ab1e73a-cd0b-466e-925a-0c68cbf3155b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ISense" output
+			(at 102.87 133.35 0)
+			(uuid "13a62b5b-66d7-4c26-9816-3f451ef237a4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "LIN" input
+			(at 86.36 137.16 180)
+			(uuid "752aef8d-f55f-4724-84c1-d48d3aabf53e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "OutPhase" output
+			(at 102.87 137.16 0)
+			(uuid "dac6580b-844d-4e16-b38f-34ef329e71d0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "VSense" output
+			(at 102.87 140.97 0)
+			(uuid "900922ce-c646-4f43-b624-52b3144bc1a7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "3phase_drv_v1"
+				(path "/b6893209-0b40-45c6-8abb-e1abdbbd3513"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 85.598 39.624)
+		(size 16.51 33.274)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "6b974781-4aa2-4418-a2c4-7a815083227b")
+		(property "Sheetname" "IRS2110"
+			(at 85.598 38.9124 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "irs2110.kicad_sch"
+			(at 85.598 73.4826 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "HIN" input
+			(at 85.598 45.212 180)
+			(uuid "68fa5dca-e221-4db9-a636-71cbf9208f37")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ISense" output
+			(at 102.108 45.212 0)
+			(uuid "de466ae1-0355-44dd-87d7-0274f006c949")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "LIN" input
+			(at 85.598 49.022 180)
+			(uuid "cb3164db-5f89-4266-ac15-345f42f84531")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "OutPhase" output
+			(at 102.108 49.022 0)
+			(uuid "8e728600-89e4-457b-a51b-4c140cae1109")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "VSense" output
+			(at 102.108 52.832 0)
+			(uuid "5f0e19ad-d5c0-4291-b8a9-f69f658dd289")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "3phase_drv_v1"
+				(path "/b6893209-0b40-45c6-8abb-e1abdbbd3513"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
