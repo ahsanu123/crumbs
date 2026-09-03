@@ -1,0 +1,6 @@
+# reference: https://docs.rust-embedded.org/book/start/qemu.html
+default: l
+
+l: 
+  cargo run --bin
+
