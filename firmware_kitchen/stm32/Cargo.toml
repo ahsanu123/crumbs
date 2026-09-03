@@ -32,7 +32,7 @@ embassy-executor = { version = "0.10.0", features = [
   "defmt",
 ] }
 embassy-stm32 = { version = "0.6.0", features = [
-  "stm32f405rg",
+  "stm32f407vg",
   "memory-x",
   "time-driver-tim4",
 ] }
@@ -44,6 +44,8 @@ panic-probe = { version = "1.0", features = ["print-defmt"] }
 semihosting = "0.1.20"
 static_cell = "2.1.1"
 defmt-rtt = "1.0.0"
+embassy-usb = { version = "0.6.0", features = ["defmt"] }
+embassy-futures = { version = "0.1.2", features = ["defmt"] }
 
 [dev-dependencies]
 defmt-test = "0.5"
