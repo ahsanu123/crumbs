@@ -1,6 +1,11 @@
-# TMD - Temperature Measurement Dongle 
+# TMD V2
 
-![schematic](./docs/temp-measurement-dongle.svg)
+TMD - Temperature Measurement Dongle 
+
+<img width="2203" height="1386" alt="image" src="https://github.com/user-attachments/assets/37f57269-ab74-4818-8f39-cc5caa148a5c" />
+<img width="2203" height="1386" alt="image" src="https://github.com/user-attachments/assets/2c0d40b4-ce7f-4511-8a93-56a27a96ae0d" />
+
+![tmd sch v2](./electronics/prototype/v2/tmd-v2.svg) 
 
 # Roadmap 
 
