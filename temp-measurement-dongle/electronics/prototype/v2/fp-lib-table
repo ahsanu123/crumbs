@@ -5,4 +5,5 @@
 	(lib (name "Raspberry_Pi_Zero_v.1.3_Hat") (type "KiCad") (uri "${KIPRJMOD}/../../../../libraries/Raspberry_Pi_Zero_v.1.3_Hat.pretty") (options "") (descr ""))
 	(lib (name "keyswitches.pretty-master") (type "KiCad") (uri "${KIPRJMOD}/../../../../libraries/keyswitches.pretty-master") (options "") (descr ""))
 	(lib (name "3DModel") (type "KiCad") (uri "${KIPRJMOD}/../../../../libraries/3DModel") (options "") (descr ""))
+	(lib (name "easyeda2kicad.3dshapes") (type "KiCad") (uri "${KIPRJMOD}/../../../../libraries/easyeda2kicad.3dshapes") (options "") (descr ""))
 )
