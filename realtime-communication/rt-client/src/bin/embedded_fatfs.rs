@@ -8,7 +8,6 @@
 #![deny(clippy::large_stack_frames)]
 
 use core::cell::RefCell;
-
 use critical_section::Mutex;
 use defmt::info;
 use embassy_executor::Spawner;
@@ -24,6 +23,8 @@ use esp_hal::spi::master::Spi;
 use esp_hal::spi::master::{Config, SpiDmaBus};
 use esp_hal::time::Rate;
 use esp_hal::timer::timg::TimerGroup;
+use rt_client::App;
+use rt_client::initializator::init_sd_card::SdCardInitializerExtension;
 use static_cell::StaticCell;
 use {esp_backtrace as _, esp_println as _};
 
@@ -61,38 +62,14 @@ async fn main(spawner: Spawner) -> ! {
         esp_radio::wifi::new(peripherals.WIFI, Default::default())
             .expect("Failed to initialize Wi-Fi controller");
 
-    let scl_mosi = peripherals.GPIO11;
-    let scl_sck = peripherals.GPIO12;
-    let scl_miso = peripherals.GPIO13;
-
-    let microsd_cs_pin = peripherals.GPIO9;
-
-    let dma_channel = peripherals.DMA_SPI3;
-
-    let microsd_cs = Output::new(microsd_cs_pin, Level::Low, OutputConfig::default());
-
-    let (rx_buffer, rx_descriptors, tx_buffer, tx_descriptors) = esp_hal::dma_buffers!(2048);
-    let dma_rx_buf = DmaRxBuf::new(rx_descriptors, rx_buffer).unwrap();
-    let dma_tx_buf = DmaTxBuf::new(tx_descriptors, tx_buffer).unwrap();
-
-    let spi_bus = Spi::new(
-        peripherals.SPI3,
-        Config::default()
-            .with_frequency(Rate::from_mhz(5))
-            .with_mode(esp_hal::spi::Mode::_1),
-    )
-    .expect("fail to create spi device")
-    .with_sck(scl_sck)
-    .with_mosi(scl_mosi)
-    .with_miso(scl_miso)
-    .with_dma(dma_channel)
-    .with_buffers(dma_rx_buf, dma_tx_buf);
-
-    let delay = Delay::new();
-    let mutex_refcell_bus = MUTEX_SPI_BUS.init(Mutex::new(RefCell::new(spi_bus)));
-
-    let spi_mmc_device = CriticalSectionDevice::new(mutex_refcell_bus, microsd_cs, delay).unwrap();
-    let sdcard = SdCard::new(spi_mmc_device, delay);
+    App.init_sd_card(
+        peripherals.GPIO11,
+        peripherals.GPIO12,
+        peripherals.GPIO13,
+        peripherals.GPIO9,
+        peripherals.DMA_SPI2,
+        peripherals.SPI2,
+    );
 
     // TODO: Spawn some tasks
     let _ = spawner;

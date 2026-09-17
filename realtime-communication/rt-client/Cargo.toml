@@ -9,7 +9,7 @@ name = "rt-client"
 path = "./src/bin/main.rs"
 
 [dependencies]
-esp-hal = { version = "~1.1.0", features = ["defmt", "esp32", "unstable"] }
+esp-hal = { version = "1.1.2", features = ["defmt", "esp32", "unstable"] }
 
 esp-rtos = { version = "0.3.0", features = [
   "defmt",
@@ -77,6 +77,7 @@ embedded-sdmmc = { version = "0.10.0", default-features = false, features = [
   "defmt-log",
 ] }
 embedded-hal-bus = "0.3.0"
+embedded-hal = "1.0.0"
 
 # For fine tuning these settings, please refer to https://doc.rust-lang.org/cargo/reference/profiles.html
 [profile.dev]
