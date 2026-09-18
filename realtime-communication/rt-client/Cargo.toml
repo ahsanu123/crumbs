@@ -72,12 +72,16 @@ serde = { version = "1.0.229", default-features = false, features = [
 toml = { version = "1.1.6", default-features = false, features = [
   "display",
   "parse",
+  "serde",
 ] }
 embedded-sdmmc = { version = "0.10.0", default-features = false, features = [
   "defmt-log",
 ] }
 embedded-hal-bus = "0.3.0"
 embedded-hal = "1.0.0"
+typed-builder = { version = "0.23.2" }
+embassy-futures = { version = "0.1.2", features = ["defmt"] }
+embassy-sync = { version = "0.8.0", features = ["defmt"] }
 
 # For fine tuning these settings, please refer to https://doc.rust-lang.org/cargo/reference/profiles.html
 [profile.dev]

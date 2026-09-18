@@ -12,19 +12,15 @@ use critical_section::Mutex;
 use defmt::info;
 use embassy_executor::Spawner;
 use embassy_time::{Duration, Timer};
-use embedded_hal_bus::spi::CriticalSectionDevice;
-use embedded_sdmmc::SdCard;
 use esp_hal::Blocking;
 use esp_hal::clock::CpuClock;
-use esp_hal::delay::Delay;
-use esp_hal::dma::{DmaRxBuf, DmaTxBuf};
-use esp_hal::gpio::{Input, InputConfig, Level, Output, OutputConfig, Pull};
-use esp_hal::spi::master::Spi;
-use esp_hal::spi::master::{Config, SpiDmaBus};
-use esp_hal::time::Rate;
+use esp_hal::spi::master::SpiDmaBus;
 use esp_hal::timer::timg::TimerGroup;
 use rt_client::App;
-use rt_client::initializator::init_sd_card::SdCardInitializerExtension;
+use rt_client::initializator::init_volume_manager::VolumeManInitConfig;
+use rt_client::initializator::init_volume_manager::VolumeManInitExtension;
+use rt_client::tasks::volume_manager_task::VolumeManagerTask;
+use rt_client::tasks::volume_manager_task::run_volume_manager_task;
 use static_cell::StaticCell;
 use {esp_backtrace as _, esp_println as _};
 
@@ -62,20 +58,25 @@ async fn main(spawner: Spawner) -> ! {
         esp_radio::wifi::new(peripherals.WIFI, Default::default())
             .expect("Failed to initialize Wi-Fi controller");
 
-    App.init_sd_card(
-        peripherals.GPIO11,
-        peripherals.GPIO12,
-        peripherals.GPIO13,
-        peripherals.GPIO9,
-        peripherals.DMA_SPI2,
-        peripherals.SPI2,
-    );
+    let sdcard_config = VolumeManInitConfig::builder()
+        .mosi_pin(peripherals.GPIO11)
+        .sck_pin(peripherals.GPIO12)
+        .miso_pin(peripherals.GPIO13)
+        .sd_card_cs(peripherals.GPIO9)
+        .dma(peripherals.DMA_SPI2)
+        .spi(peripherals.SPI2)
+        .build();
 
-    // TODO: Spawn some tasks
-    let _ = spawner;
+    let volume_manager = App::init_volume_manager(sdcard_config);
+
+    let sdcard_task = VolumeManagerTask::builder()
+        .volman_instance(volume_manager)
+        .build();
+
+    spawner.spawn(run_volume_manager_task(sdcard_task).expect("fail to run sdcard task"));
 
     loop {
-        info!("Hello world!");
+        info!("tick...");
         Timer::after(Duration::from_secs(1)).await;
     }
 
