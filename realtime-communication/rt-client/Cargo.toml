@@ -4,23 +4,23 @@ name = "rt-client"
 rust-version = "1.88"
 version = "0.1.0"
 
-[[bin]]
-name = "rt-client"
-path = "./src/bin/main.rs"
+# [[bin]]
+# name = "rt-client"
+# path = "./src/bin/main.rs"
 
 [dependencies]
-esp-hal = { version = "1.1.2", features = ["defmt", "esp32", "unstable"] }
+esp-hal = { version = "1.1.2", features = ["defmt", "esp32s3", "unstable"] }
 
 esp-rtos = { version = "0.3.0", features = [
   "defmt",
   "embassy",
   "esp-alloc",
   "esp-radio",
-  "esp32",
+  "esp32s3",
 ] }
 
 defmt = "1.0.1"
-esp-bootloader-esp-idf = { version = "0.5.0", features = ["defmt", "esp32"] }
+esp-bootloader-esp-idf = { version = "0.5.0", features = ["defmt", "esp32s3"] }
 
 embassy-net = { version = "0.9.1", features = [
   "defmt",
@@ -34,17 +34,17 @@ embedded-io-async = { version = "0.7.0", features = ["defmt"] }
 esp-alloc = { version = "0.10.0", features = ["defmt"] }
 esp-backtrace = { version = "0.19.0", features = [
   "defmt",
-  "esp32",
+  "esp32s3",
   "panic-handler",
 ] }
-esp-println = { version = "0.17.0", features = ["defmt-espflash", "esp32"] }
+esp-println = { version = "0.17.0", features = ["defmt-espflash", "esp32s3"] }
 # for more networking protocol support see https://crates.io/crates/edge-net
 embassy-executor = { version = "0.10.0", features = ["defmt"] }
 embassy-time = { version = "0.5.0", features = ["defmt"] }
 esp-radio = { version = "0.18.0", features = [
   "defmt",
   "esp-alloc",
-  "esp32",
+  "esp32s3",
   "unstable",
   "wifi",
 ] }

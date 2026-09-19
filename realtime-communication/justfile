@@ -4,3 +4,9 @@ dup:
 # docker compose down 
 don:
   docker compose -f dockercompose.yaml down
+
+format32: 
+  echo "sudo umount mounted sd card"
+  echo "make sure you install dosfstool"
+  echo "then, sudo mkfs.vfat -F32 -n "CONFIG_SD" /dev/sdb1"
+

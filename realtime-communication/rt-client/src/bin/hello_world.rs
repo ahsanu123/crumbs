@@ -10,9 +10,10 @@
 use defmt::info;
 use embassy_executor::Spawner;
 use embassy_time::{Duration, Timer};
+use esp_backtrace as _;
 use esp_hal::clock::CpuClock;
 use esp_hal::timer::timg::TimerGroup;
-use {esp_backtrace as _, esp_println as _};
+use esp_println as _;
 
 extern crate alloc;
 
@@ -27,12 +28,12 @@ esp_bootloader_esp_idf::esp_app_desc!();
 #[esp_rtos::main]
 async fn main(spawner: Spawner) -> ! {
     // generator version: 1.3.0
-    // generator parameters: --chip esp32 -o alloc -o defmt -o unstable-hal -o esp-backtrace -o embassy -o wifi -o neovim
+    // generator parameters: --chip esp32s3 -o alloc -o defmt -o unstable-hal -o esp-backtrace -o embassy -o wifi -o neovim
 
     let config = esp_hal::Config::default().with_cpu_clock(CpuClock::max());
     let peripherals = esp_hal::init(config);
 
-    esp_alloc::heap_allocator!(#[esp_hal::ram(reclaimed)] size: 98768);
+    esp_alloc::heap_allocator!(#[esp_hal::ram(reclaimed)] size: 73744);
 
     let timg0 = TimerGroup::new(peripherals.TIMG0);
     let sw_interrupt =
