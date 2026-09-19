@@ -42,9 +42,12 @@ async fn main(spawner: Spawner) -> ! {
 
     info!("Embassy initialized!");
 
-    let (mut _wifi_controller, _interfaces) =
-        esp_radio::wifi::new(peripherals.WIFI, Default::default())
-            .expect("Failed to initialize Wi-Fi controller");
+    // TODO: investigate, when enabling wifi controller
+    // on prototype device, pipe is broken,
+    // seem because power isssues (which also happen before, and only happen on proto board)
+    // let (mut _wifi_controller, _interfaces) =
+    //     esp_radio::wifi::new(peripherals.WIFI, Default::default())
+    //         .expect("Failed to initialize Wi-Fi controller");
 
     // TODO: Spawn some tasks
     let _ = spawner;

@@ -1,5 +1,6 @@
 use core::cell::RefCell;
 use critical_section::Mutex;
+use embedded_hal::delay::DelayNs as _;
 use embedded_hal_bus::spi::CriticalSectionDevice;
 use embedded_sdmmc::{SdCard, VolumeManager};
 use esp_hal::delay::Delay;
@@ -84,7 +85,7 @@ where
     SPI: SpiInstance + 'static,
     DMA: DmaChannelFor<AnySpi<'static>>,
 {
-    let microsd_cs = Output::new(sd_card_cs, Level::Low, OutputConfig::default());
+    let microsd_cs = Output::new(sd_card_cs, Level::High, OutputConfig::default());
 
     let (rx_buffer, rx_descriptors, tx_buffer, tx_descriptors) = esp_hal::dma_buffers!(2048);
 
@@ -97,7 +98,7 @@ where
     let spi_bus = Spi::new(
         spi,
         Config::default()
-            .with_frequency(Rate::from_mhz(5))
+            .with_frequency(Rate::from_khz(400))
             .with_mode(esp_hal::spi::Mode::_1),
     )
     .expect("fail to create spi device")
@@ -113,6 +114,20 @@ where
     let spi_mmc_device = CriticalSectionDevice::new(mutex_refcell_bus, microsd_cs, delay).unwrap();
 
     let sdcard = SdCard::new(spi_mmc_device, delay);
+
+    while let Err(e) = sdcard.num_bytes() {
+        defmt::error!("fail to init sdcard: {:?}", e);
+        // retry after 1 second
+        let mut delay = Delay::new();
+        delay.delay_ms(1000u32);
+    }
+
+    // if let Ok(numbyte) = sdcard.num_bytes() {
+    //     defmt::info!("sdcard numbyte{}", numbyte);
+    // } else {
+    //     defmt::error!("fail to read sdcard numbytes");
+    // }
+
     let volman = VolumeManager::new(sdcard, DummyTimeSource);
 
     VOLUME_MANAGER.init(Mutex::new(RefCell::new(volman)))

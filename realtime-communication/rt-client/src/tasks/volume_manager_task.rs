@@ -43,28 +43,28 @@ pub trait TaskTrait<'l> {
 impl<'m> TaskTrait<'m> for VolumeManagerTask<'m> {
     async fn run(&self) {
         self.with_cs(|volman| {
-            let volume0 = volman
-                .open_volume(VolumeIdx(0))
-                .expect("fail to read volume 0");
+            if let Ok(volume0) = volman.open_volume(VolumeIdx(0)) {
+                defmt::info!("Volume 0: {:?}", volume0);
 
-            defmt::info!("Volume 0: {:?}", volume0);
+                let root_dir = volume0.open_root_dir().expect("fail to open root dir");
 
-            let root_dir = volume0.open_root_dir().expect("fail to open root dir");
+                let dummy_txt = root_dir
+                    .open_file_in_dir(
+                        "dummy_sd_test.txt",
+                        embedded_sdmmc::Mode::ReadWriteCreateOrAppend,
+                    )
+                    .expect("fail to open file");
 
-            let dummy_txt = root_dir
-                .open_file_in_dir(
-                    "dummy_sd_test.txt",
-                    embedded_sdmmc::Mode::ReadWriteCreateOrAppend,
-                )
-                .expect("fail to open file");
+                defmt::info!("success to open create or open dummy file");
 
-            defmt::info!("success to open create or open dummy file");
+                dummy_txt
+                    .write(b"dummy message inserted\n")
+                    .expect("fail to write ");
 
-            dummy_txt
-                .write(b"dummy message inserted\n")
-                .expect("fail to write ");
-
-            defmt::info!("success write dummy message to file");
+                defmt::info!("success write dummy message to file");
+            } else {
+                defmt::error!("fail to read first volume");
+            }
         });
 
         Timer::after(Duration::from_secs(3)).await;

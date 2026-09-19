@@ -272,7 +272,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "0.0.1"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -690,7 +690,7 @@
       {
         "filename": "tmd.kicad_sch",
         "name": "tmd",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "3aba722e-486f-4add-9a36-31452b9909aa"
       }
     ],
     "used_designators": "",
@@ -699,7 +699,7 @@
   "sheets": [
     [
       "3aba722e-486f-4add-9a36-31452b9909aa",
-      "Root"
+      "tmd"
     ]
   ],
   "text_variables": {},

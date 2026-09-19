@@ -43,15 +43,15 @@ async fn main(spawner: Spawner) -> ! {
 
     info!("Embassy initialized!");
 
-    let (mut _wifi_controller, _interfaces) =
-        esp_radio::wifi::new(peripherals.WIFI, Default::default())
-            .expect("Failed to initialize Wi-Fi controller");
+    // let (mut _wifi_controller, _interfaces) =
+    //     esp_radio::wifi::new(peripherals.WIFI, Default::default())
+    //         .expect("Failed to initialize Wi-Fi controller");
 
     let sdcard_config = VolumeManInitConfig::builder()
         .mosi_pin(peripherals.GPIO11)
         .sck_pin(peripherals.GPIO12)
-        .miso_pin(peripherals.GPIO13)
-        .sd_card_cs(peripherals.GPIO9)
+        .miso_pin(peripherals.GPIO15)
+        .sd_card_cs(peripherals.GPIO10)
         .dma(peripherals.DMA_CH0)
         .spi(peripherals.SPI2)
         .build();
