@@ -50,9 +50,9 @@ async fn main(spawner: Spawner) -> ! {
     let sdcard_config = VolumeManInitConfig::builder()
         .mosi_pin(peripherals.GPIO11)
         .sck_pin(peripherals.GPIO12)
-        .miso_pin(peripherals.GPIO15)
+        .miso_pin(peripherals.GPIO14)
         .sd_card_cs(peripherals.GPIO10)
-        .dma(peripherals.DMA_CH0)
+        .dma(peripherals.DMA_SPI2)
         .spi(peripherals.SPI2)
         .build();
 

@@ -2,6 +2,7 @@ use core::cell::RefCell;
 use critical_section::Mutex;
 use embedded_hal::delay::DelayNs as _;
 use embedded_hal_bus::spi::CriticalSectionDevice;
+use embedded_sdmmc::sdcard::spi::AcquireOpts;
 use embedded_sdmmc::{SdCard, VolumeManager};
 use esp_hal::delay::Delay;
 use esp_hal::dma::{DmaChannelFor, DmaRxBuf, DmaTxBuf};
@@ -99,7 +100,7 @@ where
         spi,
         Config::default()
             .with_frequency(Rate::from_khz(400))
-            .with_mode(esp_hal::spi::Mode::_1),
+            .with_mode(esp_hal::spi::Mode::_0),
     )
     .expect("fail to create spi device")
     .with_sck(sck_pin)
@@ -113,12 +114,23 @@ where
 
     let spi_mmc_device = CriticalSectionDevice::new(mutex_refcell_bus, microsd_cs, delay).unwrap();
 
-    let sdcard = SdCard::new(spi_mmc_device, delay);
+    // let sdcard = SdCard::new(spi_mmc_device, delay);
 
+    let sdcard = SdCard::new_with_options(
+        spi_mmc_device,
+        delay,
+        AcquireOpts {
+            use_crc: false,
+            acquire_retries: 50,
+        },
+    );
+
+    let mut delay = Delay::new();
     while let Err(e) = sdcard.num_bytes() {
-        defmt::error!("fail to init sdcard: {:?}", e);
+        // while sdcard.get_card_type().is_none() {
+        defmt::error!("fail to get card type: {:?}", e);
+        // defmt::error!("fail to get card type");
         // retry after 1 second
-        let mut delay = Delay::new();
         delay.delay_ms(1000u32);
     }
 
