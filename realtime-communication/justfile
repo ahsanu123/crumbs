@@ -10,3 +10,19 @@ format32:
   echo "make sure you install dosfstool"
   echo "then, sudo mkfs.vfat -F32 -n "CONFIG_SD" /dev/sdb1"
 
+
+probersAttach: 
+  probe-rs attach --chip STM32F407VG target/thumbv7em-none-eabihf/debug/stm32_sdmmc
+
+exfatFormatingThing: 
+  install sudo pacman -S exfatprogs parted dosfstools 
+  use lsblk to list all possible sdcard
+  sudo umount /dev/sdX*
+  sudo wipefs -a /dev/sdX
+  sudo parted /dev/sdX --script mklabel msdos
+  sudo parted /dev/sdX --script mkpart primary 1MiB 100%
+  sudo mkfs.exfat -n SDCARD /dev/sdX1
+  sync
+
+  lsblk -f /dev/sdX
+  sudo file -s /dev/sdX1
