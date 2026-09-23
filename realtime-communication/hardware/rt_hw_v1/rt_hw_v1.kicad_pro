@@ -661,13 +661,17 @@
         "uuid": "febfcd6e-7fe3-48d0-b229-7957d3116d0e"
       }
     ],
-    "used_designators": "U1-7,U9,Q1-3,#PWR1-34,#PWR38,#PWR40,#PWR42,#PWR56-61,#PWR63-66,#PWR68-73,#PWR75-77,D1-5,D32,C1-21,C26,R1-18,R30-32,J1,J6,L1-2,SW1,SW3-4,SW9,BT1",
+    "used_designators": "U1-7,U9,Q1-3,#PWR1-46,#PWR56-61,#PWR63-66,#PWR68-73,#PWR75-77,D1-5,D32,C1-23,C26,R1-23,R30-32,J1-2,J6,L1-2,SW1,SW3-4,SW9,BT1",
     "variants": []
   },
   "sheets": [
     [
       "febfcd6e-7fe3-48d0-b229-7957d3116d0e",
       "Root"
+    ],
+    [
+      "28ef9d79-146c-4d1a-a1b6-a675533cbfd0",
+      "BQ27441_Batt_Fuel_Gauge"
     ]
   ],
   "text_variables": {},
