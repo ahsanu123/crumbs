@@ -1,5 +1,5 @@
- <img src="./Crumbs-Logo.svg" style="height: 300px; " align="right"/>
-
+<img  src="./realistic-crumbs-logo.png" style="height: 250px; " align="right"/> 
+ 
 ### CRUMBS
 - **Hardware Status** ✔️ Production Done
 - **Hardware Status** 🏁 Prototype Done
