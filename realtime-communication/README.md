@@ -1,6 +1,8 @@
 
 ## SDMMC and SDIO 
 
+[See Kicad Project](https://kicanvas.org/?repo=https%3A%2F%2Fgithub.com%2Fahsanu123%2Fcrumbs%2Ftree%2Fmain%2Frealtime-communication%2Fhardware%2Frt_hw_v1)
+
 SDMMC is hardware host, and SDIO is the protocol. 
 
 - look at esp32 [SDMMC documentation here](https://docs.espressif.com/projects/rust/esp-hal/1.2.0/esp32s3/esp_hal/sdmmc/index.html)
