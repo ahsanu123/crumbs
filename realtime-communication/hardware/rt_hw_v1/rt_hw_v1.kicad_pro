@@ -146,7 +146,7 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.0,
+        "min_clearance": 0.1,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
@@ -556,7 +556,7 @@
     "last_paths": {
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "fab_out/",
       "specctra_dsn": "",
       "step": "",
       "vrml": ""
@@ -693,7 +693,7 @@
         "uuid": "febfcd6e-7fe3-48d0-b229-7957d3116d0e"
       }
     ],
-    "used_designators": "U1-9,Q1-3,#PWR1-46,#PWR54-73,#PWR75-77,D1-5,D32,C1-24,C26,JP2,R1-28,R30-32,J1-2,J4,J6,L1-2,SW1,SW3-4,SW9,BT1",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [
