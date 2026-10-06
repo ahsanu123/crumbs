@@ -1,0 +1,20 @@
+[package]
+name = "fish_pond"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+critical-section = { version = "1.2.0", optional = true }
+embedded-graphics = "0.8.2"
+embedded-graphics-simulator = "0.8.0"
+embedded-text = "0.7.3"
+libm = "0.2.16"
+# rand = { version = "0.10.3", default-features = false, features = [
+#   "small_rng",
+# ] }
+static_cell = "2.1.1"
+
+[features]
+default = ["std"]
+std = []
+nostd = ["dep:critical-section"]
