@@ -1,0 +1,125 @@
+[package]
+name = "fish_pond_rust"
+edition = "2024"
+version = "0.1.0"
+autobins = false
+
+[[bin]]
+name = "fish_pond"
+path = "src/bin/fish_pond.rs"
+required-features = ["esp32s3"]
+
+[[bin]]
+name = "fish_pond_sim"
+path = "src/bin/fish_pond_sim.rs"
+required-features = ["simulator"]
+
+[[bin]]
+name = "test_display"
+path = "src/bin/test_display.rs"
+required-features = ["esp32s3"]
+
+[features]
+default = ["esp32s3"]
+simulator = ["dep:embedded-graphics-simulator"]
+esp32 = [
+  "esp-common",
+  "esp-println/esp32",
+  "esp-backtrace/esp32",
+  "esp-radio/esp32",
+  "esp-hal/esp32",
+  "esp-rtos/esp32",
+  "esp-bootloader-esp-idf/esp32",
+]
+esp32s3 = [
+  "esp-common",
+  "esp-println/esp32s3",
+  "esp-backtrace/esp32s3",
+  "esp-radio/esp32s3",
+  "esp-hal/esp32s3",
+  "esp-rtos/esp32s3",
+  "esp-bootloader-esp-idf/esp32s3",
+]
+esp-common = [
+  "dep:defmt",
+  "dep:esp-hal",
+  "dep:esp-rtos",
+  "dep:esp-bootloader-esp-idf",
+  "dep:embedded-io",
+  "dep:embedded-io-async",
+  "dep:esp-alloc",
+  "dep:esp-backtrace",
+  "dep:esp-println",
+  "dep:embassy-executor",
+  "dep:embassy-time",
+  "dep:esp-radio",
+  "dep:critical-section",
+  "dep:static_cell",
+  "dep:embedded-hal-bus",
+  "dep:embedded-hal",
+  "dep:typed-builder",
+  "dep:embassy-futures",
+  "dep:embassy-sync",
+  "dep:mipidsi",
+  "dep:embedded-graphics-core",
+]
+
+[dependencies]
+embedded-graphics-simulator = { version = "0.8.0", optional = true }
+
+embedded-graphics = "0.8.1"
+fastrand = { version = "2.5.0", default-features = false, features = ["alloc"] }
+heapless = "0.8.0"
+libm = "0.2.11"
+
+defmt = { version = "1.0.1", optional = true }
+esp-hal = { version = "1.1.2", optional = true, features = ["defmt", "unstable"] }
+esp-rtos = { version = "0.3.0", optional = true, features = [
+  "defmt",
+  "embassy",
+  "esp-alloc",
+  "esp-radio",
+] }
+esp-bootloader-esp-idf = { version = "0.5.0", optional = true, features = ["defmt"] }
+embedded-io = { version = "0.7.1", optional = true, features = ["defmt"] }
+embedded-io-async = { version = "0.7.0", optional = true, features = ["defmt"] }
+esp-alloc = { version = "0.10.0", optional = true, features = ["defmt"] }
+esp-backtrace = { version = "0.19.0", optional = true, features = ["defmt", "panic-handler"] }
+esp-println = { version = "0.17.0", optional = true, features = ["defmt-espflash"] }
+embassy-executor = { version = "0.10.0", optional = true, features = ["defmt"] }
+embassy-time = { version = "0.5.0", optional = true, features = ["defmt"] }
+esp-radio = { version = "0.18.0", optional = true, features = [
+  "defmt",
+  "esp-alloc",
+  "unstable",
+] }
+critical-section = { version = "1.2.0", optional = true }
+static_cell = { version = "2.1.1", optional = true }
+
+embedded-hal-bus = { version = "0.3.0", optional = true }
+embedded-hal = { version = "1.0.0", optional = true }
+typed-builder = { version = "0.23.2", optional = true }
+embassy-futures = { version = "0.1.2", optional = true, features = ["defmt"] }
+embassy-sync = { version = "0.8.0", optional = true, features = ["defmt"] }
+mipidsi = { version = "0.9.0", optional = true }
+embedded-graphics-core = { version = "0.4.1", optional = true }
+
+# [profile.dev.fish-pond-rust]
+# opt-level = 3
+#
+# [profile.release.fish-pond-rust]
+# opt-level = 3
+
+[profile.dev]
+# Rust debug is too slow.
+# For debug builds always builds with some optimization
+opt-level = 3
+
+[profile.release]
+codegen-units = 1        # LLVM can perform better optimizations using a single thread
+debug = 2
+debug-assertions = false
+incremental = false
+lto = 'fat'
+opt-level = 3
+overflow-checks = false
