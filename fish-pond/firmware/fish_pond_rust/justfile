@@ -1,0 +1,19 @@
+
+run_sim:
+  exec cargo +stable \
+      --config 'unstable.build-std=[]' \
+      run \
+      --target x86_64-unknown-linux-gnu \
+      --no-default-features \
+      --features simulator \
+      --bin fish_pond_sim \
+
+llama_serve: 
+  ollama serve 
+
+start_codex: 
+  codex --oss --profile local
+
+run_codex: 
+  # local is on ~/.codex/local.config.toml
+  codex  --profile local

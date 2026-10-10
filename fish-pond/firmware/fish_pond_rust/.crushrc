@@ -1,0 +1,10 @@
+provider add ollama_local --type openai --base-url "http://localhost:11434/v1" --system-prompt-prefix "save every conversation in history.md in root folder after answer, and read it before do any operation, so every context is saved in history"
+
+model add ollama_local/qwen3-coder:30b --name "qwen3-coder local" 
+
+permissions allow view edit
+
+option debug-lsp true 
+option auto-lsp true
+
+lsp add rust-analyzer --command rust-analyzer

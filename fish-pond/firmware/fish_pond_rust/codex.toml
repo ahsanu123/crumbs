@@ -1,0 +1,10 @@
+model = "qwen2.5-coder"
+model_provider = "ollama_local"
+
+[tui]
+screen_reader_detection_done = true
+
+[model_providers.ollama_local]
+name = "Ollama"
+base_url = "http://localhost:11434/v1"
+wire_api = "responses"
