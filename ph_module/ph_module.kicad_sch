@@ -4,7 +4,660 @@
 	(generator_version "10.0")
 	(uuid "4783447f-9350-42e7-88d8-73e98364e42c")
 	(paper "A4")
-	(lib_symbols)
+	(lib_symbols
+		(symbol "Amplifier_Operational:LMV324"
+			(pin_names
+				(offset 0.127)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "LMV324"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.27 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lmv324.pdf"
+				(at 1.27 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Quad Low-Voltage Rail-to-Rail Output Operational Amplifier, SOIC-14/SSOP-14"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "quad opamp"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SOIC*3.9x8.7mm*P1.27mm* DIP*W7.62mm* TSSOP*4.4x5mm*P0.65mm* SSOP*5.3x6.2mm*P0.65mm* MSOP*3x3mm*P0.5mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LMV324_1_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "LMV324_2_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "LMV324_3_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "LMV324_4_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "LMV324_5_1"
+				(pin power_in line
+					(at -2.54 7.62 270)
+					(length 3.81)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -2.54 -7.62 90)
+					(length 3.81)
+					(name "V-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Regulator_SwitchedCapacitor:LMC7660"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -6.604 11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LMC7660"
+				(at 0 11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at -66.04 30.48 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lmc7660.pdf"
+				(at -66.04 30.48 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Voltage converter from +1.5V to +10V to +1.5V to +10V, SO-8/DIP-8"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Voltage converter"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LMC7660_0_1"
+				(rectangle
+					(start -7.62 10.16)
+					(end 7.62 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "LMC7660_1_1"
+				(pin no_connect line
+					(at -7.62 5.08 0)
+					(length 2.54)
+					(hide yes)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 10.16 2.54 180)
+					(length 2.54)
+					(name "CAP+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -12.7 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 10.16 -7.62 180)
+					(length 2.54)
+					(name "CAP-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 10.16 7.62 180)
+					(length 2.54)
+					(name "VOUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -10.16 -5.08 0)
+					(length 2.54)
+					(name "LV"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -10.16 0 0)
+					(length 2.54)
+					(name "OSC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -10.16 7.62 0)
+					(length 2.54)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
 	(text "TODO"
 		(exclude_from_sim no)
 		(at 24.892 -10.922 0)
@@ -2336,6 +2989,686 @@
 			"IiIiIvIsGjRsQp06H9Ggfj1EROTNERYWhr29PXZ2r8OzA+VNcvLkKarX/IiTx48gIi9XdN3t4OAQ"
 			"04tTROS/ogGfRURERERERETktRA9PK2IiMQvqrtF5P9BX6kQERERERERERERERERkXhDAaeIiIiI"
 			"iIiIiIiIiIiIxBsKOEVEREREREREREREREQk3vgflepciaDS8lcAAAAASUVORK5CYII="
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LMV324")
+		(at 273.05 24.13 0)
+		(unit 4)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "295be619-efc7-45b2-b9f9-10b9b1d118fd")
+		(property "Reference" "U1"
+			(at 273.05 13.97 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LMV324"
+			(at 273.05 16.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 271.78 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lmv324.pdf"
+			(at 274.32 19.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Quad Low-Voltage Rail-to-Rail Output Operational Amplifier, SOIC-14/SSOP-14"
+			(at 273.05 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "10"
+			(uuid "90a4e2bb-10e2-4b86-8fdb-ce5f2ea5b95b")
+		)
+		(pin "7"
+			(uuid "34eaaca5-376f-434e-8a5b-418e831e0060")
+		)
+		(pin "13"
+			(uuid "42ef31d1-6ebe-4353-8aa3-437636f36c3b")
+		)
+		(pin "12"
+			(uuid "74d64c18-730b-4f60-b980-e4bd5659542b")
+		)
+		(pin "6"
+			(uuid "4a61f135-f886-4501-ae09-ee3c49e971aa")
+		)
+		(pin "9"
+			(uuid "1fa3370e-9430-404f-8bc0-1cfc66b3b0c6")
+		)
+		(pin "8"
+			(uuid "39a526a8-a600-4e62-859d-13bef250ed65")
+		)
+		(pin "5"
+			(uuid "f0a7e8b1-e52e-4d25-8d8c-ebb8583c4106")
+		)
+		(pin "3"
+			(uuid "034f6065-7052-46bf-ae0c-1e29cc7c5509")
+		)
+		(pin "2"
+			(uuid "6ab894d7-8435-460b-878f-c4b4566e775d")
+		)
+		(pin "1"
+			(uuid "c1cc1387-9b8f-492c-90f5-a7b085d9f557")
+		)
+		(pin "11"
+			(uuid "8075cc8d-7b24-45f7-b400-7d83739917e5")
+		)
+		(pin "14"
+			(uuid "20887239-b6a3-47b8-87e7-37132563245e")
+		)
+		(pin "4"
+			(uuid "0cd1abbd-d7ce-4965-a476-1ce33875ef31")
+		)
+		(instances
+			(project "ph_module"
+				(path "/4783447f-9350-42e7-88d8-73e98364e42c"
+					(reference "U1")
+					(unit 4)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LMV324")
+		(at 236.22 24.13 0)
+		(unit 2)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "29627dc7-170d-4841-b718-6ba6796329c6")
+		(property "Reference" "U1"
+			(at 236.22 13.97 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LMV324"
+			(at 236.22 16.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 234.95 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lmv324.pdf"
+			(at 237.49 19.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Quad Low-Voltage Rail-to-Rail Output Operational Amplifier, SOIC-14/SSOP-14"
+			(at 236.22 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "10"
+			(uuid "90a4e2bb-10e2-4b86-8fdb-ce5f2ea5b95b")
+		)
+		(pin "7"
+			(uuid "34eaaca5-376f-434e-8a5b-418e831e0060")
+		)
+		(pin "13"
+			(uuid "42ef31d1-6ebe-4353-8aa3-437636f36c3b")
+		)
+		(pin "12"
+			(uuid "74d64c18-730b-4f60-b980-e4bd5659542b")
+		)
+		(pin "6"
+			(uuid "4a61f135-f886-4501-ae09-ee3c49e971aa")
+		)
+		(pin "9"
+			(uuid "1fa3370e-9430-404f-8bc0-1cfc66b3b0c6")
+		)
+		(pin "8"
+			(uuid "39a526a8-a600-4e62-859d-13bef250ed65")
+		)
+		(pin "5"
+			(uuid "f0a7e8b1-e52e-4d25-8d8c-ebb8583c4106")
+		)
+		(pin "3"
+			(uuid "034f6065-7052-46bf-ae0c-1e29cc7c5509")
+		)
+		(pin "2"
+			(uuid "6ab894d7-8435-460b-878f-c4b4566e775d")
+		)
+		(pin "1"
+			(uuid "c1cc1387-9b8f-492c-90f5-a7b085d9f557")
+		)
+		(pin "11"
+			(uuid "8075cc8d-7b24-45f7-b400-7d83739917e5")
+		)
+		(pin "14"
+			(uuid "20887239-b6a3-47b8-87e7-37132563245e")
+		)
+		(pin "4"
+			(uuid "0cd1abbd-d7ce-4965-a476-1ce33875ef31")
+		)
+		(instances
+			(project "ph_module"
+				(path "/4783447f-9350-42e7-88d8-73e98364e42c"
+					(reference "U1")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LMV324")
+		(at 255.27 24.13 0)
+		(unit 3)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "74cde84a-8ea1-47cd-a0fc-8691e3b4c3b6")
+		(property "Reference" "U1"
+			(at 255.27 13.97 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LMV324"
+			(at 255.27 16.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 254 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lmv324.pdf"
+			(at 256.54 19.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Quad Low-Voltage Rail-to-Rail Output Operational Amplifier, SOIC-14/SSOP-14"
+			(at 255.27 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "10"
+			(uuid "90a4e2bb-10e2-4b86-8fdb-ce5f2ea5b95b")
+		)
+		(pin "7"
+			(uuid "34eaaca5-376f-434e-8a5b-418e831e0060")
+		)
+		(pin "13"
+			(uuid "42ef31d1-6ebe-4353-8aa3-437636f36c3b")
+		)
+		(pin "12"
+			(uuid "74d64c18-730b-4f60-b980-e4bd5659542b")
+		)
+		(pin "6"
+			(uuid "4a61f135-f886-4501-ae09-ee3c49e971aa")
+		)
+		(pin "9"
+			(uuid "1fa3370e-9430-404f-8bc0-1cfc66b3b0c6")
+		)
+		(pin "8"
+			(uuid "39a526a8-a600-4e62-859d-13bef250ed65")
+		)
+		(pin "5"
+			(uuid "f0a7e8b1-e52e-4d25-8d8c-ebb8583c4106")
+		)
+		(pin "3"
+			(uuid "034f6065-7052-46bf-ae0c-1e29cc7c5509")
+		)
+		(pin "2"
+			(uuid "6ab894d7-8435-460b-878f-c4b4566e775d")
+		)
+		(pin "1"
+			(uuid "c1cc1387-9b8f-492c-90f5-a7b085d9f557")
+		)
+		(pin "11"
+			(uuid "8075cc8d-7b24-45f7-b400-7d83739917e5")
+		)
+		(pin "14"
+			(uuid "20887239-b6a3-47b8-87e7-37132563245e")
+		)
+		(pin "4"
+			(uuid "0cd1abbd-d7ce-4965-a476-1ce33875ef31")
+		)
+		(instances
+			(project "ph_module"
+				(path "/4783447f-9350-42e7-88d8-73e98364e42c"
+					(reference "U1")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LMV324")
+		(at 215.9 24.13 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7be0e6e6-f67e-4867-acd9-4e60911e1755")
+		(property "Reference" "U1"
+			(at 215.9 13.97 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LMV324"
+			(at 215.9 16.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 214.63 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lmv324.pdf"
+			(at 217.17 19.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Quad Low-Voltage Rail-to-Rail Output Operational Amplifier, SOIC-14/SSOP-14"
+			(at 215.9 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "10"
+			(uuid "90a4e2bb-10e2-4b86-8fdb-ce5f2ea5b95b")
+		)
+		(pin "7"
+			(uuid "34eaaca5-376f-434e-8a5b-418e831e0060")
+		)
+		(pin "13"
+			(uuid "42ef31d1-6ebe-4353-8aa3-437636f36c3b")
+		)
+		(pin "12"
+			(uuid "74d64c18-730b-4f60-b980-e4bd5659542b")
+		)
+		(pin "6"
+			(uuid "4a61f135-f886-4501-ae09-ee3c49e971aa")
+		)
+		(pin "9"
+			(uuid "1fa3370e-9430-404f-8bc0-1cfc66b3b0c6")
+		)
+		(pin "8"
+			(uuid "39a526a8-a600-4e62-859d-13bef250ed65")
+		)
+		(pin "5"
+			(uuid "f0a7e8b1-e52e-4d25-8d8c-ebb8583c4106")
+		)
+		(pin "3"
+			(uuid "034f6065-7052-46bf-ae0c-1e29cc7c5509")
+		)
+		(pin "2"
+			(uuid "6ab894d7-8435-460b-878f-c4b4566e775d")
+		)
+		(pin "1"
+			(uuid "c1cc1387-9b8f-492c-90f5-a7b085d9f557")
+		)
+		(pin "11"
+			(uuid "8075cc8d-7b24-45f7-b400-7d83739917e5")
+		)
+		(pin "14"
+			(uuid "20887239-b6a3-47b8-87e7-37132563245e")
+		)
+		(pin "4"
+			(uuid "0cd1abbd-d7ce-4965-a476-1ce33875ef31")
+		)
+		(instances
+			(project "ph_module"
+				(path "/4783447f-9350-42e7-88d8-73e98364e42c"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LMV324")
+		(at 200.66 24.13 0)
+		(unit 5)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "972e4890-8be9-4ce3-b07c-6cf1ce519a4a")
+		(property "Reference" "U1"
+			(at 199.39 22.8599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LMV324"
+			(at 199.39 25.3999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 199.39 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lmv324.pdf"
+			(at 201.93 19.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Quad Low-Voltage Rail-to-Rail Output Operational Amplifier, SOIC-14/SSOP-14"
+			(at 200.66 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "10"
+			(uuid "90a4e2bb-10e2-4b86-8fdb-ce5f2ea5b95b")
+		)
+		(pin "7"
+			(uuid "34eaaca5-376f-434e-8a5b-418e831e0060")
+		)
+		(pin "13"
+			(uuid "42ef31d1-6ebe-4353-8aa3-437636f36c3b")
+		)
+		(pin "12"
+			(uuid "74d64c18-730b-4f60-b980-e4bd5659542b")
+		)
+		(pin "6"
+			(uuid "4a61f135-f886-4501-ae09-ee3c49e971aa")
+		)
+		(pin "9"
+			(uuid "1fa3370e-9430-404f-8bc0-1cfc66b3b0c6")
+		)
+		(pin "8"
+			(uuid "39a526a8-a600-4e62-859d-13bef250ed65")
+		)
+		(pin "5"
+			(uuid "f0a7e8b1-e52e-4d25-8d8c-ebb8583c4106")
+		)
+		(pin "3"
+			(uuid "034f6065-7052-46bf-ae0c-1e29cc7c5509")
+		)
+		(pin "2"
+			(uuid "6ab894d7-8435-460b-878f-c4b4566e775d")
+		)
+		(pin "1"
+			(uuid "c1cc1387-9b8f-492c-90f5-a7b085d9f557")
+		)
+		(pin "11"
+			(uuid "8075cc8d-7b24-45f7-b400-7d83739917e5")
+		)
+		(pin "14"
+			(uuid "20887239-b6a3-47b8-87e7-37132563245e")
+		)
+		(pin "4"
+			(uuid "0cd1abbd-d7ce-4965-a476-1ce33875ef31")
+		)
+		(instances
+			(project "ph_module"
+				(path "/4783447f-9350-42e7-88d8-73e98364e42c"
+					(reference "U1")
+					(unit 5)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Regulator_SwitchedCapacitor:LMC7660")
+		(at 205.74 55.88 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bf4bbbdd-fbcf-4c87-9252-c29153d93c4d")
+		(property "Reference" "U2"
+			(at 205.74 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LMC7660"
+			(at 205.74 43.18 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 139.7 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lmc7660.pdf"
+			(at 139.7 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Voltage converter from +1.5V to +10V to +1.5V to +10V, SO-8/DIP-8"
+			(at 205.74 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "56a21f7a-8aaa-478b-94bf-1e68d1e89534")
+		)
+		(pin "1"
+			(uuid "2f2006e6-a1c9-4c3a-b2c6-72adf8cc9753")
+		)
+		(pin "7"
+			(uuid "beeeaf58-0414-4652-9b18-7b7b8ab1415d")
+		)
+		(pin "6"
+			(uuid "3a577f4b-a5c3-4a72-82fa-6ece4eaba91a")
+		)
+		(pin "5"
+			(uuid "97bf1131-48a8-4b45-a604-c972f0b23197")
+		)
+		(pin "4"
+			(uuid "b16c329b-7f18-4016-aba0-201e131e25f9")
+		)
+		(pin "3"
+			(uuid "9aa169fb-3106-429b-8465-457c167e4e4d")
+		)
+		(pin "2"
+			(uuid "ab24b1fe-0e1b-416d-9d67-904c637f1b5c")
+		)
+		(instances
+			(project "ph_module"
+				(path "/4783447f-9350-42e7-88d8-73e98364e42c"
+					(reference "U2")
+					(unit 1)
+				)
+			)
 		)
 	)
 	(sheet_instances
