@@ -1,0 +1,425 @@
+{
+  "model": "qwen3.6:35b",
+  "thinking_enabled": false,
+  "advertised_context_tokens": 262144,
+  "test": "synthetic long-context recall, cross-file arithmetic, and tool call",
+  "expected": {
+    "start": "cobalt-71d9-a6e2",
+    "middle": "marigold-83b4-f019",
+    "end": "harbor-29c8-e715",
+    "result": 194
+  },
+  "policy": {
+    "deadline_seconds": 180,
+    "minimum_available_bytes": 2147483648,
+    "maximum_additional_swap_bytes": 1073741824,
+    "minimum_actual_prompt_fraction": 0.65,
+    "note": "Single deterministic probe per size; not a general coding benchmark."
+  },
+  "hardware_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 13 MiB, 7877 MiB",
+  "memory_initial": {
+    "available_bytes": 28687839232,
+    "swap_used_bytes": 1559142400
+  },
+  "cases": [
+    {
+      "context_requested": 8192,
+      "filler_records": 297,
+      "prompt_characters": 26523,
+      "memory_before": {
+        "available_bytes": 28687839232,
+        "swap_used_bytes": 1559142400
+      },
+      "raw_chunks": [
+        {
+          "model": "qwen3.6:35b",
+          "created_at": "2026-10-22T00:54:23.865992749Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_i5w6y9a8",
+                "function": {
+                  "index": 0,
+                  "name": "report_context",
+                  "arguments": {
+                    "start": "cobalt-71d9-a6e2",
+                    "middle": "marigold-83b4-f019",
+                    "end": "harbor-29c8-e715",
+                    "result": 146
+                  }
+                }
+              }
+            ]
+          },
+          "done": false
+        },
+        {
+          "model": "qwen3.6:35b",
+          "created_at": "2026-10-22T00:54:23.866531993Z",
+          "message": {
+            "role": "assistant",
+            "content": ""
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 28804838623,
+          "load_duration": 7550622422,
+          "prompt_eval_count": 6729,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 19723787000,
+          "eval_count": 93,
+          "eval_duration": 1480869000
+        }
+      ],
+      "first_output_seconds": 28.807,
+      "prompt_eval_count": 6729,
+      "prompt_eval_duration": 19723787000,
+      "eval_count": 93,
+      "eval_duration": 1480869000,
+      "load_duration": 7550622422,
+      "total_duration": 28804838623,
+      "done_reason": "stop",
+      "response_complete": true,
+      "tool_calls": [
+        {
+          "id": "call_i5w6y9a8",
+          "function": {
+            "index": 0,
+            "name": "report_context",
+            "arguments": {
+              "start": "cobalt-71d9-a6e2",
+              "middle": "marigold-83b4-f019",
+              "end": "harbor-29c8-e715",
+              "result": 146
+            }
+          }
+        }
+      ],
+      "text": "",
+      "tool_call_parseable": true,
+      "correct_fields": [
+        "start",
+        "middle",
+        "end"
+      ],
+      "accuracy": 0.75,
+      "wall_seconds": 28.808,
+      "abort_reason": [],
+      "minimum_available_bytes": 27620368384,
+      "maximum_swap_used_bytes": 1559142400,
+      "memory_after": {
+        "available_bytes": 27618160640,
+        "swap_used_bytes": 1557536768
+      },
+      "effective_pass": false,
+      "loaded_models_after": {
+        "models": [
+          {
+            "name": "qwen3.6:35b",
+            "model": "qwen3.6:35b",
+            "size": 22562018406,
+            "digest": "a7eb95c53bcf96b4bdd008d0fab4a5dac88047d9c1a7a9ab88ed453423fbd87c",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen35moe",
+              "families": [
+                "qwen35moe"
+              ],
+              "parameter_size": "35.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-22T08:04:23.866697274+07:00",
+            "size_vram": 5850309589,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "context_requested": 32768,
+      "filler_records": 1202,
+      "prompt_characters": 105258,
+      "memory_before": {
+        "available_bytes": 27618160640,
+        "swap_used_bytes": 1557536768
+      },
+      "raw_chunks": [
+        {
+          "model": "qwen3.6:35b",
+          "created_at": "2026-10-22T00:55:48.097562677Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_xila025h",
+                "function": {
+                  "index": 0,
+                  "name": "report_context",
+                  "arguments": {
+                    "start": "cobalt-71d9-a6e2",
+                    "middle": "marigold-83b4-f019",
+                    "end": "harbor-29c8-e715",
+                    "result": 134
+                  }
+                }
+              }
+            ]
+          },
+          "done": false
+        },
+        {
+          "model": "qwen3.6:35b",
+          "created_at": "2026-10-22T00:55:48.099050211Z",
+          "message": {
+            "role": "assistant",
+            "content": ""
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 84229449318,
+          "load_duration": 6886693747,
+          "prompt_eval_count": 25734,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 75719645000,
+          "eval_count": 93,
+          "eval_duration": 1524016000
+        }
+      ],
+      "first_output_seconds": 84.229,
+      "prompt_eval_count": 25734,
+      "prompt_eval_duration": 75719645000,
+      "eval_count": 93,
+      "eval_duration": 1524016000,
+      "load_duration": 6886693747,
+      "total_duration": 84229449318,
+      "done_reason": "stop",
+      "response_complete": true,
+      "tool_calls": [
+        {
+          "id": "call_xila025h",
+          "function": {
+            "index": 0,
+            "name": "report_context",
+            "arguments": {
+              "start": "cobalt-71d9-a6e2",
+              "middle": "marigold-83b4-f019",
+              "end": "harbor-29c8-e715",
+              "result": 134
+            }
+          }
+        }
+      ],
+      "text": "",
+      "tool_call_parseable": true,
+      "correct_fields": [
+        "start",
+        "middle",
+        "end"
+      ],
+      "accuracy": 0.75,
+      "wall_seconds": 84.231,
+      "abort_reason": [],
+      "minimum_available_bytes": 27503267840,
+      "maximum_swap_used_bytes": 1557536768,
+      "memory_after": {
+        "available_bytes": 27503382528,
+        "swap_used_bytes": 1555750912
+      },
+      "effective_pass": false,
+      "loaded_models_after": {
+        "models": [
+          {
+            "name": "qwen3.6:35b",
+            "model": "qwen3.6:35b",
+            "size": 22662681702,
+            "digest": "a7eb95c53bcf96b4bdd008d0fab4a5dac88047d9c1a7a9ab88ed453423fbd87c",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen35moe",
+              "families": [
+                "qwen35moe"
+              ],
+              "parameter_size": "35.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-22T08:05:48.099146597+07:00",
+            "size_vram": 5321512712,
+            "context_length": 32768,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "context_requested": 65536,
+      "filler_records": 2459,
+      "prompt_characters": 214617,
+      "memory_before": {
+        "available_bytes": 27502936064,
+        "swap_used_bytes": 1555750912
+      },
+      "raw_chunks": [
+        {
+          "model": "qwen3.6:35b",
+          "created_at": "2026-10-22T00:58:36.514040261Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_eomsi8qc",
+                "function": {
+                  "index": 0,
+                  "name": "report_context",
+                  "arguments": {
+                    "start": "cobalt-71d9-a6e2",
+                    "middle": "marigold-83b4-f019",
+                    "end": "harbor-29c8-e715",
+                    "result": 134
+                  }
+                }
+              }
+            ]
+          },
+          "done": false
+        },
+        {
+          "model": "qwen3.6:35b",
+          "created_at": "2026-10-22T00:58:36.516732749Z",
+          "message": {
+            "role": "assistant",
+            "content": ""
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 168413618948,
+          "load_duration": 6934466130,
+          "prompt_eval_count": 52131,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 159586314000,
+          "eval_count": 93,
+          "eval_duration": 1707123000
+        }
+      ],
+      "first_output_seconds": 168.413,
+      "prompt_eval_count": 52131,
+      "prompt_eval_duration": 159586314000,
+      "eval_count": 93,
+      "eval_duration": 1707123000,
+      "load_duration": 6934466130,
+      "total_duration": 168413618948,
+      "done_reason": "stop",
+      "response_complete": true,
+      "tool_calls": [
+        {
+          "id": "call_eomsi8qc",
+          "function": {
+            "index": 0,
+            "name": "report_context",
+            "arguments": {
+              "start": "cobalt-71d9-a6e2",
+              "middle": "marigold-83b4-f019",
+              "end": "harbor-29c8-e715",
+              "result": 134
+            }
+          }
+        }
+      ],
+      "text": "",
+      "tool_call_parseable": true,
+      "correct_fields": [
+        "start",
+        "middle",
+        "end"
+      ],
+      "accuracy": 0.75,
+      "wall_seconds": 168.415,
+      "abort_reason": [],
+      "minimum_available_bytes": 27218317312,
+      "maximum_swap_used_bytes": 1555750912,
+      "memory_after": {
+        "available_bytes": 27217465344,
+        "swap_used_bytes": 1555677184
+      },
+      "effective_pass": false,
+      "loaded_models_after": {
+        "models": [
+          {
+            "name": "qwen3.6:35b",
+            "model": "qwen3.6:35b",
+            "size": 22796899430,
+            "digest": "a7eb95c53bcf96b4bdd008d0fab4a5dac88047d9c1a7a9ab88ed453423fbd87c",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen35moe",
+              "families": [
+                "qwen35moe"
+              ],
+              "parameter_size": "35.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-22T08:08:36.516844391+07:00",
+            "size_vram": 4751999629,
+            "context_length": 65536,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "context_requested": 131072,
+      "filler_records": 4955,
+      "prompt_characters": 431769,
+      "memory_before": {
+        "available_bytes": 27217465344,
+        "swap_used_bytes": 1555677184
+      },
+      "raw_chunks": [],
+      "error": "TimeoutError: timed out",
+      "wall_seconds": 180.033,
+      "abort_reason": [],
+      "minimum_available_bytes": 27217465344,
+      "maximum_swap_used_bytes": 1555677184,
+      "memory_after": {
+        "available_bytes": 27500044288,
+        "swap_used_bytes": 1554792448
+      },
+      "effective_pass": false,
+      "loaded_models_after": {
+        "models": [
+          {
+            "name": "qwen3.6:35b",
+            "model": "qwen3.6:35b",
+            "size": 23222600315,
+            "digest": "a7eb95c53bcf96b4bdd008d0fab4a5dac88047d9c1a7a9ab88ed453423fbd87c",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen35moe",
+              "families": [
+                "qwen35moe"
+              ],
+              "parameter_size": "35.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-22T08:11:36.553234096+07:00",
+            "size_vram": 3238747175,
+            "context_length": 131072,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    }
+  ],
+  "stopped_before_larger_contexts": [
+    "TimeoutError: timed out"
+  ],
+  "largest_passing_tested_context": null
+}

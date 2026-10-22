@@ -1,0 +1,17 @@
+Create this new standalone project, zenoh_client, entirely yourself using the configured local Ollama qwen3.6:35b model. This is an experiment in your coding, internet research, tool use, and verification capabilities. Do not ask the user questions; make reasonable documented assumptions.
+
+Scope and safety:
+- Work ONLY in the current zenoh_client directory and its descendants. Do not modify parent or sibling projects, global configuration, services, or installed toolchains. Do not use git commits, destructive shell commands, sudo, or access credentials. Do not send local code to external services or use remote AI providers.
+- Keep crush.json, .gitignore, and this original prompt. Crush state and logs belong in .crush/.
+- Use internet access for public documentation and dependency downloads only. You must actually fetch public upstream technical documentation with your available tools (web fetch or curl), not merely cite URLs from memory. Record exact fetched URLs, retrieval status, relevant findings, and how they informed your code in RESEARCH.md.
+
+Deliverables:
+1. Research the current supported way to implement a Zenoh client on ESP32-S3, using authoritative upstream Zenoh / zenoh-pico and Espressif documentation. Choose a buildable stack based on evidence and locally available tools rather than guessed APIs.
+2. Implement an actual ESP32-S3 firmware binary project that connects to a configurable Wi-Fi network and Zenoh router, publishes example data and receives/subscribes to example data. Keep secrets configurable and out of source. Supply example configuration without real credentials. Do not claim a binary exists until the cross-build succeeds and an ELF/bin file exists.
+3. Put portable platform-independent client functions in a separate reusable library with clear transport/platform boundaries so other platforms can reuse it. Include a host example and meaningful host tests for introduced behavior. Keep implementation practical and minimal; never substitute print-only fake networking for a real client.
+4. Document architecture, researched dependency choices, build/test/flash commands, configuration, and any hardware or toolchain limitations in README.md. Include exact commands and test/build outcomes in VALIDATION.md. Distinguish host-tested, cross-compiled, and hardware-tested evidence.
+5. Run host tests and the ESP32-S3 build. You may download dependencies into this directory and use installed tools, but must not make global installs or modify outside this project. If a local tool is missing, use a project-local installation if practical. No board is assumed connected; do not flash hardware.
+
+Available environment observations (verify as needed): Linux, cargo/rustup/espup are on PATH; rustup lists an esp toolchain; idf.py and pio were not on PATH. You may choose Rust or C/C++ based on upstream research. The request is for a new project, not modifications to existing firmware.
+
+Continue fixing your own errors until the requirements are met or a concrete external blocker is established. In the final response report files created, public URLs actually fetched, exact tests/builds and results, output binary paths, and any remaining blocker honestly.

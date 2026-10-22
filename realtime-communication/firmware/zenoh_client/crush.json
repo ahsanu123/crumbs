@@ -1,0 +1,69 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "providers": {
+    "ollama": {
+      "name": "Local Ollama",
+      "type": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1/",
+      "api_key": "ollama",
+      "discover_models": false,
+      "extra_body": {
+        "reasoning_effort": "medium"
+      },
+      "models": [
+        {
+          "id": "qwen3.6-zenoh:35b",
+          "name": "Local Qwen 3.6 35B",
+          "context_window": 32768,
+          "default_max_tokens": 8192,
+          "cost_per_1m_in": 0,
+          "cost_per_1m_out": 0,
+          "cost_per_1m_in_cached": 0,
+          "cost_per_1m_out_cached": 0,
+          "can_reason": true,
+          "supports_attachments": false
+        }
+      ]
+    }
+  },
+  "models": {
+    "large": {
+      "provider": "ollama",
+      "model": "qwen3.6-zenoh:35b",
+      "max_tokens": 8192
+    },
+    "small": {
+      "provider": "ollama",
+      "model": "qwen3.6-zenoh:35b",
+      "max_tokens": 8192
+    }
+  },
+  "permissions": {
+    "allowed_tools": [
+      "bash",
+      "view",
+      "write",
+      "edit",
+      "multiedit",
+      "fetch",
+      "ls",
+      "glob",
+      "grep",
+      "todos"
+    ]
+  },
+  "options": {
+    "disable_default_providers": true,
+    "disable_provider_auto_update": true,
+    "disable_metrics": true,
+    "disable_auto_summarize": true,
+    "disabled_tools": [
+      "agentic_fetch",
+      "agent",
+      "sourcegraph"
+    ],
+    "global_context_paths": [],
+    "data_directory": ".crush",
+    "auto_lsp": false
+  }
+}

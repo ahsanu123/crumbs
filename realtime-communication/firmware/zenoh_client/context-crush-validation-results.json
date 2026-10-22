@@ -1,0 +1,71 @@
+{
+  "session_id": "07c73350-c04a-4d29-8187-3a2a169e081a",
+  "configured_context": 32768,
+  "reasoning_effort": "medium",
+  "objective": "Read two benchmark JSON files in one bash call and write a factually correct recommendation",
+  "outcome": "stopped_after_repeated_tool_and_schema_errors",
+  "tool_calls": [
+    {
+      "name": "bash",
+      "finished": true
+    },
+    {
+      "name": "bash",
+      "finished": true
+    },
+    {
+      "name": "bash",
+      "finished": true
+    },
+    {
+      "name": "bash",
+      "finished": true
+    },
+    {
+      "name": "bash",
+      "finished": true
+    },
+    {
+      "name": "bash",
+      "finished": true
+    },
+    {
+      "name": "bash",
+      "finished": true
+    },
+    {
+      "name": "bash",
+      "finished": true
+    }
+  ],
+  "tool_errors": [
+    {
+      "name": "bash",
+      "tail": "\nTraceback (most recent call last):\n  File \"<stdin>\", line 9, in <module>\nAttributeError: 'str' object has no attribute 'get'\n\nExit code 1\n\n<cwd>/home/ah/projects/crumbs/realtime-communication/firmware/zenoh_client</cwd>"
+    },
+    {
+      "name": "bash",
+      "tail": "controls type: dict, keys/count: 3\nresults type: dict, count: 11\nfirst control key: 'model'\n  sample keys: <class 'str'>\n\n\nTraceback (most recent call last):\n  File \"<stdin>\", line 22, in <module>\nAttributeError: 'str' object has no attribute 'keys'\n\nExit code 1\n\n<cwd>/home/ah/projects/crumbs/realtime-communication/firmware/zenoh_client</cwd>"
+    },
+    {
+      "name": "bash",
+      "tail": "t_tokens: 262144\n  test: 'synthetic long-context recall, cross-file arithmetic, and tool call'\n  expected: dict with keys=['start', 'middle', 'end', 'result']\n  policy: dict with keys=['deadline_seconds', 'minimum_available_bytes', 'maximum_additional_swap_bytes', 'minimum_actual_prompt_fraction', 'note']\n  hardware_gpu: 'NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 13 MiB, 7877 MiB'\n  memory_initial: dict with keys=['available_bytes', 'swap_used_bytes']\n  cases: list len=4 first_item_keys=['context_requested', 'filler_records', 'prompt_characters', 'memory_before', 'raw_chunks', 'first_output_seconds', 'prompt_eval_count', 'prompt_eval_duration', 'eval_count', 'eval_duration', 'load_duration', 'total_duration', 'done_reason', 'response_complete', 'tool_calls', 'text', 'tool_call_parseable', 'correct_fields', 'accuracy', 'wall_seconds', 'abort_reason', 'minimum_available_bytes', 'maximum_swap_used_bytes', 'memory_after', 'effective_pass', 'loaded_models_after']\n\n\nTraceback (most recent call last):\n  File \"<stdin>\", line 24, in <module>\nAttributeError: 'str' object has no attribute 'keys'\n\nExit code 1\n\n<cwd>/home/ah/projects/crumbs/realtime-communication/firmware/zenoh_client</cwd>"
+    },
+    {
+      "name": "bash",
+      "tail": "\nTraceback (most recent call last):\n  File \"<stdin>\", line 13, in <module>\nKeyError: 'name'\n\nExit code 1\n\n<cwd>/home/ah/projects/crumbs/realtime-communication/firmware/zenoh_client</cwd>"
+    },
+    {
+      "name": "bash",
+      "tail": "Control names: ['short_no_thinking', 'short_thinking', '32k_long_thinking', '64k_long_thinking']\n\n\n\nTraceback (most recent call last):\n  File \"<stdin>\", line 17, in <module>\nKeyError: 'name'\n\nExit code 1\n\n<cwd>/home/ah/projects/crumbs/realtime-communication/firmware/zenoh_client</cwd>"
+    },
+    {
+      "name": "bash",
+      "tail": "\n  File \"<stdin>\", line 51\n    print(f\"{name:<28s} ctx_req={str(ctx_req):>10s}  filler_recs={str(filler)!s:>6s}  think={think:>5s}  toks={str(toks):>8s}  sec={secs!s:>7s}  acc={acc!s:>6s}  tcpl={tcpl!s:>4s}  ep={ep!s:>2s}  rc={rc_flag!s:>2s}  abort={!s:>10s}\")\n                                                                                                                                                                                                                               ^\nSyntaxError: f-string: valid expression required before '!'\n\nExit code 1\n\n<cwd>/home/ah/projects/crumbs/realtime-communication/firmware/zenoh_client</cwd>"
+    }
+  ],
+  "parse_errors": [],
+  "output_file_exists": false,
+  "tool_call_count": 8,
+  "tool_error_count": 6
+}

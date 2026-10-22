@@ -1,0 +1,11 @@
+Work in this zenoh_client folder only. The goal is a no_std Rust Zenoh client library and ESP32-S3 firmware plus host tests. Do not edit crush.json or Modelfile. Do not use remote AI, access credentials, modify anything outside this project, install global tools, or flash hardware.
+
+Previous runs failed by looping through research and automatic conversation summarization without writing source. Automatic summarization and research subagents are now disabled. Use at most SIX research/tool-inspection rounds, then implement or write a concrete evidence-based blocker report. Do not generate plans or summaries instead of taking action. Do not repeat fetches.
+
+Already verified: esp Rust toolchain exists; Ollama alias uses the same qwen3.6:35b weights with real 32768 context and reasoning disabled. Official zenoh Rust uses std; zenoh-pico is C. crates.io search found pamoja-zenoh 0.2.0 described as no_std key-expression logic with OPTIONAL live transport. This is only a CANDIDATE: verify whether actual networking supports no_std before selecting it.
+
+Use the built-in fetch TOOL, never run `fetch` as a shell command. For HTTP from bash use Python urllib.request, never curl (blocked by Crush). Public metadata endpoint: https://crates.io/api/v1/crates/pamoja-zenoh/0.2.0/dependencies . You may download public crate sources into .crush/deps to inspect Cargo.toml and the actual APIs. Use Python urllib or cargo dependency tooling for downloads, not hypothetical fetch shell commands. Read small relevant snippets only. Search other candidates if this candidate's live transport requires std.
+
+If you find an actual no_std networking library, implement the reusable library, firmware, host example and behavioral tests using researched APIs, then run host tests and ESP32-S3 cross-build. Write README.md, RESEARCH.md, VALIDATION.md with actual evidence/artifacts. Do not invent APIs or fake networking. If no viable solution can be established in the bounded investigation, write those reports honestly describing what is unsupported/unverified and stop; do not claim code or firmware completion.
+
+The user wants a separate multifile understanding/change test ONLY AFTER working firmware code is complete. Do not run that test prematurely.

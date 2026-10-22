@@ -1,0 +1,7 @@
+.crush/
+target/
+build/
+sdkconfig
+sdkconfig.old
+managed_components/
+.env

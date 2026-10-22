@@ -1,0 +1,12 @@
+Continue the existing zenoh_client experiment. The user has clarified two requirements:
+
+1. The ESP32-S3 Rust firmware and reusable library must be genuinely no_std. Do not substitute an ESP-IDF/std implementation. Research current upstream no_std Zenoh client options and supported ESP32-S3 Wi-Fi integration using actual fetch tool requests. Use upstream source/API docs, not guessed crate names or invented APIs. A host adapter/example may use std, but the firmware's dependency graph and portable library must not require std.
+2. Only AFTER the no_std code and validation are complete, we will run a separate multifile understanding/change test using this same local model. Do not perform that test yet.
+
+The first run exposed two infrastructure problems: Ollama actually ran at 4096 context despite Crush being told 65536, and thinking exhausted the response budget without any tool execution. These are now addressed using the qwen3.6-zenoh:35b alias (exact same installed qwen3.6:35b weights, explicit 32768 context in Modelfile) and reasoning_effort none. Do not switch providers or models. Preserve crush.json and Modelfile.
+
+Proceed autonomously from your existing researched sources. Keep scope within this directory. Fetch only concise relevant sections; do not fill the context with whole repositories. Use the built-in fetch tool for HTTP. Only fetch PUBLIC docs; no local code uploads. Use installed tools or project-local dependencies only. Do not edit global settings, install global tools, flash hardware, or commit.
+
+Deliver a real no_std portable library, actual ESP32-S3 firmware binary source, a host example, focused tests, README.md, RESEARCH.md with actual successful and failed URLs, and VALIDATION.md with exact executed commands/results. Attempt host tests and a real ESP32-S3 cross-build. Record actual artifact paths and distinguish successful cross-build from hardware testing. Avoid fake networking, print-only placeholders, and pretending a blocked build succeeded. If a mandatory upstream API or target support is unavailable, explain the concrete blocker with evidence rather than inventing a stack.
+
+Start implementing as soon as upstream support is established. Continue fixing errors until done or a concrete external blocker is established.

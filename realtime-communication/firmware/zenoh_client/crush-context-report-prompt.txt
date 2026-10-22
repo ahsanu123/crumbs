@@ -1,0 +1,7 @@
+This is a bounded configuration validation, not the firmware task. Use only the configured local Qwen model.
+
+Read the two JSON files context-benchmark-results.json and context-benchmark-controls.json using ONE bash tool invocation with Python json.load. Print ONLY compact case summaries: context_requested, thinking_enabled, prompt_eval_count, wall_seconds, accuracy, tool_call_parseable, effective_pass, response_complete, abort_reason, error. Do not view or print the huge raw_chunks arrays. Do not access any unrelated path.
+
+Then write context-recommendation.txt using the write tool. Include the exact observed useful context recommendation, why it is useful, and latency/accuracy tradeoffs. Distinguish configured context from actual prompt token counts. An incomplete/timed-out request is not an incorrect completed answer. The passing long-context test requires all four answers correct and a valid tool call within 180 seconds. The false effective_pass on short controls is just the minimum occupancy criterion, not evidence of failed short reasoning. State that these are single synthetic probes, not proof of reliable firmware coding. Do not claim the maximum advertised model context was fully tested.
+
+No internet, no subagents, no source code changes, no installs, no long research. Make at most one bash tool call plus one write tool call and then finish. Preserve configuration and benchmark JSON files. Do not resume firmware work in this turn.
