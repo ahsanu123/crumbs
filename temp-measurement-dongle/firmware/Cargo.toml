@@ -15,6 +15,15 @@ ble = ["dep:trouble-host", "dep:esp-radio", "dep:bt-hci"]
 
 [dependencies]
 
+agnostic_mmc = { path = "../../price_tags/firmware/v1" }
+embedded-sdmmc = "0.10.0"
+exfat-slim = { version = "0.7.0", default-features = false, features = [
+  "defmt",
+  "embassy",
+] }
+aligned = "0.4.3"
+mbr-nostd = "0.1.0"
+
 tmd_ui = { path = "./tmd_ui" }
 max31865 = { path = "../../rdc/max31865" }
 
