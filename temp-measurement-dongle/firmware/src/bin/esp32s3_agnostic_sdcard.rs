@@ -9,7 +9,6 @@
 
 use core::cell::RefCell;
 use critical_section::Mutex;
-use defmt::info;
 use embassy_executor::Spawner;
 use embassy_time::Timer;
 use embedded_hal_bus::spi::CriticalSectionDevice;
@@ -19,15 +18,15 @@ use esp_hal::clock::CpuClock;
 use esp_hal::delay::Delay;
 use esp_hal::dma::{DmaRxBuf, DmaTxBuf};
 use esp_hal::dma_buffers;
-use esp_hal::gpio::{Input, InputConfig, Level, Output, OutputConfig, Pull};
+use esp_hal::gpio::{Level, Output, OutputConfig};
 use esp_hal::spi::Mode;
 use esp_hal::spi::master::Config;
 use esp_hal::spi::master::Spi;
 use esp_hal::spi::master::SpiDmaBus;
 use esp_hal::time::Rate;
 use esp_hal::timer::timg::TimerGroup;
+use exfat_slim::asynchronous::file::OpenOptions;
 use exfat_slim::asynchronous::fs;
-use max31865::{Max31865, Numwires};
 use static_cell::StaticCell;
 use {esp_backtrace as _, esp_println as _};
 
@@ -36,6 +35,8 @@ extern crate alloc;
 pub static SPI_BUS: StaticCell<Mutex<RefCell<SpiDmaBus<'static, Blocking>>>> = StaticCell::new();
 
 type SpiType = CriticalSectionDevice<'static, SpiDmaBus<'static, Blocking>, Output<'static>, Delay>;
+
+static DUMMY_STR: &str = "Resetting to the beginning: Using file.seek(0) sends the cursor back to the start of the file so you can re-read or re-process its contents.";
 
 // This creates a default app-descriptor required by the esp-idf bootloader.
 // For more information see: <https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/app_image_format.html#application-description>
@@ -73,8 +74,7 @@ async fn main(spawner: Spawner) {
     let spi_bus = Spi::new(
         peripherals.SPI2,
         Config::default()
-            // .with_frequency(Rate::from_mhz(5))
-            .with_frequency(Rate::from_khz(400))
+            .with_frequency(Rate::from_mhz(5))
             .with_mode(Mode::_0),
     )
     .unwrap()
@@ -96,27 +96,29 @@ async fn main(spawner: Spawner) {
 
     loop {
         defmt::info!("attempt to read file");
-        match fs::read_to_string("dummy.txt").await {
-            Ok(_) => {
-                defmt::info!("success to read file");
-            }
-            Err(e) => {
-                defmt::error!("failed to read file {:?}", e);
-            }
+
+        let openopt = OpenOptions {
+            read: true,
+            write: true,
+            append: true,
+            truncate: false,
+            create: false,
+            create_new: false,
+        };
+
+        let file = fs::open("dummy.txt", openopt)
+            .await
+            .expect("fail to openfile");
+
+        for word in DUMMY_STR.split(' ') {
+            defmt::info!("writing {}", word);
+            file.write(word.as_bytes()).await.unwrap();
         }
 
-        defmt::info!("attemp to write");
-        match fs::write("dummy.txt", b"Hello, World!").await {
-            Ok(_) => {
-                defmt::info!("writting to file");
-            }
-            Err(e) => {
-                defmt::error!("fail to writing to file {:?}", e);
-            }
-        }
+        file.close().await.unwrap();
 
         defmt::info!("=======================================\n\n");
-        Timer::after(embassy_time::Duration::from_secs(5)).await;
+        Timer::after(embassy_time::Duration::from_secs(2)).await;
     }
 }
 

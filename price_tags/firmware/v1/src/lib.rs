@@ -197,3 +197,12 @@ where
 
     fs::fs_actor_task::<_, _, 4>(agnostic_sdmmc, None).await;
 }
+
+pub async fn file_system_task_from_sdcard<SPI, D>(sdcard: SdCard<SPI, D>)
+where
+    SPI: embedded_hal::spi::SpiDevice,
+    D: embedded_hal::delay::DelayNs,
+{
+    let agnostic_sdmmc = AgnosticSdmmc::new(sdcard);
+    fs::fs_actor_task::<_, _, 4>(agnostic_sdmmc, None).await;
+}

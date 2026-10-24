@@ -1,5 +1,5 @@
 [package]
-name = "exfat_sdmmc"
+name = "agnostic_mmc"
 version = "0.1.0"
 edition = "2024"
 
@@ -10,5 +10,6 @@ exfat-slim = { version = "0.7.0", default-features = false, features = [
   "embassy",
 ] }
 aligned = "0.4.3"
-embedded-hal = "1.0.0"
 mbr-nostd = "0.1.0"
+embedded-hal = "1.0.0"
+embassy-executor = "0.10.0"
