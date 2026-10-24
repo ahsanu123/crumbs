@@ -14,6 +14,15 @@ default = ["ble"]
 ble = ["dep:trouble-host", "dep:esp-radio", "dep:bt-hci"]
 
 [dependencies]
+edge-dhcp = "0.8.0"
+edge-nal = "0.7.0"
+edge-nal-embassy = { version = "0.9.0" }
+embassy-net = { version = "0.9.0", features = [
+  "dhcpv4",
+  "medium-ethernet",
+  "tcp",
+  "udp",
+] }
 
 agnostic_mmc = { path = "../../price_tags/firmware/v1" }
 embedded-sdmmc = "0.10.0"
@@ -69,6 +78,7 @@ esp-radio = { version = "0.17.0", optional = true, features = [
   "defmt",
   "unstable",
   "esp32s3",
+  "wifi",
 ] }
 embassy-futures = "0.1.2"
 embedded-hal = "1.0.0"
@@ -85,6 +95,9 @@ embedded-storage-async = "0.4.1"
 rand_core = { version = "0.6.0", default-features = false }
 sequential-storage = { version = "7.2.0", features = ["postcard"] }
 serde = { version = "1.0.228", default-features = false, features = ["derive"] }
+edge-http = "0.8.0"
+esp-metadata-generated = { version = "0.4.0", features = ["esp32s3"] }
+embedded-io-async = "0.7.0"
 
 [dependencies.num-traits]
 version = "0.2"
@@ -95,6 +108,7 @@ features = ["libm"]
 trouble-host = { git = "https://github.com/embassy-rs/trouble", rev = "7b35cbdf784a838fa8fac190a5e98ac5efe661ff" }
 esp-hal = { git = "https://github.com/esp-rs/esp-hal", rev = "c96f07bcd2f5a2c617a2ac538471731a76ab3e02" }
 esp-radio = { git = "https://github.com/esp-rs/esp-hal", rev = "c96f07bcd2f5a2c617a2ac538471731a76ab3e02" }
+esp-alloc = { git = "https://github.com/esp-rs/esp-hal", rev = "c96f07bcd2f5a2c617a2ac538471731a76ab3e02" }
 esp-bootloader-esp-idf = { git = "https://github.com/esp-rs/esp-hal", rev = "c96f07bcd2f5a2c617a2ac538471731a76ab3e02" }
 esp-storage = { git = "https://github.com/esp-rs/esp-hal", rev = "c96f07bcd2f5a2c617a2ac538471731a76ab3e02" }
 
