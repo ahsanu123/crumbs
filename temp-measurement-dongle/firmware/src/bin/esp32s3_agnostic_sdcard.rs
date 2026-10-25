@@ -124,6 +124,6 @@ async fn main(spawner: Spawner) {
 
 #[embassy_executor::task()]
 async fn file_system_task(sdcard: SdCard<SpiType, Delay>) {
-    agnostic_mmc::file_system_task_from_sdcard(sdcard).await;
+    agnostic_mmc::spi_sdmmc::file_system_task_from_sdcard(sdcard).await;
     defmt::info!("file_system_task ended");
 }

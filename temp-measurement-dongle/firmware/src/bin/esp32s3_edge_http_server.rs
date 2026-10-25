@@ -14,7 +14,7 @@ use core::{
     str::FromStr,
 };
 use edge_http::io::{
-    Body, Error,
+    Error,
     server::{Connection, Server},
 };
 use edge_http::{Method, io::server::Handler};
