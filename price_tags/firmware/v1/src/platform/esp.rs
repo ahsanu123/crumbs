@@ -1,6 +1,11 @@
+extern crate alloc;
+
+use alloc::boxed::Box;
 use core::{
     fmt::{Debug, Display},
+    future::Future,
     net::Ipv4Addr,
+    pin::Pin,
     str::FromStr,
 };
 use edge_http::io::server::Handler;
@@ -31,12 +36,12 @@ pub fn spawn_http_server(
     spawner: &Spawner,
     wifi: WIFI<'static>,
     ssid_name: &str,
-    http_handle: impl Handler,
+    http_handle: impl Handler + 'static,
     option_ip_addr: Option<&'static str>,
 ) {
     let ip_addr = option_ip_addr.unwrap_or("192.168.2.1");
 
-    let accespoint_conf = AccessPointConfig::default().with_ssid("esphttp");
+    let accespoint_conf = AccessPointConfig::default().with_ssid(ssid_name);
     let access_point_config = Config::AccessPoint(accespoint_conf);
 
     defmt::info!("Starting wifi");
@@ -49,8 +54,7 @@ pub fn spawn_http_server(
 
     defmt::info!("Wifi started!");
 
-    let gw_ip_addr_str = "192.168.2.1";
-    let gw_ip_addr = Ipv4Addr::from_str(gw_ip_addr_str).expect("failed to parse gateway ip");
+    let gw_ip_addr = Ipv4Addr::from_str(ip_addr).expect("failed to parse gateway ip");
 
     let config = embassy_net::Config::ipv4_static(StaticConfigV4 {
         address: Ipv4Cidr::new(gw_ip_addr, 24),
@@ -69,11 +73,11 @@ pub fn spawn_http_server(
         seed,
     );
 
-    let http_server_task_factory = HttpServerTaskFactory::new(stack, HelloWorldHttpHandler);
+    let http_server_task_factory = HttpServerTaskFactory::new(stack, http_handle);
 
     spawner.spawn(connection(controller).unwrap());
     spawner.spawn(net_task(runner).unwrap());
-    spawner.spawn(run_dhcp(stack, gw_ip_addr_str).unwrap());
+    spawner.spawn(run_dhcp(stack, ip_addr).unwrap());
     spawner.spawn(http_server_task(http_server_task_factory).unwrap());
 }
 
@@ -143,42 +147,43 @@ async fn net_task(mut runner: Runner<'static, Interface<'static>>) {
 }
 
 #[embassy_executor::task]
-async fn http_server_task(mut http_server_factory: HttpServerTaskFactory<HelloWorldHttpHandler>) {
+async fn http_server_task(mut http_server_factory: HttpServerTaskFactory) {
     http_server_factory.run().await;
 }
 
-pub struct HttpServerTaskFactory<H> {
-    stack: Stack<'static>,
-    http_handler: H,
+pub struct HttpServerTaskFactory {
+    future: Pin<Box<dyn Future<Output = ()> + 'static>>,
 }
 
-impl<H: Handler> HttpServerTaskFactory<H> {
-    pub fn new(stack: Stack<'static>, http_handler: H) -> Self {
+impl HttpServerTaskFactory {
+    pub fn new(stack: Stack<'static>, http_handler: impl Handler + 'static) -> Self {
         Self {
-            stack,
-            http_handler,
+            // Erase the future because Handler's generic methods are not dyn-compatible.
+            future: Box::pin(async move {
+                defmt::info!("HTTP server: http://192.168.2.1:8881/");
+
+                stack.wait_link_up().await;
+                stack.wait_config_up().await;
+
+                let buffers = TcpBuffers::<1, 1024, 1024>::new();
+                let tcp = Tcp::new(stack, &buffers);
+                let acceptor = tcp
+                    .bind(core::net::SocketAddr::from(([0, 0, 0, 0], 8881)))
+                    .await
+                    .expect("Failed to bind HTTP listener");
+                let mut server = Server::<1, 1024, 16>::new();
+                loop {
+                    if let Err(e) = server.run(None, &acceptor, &http_handler).await {
+                        defmt::info!("HTTP server error: {:?}", defmt::Debug2Format(&e));
+                        Timer::after(Duration::from_secs(1)).await;
+                    }
+                }
+            }),
         }
     }
 
     pub async fn run(&mut self) {
-        defmt::info!("HTTP server: http://192.168.2.1:8881/");
-
-        self.stack.wait_link_up().await;
-        self.stack.wait_config_up().await;
-
-        let buffers = TcpBuffers::<1, 1024, 1024>::new();
-        let tcp = Tcp::new(self.stack, &buffers);
-        let acceptor = tcp
-            .bind(core::net::SocketAddr::from(([0, 0, 0, 0], 8881)))
-            .await
-            .expect("Failed to bind HTTP listener");
-        let mut server = Server::<1, 1024, 16>::new();
-        loop {
-            if let Err(e) = server.run(None, &acceptor, &self.http_handler).await {
-                defmt::info!("HTTP server error: {:?}", defmt::Debug2Format(&e));
-                Timer::after(Duration::from_secs(1)).await;
-            }
-        }
+        self.future.as_mut().await;
     }
 }
 

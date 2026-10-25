@@ -16,6 +16,7 @@ name = "agnostic_mmc"
 version = "0.1.0"
 dependencies = [
  "aligned",
+ "critical-section",
  "defmt 1.2.0",
  "edge-dhcp",
  "edge-http",
@@ -25,9 +26,19 @@ dependencies = [
  "embassy-net",
  "embassy-time",
  "embedded-hal 1.0.0",
+ "embedded-hal-bus",
+ "embedded-io-async 0.7.0",
  "embedded-sdmmc",
+ "esp-alloc",
+ "esp-backtrace",
+ "esp-bootloader-esp-idf",
  "esp-hal",
+ "esp-metadata-generated 0.4.0",
+ "esp-println",
  "esp-radio",
+ "esp-rtos",
+ "esp-storage",
+ "esp-sync",
  "exfat-slim",
  "mbr-nostd",
  "static_cell",
@@ -153,11 +164,11 @@ checksum = "211713d2e9fb4793ce4360a712c0764264aff6be48932ccf02ca2a331c0436a9"
 dependencies = [
  "btuuid",
  "defmt 1.2.0",
- "embassy-sync 0.7.2",
+ "embassy-sync 0.8.0",
  "embedded-io 0.7.1",
  "embedded-io-async 0.7.0",
  "futures-intrusive",
- "heapless 0.8.0",
+ "heapless 0.9.3",
 ]
 
 [[package]]
@@ -684,6 +695,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "embassy-time-queue-utils"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "168297bf80aaf114b3c9ad589bf38b01b3009b9af7f97cd18086c5bbf96f5693"
+dependencies = [
+ "embassy-executor-timer-queue",
+ "heapless 0.9.3",
+]
+
+[[package]]
 name = "embassy-usb-driver"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -737,6 +758,16 @@ version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0c4c685bbef7fe13c3c6dd4da26841ed3980ef33e841cddfa15ce8a8fb3f1884"
 dependencies = [
+ "embedded-hal 1.0.0",
+]
+
+[[package]]
+name = "embedded-hal-bus"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "513e0b3a8fb7d3013a8ae17a834283f170deaf7d0eeab0a7c1a36ad4dd356d22"
+dependencies = [
+ "critical-section",
  "embedded-hal 1.0.0",
 ]
 
@@ -879,12 +910,47 @@ checksum = "46ced060d4085858283df950b80a4da2348e1707d7d07b1e966308582dae79f5"
 dependencies = [
  "allocator-api2",
  "cfg-if",
+ "defmt 1.2.0",
  "document-features",
  "enumset",
  "esp-config",
  "esp-sync",
  "linked_list_allocator",
  "rlsf",
+]
+
+[[package]]
+name = "esp-backtrace"
+version = "0.19.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "37950e24b2dfd98f1581102d1798281d4d9547af881e6bffc2c2b534c026ec8f"
+dependencies = [
+ "cfg-if",
+ "document-features",
+ "esp-config",
+ "esp-metadata-generated 0.4.0",
+ "esp-println",
+ "heapless 0.9.3",
+ "riscv",
+ "semihosting",
+ "xtensa-lx",
+]
+
+[[package]]
+name = "esp-bootloader-esp-idf"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "35ffc117c3a9859835d89d0e90f5ee9886ce2264a71a849a7a22ab5308f6653c"
+dependencies = [
+ "cfg-if",
+ "document-features",
+ "embedded-storage",
+ "esp-config",
+ "esp-hal-procmacros",
+ "esp-metadata-generated 0.4.0",
+ "esp-rom-sys",
+ "jiff",
+ "strum",
 ]
 
 [[package]]
@@ -1021,6 +1087,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "esp-println"
+version = "0.17.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "42dee1e9ac7c3539bf6464db1707b0edd7557168f98278cf3c84fe70e63c6ce6"
+dependencies = [
+ "defmt 1.2.0",
+ "document-features",
+ "esp-metadata-generated 0.4.0",
+ "esp-sync",
+ "log",
+ "portable-atomic",
+]
+
+[[package]]
 name = "esp-radio"
 version = "0.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1113,6 +1193,47 @@ dependencies = [
  "esp32c61 0.4.0",
  "esp32s2 0.32.0",
  "esp32s3 0.36.0",
+]
+
+[[package]]
+name = "esp-rtos"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "551f90766e1527edaa0c91e8d559e9e2a60397b545e93357ac61fb31845e5712"
+dependencies = [
+ "allocator-api2",
+ "cfg-if",
+ "defmt 1.2.0",
+ "document-features",
+ "embassy-executor",
+ "embassy-sync 0.8.0",
+ "embassy-time-driver",
+ "embassy-time-queue-utils",
+ "esp-config",
+ "esp-hal",
+ "esp-hal-procmacros",
+ "esp-metadata-generated 0.4.0",
+ "esp-radio-rtos-driver",
+ "esp-rom-sys",
+ "esp-sync",
+ "portable-atomic",
+ "riscv",
+ "xtensa-lx",
+]
+
+[[package]]
+name = "esp-storage"
+version = "0.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4cf2b3f00c9f94b27c62a4f5296b19470c3a083c687c8146e554a459f9bee596"
+dependencies = [
+ "document-features",
+ "embedded-storage",
+ "esp-hal",
+ "esp-hal-procmacros",
+ "esp-metadata-generated 0.4.0",
+ "esp-rom-sys",
+ "esp-sync",
 ]
 
 [[package]]
@@ -1631,6 +1752,43 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682"
 
 [[package]]
+name = "jiff"
+version = "0.2.38"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b2b005715dcbeb0089a3c0dab99f2ff1cc3b2525323552703d648585d342a383"
+dependencies = [
+ "defmt 1.2.0",
+ "jiff-core",
+ "jiff-static",
+ "log",
+ "portable-atomic",
+ "portable-atomic-util",
+ "serde_core",
+]
+
+[[package]]
+name = "jiff-core"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5e52fe76043ccecc9005d2305ebaadf7d7fc0cc89ca6baa10a94d6bc68c7128c"
+dependencies = [
+ "defmt 1.2.0",
+ "log",
+]
+
+[[package]]
+name = "jiff-static"
+version = "0.2.38"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2cc9817253cf7c7ee4684451bd327e88d6f3658014e54a29198625590650695c"
+dependencies = [
+ "jiff-core",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.119",
+]
+
+[[package]]
 name = "lazy_static"
 version = "1.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1809,6 +1967,15 @@ name = "portable-atomic"
 version = "1.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "05c8b63e8d9609db387f0324918f81d68fe27748f084ef092fb35954d0539a85"
+
+[[package]]
+name = "portable-atomic-util"
+version = "0.2.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "10ab3eb7f3becc3a1cbc4f2c6f20267996cfc1a6467a873763411b136a122715"
+dependencies = [
+ "portable-atomic",
+]
 
 [[package]]
 name = "portable_atomic_enum"
@@ -1994,6 +2161,12 @@ name = "scopeguard"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
+
+[[package]]
+name = "semihosting"
+version = "0.1.25"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f8e4abf97879f4e80db69a9fba7bd64998e9bdad25f58ef045a778e191172fd4"
 
 [[package]]
 name = "serde"

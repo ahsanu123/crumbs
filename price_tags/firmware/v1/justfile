@@ -1,2 +1,8 @@
 buildesp:
   cargo +esp build --release --features esp32s3 --target xtensa-esp32s3-none-elf -Zbuild-std=core,alloc
+
+listbin:
+  cargo build --bin 
+
+build_bin_esp32s3 binname: 
+  cargo build --bin {{binname}} --features esp32s3
