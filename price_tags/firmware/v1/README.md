@@ -10,7 +10,7 @@ cargo check --no-default-features
 
 ## Optional ESP backend
 
-No chip, target, or toolchain is selected by default. The `esp` feature enables
+No chip is selected by the library's default features. The `esp` feature enables
 the ESP Wi-Fi backend; select exactly one chip feature to forward the chip
 selection to both `esp-hal` and `esp-radio`:
 
@@ -26,12 +26,22 @@ Host builds omit the backend even when an ESP feature is enabled. Other MCUs
 can use the portable SD-card library without any ESP feature.
 
 For ESP32-S3, use the Espressif `esp` Rust toolchain, installed using `espup`.
-With that toolchain available:
+The local `rust-toolchain.toml` and `.cargo/config.toml` select that toolchain,
+the ESP32-S3 target, and building `core` and `alloc` from source. With the
+toolchain installed, development commands from this directory are:
 
 ```sh
-cargo +esp check --release --no-default-features --features esp32s3 --target xtensa-esp32s3-none-elf -Zbuild-std=core,alloc
-cargo +esp build --release --no-default-features --features esp32s3 --target xtensa-esp32s3-none-elf -Zbuild-std=core,alloc
+cargo check --features esp32s3
+cargo build --release --features esp32s3
 ```
+
+Open this directory as the VS Code workspace. `.vscode/settings.json` enables
+the `esp32s3` feature and target for rust-analyzer, so it analyzes the ESP backend.
+Restart rust-analyzer after changing these settings.
+
+The library keeps `default = []`; terminal builds still select the chip feature
+explicitly. Host or other-MCU development can override the local defaults with
+`cargo +<toolchain> check --no-default-features --target <target>`.
 
 The ESP radio dependency needs `alloc` as well as `core`. For another chip,
 change both the chip feature and target; RISC-V ESP chips use a RISC-V target,
@@ -44,7 +54,8 @@ In a firmware application's `Cargo.toml`, select the feature explicitly:
 agnostic_mmc = { path = "../v1", default-features = false, features = ["esp32s3"] }
 ```
 
-The application owns its target/toolchain configuration and runtime setup.
+The application owns its target/toolchain configuration and runtime setup;
+these library-local development settings do not configure downstream builds.
 These commands build a library, not a flashable firmware image, and do not
 verify hardware behavior. The internal ESP HTTP-server implementation is still
 unfinished, including a `todo!()` in its setup function.

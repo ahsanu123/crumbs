@@ -75,8 +75,6 @@ pub fn spawn_http_server(
     spawner.spawn(net_task(runner).unwrap());
     spawner.spawn(run_dhcp(stack, gw_ip_addr_str).unwrap());
     spawner.spawn(http_server_task(http_server_task_factory).unwrap());
-
-    todo!()
 }
 
 #[embassy_executor::task]
@@ -151,8 +149,6 @@ async fn http_server_task(mut http_server_factory: HttpServerTaskFactory<HelloWo
 
 pub struct HttpServerTaskFactory<H> {
     stack: Stack<'static>,
-    // server: Server<1, 1024, 16>,
-    // acceptor: impl TcpBind<'static>,
     http_handler: H,
 }
 
