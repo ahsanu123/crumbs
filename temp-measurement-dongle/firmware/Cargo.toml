@@ -24,7 +24,7 @@ embassy-net = { version = "0.9.0", features = [
   "udp",
 ] }
 
-agnostic_mmc = { path = "../../price_tags/firmware/v1" }
+# agnostic_mmc = { path = "../../price_tags/firmware/v1", features = ["esp32s3"] }
 embedded-sdmmc = "0.10.0"
 exfat-slim = { version = "0.7.0", default-features = false, features = [
   "defmt",
