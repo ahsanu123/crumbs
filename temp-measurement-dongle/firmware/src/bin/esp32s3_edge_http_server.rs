@@ -7,13 +7,14 @@
 )]
 #![deny(clippy::large_stack_frames)]
 
+use alloc::format;
 use core::{
     fmt::{Debug, Display},
     net::Ipv4Addr,
     str::FromStr,
 };
 use edge_http::io::{
-    Error,
+    Body, Error,
     server::{Connection, Server},
 };
 use edge_http::{Method, io::server::Handler};
@@ -217,18 +218,37 @@ impl Handler for HttpHandler {
     where
         T: Read + Write,
     {
-        let headers = conn.headers()?;
+        let (headers, body) = conn.split();
+        let path = headers.path;
 
-        if headers.method != Method::Get {
-            conn.initiate_response(405, Some("Method Not Allowed"), &[])
-                .await?;
-        } else if headers.path != "/" {
-            conn.initiate_response(404, Some("Not Found"), &[]).await?;
-        } else {
+        defmt::info!("check for request");
+        if headers.method == Method::Post && path.starts_with("/upload") {
+            let mut string = alloc::string::String::new();
+
+            if let Some(filename) = path.split('/').nth(2) {
+                string.push_str(filename);
+            };
+
+            let mut buffer: [u8; 1024] = [0; 1024];
+            loop {
+                let bufsize = body.read(&mut buffer).await?;
+                if bufsize == 0 {
+                    break;
+                }
+
+                string
+                    .push_str(core::str::from_utf8(&buffer[..bufsize]).unwrap_or("<invalid utf8>"));
+            }
+
             conn.initiate_response(200, Some("OK"), &[("Content-Type", "text/plain")])
                 .await?;
 
-            conn.write_all(b"Hello world!").await?;
+            let msg =
+                format!("Hello world!, this string you send to server {string:?}, path: {path}",);
+            defmt::info!("write all request.");
+            conn.write_all(msg.as_bytes()).await?;
+        } else {
+            conn.initiate_response(500, Some("not found"), &[]).await?;
         }
 
         Ok(())
