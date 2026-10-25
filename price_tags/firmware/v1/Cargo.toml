@@ -4,8 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-embassy-time = "0.5.0"
-static_cell = "2.1.1"
 defmt = "1.2.0"
 embedded-sdmmc = "0.10.0"
 exfat-slim = { version = "0.7.0", default-features = false, features = [
@@ -15,32 +13,51 @@ exfat-slim = { version = "0.7.0", default-features = false, features = [
 aligned = "0.4.3"
 mbr-nostd = "0.1.0"
 embedded-hal = "1.0.0"
-embassy-executor = "0.10.0"
 
-edge-http = "0.8.0"
-edge-dhcp = "0.8.0"
-edge-nal = "0.7.0"
-edge-nal-embassy = { version = "0.9.0" }
-embassy-net = { version = "0.9.0", features = [
+[target.'cfg(all(target_os = "none", any(target_arch = "xtensa", target_arch = "riscv32")))'.dependencies]
+embassy-time = { version = "0.5.0", optional = true }
+static_cell = { version = "2.1.1", optional = true }
+embassy-executor = { version = "0.10.0", optional = true }
+edge-http = { version = "0.8.0", optional = true }
+edge-dhcp = { version = "0.8.0", optional = true }
+edge-nal = { version = "0.7.0", optional = true }
+edge-nal-embassy = { version = "0.9.0", optional = true }
+embassy-net = { version = "0.9.0", optional = true, features = [
   "dhcpv4",
   "medium-ethernet",
   "tcp",
   "udp",
 ] }
 
-# platform specific optional feature
 esp-hal = { version = "1.1.2", optional = true, features = [
   "defmt",
-  "esp32s3",
   "unstable",
 ] }
 esp-radio = { version = "0.18.0", optional = true, features = [
   "wifi",
   "defmt",
   "unstable",
-  "esp32s3",
 ] }
 
 [features]
 default = []
-esp = ["dep:esp-hal", "dep:esp-radio"]
+esp = [
+  "dep:esp-hal",
+  "dep:esp-radio",
+  "dep:embassy-time",
+  "dep:static_cell",
+  "dep:embassy-executor",
+  "dep:edge-http",
+  "dep:edge-dhcp",
+  "dep:edge-nal",
+  "dep:edge-nal-embassy",
+  "dep:embassy-net",
+]
+esp32 = ["esp", "esp-hal/esp32", "esp-radio/esp32"]
+esp32c2 = ["esp", "esp-hal/esp32c2", "esp-radio/esp32c2"]
+esp32c3 = ["esp", "esp-hal/esp32c3", "esp-radio/esp32c3"]
+esp32c5 = ["esp", "esp-hal/esp32c5", "esp-radio/esp32c5"]
+esp32c6 = ["esp", "esp-hal/esp32c6", "esp-radio/esp32c6"]
+esp32c61 = ["esp", "esp-hal/esp32c61", "esp-radio/esp32c61"]
+esp32s2 = ["esp", "esp-hal/esp32s2", "esp-radio/esp32s2"]
+esp32s3 = ["esp", "esp-hal/esp32s3", "esp-radio/esp32s3"]

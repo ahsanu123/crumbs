@@ -3,17 +3,18 @@ use core::{
     net::Ipv4Addr,
     str::FromStr,
 };
+use edge_http::io::server::Handler;
 use edge_http::io::{
-    Body, Error,
+    Error,
     server::{Connection, Server},
 };
-use edge_http::{Method, io::server::Handler};
 use edge_nal::{TcpBind, io::Write as _};
 use edge_nal_embassy::{Tcp, TcpBuffers};
 use embassy_executor::Spawner;
 use embassy_net::{Ipv4Cidr, Runner, Stack, StackResources, StaticConfigV4};
 use embassy_time::{Duration, Timer};
 use esp_hal::peripherals::WIFI;
+use esp_hal::rng::Rng;
 use esp_radio::wifi::AccessPointStationEventInfo;
 use esp_radio::wifi::{Config, ControllerConfig, Interface, WifiController, ap::AccessPointConfig};
 
@@ -144,19 +145,19 @@ async fn net_task(mut runner: Runner<'static, Interface<'static>>) {
 }
 
 #[embassy_executor::task]
-async fn http_server_task(http_server_factory: HttpServerTaskFactory) {
+async fn http_server_task(mut http_server_factory: HttpServerTaskFactory<HelloWorldHttpHandler>) {
     http_server_factory.run().await;
 }
 
-pub struct HttpServerTaskFactory {
+pub struct HttpServerTaskFactory<H> {
     stack: Stack<'static>,
     // server: Server<1, 1024, 16>,
     // acceptor: impl TcpBind<'static>,
-    http_handler: impl Handler,
+    http_handler: H,
 }
 
-impl HttpServerTaskFactory {
-    pub fn new<H: Handler>(stack: Stack<'static>, http_handler: H) -> Self {
+impl<H: Handler> HttpServerTaskFactory<H> {
+    pub fn new(stack: Stack<'static>, http_handler: H) -> Self {
         Self {
             stack,
             http_handler,
@@ -177,8 +178,8 @@ impl HttpServerTaskFactory {
             .expect("Failed to bind HTTP listener");
         let mut server = Server::<1, 1024, 16>::new();
         loop {
-            if let Err(e) = server.run(None, &acceptor, self.http_handler).await {
-                defmt::info!("HTTP server error: {:?}", e);
+            if let Err(e) = server.run(None, &acceptor, &self.http_handler).await {
+                defmt::info!("HTTP server error: {:?}", defmt::Debug2Format(&e));
                 Timer::after(Duration::from_secs(1)).await;
             }
         }
