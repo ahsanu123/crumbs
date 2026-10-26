@@ -165,7 +165,7 @@ impl HttpServerTaskFactory {
                 stack.wait_link_up().await;
                 stack.wait_config_up().await;
 
-                let buffers = TcpBuffers::<1, 1024, 1024>::new();
+                let buffers = TcpBuffers::<4, 1024, 1024>::new();
                 let tcp = Tcp::new(stack, &buffers);
                 let acceptor = tcp
                     .bind(core::net::SocketAddr::from(([0, 0, 0, 0], 8881)))
@@ -203,9 +203,12 @@ impl Handler for HelloWorldHttpHandler {
     where
         T: edge_nal::io::Read + edge_nal::io::Write + edge_nal::TcpSplit,
     {
+        let headers = conn.headers()?;
+        let path = headers.path;
         conn.initiate_response(200, Some("OK"), &[("Content-Type", "text/plain")])
             .await?;
-        conn.write_all(b"hello world!!!").await?;
+        let msg = alloc::format!("lorem ipsum dolor sit amet {}", path);
+        conn.write_all(msg.as_bytes()).await?;
 
         Ok(())
     }

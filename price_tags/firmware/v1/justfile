@@ -6,3 +6,6 @@ listbin:
 
 build_bin_esp32s3 binname: 
   cargo build --bin {{binname}} --features esp32s3
+
+monitor: 
+  espflash monitor -L defmt --elf target/xtensa-esp32s3-none-elf/debug/esp32s3_http_server
