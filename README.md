@@ -1,17 +1,19 @@
-<img width="1077" height="236" alt="image" src="https://github.com/user-attachments/assets/98071221-056f-44a4-a20b-322c57fa0917" />
+<img width="1077" height="236"  alt="image" src="https://github.com/user-attachments/assets/f9069eed-a66f-4a07-acd1-b5adfbec736b" /> 
 
 <img  src="./realistic-crumbs-logo.png" style="height: 250px; " align="right"/> 
- 
-### CRUMBS
-- **Hardware Status** ✔️ Production Done
-- **Hardware Status** 🏁 Prototype Done
-- **Software Status** ☑️ Finished
-- **Software Status** ⭐ POC only
+
+- Hardware Status ✔️ Production Done
+- Hardware Status 🏁 Prototype Done
+- Software Status ☑️ Finished
+- Software Status ⭐ POC only
 - ⏳ In Progress
+
 
 | Name                                                     | Hardware Status  | Software Status | Enclosure       | 
 |----------------------------------------------------------|------------------|-----------------|-----------------|
 |  TMD - Temperature Measurement Dongle                    |       🏁         |       ⭐        |     ⏳          |
+
+
 
 ## References 
 
