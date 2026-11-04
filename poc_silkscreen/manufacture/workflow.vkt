@@ -1,0 +1,5 @@
+load_gerber outline ./poc_silkscreen_v1-F_Mask.gbr --name edge_cut
+tool move toggle --object edge_cut --offset-x -19.59 --offset-y 228.96
+isolation_routing edge_cut 0.06 --passes 1 --overlap 0 --output edge_cut_iso
+generate_nc edge_cut_iso --preprocessor laser_grbl --feed-rate 1500 --spindle-speed 150 --output edge_cut_nc
+save_nc edge_cut_nc ./edge_cut.nc
