@@ -14532,7 +14532,7 @@
 	)
 	(gr_rect
 		(start 126.774047 116.920065)
-		(end 127.220086 118.684768)
+		(end 127.656469 118.684768)
 		(stroke
 			(width 0.02)
 			(type solid)
@@ -14543,7 +14543,7 @@
 	)
 	(gr_rect
 		(start 127.764347 115.920042)
-		(end 129.52905 116.36608)
+		(end 129.52905 116.834639)
 		(stroke
 			(width 0.02)
 			(type solid)
@@ -14553,7 +14553,7 @@
 		(uuid "9393431a-b5bd-484e-a532-dd745230b1f6")
 	)
 	(gr_rect
-		(start 127.764378 119.241679)
+		(start 127.764378 118.784547)
 		(end 129.529081 119.68772)
 		(stroke
 			(width 0.02)
@@ -14564,8 +14564,8 @@
 		(uuid "78d07dc6-36df-41c6-8afe-7df52256e7f2")
 	)
 	(gr_rect
-		(start 129.6 69.8)
-		(end 131.090039 87.2)
+		(start 129.4 69.8)
+		(end 131.290039 87.2)
 		(stroke
 			(width 0.02)
 			(type solid)
@@ -14575,7 +14575,7 @@
 		(uuid "817e7252-62c0-4760-a799-e42de07a9cf1")
 	)
 	(gr_rect
-		(start 129.999999 116.924055)
+		(start 129.599999 116.924055)
 		(end 130.532359 118.688758)
 		(stroke
 			(width 0.02)
@@ -14608,6 +14608,17 @@
 		(uuid "beecd82e-b7d9-49da-9dab-067f526b88fe")
 	)
 	(gr_rect
+		(start 135.606475 75.992028)
+		(end 139.61104 79.9887)
+		(stroke
+			(width 0.02)
+			(type solid)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "87f8fc58-e6de-4d19-ab1b-a39fc01071e8")
+	)
+	(gr_rect
 		(start 139.550953 112.112409)
 		(end 139.996992 113.877112)
 		(stroke
@@ -14631,7 +14642,7 @@
 	)
 	(gr_rect
 		(start 147.084947 69.789618)
-		(end 148.6 87.2)
+		(end 148.8 87.2)
 		(stroke
 			(width 0.02)
 			(type solid)
