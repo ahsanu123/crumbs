@@ -1,7 +1,7 @@
 load_gerber outline ./mosokik-F_Paste.gbr --name top_paste 
 load_gerber outline ./mosokik-User_1.gbr --name user1
 
-subtract_gerber top_paste user1 --output substracted_top_paste
+subtract_gerber top_paste user1 --boolean --output substracted_top_paste 
 
 tool move toggle --object top_paste --object user1 --offset-x -19.59 --offset-y 228.96
 
