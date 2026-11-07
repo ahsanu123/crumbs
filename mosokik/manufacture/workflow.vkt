@@ -1,0 +1,19 @@
+load_gerber top_copper ./mosokik-F_Cu.gbr --name top
+load_gerber bottom_copper ./mosokik-B_Cu.gbr --name bottom
+load_gerber drill ./mosokik-PTH-drl.gbr --name pth
+load_gerber outline ./mosokik-Edge_Cuts.gbr --name edge_cut
+subtract_gerber top pth
+subtract_gerber bottom pth
+add_buffer top 0.06
+add_buffer bottom 0.06
+tool move toggle --object top --object bottom --object pth --object edge_cut --offset-x -19.59 --offset-y 228.96
+flip bottom x
+isolation_routing top 0.06 --passes 3 --overlap 0.33 --output top_iso
+isolation_routing bottom 0.06 --passes 3 --overlap 0.33 --output bottom_iso
+isolation_routing edge_cut 0.06 --passes 1 --overlap 0.1 --output edge_cut_iso
+generate_nc top_iso --preprocessor laser_grbl --feed-rate 1500 --spindle-speed 150 --output top_nc
+generate_nc bottom_iso --preprocessor laser_grbl --feed-rate 1500 --spindle-speed 150 --output bottom_nc
+generate_nc edge_cut_iso --preprocessor laser_grbl --feed-rate 1500 --spindle-speed 150 --output edge_cut_nc
+save_nc top_nc ./top_file.nc
+save_nc bottom_nc ./bottom_file.nc
+save_nc edge_cut_nc ./edge_cut.nc

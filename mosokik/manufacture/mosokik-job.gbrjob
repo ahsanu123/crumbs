@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "10.0.2"
     },
-    "CreationDate": "2026-10-30T18:57:56+07:00"
+    "CreationDate": "2026-11-07T19:49:32+07:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -74,6 +74,11 @@
     {
       "Path": "mosokik-Edge_Cuts.gbr",
       "FileFunction": "Profile",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "mosokik-User_1.gbr",
+      "FileFunction": "Other,User",
       "FilePolarity": "Positive"
     }
   ],

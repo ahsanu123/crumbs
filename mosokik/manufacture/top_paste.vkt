@@ -1,0 +1,15 @@
+load_gerber outline ./mosokik-F_Paste.gbr --name top_paste 
+load_gerber outline ./mosokik-User_1.gbr --name user1
+
+subtract_gerber top_paste user1 --output substracted_top_paste
+
+tool move toggle --object top_paste --object user1 --offset-x -19.59 --offset-y 228.96
+
+isolation_routing top_paste 0.01 --passes 1 --overlap 0.01 --output top_paste_iso
+isolation_routing user1 0.01 --passes 1 --overlap 0.01 --output user1_iso
+
+generate_nc top_paste_iso --preprocessor laser_grbl --feed-rate 2000 --spindle-speed 500 --output top_paste_nc
+generate_nc user1_iso --preprocessor laser_grbl --feed-rate 2000 --spindle-speed 500 --output user1_nc
+
+save_nc top_paste_nc ./top_paste.nc
+save_nc user1_nc ./user1.nc
