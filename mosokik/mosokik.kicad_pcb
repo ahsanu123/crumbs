@@ -95,7 +95,7 @@
 		(capping no)
 		(filling no)
 		(pcbplotparams
-			(layerselection 0x00000000_00000000_555555d5_5755f5ff)
+			(layerselection 0x00000000_00000000_555557d5_5755f5ff)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions no)
@@ -14530,71 +14530,106 @@
 		(layer "Edge.Cuts")
 		(uuid "7a13b0b5-4ad8-4d35-be31-6be1a61c5a15")
 	)
-	(gr_rect
-		(start 126.774047 116.920065)
-		(end 127.656469 118.684768)
+	(gr_poly
+		(pts
+			(xy 129.445401 87.259924) (xy 130.316909 87.263467) (xy 131.117562 86.530125) (xy 131.102738 69.670854)
+			(xy 129.551029 69.670854)
+		)
 		(stroke
-			(width 0.02)
+			(width 0.1)
 			(type solid)
 		)
 		(fill yes)
 		(layer "User.1")
-		(uuid "5ec1638e-c301-47e2-9efb-ff3a3c65144e")
+		(uuid "45d5e7d9-6295-422e-b431-8ea36c735506")
+	)
+	(gr_poly
+		(pts
+			(xy 148.637788 87.258944) (xy 147.818241 87.261306) (xy 147.029396 86.696834) (xy 147.039263 69.652194)
+			(xy 148.672428 69.655108)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "a751fe14-b2bd-4b71-b952-c91556b82b48")
+	)
+	(gr_poly
+		(pts
+			(xy 126.715276 118.704045) (xy 126.718818 116.925602) (xy 127.2 116.922059) (xy 127.600954 117.333014)
+			(xy 127.604497 118.286004) (xy 127.2 118.725301)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "6d25136c-2f13-471c-8dea-882821862b38")
+	)
+	(gr_poly
+		(pts
+			(xy 127.771004 115.908844) (xy 129.549447 115.912386) (xy 129.5451 116.398599) (xy 129.142035 116.794522)
+			(xy 128.189045 116.798065) (xy 127.749748 116.4)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "262892e2-aa3b-40a0-9aa4-2104b465dc92")
+	)
+	(gr_poly
+		(pts
+			(xy 129.51402 119.74206) (xy 127.735577 119.738518) (xy 127.738356 119.256376) (xy 128.142989 118.856382)
+			(xy 129.095979 118.852839) (xy 129.515729 119.243819)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "a57a62dc-eedb-4ce7-8847-13a1ae1600b4")
+	)
+	(gr_poly
+		(pts
+			(xy 130.583919 116.943316) (xy 130.580377 118.721759) (xy 130.095126 118.736684) (xy 129.698241 118.314347)
+			(xy 129.694698 117.361357) (xy 130.066784 116.908643)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "34be92f2-431b-4a67-b440-cb53c2c372fc")
+	)
+	(gr_poly
+		(pts
+			(xy 131.6 88.8) (xy 146.6 88.8) (xy 146.6 88) (xy 145.2 87.2) (xy 132.8 87.2) (xy 131.6 88.2)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "da0edf59-38ab-4f65-a3c8-7fe41b6281c4")
 	)
 	(gr_rect
-		(start 127.764347 115.920042)
-		(end 129.52905 116.834639)
+		(start 128.146482 117.32201)
+		(end 129.146482 118.32201)
 		(stroke
 			(width 0.02)
-			(type solid)
+			(type default)
 		)
 		(fill yes)
 		(layer "User.1")
-		(uuid "9393431a-b5bd-484e-a532-dd745230b1f6")
-	)
-	(gr_rect
-		(start 127.764378 118.784547)
-		(end 129.529081 119.68772)
-		(stroke
-			(width 0.02)
-			(type solid)
-		)
-		(fill yes)
-		(layer "User.1")
-		(uuid "78d07dc6-36df-41c6-8afe-7df52256e7f2")
-	)
-	(gr_rect
-		(start 129.4 69.8)
-		(end 131.290039 87.2)
-		(stroke
-			(width 0.02)
-			(type solid)
-		)
-		(fill yes)
-		(layer "User.1")
-		(uuid "817e7252-62c0-4760-a799-e42de07a9cf1")
-	)
-	(gr_rect
-		(start 129.599999 116.924055)
-		(end 130.532359 118.688758)
-		(stroke
-			(width 0.02)
-			(type solid)
-		)
-		(fill yes)
-		(layer "User.1")
-		(uuid "91736999-80a0-4752-9349-a2b140059c6c")
-	)
-	(gr_rect
-		(start 131.638986 87.25124)
-		(end 146.515044 88.747335)
-		(stroke
-			(width 0.02)
-			(type solid)
-		)
-		(fill yes)
-		(layer "User.1")
-		(uuid "901761d6-6c54-46c4-9acf-e6c4ab08f423")
+		(uuid "acd12baa-e300-4c42-ac71-d01899b0925b")
 	)
 	(gr_rect
 		(start 133.964963 94.092846)
@@ -14620,7 +14655,7 @@
 	)
 	(gr_rect
 		(start 139.550953 112.112409)
-		(end 139.996992 113.877112)
+		(end 139.999228 113.893328)
 		(stroke
 			(width 0.02)
 			(type solid)
@@ -14628,6 +14663,17 @@
 		(fill yes)
 		(layer "User.1")
 		(uuid "9d8869d0-61c0-49a7-9b6b-7a99376753cf")
+	)
+	(gr_circle
+		(center 140.714907 112.984187)
+		(end 140.714907 113.122747)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "887cbe22-1f94-4b0a-9401-520fc024643b")
 	)
 	(gr_rect
 		(start 141.416733 112.117355)
@@ -14639,17 +14685,6 @@
 		(fill yes)
 		(layer "User.1")
 		(uuid "e470d91e-a9a8-43f8-abdd-b1054ca5a47c")
-	)
-	(gr_rect
-		(start 147.084947 69.789618)
-		(end 148.8 87.2)
-		(stroke
-			(width 0.02)
-			(type solid)
-		)
-		(fill yes)
-		(layer "User.1")
-		(uuid "d4813183-777d-472e-8fa8-26b12e5f7513")
 	)
 	(gr_rect
 		(start 164.791544 75.610545)
@@ -14695,6 +14730,17 @@
 		(layer "User.1")
 		(uuid "31fce0a7-5ef2-48f6-9243-8c0f367dafc4")
 	)
+	(gr_circle
+		(center 175.153659 119.385537)
+		(end 175.4 119.6)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.1")
+		(uuid "fa3540da-e483-495e-a724-000d770eb171")
+	)
 	(gr_rect
 		(start 176.248358 118.259838)
 		(end 176.8652 120.511236)
@@ -14705,6 +14751,50 @@
 		(fill yes)
 		(layer "User.1")
 		(uuid "f302bf1f-7f7f-4857-9494-d03b4b5ab853")
+	)
+	(gr_rect
+		(start 126.6 115.6)
+		(end 130.8 120)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.2")
+		(uuid "a5426b06-bfff-45d6-a4b5-98958163c8a0")
+	)
+	(gr_rect
+		(start 129.2 69)
+		(end 149.8 89.6)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.2")
+		(uuid "0e2dd92e-5ad1-4f35-a5b9-5bba7599b1c5")
+	)
+	(gr_rect
+		(start 139.552423 112.000346)
+		(end 142 114)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.2")
+		(uuid "adbb4b8b-7554-42b9-8b19-1db7593b0f3f")
+	)
+	(gr_rect
+		(start 173.2 117.4)
+		(end 177.2 121.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.2")
+		(uuid "05f439aa-cb7f-4967-b425-501987dbf3d3")
 	)
 	(gr_text "LCD route must be from bottom"
 		(at 72.5 7 0)

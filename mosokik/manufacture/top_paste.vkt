@@ -1,9 +1,10 @@
 load_gerber outline ./mosokik-F_Paste.gbr --name top_paste 
 load_gerber outline ./mosokik-User_1.gbr --name user1
+load_gerber outline ./mosokik-User_2.gbr --name user2
 
-subtract_gerber top_paste user1 --boolean --output substracted_top_paste 
+subtract_gerber top_paste user2 --boolean --output substracted_top_paste 
 
-tool move toggle --object top_paste --object user1 --object substracted_top_paste --offset-x -19.59 --offset-y 228.96
+tool move toggle --object top_paste --object user1 --object user2 --object substracted_top_paste --offset-x -19.59 --offset-y 228.96
 
 isolation_routing substracted_top_paste 0.01 --passes 1 --overlap 0.01 --output substracted_top_paste_iso
 isolation_routing user1 0.01 --passes 1 --overlap 0.01 --output user1_iso
