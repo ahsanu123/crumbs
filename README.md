@@ -1,3 +1,7 @@
+<!-- boardrepo-badge:v1 -->
+[![View on BoardRepo](https://boardrepo.com/badge/github.svg?v=2)](https://boardrepo.com/b/3a7002ca-33ae-4ef4-ad4a-ae923da84668?ref=github-readme)
+<!-- /boardrepo-badge:v1 -->
+
 <img width="1077" height="236"  alt="image" src="https://github.com/user-attachments/assets/f9069eed-a66f-4a07-acd1-b5adfbec736b" /> 
 
 <img  src="./realistic-crumbs-logo.png" style="height: 250px; " align="right"/> 
